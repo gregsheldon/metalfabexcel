@@ -99,6 +99,23 @@
             box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1); 
         }
         
+        /* --- Request List in Form --- */
+        .request-list {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: #374151;
+        }
+        .request-list li {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        .request-list li::before {
+            content: "👉";
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+        }
+
         /* --- Button --- */
         button { 
             display: block; 
@@ -119,7 +136,7 @@
         
         /* --- Helper Text --- */
         .guarantee { text-align: center; font-size: 1rem; color: #111827; margin-top: 15px; font-weight: 700; }
-        .note { font-size: 1rem; color: #4b5563; margin-bottom: 25px; }
+        .note { font-size: 1rem; color: #4b5563; margin-bottom: 15px; }
         
         /* --- Fallback Email --- */
         .fallback-email {
@@ -191,8 +208,16 @@
     <p><em>(Less than 1 hour of shop labour.)</em></p>
 
     <div class="form-section">
-        <h3>Let's see what's missing.</h3>
-        <p class="note">Send me one of your recent quotes. I’ll show you what’s missing. Or, I’ll map out your system before you commit to anything.</p>
+        <h3>Let's do a free system teardown.</h3>
+        <p class="note">To give you real feedback, I need to see exactly how you currently quote. Upload a recent job, including:</p>
+        
+        <ul class="request-list">
+            <li><strong>The Drawing</strong> (what you priced)</li>
+            <li><strong>Your Quoting System</strong> (the messy spreadsheet you used to calculate it)</li>
+            <li><strong>The Result</strong> (the final quote you sent to the client)</li>
+        </ul>
+
+        <p class="note">I’ll review it and record a quick video showing you where your system is leaking time and money before you commit to anything.</p>
         
         <form action="https://formsubmit.co/gregwsheldon@gmail.com" method="POST" enctype="multipart/form-data">
             
@@ -214,17 +239,17 @@
             </div>
 
             <div class="form-group">
-                <label for="file">Upload a recent quote or drawings (You can select multiple files)</label>
+                <label for="file">Upload your drawing, system, and final quote (Select multiple files)</label>
                 <input type="file" id="file" name="attachments" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv" multiple>
             </div>
 
-            <button type="submit">Send me my quote review</button>
+            <button type="submit">Send me my quote for review</button>
             <p class="guarantee">If I don’t find anything valuable, I’ll tell you.</p>
         </form>
         
         <div class="fallback-email">
-            Not sure what to do or having trouble uploading?<br>
-            Email me directly at: <a href="mailto:gregwsheldon@outlook.com">gregwsheldon@outlook.com</a>
+            Not sure what to do or having trouble uploading multiple files?<br>
+            Email them to me directly at: <a href="mailto:gregwsheldon@outlook.com">gregwsheldon@outlook.com</a>
         </div>
     </div>
 

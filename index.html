@@ -86,20 +86,12 @@
         .founder-img {
             width: 100px;
             height: 100px;
-            background-color: #d1d5db;
             border-radius: 50%;
             margin-right: 25px;
             flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: #6b7280;
-            text-align: center;
-            overflow: hidden;
+            object-fit: cover; /* Ensures the image doesn't stretch */
+            border: 2px solid #e5e7eb;
         }
-        /* If you have a headshot, replace the div above with an img tag like this:
-           <img src="your-photo-link.jpg" class="founder-img" alt="Greg Sheldon"> */
         .founder-text h3 { margin-bottom: 5px; font-size: 1.2rem; color: #111827;}
         .founder-text p { font-size: 1rem; margin-bottom: 0; color: #4b5563;}
 
@@ -266,7 +258,7 @@
     <p><em>(Less than 1 hour of shop labour.)</em></p>
 
     <div class="founder-note">
-        <div class="founder-img">Your<br>Photo<br>Here</div>
+        <img src="https://gregsheldon.github.io/metalfabexcel/gregsheldon.jpg" class="founder-img" alt="Greg Sheldon">
         <div class="founder-text">
             <h3>Who is reviewing your quote?</h3>
             <p>I'm Greg Sheldon. I've spent over 25 years as a metal fabrication estimator. I don't just write Excel formulas; I know FCAW, material specs, and shop floor realities. I build systems that actually make sense to the guys doing the work.</p>

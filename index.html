@@ -11,13 +11,13 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             line-height: 1.6; 
             color: #111827; 
-            background-color: #e5e7eb; /* Industrial light grey background */
+            background-color: #e5e7eb; 
             padding: 20px; 
         }
         
         /* --- Main Container --- */
         .container { 
-            max-width: 750px; /* Narrow width for easy reading */
+            max-width: 750px; 
             margin: 40px auto; 
             background: #ffffff; 
             padding: 50px 60px; 
@@ -73,13 +73,44 @@
         ul.negative li { color: #6b7280; font-weight: 400; }
         ul.negative li::before { content: "❌"; position: absolute; left: 0; font-size: 1.2rem; }
         
+        /* --- Founder Section --- */
+        .founder-note {
+            display: flex;
+            align-items: center;
+            background: #f9fafb;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 40px 0;
+            border: 1px solid #e5e7eb;
+        }
+        .founder-img {
+            width: 100px;
+            height: 100px;
+            background-color: #d1d5db;
+            border-radius: 50%;
+            margin-right: 25px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-align: center;
+            overflow: hidden;
+        }
+        /* If you have a headshot, replace the div above with an img tag like this:
+           <img src="your-photo-link.jpg" class="founder-img" alt="Greg Sheldon"> */
+        .founder-text h3 { margin-bottom: 5px; font-size: 1.2rem; color: #111827;}
+        .founder-text p { font-size: 1rem; margin-bottom: 0; color: #4b5563;}
+
         /* --- Form Section --- */
         .form-section { 
-            background: #f9fafb; 
+            background: #ffffff; 
             padding: 40px; 
             border-radius: 8px; 
-            margin-top: 50px; 
-            border: 2px solid #e5e7eb; 
+            margin-top: 20px; 
+            border: 2px solid #111827; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         .form-section h3 { font-size: 1.5rem; margin-bottom: 10px; font-weight: 800;}
         .form-group { margin-bottom: 20px; }
@@ -100,27 +131,26 @@
         }
         
         /* --- Request List in Form --- */
-        .request-list {
-            margin-bottom: 20px;
-            font-size: 1rem;
+        .request-list { margin-bottom: 20px; font-size: 1rem; color: #374151; }
+        .request-list li { font-size: 1rem; margin-bottom: 8px; }
+        .request-list li::before { content: "👉"; position: absolute; left: 0; font-size: 1rem; }
+
+        /* --- Privacy Lock --- */
+        .privacy-lock {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
             color: #374151;
-        }
-        .request-list li {
-            font-size: 1rem;
-            margin-bottom: 8px;
-        }
-        .request-list li::before {
-            content: "👉";
-            position: absolute;
-            left: 0;
-            font-size: 1rem;
+            margin-bottom: 20px;
+            border-left: 3px solid #10b981; /* Green trust indicator */
         }
 
         /* --- Button --- */
         button { 
             display: block; 
             width: 100%; 
-            background-color: #ea580c; /* High contrast industrial orange */
+            background-color: #ea580c; 
             color: #ffffff; 
             border: none; 
             padding: 20px; 
@@ -134,7 +164,6 @@
         button:hover { background-color: #c2410c; }
         button:active { transform: scale(0.98); }
         
-        /* --- Helper Text --- */
         .guarantee { text-align: center; font-size: 1rem; color: #111827; margin-top: 15px; font-weight: 700; }
         .note { font-size: 1rem; color: #4b5563; margin-bottom: 15px; }
         
@@ -147,20 +176,44 @@
             font-size: 0.95rem;
             color: #4b5563;
         }
-        .fallback-email a {
-            color: #ea580c;
+        .fallback-email a { color: #ea580c; font-weight: 700; text-decoration: none; }
+        .fallback-email a:hover { text-decoration: underline; }
+
+        /* --- FAQ Section --- */
+        .faq { margin-top: 30px; }
+        details {
+            background: #f9fafb;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+        }
+        summary {
+            padding: 18px 20px;
             font-weight: 700;
-            text-decoration: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            list-style: none; /* Hides default arrow in some browsers */
+            position: relative;
         }
-        .fallback-email a:hover {
-            text-decoration: underline;
+        summary::-webkit-details-marker { display: none; } /* Hides default arrow in Chrome/Safari */
+        summary::after {
+            content: "+";
+            position: absolute;
+            right: 20px;
+            font-size: 1.5rem;
+            color: #ea580c;
+            line-height: 1;
         }
+        details[open] summary::after { content: "−"; }
+        details p { padding: 0 20px 20px; margin-bottom: 0; font-size: 1rem; color: #4b5563; }
         
         /* --- Mobile Responsiveness --- */
         @media (max-width: 600px) {
             .container { padding: 30px 20px; margin: 10px auto; }
             h1 { font-size: 2.2rem; }
             .form-section { padding: 25px 15px; }
+            .founder-note { flex-direction: column; text-align: center; }
+            .founder-img { margin-right: 0; margin-bottom: 15px; }
         }
     </style>
 </head>
@@ -193,19 +246,32 @@
         <li>Reduces mistakes and rework</li>
         <li>Gives you confidence in every number</li>
     </ul>
-    
-    <p><strong>What you won't get:</strong></p>
+
+    <h2>Who This Is (And Isn't) For</h2>
+    <p><strong>This is NOT for:</strong></p>
     <ul class="negative">
-        <li>No generic software.</li>
-        <li>No endless monthly subscriptions.</li>
-        <li>No unnecessary complexity.</li>
+        <li>Shops looking for a massive, $50k ERP implementation.</li>
+        <li>Startups with no established quoting history.</li>
+        <li>People who want another monthly SaaS subscription.</li>
     </ul>
-    <p><em>Just something that works.</em></p>
+    <p><strong>This IS for:</strong></p>
+    <ul class="solution">
+        <li>Established fabrication shops bleeding time because their spreadsheets are a mess.</li>
+        <li>Owners and estimators who want total control and visibility over their numbers.</li>
+    </ul>
 
     <h2>The Investment</h2>
     <div class="price">$7,500 one-time</div>
     <p class="price-sub">👉 That’s about $30/week over 5 years.</p>
     <p><em>(Less than 1 hour of shop labour.)</em></p>
+
+    <div class="founder-note">
+        <div class="founder-img">Your<br>Photo<br>Here</div>
+        <div class="founder-text">
+            <h3>Who is reviewing your quote?</h3>
+            <p>I'm Greg Sheldon. I've spent over 25 years as a metal fabrication estimator. I don't just write Excel formulas; I know FCAW, material specs, and shop floor realities. I build systems that actually make sense to the guys doing the work.</p>
+        </div>
+    </div>
 
     <div class="form-section">
         <h3>Let's do a free system teardown.</h3>
@@ -240,7 +306,11 @@
 
             <div class="form-group">
                 <label for="file">Upload your drawing, system, and final quote (Select multiple files)</label>
-                <input type="file" id="file" name="attachments" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv" multiple>
+                <input type="file" id="file" name="attachments" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv" multiple required>
+            </div>
+
+            <div class="privacy-lock">
+                🔒 <strong>100% Confidential.</strong> Your drawings, margins, and customer data are strictly for this review. I treat your files like under-NDA intellectual property. They will never be shared.
             </div>
 
             <button type="submit">Send me my quote for review</button>
@@ -251,6 +321,22 @@
             Not sure what to do or having trouble uploading multiple files?<br>
             Email them to me directly at: <a href="mailto:gregwsheldon@outlook.com">gregwsheldon@outlook.com</a>
         </div>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+        <details>
+            <summary>How long does it take to build?</summary>
+            <p>Typically 2 to 3 weeks once we review your workflow and map out the new system.</p>
+        </details>
+        <details>
+            <summary>What if I'm not good at Excel?</summary>
+            <p>You don't need to be. I build the system so the complex math happens invisibly in the background. You just punch in the variables (like weld sizes and material lengths) and the system does the heavy lifting.</p>
+        </details>
+        <details>
+            <summary>Why $7,500?</summary>
+            <p>Because it's a custom-engineered asset for your business. Most generic estimating software charges $200-$400/month in perpetuity, and you still have to fight it to fit your workflow. This is a one-time investment that pays for itself the first time it catches a missed scope item.</p>
+        </details>
     </div>
 
 </div>

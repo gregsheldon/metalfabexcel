@@ -121,6 +121,24 @@
         .guarantee { text-align: center; font-size: 1rem; color: #111827; margin-top: 15px; font-weight: 700; }
         .note { font-size: 1rem; color: #4b5563; margin-bottom: 25px; }
         
+        /* --- Fallback Email --- */
+        .fallback-email {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d1d5db;
+            font-size: 0.95rem;
+            color: #4b5563;
+        }
+        .fallback-email a {
+            color: #ea580c;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .fallback-email a:hover {
+            text-decoration: underline;
+        }
+        
         /* --- Mobile Responsiveness --- */
         @media (max-width: 600px) {
             .container { padding: 30px 20px; margin: 10px auto; }
@@ -196,13 +214,18 @@
             </div>
 
             <div class="form-group">
-                <label for="file">Upload a recent quote (Optional)</label>
-                <input type="file" id="file" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv">
+                <label for="file">Upload a recent quote or drawings (You can select multiple files)</label>
+                <input type="file" id="file" name="attachments" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv" multiple>
             </div>
 
             <button type="submit">Send me my quote review</button>
             <p class="guarantee">If I don’t find anything valuable, I’ll tell you.</p>
         </form>
+        
+        <div class="fallback-email">
+            Not sure what to do or having trouble uploading?<br>
+            Email me directly at: <a href="mailto:gregwsheldon@outlook.com">gregwsheldon@outlook.com</a>
+        </div>
     </div>
 
 </div>

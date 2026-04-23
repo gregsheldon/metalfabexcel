@@ -89,7 +89,7 @@
             border-radius: 50%;
             margin-right: 25px;
             flex-shrink: 0;
-            object-fit: cover; /* Ensures the image doesn't stretch */
+            object-fit: cover;
             border: 2px solid #e5e7eb;
         }
         .founder-text h3 { margin-bottom: 5px; font-size: 1.2rem; color: #111827;}
@@ -135,7 +135,7 @@
             font-size: 0.9rem;
             color: #374151;
             margin-bottom: 20px;
-            border-left: 3px solid #10b981; /* Green trust indicator */
+            border-left: 3px solid #10b981;
         }
 
         /* --- Button --- */
@@ -171,6 +171,27 @@
         .fallback-email a { color: #ea580c; font-weight: 700; text-decoration: none; }
         .fallback-email a:hover { text-decoration: underline; }
 
+        /* --- Trust Guarantee Box --- */
+        .guarantee-box {
+            background: #111827;
+            color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 50px 0 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .guarantee-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #f59e0b;
+        }
+        .guarantee-box p {
+            font-size: 1.05rem;
+            margin-bottom: 0;
+            color: #d1d5db;
+        }
+
         /* --- FAQ Section --- */
         .faq { margin-top: 30px; }
         details {
@@ -184,10 +205,10 @@
             font-weight: 700;
             font-size: 1.1rem;
             cursor: pointer;
-            list-style: none; /* Hides default arrow in some browsers */
+            list-style: none;
             position: relative;
         }
-        summary::-webkit-details-marker { display: none; } /* Hides default arrow in Chrome/Safari */
+        summary::-webkit-details-marker { display: none; }
         summary::after {
             content: "+";
             position: absolute;
@@ -315,8 +336,29 @@
         </div>
     </div>
 
+    <div class="guarantee-box">
+        <h3>🛡️ The "Shop Floor Ready" Guarantee</h3>
+        <p>I don't just hand you an Excel file and walk away. Included with your custom build is <strong>30 days of direct post-launch support</strong>. As your team tests it in the real world on live jobs, I will refine, adjust, and tweak the formulas until it fits your workflow like a glove.</p>
+    </div>
+
     <h2>Frequently Asked Questions</h2>
     <div class="faq">
+        <details>
+            <summary>What happens after I submit my quote?</summary>
+            <p>I will personally review your files and record a short Loom video for you. I'll show you exactly where your current system is leaking time, and how I would restructure it. There is no high-pressure sales call. If you like the solution in the video, we can talk about next steps.</p>
+        </details>
+        <details>
+            <summary>What if one of my estimators accidentally breaks a formula?</summary>
+            <p>This is the biggest fear with Excel, and I build around it. All background math, formulas, and architecture are locked down. Your team can only edit the inputs. Plus, you get a clean "Master Backup" file on day one. If someone ever manages to break it, you can just pull up the backup and keep running.</p>
+        </details>
+        <details>
+            <summary>Will this work for my specific type of fabrication?</summary>
+            <p>Yes. Whether you are doing heavy structural, complex custom work, or production runs, the system is mapped to your specific realities. We match your specific material lists, labour codes, and routing before I write a single formula.</p>
+        </details>
+        <details>
+            <summary>Does this link to our accounting or ERP software?</summary>
+            <p>This system handles the heavy lifting of estimating and quoting to give you confidence in the number. Once the quote is won, the system can output clean CSV files or summaries that make entering the awarded job data into your ERP completely seamless.</p>
+        </details>
         <details>
             <summary>How long does it take to build?</summary>
             <p>Typically 2 to 3 weeks once we review your workflow and map out the new system.</p>

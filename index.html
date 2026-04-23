@@ -73,6 +73,17 @@
         ul.negative li { color: #6b7280; font-weight: 400; }
         ul.negative li::before { content: "❌"; position: absolute; left: 0; font-size: 1.2rem; }
         
+        /* --- Product Image --- */
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin: 40px 0;
+            border: 1px solid #e5e7eb;
+            display: block;
+        }
+
         /* --- Founder Section --- */
         .founder-note {
             display: flex;
@@ -123,9 +134,7 @@
         }
         
         /* --- File Display Box --- */
-        #file-list {
-            margin-top: 10px;
-        }
+        #file-list { margin-top: 10px; }
         .file-item {
             background: #f9fafb;
             border: 1px solid #d1d5db;
@@ -250,7 +259,8 @@
 
 <div class="container">
     
-    <h1>Stop Buying Software. Build a System That Actually Fits Your Shop.</h1>
+    <h1>Stop Buying Software. Build a System That Actually Fits Your Shop. That You Only Pay For Once.</h1>
+    
     <p class="subhead">Most fabrication shops are losing time and money in broken spreadsheets and rushed quotes. We fix that with a system built specifically for how you work.</p>
     
     <div class="authority">
@@ -275,6 +285,16 @@
         <li>Reduces mistakes and rework</li>
         <li>Gives you confidence in every number</li>
     </ul>
+    
+    <p><strong>What you won't get:</strong></p>
+    <ul class="negative">
+        <li>No generic software.</li>
+        <li>No endless monthly subscriptions.</li>
+        <li>No unnecessary complexity.</li>
+    </ul>
+    <p><em>Just something that works.</em></p>
+
+    <img src="https://gregsheldon.github.io/metalfabexcel/metal_fab_excel_graphic.png" alt="Custom Excel Estimating Dashboard" class="product-image">
 
     <h2>Who This Is (And Isn't) For</h2>
     <p><strong>This is NOT for:</strong></p>

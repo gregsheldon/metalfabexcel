@@ -291,7 +291,7 @@
         .form-group { margin-bottom: 20px; }
         .form-section label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; color: #e5e7eb; }
         
-        input[type="text"], input[type="email"], input[type="tel"], input[type="file"] { 
+        input[type="text"], input[type="email"], input[type="tel"], input[type="file"], textarea { 
             width: 100%; 
             padding: 14px 15px; 
             border: 1px solid #4b5563; 
@@ -300,14 +300,19 @@
             background: #374151; 
             color: #ffffff;
             transition: border-color 0.2s; 
+            font-family: inherit;
         }
-        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus { 
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus { 
             outline: none; 
             border-color: #f59e0b; 
             box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2); 
         }
         input[type="file"] { background: #1f2937; padding: 10px 0; border: none;}
-        input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="tel"]::placeholder {
+        input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="tel"]::placeholder, textarea::placeholder {
             color: #9ca3af;
         }
         
@@ -324,11 +329,6 @@
             display: flex;
             align-items: center;
         }
-
-        /* --- Request List in Form --- */
-        .request-list { margin-bottom: 25px; font-size: 1.05rem; color: #f9fafb; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px;}
-        .request-list li { font-size: 1.05rem; margin-bottom: 10px; font-weight: 600;}
-        .request-list li::before { content: "👉"; position: absolute; left: 20px; font-size: 1.1rem; }
 
         /* --- Privacy Lock --- */
         .privacy-lock {
@@ -577,18 +577,12 @@
     </div>
 
     <div id="teardown-form" class="form-section">
-        <h3>Don't take my word for it. Let me prove it to you for free.</h3>
-        <p class="note">I want to demonstrate my value to you before you ever spend a dime. Upload a recent job below. I will personally review it and send you a private Loom video showing exactly where your current spreadsheet is leaking profit.</p>
-        
-        <ul class="request-list">
-            <li><strong>The Drawing</strong> (what you priced)</li>
-            <li><strong>Your Spreadsheet</strong> (how you priced it)</li>
-            <li><strong>The Final Quote</strong> (what you sent the client)</li>
-        </ul>
+        <h3>Get in touch for your free profit teardown.</h3>
+        <p class="note">I want to demonstrate my value to you before you ever spend a dime. Send me a message or upload your drawings/spreadsheets for a private video review.</p>
         
         <form action="https://formsubmit.co/gregwsheldon@gmail.com" method="POST" enctype="multipart/form-data">
             
-            <input type="hidden" name="_subject" value="New Quote Review Request!">
+            <input type="hidden" name="_subject" value="New Inquiry - Fabrication Estimating">
 
             <div class="form-group">
                 <label for="name">Name</label>
@@ -611,21 +605,27 @@
             </div>
 
             <div class="form-group">
-                <label for="file">Upload Files (Select multiple)</label>
-                <input type="file" id="file" name="attachments" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv" multiple required>
+                <label for="message">Message / Details</label>
+                <textarea id="message" name="message" placeholder="Tell me about your current quoting struggle or what you'd like me to look at..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="file">Upload Files (Optional)</label>
+                <input type="file" id="file" name="attachments" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv" multiple>
                 <div id="file-list"></div>
+                <p style="font-size: 0.85rem; color: #9ca3af; margin-top: 5px;">Upload a drawing and your current sheet for a Loom video review.</p>
             </div>
 
             <div class="privacy-lock">
                 🔒 <strong>My Personal Guarantee of Confidentiality.</strong> Your drawings and margins are treated as strict intellectual property. They will never be shared. 
             </div>
 
-            <button type="submit" class="btn">Send My Files For A Free Teardown</button>
+            <button type="submit" class="btn">Send My Request</button>
             <p class="guarantee">There is no pitch at the end of the video. Just raw, actionable insight.</p>
         </form>
         
         <div class="contact-info">
-            <strong>Prefer to skip the form or having trouble uploading?</strong><br>
+            <strong>Prefer to skip the form?</strong><br>
             Email me directly: <a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a><br>
             Call or Text: <a href="tel:+16138133529">613-813-3529</a>
         </div>
@@ -633,7 +633,7 @@
 
 </div>
 
-<a href="#teardown-form" class="sticky-mobile-cta">👉 Get Your Free Teardown</a>
+<a href="#teardown-form" class="sticky-mobile-cta">👉 Contact Greg Now</a>
 
 <script>
     const fileInput = document.getElementById('file');

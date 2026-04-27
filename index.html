@@ -3,22 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Systems for Fabrication Shops</title>
+    <title>Fix Your Hidden Estimating Leaks</title>
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://gregsheldon.github.io/metalfabexcel/">
-    <meta property="og:title" content="Stop Buying Software. Build a System That Actually Fits Your Shop.">
-    <meta property="og:description" content="Most fabrication shops are losing time and money in broken spreadsheets and rushed quotes. We fix that with a system built specifically for how you work.">
+    <meta property="og:title" content="Stop Bleeding Margin On The Shop Floor. Fix Your Quoting System.">
+    <meta property="og:description" content="Discover the hidden profit leaks in your estimating spreadsheets, and how to fix them without buying expensive software.">
     <meta property="og:image" content="https://gregsheldon.github.io/metalfabexcel/metal_fab_excel_graphic.png">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Stop Buying Software. Build a System That Actually Fits Your Shop.">
-    <meta name="twitter:description" content="Most fabrication shops are losing time and money in broken spreadsheets and rushed quotes. We fix that with a system built specifically for how you work.">
-    <meta name="twitter:image" content="https://gregsheldon.github.io/metalfabexcel/metal_fab_excel_graphic.png">
     <style>
         /* --- Base & Reset --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; } /* Enables smooth scrolling for the top button */
+        html { scroll-behavior: smooth; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             line-height: 1.6; 
@@ -39,11 +35,11 @@
         
         /* --- Typography --- */
         h1 { 
-            font-size: 2.8rem; 
+            font-size: 2.6rem; 
             font-weight: 800; 
-            line-height: 1.15; 
+            line-height: 1.2; 
             margin-bottom: 20px; 
-            letter-spacing: -0.03em; 
+            letter-spacing: -0.02em; 
             color: #000000;
         }
         .subhead { 
@@ -73,7 +69,7 @@
         }
         
         /* --- Highlights & Pricing --- */
-        .highlight { color: #ea580c; font-weight: 700; }
+        .highlight { color: #ea580c; font-weight: 700; background: #fff7ed; padding: 2px 6px; border-radius: 4px;}
         .price { font-size: 2.5rem; font-weight: 800; color: #000; margin: 10px 0; }
         .price-sub { font-size: 1.1rem; color: #4b5563; font-weight: 600; }
         
@@ -82,8 +78,6 @@
         ul li { margin-bottom: 14px; padding-left: 35px; position: relative; font-size: 1.15rem; font-weight: 500;}
         ul.problem li::before { content: "⚠️"; position: absolute; left: 0; font-size: 1.2rem; }
         ul.solution li::before { content: "✅"; position: absolute; left: 0; font-size: 1.2rem; }
-        ul.negative li { color: #6b7280; font-weight: 400; }
-        ul.negative li::before { content: "❌"; position: absolute; left: 0; font-size: 1.2rem; }
         
         /* --- Product Image --- */
         .product-image {
@@ -120,7 +114,7 @@
 
         /* --- DARK PREMIUM FORM SECTION --- */
         .form-section { 
-            background: #1f2937; /* Dark Gray */
+            background: #1f2937; 
             color: #ffffff;
             padding: 50px 40px; 
             border-radius: 12px; 
@@ -138,7 +132,7 @@
             border: 1px solid #4b5563; 
             border-radius: 6px; 
             font-size: 1rem; 
-            background: #374151; /* Slightly lighter gray for inputs */
+            background: #374151; 
             color: #ffffff;
             transition: border-color 0.2s; 
         }
@@ -201,160 +195,75 @@
         }
         .btn:hover { background-color: #c2410c; }
         .btn:active { transform: scale(0.98); }
-        .btn-top { margin: 30px 0 40px; } /* Specific margin for the top button */
+        .btn-top { margin: 30px 0 40px; } 
         
         .guarantee { text-align: center; font-size: 0.95rem; color: #9ca3af; margin-top: 15px; font-weight: 500; }
-        
-        /* --- Fallback Email --- */
-        .fallback-email {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #374151;
-            font-size: 0.95rem;
-            color: #9ca3af;
-        }
-        .fallback-email a { color: #f59e0b; font-weight: 700; text-decoration: none; }
-        .fallback-email a:hover { text-decoration: underline; }
 
-        /* --- Trust Guarantee Box --- */
-        .guarantee-box {
-            background: #fffbeb;
-            color: #92400e;
-            padding: 30px;
-            border-radius: 8px;
-            margin: 50px 0 20px;
-            text-align: center;
-            border: 2px solid #fcd34d;
-        }
-        .guarantee-box h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #b45309;
-        }
-        .guarantee-box p {
-            font-size: 1.05rem;
-            margin-bottom: 0;
-            color: #92400e;
-            font-weight: 500;
-        }
-
-        /* --- FAQ Section --- */
-        .faq { margin-top: 30px; }
-        details {
-            background: #f9fafb;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            border: 1px solid #e5e7eb;
-        }
-        summary {
-            padding: 18px 20px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            list-style: none;
-            position: relative;
-        }
-        summary::-webkit-details-marker { display: none; }
-        summary::after {
-            content: "+";
-            position: absolute;
-            right: 20px;
-            font-size: 1.5rem;
-            color: #ea580c;
-            line-height: 1;
-        }
-        details[open] summary::after { content: "−"; }
-        details p { padding: 0 20px 20px; margin-bottom: 0; font-size: 1rem; color: #4b5563; }
-        
-        /* --- Mobile Responsiveness --- */
-        @media (max-width: 600px) {
-            .container { padding: 30px 20px; margin: 10px auto; }
-            h1 { font-size: 2.2rem; }
-            .form-section { padding: 30px 20px; }
-            .founder-note { flex-direction: column; text-align: center; }
-            .founder-img { margin-right: 0; margin-bottom: 15px; }
-            .request-list li::before { left: 5px; }
-        }
     </style>
 </head>
 <body>
 
 <div class="container">
     
-    <h1>Stop Buying Generic Software. Build an Estimating System That Actually Fits Your Shop. <br><span style="color: #ea580c;">(And Only Pay Once.)</span></h1>
+    <h1>There is a hidden leak in your fabrication shop. And it's draining your profit before you even cut the steel.</h1>
     
-    <p class="subhead">Most fabrication shops are losing time and money in broken spreadsheets and rushed quotes. We fix that with a system built specifically for how you work.</p>
+    <p class="subhead">You are likely losing thousands of dollars a month because of how you currently build your quotes. Let me show you exactly where the money is hiding—for free.</p>
     
-    <a href="#teardown-form" class="btn btn-top">Get a Free System Teardown 👇</a>
+    <a href="#teardown-form" class="btn btn-top">Find Your Profit Leaks 👇</a>
     
     <div class="authority">
-        Built from experience behind $16M+ in awarded fabrication work.
+        Insights from the trenches: Built on the reality of pricing and winning over $16,000,000 in awarded metal fabrication work.
     </div>
 
-    <h2>Does Any of This Sound Familiar?</h2>
-    <ul class="problem">
-        <li>Quotes are inconsistent</li>
-        <li>Scope gets missed</li>
-        <li>Labour is guessed</li>
-        <li>The shop is fixing problems from estimating</li>
-        <li>You’re always rushed and reacting</li>
-    </ul>
-    <p class="highlight">👉 Bottom line: Your system isn’t working.</p>
-
-    <h2>The Solution</h2>
-    <p>We build you a custom system in Excel that:</p>
-    <ul class="solution">
-        <li>Matches how you actually quote</li>
-        <li>Connects material, labour, and scope</li>
-        <li>Reduces mistakes and rework</li>
-        <li>Gives you confidence in every number</li>
-    </ul>
+    <h2>The Problem You Already Know You Have</h2>
+    <p>Most fabrication owners think their biggest losses happen on the shop floor. They blame slow workers or bad equipment. But the truth is, the loss happens much earlier.</p>
+    <p>It happens in your estimating spreadsheet.</p>
     
-    <p><strong>What you won't get:</strong></p>
-    <ul class="negative">
-        <li>No generic software.</li>
-        <li>No endless monthly subscriptions.</li>
-        <li>No unnecessary complexity.</li>
+    <ul class="problem">
+        <li>When your estimators are rushed, they miss scope.</li>
+        <li>When formulas aren't locked down, mistakes get hidden.</li>
+        <li>When labor hours are guessed, the guys on the floor pay the price.</li>
     </ul>
-    <p><em>Just something that works.</em></p>
+    <p>If two of your estimators can look at the exact same drawing and arrive at wildly different numbers... <span class="highlight">you aren't estimating. You are gambling.</span></p>
+
+    <h2>The Expensive "Software" Trap</h2>
+    <p>When the pain gets bad enough, you might think the answer is to buy a massive, $50,000 estimating software or a generic SaaS subscription.</p>
+    <p>But here is the trap: <strong>Generic software forces you to run your business their way.</strong> It doesn't understand your unique shop floor, your specific bottlenecks, or how your brain actually works. Eventually, you get frustrated and go right back to using broken Excel sheets.</p>
+
+    <h2>The Solution: A System Built Around YOU</h2>
+    <p>You don't need expensive software. You need a better system. I build custom estimating systems in Excel that do the heavy lifting for you.</p>
+    
+    <ul class="solution">
+        <li>It maps perfectly to how you actually quote.</li>
+        <li>It automatically connects your material inputs to your labor realities.</li>
+        <li>The complex math is locked away safely in the background.</li>
+        <li>It creates a clear, undeniable Bill of Materials for your shop floor.</li>
+    </ul>
 
     <img src="https://gregsheldon.github.io/metalfabexcel/metal_fab_excel_graphic.png" alt="Custom Excel Estimating Dashboard" class="product-image">
 
-    <h2>Who This Is (And Isn't) For</h2>
-    <p><strong>This is NOT for:</strong></p>
-    <ul class="negative">
-        <li>Shops looking for a massive, $50k ERP implementation.</li>
-        <li>Startups with no established quoting history.</li>
-        <li>People who want another monthly SaaS subscription.</li>
-    </ul>
-    <p><strong>This IS for:</strong></p>
-    <ul class="solution">
-        <li>Established fabrication shops bleeding time because their spreadsheets are a mess.</li>
-        <li>Owners and estimators who want total control and visibility over their numbers.</li>
-    </ul>
-
-    <h2>The Investment</h2>
-    <div class="price">$7,500 one-time</div>
-    <p class="price-sub">👉 That’s about $30/week over 5 years.</p>
-    <p><em>(Less than 1 hour of shop labour.)</em></p>
+    <h2>Let's Do The Math on Your Investment</h2>
+    <p>I charge a one-time fee of <strong>$7,500</strong> to engineer a custom system for your shop.</p>
+    <p>Before you say that's too much, consider the opportunity cost. Spread over 5 years, $7,500 breaks down to about <strong>$30 a week.</strong></p>
+    <p>That is less than one hour of shop labor. Ask yourself honestly: Is your current, messy quoting process costing you more than one hour of wasted shop labor per week in missed scope, confusion, or rework?</p>
+    <p>Of course it is. <span class="highlight">You are already paying for this system in lost margins. You just don't have the system to show for it.</span></p>
 
     <div class="founder-note">
         <img src="https://gregsheldon.github.io/metalfabexcel/gregsheldon.jpg" class="founder-img" alt="Greg Sheldon">
         <div class="founder-text">
-            <h3>Who is reviewing your quote?</h3>
-            <p>I'm Greg Sheldon. I've spent over 25 years as a metal fabrication estimator. I don't just write Excel formulas; I know FCAW, material specs, and shop floor realities. I build systems that actually make sense to the guys doing the work.</p>
+            <h3>Who is Greg Sheldon?</h3>
+            <p>I've spent over 25 years as a metal fabrication estimator. I know FCAW, material specs, and shop floor realities. I don't build generic spreadsheets; I build profitable systems for people who actually build things.</p>
         </div>
     </div>
 
     <div id="teardown-form" class="form-section">
-        <h3>Let's do a free system teardown.</h3>
-        <p class="note">Find out exactly where your spreadsheet is leaking margin. No sales pitch. Just a private video review from an expert. To give you real feedback, upload a recent job:</p>
+        <h3>Don't take my word for it. Let me prove it to you for free.</h3>
+        <p class="note">I want to demonstrate my value to you before you ever spend a dime. Upload a recent job below. I will personally review it and send you a private Loom video showing exactly where your current spreadsheet is leaking profit.</p>
         
         <ul class="request-list">
             <li><strong>The Drawing</strong> (what you priced)</li>
-            <li><strong>Your Quoting System</strong> (the messy spreadsheet)</li>
-            <li><strong>The Result</strong> (the final quote sent to the client)</li>
+            <li><strong>Your Spreadsheet</strong> (how you priced it)</li>
+            <li><strong>The Final Quote</strong> (what you sent the client)</li>
         </ul>
         
         <form action="https://formsubmit.co/gregwsheldon@gmail.com" method="POST" enctype="multipart/form-data">
@@ -388,50 +297,12 @@
             </div>
 
             <div class="privacy-lock">
-                🔒 <strong>100% Confidential.</strong> Your drawings, margins, and customer data are strictly for this review. I treat your files like under-NDA intellectual property. They will never be shared.
+                🔒 <strong>My Personal Guarantee of Confidentiality.</strong> Your drawings and margins are treated as strict intellectual property. They will never be shared. 
             </div>
 
-            <button type="submit" class="btn">Get My Free System Teardown</button>
-            <p class="guarantee">If I don’t find anything valuable, I’ll tell you straight up.</p>
+            <button type="submit" class="btn">Send My Files For A Free Teardown</button>
+            <p class="guarantee">There is no pitch at the end of the video. Just raw, actionable insight.</p>
         </form>
-        
-        <div class="fallback-email">
-            Not sure what to do or having trouble uploading multiple files?<br>
-            Email them to me directly at: <a href="mailto:gregwsheldon@outlook.com">gregwsheldon@outlook.com</a>
-        </div>
-    </div>
-
-    <div class="guarantee-box">
-        <h3>🛡️ The "Shop Floor Ready" Guarantee</h3>
-        <p>I don't just hand you an Excel file and walk away. Included with your custom build is <strong>30 days of direct post-launch support</strong>. As your team tests it in the real world on live jobs, I will refine, adjust, and tweak the formulas until it fits your workflow like a glove.</p>
-    </div>
-
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq">
-        <details>
-            <summary>What happens after I submit my quote?</summary>
-            <p>I will personally review your files and record a short Loom video for you. I'll show you exactly where your current system is leaking time, and how I would restructure it. There is no high-pressure sales call. If you like the solution in the video, we can talk about next steps.</p>
-        </details>
-        <details>
-            <summary>What if one of my estimators accidentally breaks a formula?</summary>
-            <p>This is the biggest fear with Excel, and I build around it. All background math, formulas, and architecture are locked down. Your team can only edit the inputs. Plus, you get a clean "Master Backup" file on day one. If someone ever manages to break it, you can just pull up the backup and keep running.</p>
-        </details>
-        <details>
-            <summary>Will this work for my specific type of fabrication?</summary>
-            <p>Yes. Whether you are doing heavy structural, complex custom work, or production runs, the system is mapped to your specific realities. We match your specific material lists, labour codes, and routing before I write a single formula.</p>
-        </details>
-        <details>
-            <summary>How long does it take to build?</summary>
-            <p>Typically 2 to 3 weeks once we review your workflow and map out the new system.</p>
-        </details>
-        <details>
-            <summary>What if I'm not good at Excel?</summary>
-            <p>You don't need to be. I build the system so the complex math happens invisibly in the background. You just punch in the variables (like weld sizes and material lengths) and the system does the heavy lifting.</p>
-        </details>
-        <details>
-            <summary>Why $7,500?</summary>
-            <p>Because it's a custom-engineered asset for your business. Most generic estimating software charges $200-$400/month in perpetuity, and you still have to fight it to fit your workflow. This is a one-time investment that pays for itself the first time it catches a missed scope item.</p>
-        </details>
     </div>
 
 </div>
@@ -441,13 +312,8 @@
     const fileListContainer = document.getElementById('file-list');
 
     fileInput.addEventListener('change', function() {
-        // Clear out the list every time they select new files
         fileListContainer.innerHTML = ''; 
-        
-        // Convert the file list into an array we can loop through
         const files = Array.from(fileInput.files);
-        
-        // Loop through each file and create a visible box for it
         files.forEach(file => {
             const fileItem = document.createElement('div');
             fileItem.className = 'file-item';

@@ -20,7 +20,32 @@
             line-height: 1.6; 
             color: #111827; 
             background-color: #e5e7eb; 
-            padding: 20px; 
+            margin: 0; /* Reset body margin for the top banner */
+            padding: 0; 
+        }
+
+        /* --- Top Contact Banner --- */
+        .top-banner {
+            background-color: #1f2937;
+            color: #d1d5db;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .top-banner a {
+            color: #f59e0b;
+            font-weight: 700;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .top-banner a:hover {
+            text-decoration: underline;
+        }
+        .top-divider {
+            color: #4b5563;
         }
         
         /* --- Main Container --- */
@@ -288,6 +313,10 @@
             .table-wrapper { overflow-x: auto; }
         }
         @media (max-width: 600px) {
+            .top-banner { font-size: 0.85rem; padding: 10px; }
+            .top-banner .hide-mobile { display: none; }
+            .top-banner a { display: inline-block; margin: 2px 8px; }
+            .top-divider { display: none; }
             .container { padding: 30px 20px; margin: 10px auto; }
             h1 { font-size: 2.2rem; }
             .form-section { padding: 30px 20px; }
@@ -300,6 +329,13 @@
     </style>
 </head>
 <body>
+
+<div class="top-banner">
+    <span class="hide-mobile">Direct Contact: </span>
+    <a href="tel:+16138133529">📞 613-813-3529</a> 
+    <span class="top-divider">|</span> 
+    <a href="mailto:gregwsheldon@gmail.com">✉️ gregwsheldon@gmail.com</a>
+</div>
 
 <div class="container">
     

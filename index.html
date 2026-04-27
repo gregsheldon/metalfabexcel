@@ -25,7 +25,7 @@
         
         /* --- Main Container --- */
         .container { 
-            max-width: 850px; /* Slightly wider to accommodate the table beautifully */
+            max-width: 850px; 
             margin: 40px auto; 
             background: #ffffff; 
             padding: 50px 60px; 
@@ -101,18 +101,17 @@
 
         /* --- Comparison Table --- */
         .table-wrapper {
-            overflow-x: auto;
             margin: 30px 0;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             border: 1px solid #d1d5db;
+            overflow: hidden; /* Keeps rounded corners clean */
         }
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            font-size: 0.9rem;
-            min-width: 800px; /* Ensures it scrolls nicely on mobile rather than squishing */
+            font-size: 0.95rem;
         }
         th {
             background-color: #1f2937;
@@ -125,11 +124,11 @@
             padding: 12px;
             border-bottom: 1px solid #e5e7eb;
             color: #374151;
-            vertical-align: top;
+            vertical-align: middle;
         }
         tr:nth-child(even) td { background-color: #f9fafb; }
         
-        /* The "Your System" Highlight Row */
+        /* The Highlight Row */
         .highlight-row td {
             background-color: #fffbeb;
             color: #92400e;
@@ -265,12 +264,17 @@
         .contact-info a:hover { text-decoration: underline; }
 
         /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            .table-wrapper { overflow-x: auto; } /* Allows slight scrolling only on very small mobile screens if needed */
+        }
         @media (max-width: 600px) {
             .container { padding: 30px 20px; margin: 10px auto; }
             h1 { font-size: 2.2rem; }
             .form-section { padding: 30px 20px; }
             .founder-note { flex-direction: column; text-align: center; align-items: center; }
             .founder-img { margin-right: 0; margin-bottom: 20px; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 10px 8px; }
         }
 
     </style>
@@ -312,68 +316,54 @@
         <table>
             <thead>
                 <tr>
-                    <th>System Type</th>
-                    <th>Example Software</th>
-                    <th>Monthly Cost (Per User)</th>
-                    <th>Typical 5-User Monthly</th>
-                    <th>Setup / Implementation</th>
-                    <th>5-Year Total Cost</th>
+                    <th>Software Tier (Examples)</th>
+                    <th>Monthly (5 Users)</th>
+                    <th>Setup Cost</th>
+                    <th>5-Year Total</th>
                     <th>The Reality</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Low-End ERP</td>
-                    <td>Odoo / MRPeasy</td>
-                    <td>$25–$50</td>
+                    <td>Low-End ERP (Odoo, MRPeasy)</td>
                     <td>$125–$250</td>
-                    <td>Minimal – $0–$2,000</td>
-                    <td>$7,500–$17,000</td>
+                    <td>$0–$2,000</td>
+                    <td>$7,500–$17k</td>
                     <td>Basic tools, still rely on spreadsheets</td>
                 </tr>
                 <tr>
-                    <td>Affordable Fabrication ERP</td>
-                    <td>Cetec ERP</td>
-                    <td>~$40–$50</td>
+                    <td>Fab-Specific Entry (Cetec)</td>
                     <td>~$200–$250</td>
                     <td>$0–$3,000</td>
-                    <td>~$12,000–$18,000</td>
+                    <td>~$12k–$18k</td>
                     <td>Good entry point, limited depth</td>
                 </tr>
                 <tr>
-                    <td>Mid-Tier Fabrication ERP</td>
-                    <td>JobBOSS² / similar</td>
-                    <td>~$150–$200+</td>
-                    <td>~$1,000+/mo</td>
-                    <td>~$5,000–$15,000</td>
-                    <td>~$60,000–$75,000+</td>
-                    <td>More capable but rigid systems</td>
+                    <td>Mid-Tier ERP (JobBOSS²)</td>
+                    <td>~$1,000+</td>
+                    <td>~$5k–$15k</td>
+                    <td>~$60k–$75k+</td>
+                    <td>Capable but rigid workflows</td>
                 </tr>
                 <tr>
-                    <td>Fabrication-Specific ERP (ETO)</td>
-                    <td>Genius ERP</td>
-                    <td>$80–$175</td>
-                    <td>$400–$875/mo</td>
-                    <td>$20,000–$200,000</td>
-                    <td>$40,000–$200,000+</td>
-                    <td>Strong estimating but expensive to deploy</td>
+                    <td>Heavy Fab ERP (Genius)</td>
+                    <td>$400–$875</td>
+                    <td>$20k–$200k</td>
+                    <td>$40k–$200k+</td>
+                    <td>Strong estimating, expensive setup</td>
                 </tr>
                 <tr>
-                    <td>Enterprise ERP</td>
-                    <td>NetSuite / Dynamics / Epicor</td>
-                    <td>$125–$175+</td>
-                    <td>$2,000–$3,000+/mo</td>
-                    <td>$25,000–$100,000+</td>
-                    <td>$120,000–$300,000+</td>
-                    <td>Heavy, long implementation</td>
+                    <td>Enterprise (NetSuite, Epicor)</td>
+                    <td>$2,000–$3k+</td>
+                    <td>$25k–$100k+</td>
+                    <td>$120k–$300k+</td>
+                    <td>Heavy, massive implementation</td>
                 </tr>
                 <tr class="highlight-row">
-                    <td>YOUR SYSTEM</td>
-                    <td>Custom Excel Build</td>
-                    <td>$0</td>
+                    <td>A System Built For YOUR Shop</td>
                     <td>$0</td>
                     <td>$7,500 one-time</td>
-                    <td>$7,500 total</td>
+                    <td>$7,500</td>
                     <td>Built exactly for your workflow</td>
                 </tr>
             </tbody>

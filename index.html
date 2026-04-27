@@ -25,7 +25,7 @@
         
         /* --- Main Container --- */
         .container { 
-            max-width: 750px; 
+            max-width: 850px; /* Slightly wider to accommodate the table beautifully */
             margin: 40px auto; 
             background: #ffffff; 
             padding: 50px 60px; 
@@ -98,6 +98,47 @@
             border: 1px solid #e5e7eb;
             display: block;
         }
+
+        /* --- Comparison Table --- */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #d1d5db;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+            min-width: 800px; /* Ensures it scrolls nicely on mobile rather than squishing */
+        }
+        th {
+            background-color: #1f2937;
+            color: #ffffff;
+            padding: 15px 12px;
+            font-weight: 700;
+            border-bottom: 2px solid #4b5563;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #374151;
+            vertical-align: top;
+        }
+        tr:nth-child(even) td { background-color: #f9fafb; }
+        
+        /* The "Your System" Highlight Row */
+        .highlight-row td {
+            background-color: #fffbeb;
+            color: #92400e;
+            font-weight: 700;
+            border-top: 2px solid #f59e0b;
+            border-bottom: 2px solid #f59e0b;
+        }
+        .highlight-row td:first-child { border-left: 2px solid #f59e0b; color: #ea580c; font-size: 1.05rem;}
+        .highlight-row td:last-child { border-right: 2px solid #f59e0b; }
 
         /* --- Founder Section --- */
         .founder-note {
@@ -263,6 +304,81 @@
     <h2>The Expensive "Software" Trap</h2>
     <p>When the pain gets bad enough, you might think the answer is to buy a massive, $50,000 estimating software or a generic SaaS subscription.</p>
     <p>But here is the trap: <strong>Generic software forces you to run your business their way.</strong> It doesn't understand your unique shop floor, your specific bottlenecks, or how your brain actually works. Eventually, you get frustrated and go right back to using broken Excel sheets.</p>
+
+    <h2>The Real Cost of Estimating Software</h2>
+    <p>Before you commit to a subscription model, look at what these platforms actually cost your shop over a standard 5-year window.</p>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>System Type</th>
+                    <th>Example Software</th>
+                    <th>Monthly Cost (Per User)</th>
+                    <th>Typical 5-User Monthly</th>
+                    <th>Setup / Implementation</th>
+                    <th>5-Year Total Cost</th>
+                    <th>The Reality</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Low-End ERP</td>
+                    <td>Odoo / MRPeasy</td>
+                    <td>$25–$50</td>
+                    <td>$125–$250</td>
+                    <td>Minimal – $0–$2,000</td>
+                    <td>$7,500–$17,000</td>
+                    <td>Basic tools, still rely on spreadsheets</td>
+                </tr>
+                <tr>
+                    <td>Affordable Fabrication ERP</td>
+                    <td>Cetec ERP</td>
+                    <td>~$40–$50</td>
+                    <td>~$200–$250</td>
+                    <td>$0–$3,000</td>
+                    <td>~$12,000–$18,000</td>
+                    <td>Good entry point, limited depth</td>
+                </tr>
+                <tr>
+                    <td>Mid-Tier Fabrication ERP</td>
+                    <td>JobBOSS² / similar</td>
+                    <td>~$150–$200+</td>
+                    <td>~$1,000+/mo</td>
+                    <td>~$5,000–$15,000</td>
+                    <td>~$60,000–$75,000+</td>
+                    <td>More capable but rigid systems</td>
+                </tr>
+                <tr>
+                    <td>Fabrication-Specific ERP (ETO)</td>
+                    <td>Genius ERP</td>
+                    <td>$80–$175</td>
+                    <td>$400–$875/mo</td>
+                    <td>$20,000–$200,000</td>
+                    <td>$40,000–$200,000+</td>
+                    <td>Strong estimating but expensive to deploy</td>
+                </tr>
+                <tr>
+                    <td>Enterprise ERP</td>
+                    <td>NetSuite / Dynamics / Epicor</td>
+                    <td>$125–$175+</td>
+                    <td>$2,000–$3,000+/mo</td>
+                    <td>$25,000–$100,000+</td>
+                    <td>$120,000–$300,000+</td>
+                    <td>Heavy, long implementation</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td>YOUR SYSTEM</td>
+                    <td>Custom Excel Build</td>
+                    <td>$0</td>
+                    <td>$0</td>
+                    <td>$7,500 one-time</td>
+                    <td>$7,500 total</td>
+                    <td>Built exactly for your workflow</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <h2>The Solution: A System Built Around YOU</h2>
     <p>You don't need expensive software. You need a better system. I build custom estimating systems in Excel that do the heavy lifting for you.</p>

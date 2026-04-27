@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fix Your Hidden Estimating Leaks | Greg Sheldon</title>
+    <title>Fix Your Hidden Estimating Leaks</title>
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://gregsheldon.github.io/metalfabexcel/">
     <meta property="og:title" content="How to plug the hidden profit leaks in your estimating spreadsheets.">
-    <meta property="og:description" content="Most owners blame the shop floor for shrinking profits. The truth is, the money was lost in the spreadsheet.">
+    <meta property="og:description" content="Most owners blame the shop floor for shrinking profits. But the truth is, the money was lost the moment an estimator had to guess on a labor formula.">
     <meta property="og:image" content="https://gregsheldon.github.io/metalfabexcel/metal_fab_excel_graphic.png">
 
     <style>
@@ -43,8 +43,12 @@
             text-decoration: none;
             margin: 0 10px;
         }
-        .top-banner a:hover { text-decoration: underline; }
-        .top-divider { color: #4b5563; }
+        .top-banner a:hover {
+            text-decoration: underline;
+        }
+        .top-divider {
+            color: #4b5563;
+        }
         
         /* --- Main Container --- */
         .container { 
@@ -120,8 +124,10 @@
             font-size: 1.15rem; 
         }
         
-        /* --- Highlights --- */
+        /* --- Highlights & Pricing --- */
         .highlight { color: #ea580c; font-weight: 700; background: #fff7ed; padding: 2px 6px; border-radius: 4px;}
+        .price { font-size: 2.5rem; font-weight: 800; color: #000; margin: 10px 0; }
+        .price-sub { font-size: 1.1rem; color: #4b5563; font-weight: 600; }
         
         /* --- Lists --- */
         ul { margin-bottom: 30px; list-style-type: none; }
@@ -129,6 +135,17 @@
         ul.problem li::before { content: "⚠️"; position: absolute; left: 0; font-size: 1.2rem; }
         ul.solution li::before { content: "✅"; position: absolute; left: 0; font-size: 1.2rem; }
         
+        /* --- Product Image --- */
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin: 40px 0;
+            border: 1px solid #e5e7eb;
+            display: block;
+        }
+
         /* --- Comparison Table --- */
         .table-wrapper {
             margin: 30px 0;
@@ -154,6 +171,7 @@
             padding: 12px;
             border-bottom: 1px solid #e5e7eb;
             color: #374151;
+            vertical-align: middle;
         }
         tr:nth-child(even) td { background-color: #f9fafb; }
         
@@ -164,7 +182,8 @@
             border-top: 2px solid #f59e0b;
             border-bottom: 2px solid #f59e0b;
         }
-        .highlight-row td:first-child { border-left: 2px solid #f59e0b; color: #ea580c;}
+        .highlight-row td:first-child { border-left: 2px solid #f59e0b; color: #ea580c; font-size: 1.05rem;}
+        .highlight-row td:last-child { border-right: 2px solid #f59e0b; }
 
         /* --- 3-Step Process Grid --- */
         .process-grid {
@@ -178,14 +197,21 @@
             border: 1px solid #e5e7eb;
             padding: 25px;
             border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         .process-card h4 {
             color: #ea580c;
+            font-size: 1.25rem;
             margin-bottom: 10px;
             font-weight: 800;
         }
+        .process-card p {
+            font-size: 1rem;
+            margin-bottom: 0;
+            color: #4b5563;
+        }
 
-        /* --- Scarcity & Guarantee --- */
+        /* --- Scarcity Alert --- */
         .scarcity-alert {
             background: #fef2f2;
             border-left: 5px solid #ef4444;
@@ -193,7 +219,12 @@
             margin: 30px 0;
             color: #991b1b;
             border-radius: 4px;
+            font-size: 1.05rem;
+            line-height: 1.5;
         }
+        .scarcity-alert strong { color: #7f1d1d; font-weight: 800;}
+
+        /* --- Guarantee Box --- */
         .guarantee-box {
             background: #fffbeb;
             color: #92400e;
@@ -202,6 +233,20 @@
             margin: 40px 0;
             text-align: center;
             border: 2px solid #fcd34d;
+            box-shadow: 0 8px 15px rgba(252, 211, 77, 0.15);
+        }
+        .guarantee-box h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #b45309;
+            font-weight: 800;
+        }
+        .guarantee-box p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            color: #92400e;
+            font-weight: 500;
+            line-height: 1.6;
         }
 
         /* --- Founder Section --- */
@@ -221,33 +266,131 @@
             margin-right: 30px;
             flex-shrink: 0;
             object-fit: cover;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
+        .founder-text h3 { margin-bottom: 15px; font-size: 1.4rem; color: #111827; font-weight: 800;}
+        .founder-text p { font-size: 1.05rem; margin-bottom: 15px; color: #4b5563; line-height: 1.6;}
+        .founder-text p:last-child { margin-bottom: 0; }
 
-        /* --- Form Section --- */
+        /* --- DARK PREMIUM FORM SECTION --- */
         .form-section { 
             background: #1f2937; 
             color: #ffffff;
             padding: 50px 40px; 
             border-radius: 12px; 
             margin-top: 40px; 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+        .form-section h3 { font-size: 2rem; margin-bottom: 10px; font-weight: 800; color: #f9fafb; line-height: 1.2;}
+        .form-section .note { color: #d1d5db; font-size: 1.05rem; margin-bottom: 25px;}
         .form-group { margin-bottom: 20px; }
-        .form-section label { display: block; font-weight: 700; margin-bottom: 8px; color: #e5e7eb; }
-        input[type="text"], input[type="email"], input[type="tel"] { 
-            width: 100%; padding: 14px 15px; border: 1px solid #4b5563; border-radius: 6px; background: #374151; color: #ffffff;
+        .form-section label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; color: #e5e7eb; }
+        
+        input[type="text"], input[type="email"], input[type="tel"], input[type="file"] { 
+            width: 100%; 
+            padding: 14px 15px; 
+            border: 1px solid #4b5563; 
+            border-radius: 6px; 
+            font-size: 1rem; 
+            background: #374151; 
+            color: #ffffff;
+            transition: border-color 0.2s; 
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus { 
+            outline: none; 
+            border-color: #f59e0b; 
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2); 
+        }
+        input[type="file"] { background: #1f2937; padding: 10px 0; border: none;}
+        input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="tel"]::placeholder {
+            color: #9ca3af;
+        }
+        
+        /* --- File Display Box --- */
+        #file-list { margin-top: 10px; }
+        .file-item {
+            background: #374151;
+            border: 1px solid #4b5563;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: #f3f4f6;
+            display: flex;
+            align-items: center;
+        }
+
+        /* --- Request List in Form --- */
+        .request-list { margin-bottom: 25px; font-size: 1.05rem; color: #f9fafb; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px;}
+        .request-list li { font-size: 1.05rem; margin-bottom: 10px; font-weight: 600;}
+        .request-list li::before { content: "👉"; position: absolute; left: 20px; font-size: 1.1rem; }
+
+        /* --- Privacy Lock --- */
+        .privacy-lock {
+            background: rgba(16, 185, 129, 0.1);
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #a7f3d0;
+            margin-bottom: 25px;
+            border-left: 3px solid #10b981;
+            line-height: 1.4;
         }
 
         /* --- Buttons --- */
         .btn {
-            display: block; width: 100%; text-align: center; background-color: #ea580c; color: #ffffff; border: none; padding: 20px; font-size: 1.25rem; font-weight: 800; border-radius: 6px; cursor: pointer; text-decoration: none;
+            display: block; 
+            width: 100%; 
+            text-align: center;
+            background-color: #ea580c; 
+            color: #ffffff; 
+            border: none; 
+            padding: 20px; 
+            font-size: 1.25rem; 
+            font-weight: 800; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            transition: background-color 0.2s, transform 0.1s; 
+            text-decoration: none;
         }
         .btn:hover { background-color: #c2410c; }
+        .btn:active { transform: scale(0.98); }
         .btn-top { margin: 10px 0 40px; } 
+        
+        .guarantee { text-align: center; font-size: 0.95rem; color: #9ca3af; margin-top: 15px; font-weight: 500; }
+
+        /* --- Fallback / Contact Info --- */
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #374151;
+            font-size: 1.05rem;
+            color: #d1d5db;
+            line-height: 1.8;
+        }
+        .contact-info a { color: #f59e0b; font-weight: 700; text-decoration: none; }
+        .contact-info a:hover { text-decoration: underline; }
 
         /* --- Sticky Mobile CTA --- */
         .sticky-mobile-cta {
-            display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #ea580c; color: #ffffff; text-align: center; padding: 18px 20px; font-size: 1.2rem; font-weight: 800; text-decoration: none; z-index: 9999;
+            display: none; 
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ea580c;
+            color: #ffffff;
+            text-align: center;
+            padding: 18px 20px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-decoration: none;
+            z-index: 9999;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.15);
         }
+        .sticky-mobile-cta:hover { background-color: #c2410c; }
 
         /* --- Mobile Responsiveness --- */
         @media (max-width: 768px) {
@@ -255,13 +398,21 @@
             .process-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 600px) {
-            body { padding-bottom: 70px; }
+            body { padding-bottom: 70px; } /* Ensures bottom content isn't hidden by sticky CTA */
             .sticky-mobile-cta { display: block; }
-            .container { padding: 30px 20px; }
+            .top-banner { font-size: 0.85rem; padding: 10px; }
+            .top-banner .hide-mobile { display: none; }
+            .top-banner a { display: inline-block; margin: 2px 8px; }
+            .top-divider { display: none; }
+            .container { padding: 30px 20px; margin: 10px auto; }
             h1 { font-size: 2.2rem; }
+            .form-section { padding: 30px 20px; }
             .founder-note { flex-direction: column; text-align: center; align-items: center; }
             .founder-img { margin-right: 0; margin-bottom: 20px; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 10px 8px; }
         }
+
     </style>
 </head>
 <body>
@@ -281,7 +432,7 @@
     <p class="subhead">Most owners blame the shop floor for shrinking profits. But the truth is, the money was lost the moment an estimator had to guess on a labor formula. Let me review your quoting system and show you exactly where the money is hiding, entirely at my own expense.</p>
     
     <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/3axeBzZGia8?rel=0" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/3axeBzZGia8?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
     
     <a href="#teardown-form" class="btn btn-top">Find Your Profit Leaks 👇</a>
@@ -291,21 +442,28 @@
     </div>
 
     <h2>The Problem You Already Know You Have</h2>
-    <p>Most fabrication owners think their biggest losses happen on the shop floor. They blame slow workers or bad equipment. But the truth is, the loss happens earlier—in your estimating spreadsheet.</p>
+    <p>Most fabrication owners think their biggest losses happen on the shop floor. They blame slow workers or bad equipment. But the truth is, the loss happens much earlier.</p>
+    <p>It happens in your estimating spreadsheet.</p>
     
     <ul class="problem">
-        <li>When estimators are rushed, they miss scope.</li>
-        <li>When formulas aren't locked, mistakes get hidden.</li>
+        <li>When your estimators are rushed, they miss scope.</li>
+        <li>When formulas aren't locked down, mistakes get hidden.</li>
         <li>When labor hours are guessed, the guys on the floor pay the price.</li>
     </ul>
-    <p>If two estimators get wildly different numbers for the exact same drawing... <span class="highlight">you aren't estimating. You are gambling.</span></p>
+    <p>If two of your estimators can look at the exact same drawing and arrive at wildly different numbers... <span class="highlight">you aren't estimating. You are gambling.</span></p>
+
+    <h2>The Expensive "Software" Trap</h2>
+    <p>When the pain gets bad enough, you might think the answer is to buy a massive, $50,000 estimating software or a generic SaaS subscription.</p>
+    <p>But here is the trap: <strong>Generic software forces you to run your business their way.</strong> It doesn't understand your unique shop floor, your specific bottlenecks, or how your brain actually works. Eventually, you get frustrated and go right back to using broken Excel sheets.</p>
 
     <h2>The Real Cost of Estimating Software</h2>
+    <p>Before you commit to a subscription model, look at what these platforms actually cost your shop over a standard 5-year window.</p>
+
     <div class="table-wrapper">
         <table>
             <thead>
                 <tr>
-                    <th>Software Tier</th>
+                    <th>Software Tier (Examples)</th>
                     <th>Monthly (5 Users)</th>
                     <th>Setup Cost</th>
                     <th>5-Year Total</th>
@@ -313,8 +471,41 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>Low-End ERP</td><td>$125–$250</td><td>$0–$2k</td><td>$7.5k–$17k</td><td>Basic tools, still rely on Excel</td></tr>
-                <tr><td>Mid-Tier ERP</td><td>~$1,000+</td><td>$5k–$15k</td><td>$60k–$75k+</td><td>Capable but rigid workflows</td></tr>
+                <tr>
+                    <td>Low-End ERP (Odoo, MRPeasy)</td>
+                    <td>$125–$250</td>
+                    <td>$0–$2,000</td>
+                    <td>$7,500–$17k</td>
+                    <td>Basic tools, still rely on spreadsheets</td>
+                </tr>
+                <tr>
+                    <td>Fab-Specific Entry (Cetec)</td>
+                    <td>~$200–$250</td>
+                    <td>$0–$3,000</td>
+                    <td>~$12k–$18k</td>
+                    <td>Good entry point, limited depth</td>
+                </tr>
+                <tr>
+                    <td>Mid-Tier ERP (JobBOSS²)</td>
+                    <td>~$1,000+</td>
+                    <td>~$5k–$15k</td>
+                    <td>~$60k–$75k+</td>
+                    <td>Capable but rigid workflows</td>
+                </tr>
+                <tr>
+                    <td>Heavy Fab ERP (Genius)</td>
+                    <td>$400–$875</td>
+                    <td>$20k–$200k</td>
+                    <td>$40k–$200k+</td>
+                    <td>Strong estimating, expensive setup</td>
+                </tr>
+                <tr>
+                    <td>Enterprise (NetSuite, Epicor)</td>
+                    <td>$2,000–$3k+</td>
+                    <td>$25k–$100k+</td>
+                    <td>$120k–$300k+</td>
+                    <td>Heavy, massive implementation</td>
+                </tr>
                 <tr class="highlight-row">
                     <td>A System Built For YOUR Shop</td>
                     <td>$0</td>
@@ -326,60 +517,135 @@
         </table>
     </div>
 
+    <h2>The Solution: A System Built Around YOU</h2>
+    <p>You don't need expensive software. You need a better system. I build custom estimating systems in Excel that do the heavy lifting for you.</p>
+    
+    <ul class="solution">
+        <li>It maps perfectly to how you actually quote.</li>
+        <li>It automatically connects your material inputs to your labor realities.</li>
+        <li>The complex math is locked away safely in the background.</li>
+        <li>It creates a clear, undeniable Bill of Materials for your shop floor.</li>
+    </ul>
+
     <h2>How It Works: A Simple 3-Step Process</h2>
     <div class="process-grid">
         <div class="process-card">
-            <h4>1. The Teardown</h4>
-            <p>You send me your current files. I record a private Loom video showing where your current sheet is leaking profit.</p>
+            <h4>Phase 1: The Teardown</h4>
+            <p>You send me your current files and a recent job drawing. I record a private Loom video showing exactly where your current sheet is leaking profit.</p>
         </div>
         <div class="process-card">
-            <h4>2. The Build</h4>
-            <p>I spend 2-3 weeks engineering and stress-testing a custom workbook mapped specifically to your shop.</p>
+            <h4>Phase 2: The Build</h4>
+            <p>If you hire me, I spend 2-3 weeks engineering and stress-testing a custom workbook mapped specifically to how your shop operates.</p>
         </div>
         <div class="process-card">
-            <h4>3. Handover & Support</h4>
-            <p>I train your team and provide 30 days of tweaks to ensure it works perfectly on the floor.</p>
+            <h4>Phase 3: Handover & Support</h4>
+            <p>I train your team on the new system and provide 30 days of free tweaks to ensure it works perfectly on the shop floor.</p>
         </div>
     </div>
 
-    <h2>The Math on Your Investment</h2>
-    <p>I charge a one-time fee of <strong>$9,800</strong>. Spread over 5 years, that breaks down to <strong>under $40 a week.</strong></p>
-    <p>Is your current quoting process costing you more than one hour of wasted shop labor per week? <span class="highlight">You are already paying for this system in lost margins. You just don't have the system to show for it.</span></p>
+    <img src="https://gregsheldon.github.io/metalfabexcel/metal_fab_excel_graphic.png" alt="Custom Excel Estimating Dashboard" class="product-image">
+
+    <h2>Let's Do The Math on Your Investment</h2>
+    <p>I charge a one-time fee of <strong>$9,800</strong> to engineer a custom system for your shop.</p>
+    <p>Before you say that's too much, consider the opportunity cost. Spread over 5 years, $9,800 breaks down to <strong>under $40 a week.</strong></p>
+    <p>That is less than one hour of shop labor. Ask yourself honestly: Is your current, messy quoting process costing you more than one hour of wasted shop labor per week in missed scope, confusion, or rework?</p>
+    <p>Of course it is. <span class="highlight">You are already paying for this system in lost margins. You just don't have the system to show for it.</span></p>
 
     <div class="scarcity-alert">
-        <strong>⚠️ Limited Availability:</strong> Because I build every system myself, <strong>I only take on 2 custom builds per month.</strong>
+        <strong>⚠️ Limited Availability:</strong> Because I build every system myself and provide 30 days of hands-on support, <strong>I only take on 2 custom builds per month.</strong> Submit your teardown request today to secure your spot in the queue.
     </div>
 
     <div class="guarantee-box">
         <h3>🛡️ The "Shop-Floor Ready" Guarantee</h3>
-        <p>I don't just email a file and vanish. Your investment includes 30 days of post-launch support to refine and tweak formulas until they fit like a glove.</p>
+        <p>I don't just email you an Excel file and vanish. Your $9,800 includes 30 days of post-launch support. As your team uses it on live jobs, I will refine, adjust, and tweak the formulas until it fits your workflow like a glove.</p>
     </div>
 
     <div class="founder-note">
-        <img src="https://gregsheldon.jpg" class="founder-img" alt="Greg Sheldon">
+        <img src="https://gregsheldon.github.io/metalfabexcel/gregsheldon.jpg" class="founder-img" alt="Greg Sheldon">
         <div class="founder-text">
             <h3>Meet Your Estimator</h3>
-            <p><strong>I’m Greg Sheldon.</strong> For over 25 years, I’ve worked in fabrication. I’ve helped generate over $16M+ in awarded work, and I’ve seen exactly where things go wrong.</p>
-            <p>This is not theory. This is real fabrication experience applied to estimating. When you work with me, you are adding an experienced estimator who protects your margins without the overhead.</p>
+            <p><strong>I’m Greg Sheldon.</strong></p>
+            <p>For over 25 years, I’ve worked in fabrication. Not just estimating, but seeing how jobs actually play out on the shop floor. I’ve helped generate over $16M+ in awarded fabrication work, and I’ve seen exactly where things go wrong.</p>
+            <p>Quotes go out late. Scope gets missed. Labour gets underestimated. Jobs that looked profitable on paper end up losing money once production starts. It is not a lack of effort. It is what happens when estimating is rushed, overloaded, or done without enough support.</p>
+            <p>That is where most shops lose margin. Before the job even begins.</p>
+            <p>This is not theory. This is real fabrication experience applied to estimating, built around how work actually gets done. When you work with me, you are not adding another salary or more pressure to your team. You are adding an experienced estimator who helps you quote faster, catch what others miss, and protect your margins without the overhead.</p>
         </div>
     </div>
 
     <div id="teardown-form" class="form-section">
-        <h3>Let me prove it to you for free.</h3>
-        <p class="note">Upload a recent job below. I will personally review it and send you a private video showing where your current spreadsheet is leaking profit.</p>
+        <h3>Don't take my word for it. Let me prove it to you for free.</h3>
+        <p class="note">I want to demonstrate my value to you before you ever spend a dime. Upload a recent job below. I will personally review it and send you a private Loom video showing exactly where your current spreadsheet is leaking profit.</p>
+        
+        <ul class="request-list">
+            <li><strong>The Drawing</strong> (what you priced)</li>
+            <li><strong>Your Spreadsheet</strong> (how you priced it)</li>
+            <li><strong>The Final Quote</strong> (what you sent the client)</li>
+        </ul>
         
         <form action="https://formsubmit.co/gregwsheldon@gmail.com" method="POST" enctype="multipart/form-data">
-            <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
-            <div class="form-group"><label>Company</label><input type="text" name="company" required></div>
-            <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
-            <div class="form-group"><label>Upload Files (Drawing & Spreadsheet)</label><input type="file" name="attachments" multiple required></div>
-            <div class="privacy-lock">🔒 <strong>Strict Confidentiality.</strong> Your drawings and margins will never be shared.</div>
+            
+            <input type="hidden" name="_subject" value="New Quote Review Request!">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe">
+            </div>
+            
+            <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" required placeholder="Your Fabrication Shop">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="john@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number (Optional)</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555">
+            </div>
+
+            <div class="form-group">
+                <label for="file">Upload Files (Select multiple)</label>
+                <input type="file" id="file" name="attachments" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv" multiple required>
+                <div id="file-list"></div>
+            </div>
+
+            <div class="privacy-lock">
+                🔒 <strong>My Personal Guarantee of Confidentiality.</strong> Your drawings and margins are treated as strict intellectual property. They will never be shared. 
+            </div>
+
             <button type="submit" class="btn">Send My Files For A Free Teardown</button>
+            <p class="guarantee">There is no pitch at the end of the video. Just raw, actionable insight.</p>
         </form>
+        
+        <div class="contact-info">
+            <strong>Prefer to skip the form or having trouble uploading?</strong><br>
+            Email me directly: <a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a><br>
+            Call or Text: <a href="tel:+16138133529">613-813-3529</a>
+        </div>
     </div>
+
 </div>
 
 <a href="#teardown-form" class="sticky-mobile-cta">👉 Get Your Free Teardown</a>
+
+<script>
+    const fileInput = document.getElementById('file');
+    const fileListContainer = document.getElementById('file-list');
+
+    fileInput.addEventListener('change', function() {
+        fileListContainer.innerHTML = ''; 
+        const files = Array.from(fileInput.files);
+        files.forEach(file => {
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            fileItem.textContent = '📄 ' + file.name;
+            fileListContainer.appendChild(fileItem);
+        });
+    });
+</script>
 
 </body>
 </html>

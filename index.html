@@ -11,7 +11,8 @@
     <meta property="og:url" content="https://gregsheldon.github.io/metalfabexcel/">
     <meta property="og:title" content="How to plug the hidden profit leaks in your estimating spreadsheets.">
     <meta property="og:description" content="Most owners blame the shop floor for shrinking profits. But the truth is, the money was lost the moment an estimator had to guess on a labor formula.">
-    <meta property="og:image" content="https://gregsheldon.github.io/metalfabexcel/metal_fab_excel_graphic_2.png">
+    
+    <meta property="og:image" content="https://gregsheldon.github.io/metalfabexcel/300k_wasted.png">
     
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -95,6 +96,11 @@
             padding-bottom: 10px; 
             color: #111827;
         }
+        h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #111827;
+        }
         p { margin-bottom: 20px; font-size: 1.1rem; }
         
         /* --- Video Wrapper --- */
@@ -128,10 +134,8 @@
             font-size: 1.15rem; 
         }
         
-        /* --- Highlights & Pricing --- */
+        /* --- Highlights --- */
         .highlight { color: #ea580c; font-weight: 700; background: #fff7ed; padding: 2px 6px; border-radius: 4px;}
-        .price { font-size: 2.5rem; font-weight: 800; color: #000; margin: 10px 0; }
-        .price-sub { font-size: 1.1rem; color: #4b5563; font-weight: 600; }
         
         /* --- Lists --- */
         ul { margin-bottom: 30px; list-style-type: none; }
@@ -139,17 +143,6 @@
         ul.problem li::before { content: "⚠️"; position: absolute; left: 0; font-size: 1.2rem; }
         ul.solution li::before { content: "✅"; position: absolute; left: 0; font-size: 1.2rem; }
         
-        /* --- Product Image --- */
-        .product-image {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            margin: 40px 0;
-            border: 1px solid #e5e7eb;
-            display: block;
-        }
-
         /* --- Comparison Table --- */
         .table-wrapper {
             margin: 30px 0;
@@ -215,6 +208,42 @@
             color: #4b5563;
         }
 
+        /* --- Testimonials --- */
+        .testimonials {
+            margin: 40px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .testimonial-item {
+            background: #f3f4f6;
+            padding: 25px;
+            border-radius: 8px;
+            border-top: 4px solid #ea580c;
+        }
+        .testimonial-item p {
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        .testimonial-item span {
+            display: block;
+            font-weight: 700;
+            color: #111827;
+            font-size: 0.9rem;
+        }
+
+        /* --- Product Image Adjustment --- */
+        .product-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 40px auto;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
         /* --- Scarcity Alert --- */
         .scarcity-alert {
             background: #fef2f2;
@@ -227,6 +256,51 @@
             line-height: 1.5;
         }
         .scarcity-alert strong { color: #7f1d1d; font-weight: 800;}
+
+        /* --- Urgency / Cost of Wait Block --- */
+        .cost-of-inaction {
+            background: #111827;
+            color: #ffffff;
+            padding: 35px 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            border: 2px solid #f59e0b;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .cost-of-inaction h3 {
+            color: #f59e0b;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .cost-of-inaction p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* --- FAQ Section --- */
+        .faq-section {
+            margin: 50px 0;
+        }
+        .faq-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question {
+            font-weight: 800;
+            color: #111827;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .faq-answer {
+            color: #4b5563;
+            font-size: 1.05rem;
+        }
 
         /* --- Guarantee Box --- */
         .guarantee-box {
@@ -402,7 +476,7 @@
             .process-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 600px) {
-            body { padding-bottom: 70px; } /* Ensures bottom content isn't hidden by sticky CTA */
+            body { padding-bottom: 70px; } 
             .sticky-mobile-cta { display: block; }
             .top-banner { font-size: 0.85rem; padding: 10px; }
             .top-banner .hide-mobile { display: none; }
@@ -461,13 +535,28 @@
     </ul>
     <p>If two of your estimators can look at the exact same drawing and arrive at wildly different numbers... <span class="highlight">you aren't estimating. You are gambling.</span></p>
 
+    <div class="cost-of-inaction">
+        <h3>The Real Cost of "Doing it Later"</h3>
+        <p>If your shop quotes $2M a year and you have a 3% "guesswork leak" in your labor formulas, you are losing <strong>$60,000 every year.</strong> Every month you wait to fix your system is a <strong>$5,000 donation</strong> to your competitors.</p>
+    </div>
+
+    <h2>What Other Shop Owners Say</h2>
+    <div class="testimonials">
+        <div class="testimonial-item">
+            <p>"Before Greg came in, my estimators were basically guessing on weld times. I was spending half my day double-checking their math. Now, these calculators do the heavy lifting for us. We're getting quotes out in minutes instead of hours, and I finally trust the numbers."</p>
+            <span>— Operations Manager, NC Fabrication Shop</span>
+        </div>
+        <div class="testimonial-item">
+            <p>"I’ve been in the trades 30 years and I've seen it all. Greg's calculators are the first time I've seen a system that actually works like a shop floor does. No more messy spreadsheets or 'finger in the wind' pricing. It’s saved us a massive amount of time on every bid."</p>
+            <span>— Owner, Custom Metal Fab Group</span>
+        </div>
+    </div>
+
     <h2>The Expensive "Software" Trap</h2>
     <p>When the pain gets bad enough, you might think the answer is to buy a massive, $50,000 estimating software or a generic SaaS subscription.</p>
     <p>But here is the trap: <strong>Generic software forces you to run your business their way.</strong> It doesn't understand your unique shop floor, your specific bottlenecks, or how your brain actually works. Eventually, you get frustrated and go right back to using broken Excel sheets.</p>
 
     <h2>The Real Cost of Estimating Software</h2>
-    <p>Before you commit to a subscription model, look at what these platforms actually cost your shop over a standard 5-year window.</p>
-
     <div class="table-wrapper">
         <table>
             <thead>
@@ -564,6 +653,22 @@
         <strong>⚠️ Limited Availability:</strong> Because I build every system myself and provide 30 days of hands-on support, <strong>I only take on 2 custom builds per month.</strong> Submit your teardown request today to secure your spot in the queue.
     </div>
 
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <span class="faq-question">"What if my shop floor labor rates or material costs change?"</span>
+            <div class="faq-answer">The system is built to be dynamic. I build a dedicated "Admin" tab where you can update your material markup, shop rate, and weld speeds in seconds. The math updates across the entire sheet automatically.</div>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">"Is my proprietary data safe?"</span>
+            <div class="faq-answer">Absolutely. Your drawings and margins are treated as strict intellectual property. I never share your spreadsheets or formulas with anyone outside your organization.</div>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">"How long does it take to learn?"</span>
+            <div class="faq-answer">If you can type a dimension into a cell, you can use this. It’s designed to be intuitive for estimators, removing the need to navigate complex ERP menus just to get a basic quote out.</div>
+        </div>
+    </div>
+
     <div class="guarantee-box">
         <h3>🛡️ The "Shop-Floor Ready" Guarantee</h3>
         <p>I don't just email you an Excel file and vanish. Your $9,800 includes 30 days of post-launch support. As your team uses it on live jobs, I will refine, adjust, and tweak the formulas until it fits your workflow like a glove.</p>
@@ -575,9 +680,6 @@
             <h3>Meet Your Estimator</h3>
             <p><strong>I’m Greg Sheldon.</strong></p>
             <p>For over 25 years, I’ve worked in fabrication. Not just estimating, but seeing how jobs actually play out on the shop floor. I’ve helped generate over $16M+ in awarded fabrication work, and I’ve seen exactly where things go wrong.</p>
-            <p>Quotes go out late. Scope gets missed. Labour gets underestimated. Jobs that looked profitable on paper end up losing money once production starts. It is not a lack of effort. It is what happens when estimating is rushed, overloaded, or done without enough support.</p>
-            <p>That is where most shops lose margin. Before the job even begins.</p>
-            <p>This is not theory. This is real fabrication experience applied to estimating, built around how work actually gets done. When you work with me, you are not adding another salary or more pressure to your team. You are adding an experienced estimator who helps you quote faster, catch what others miss, and protect your margins without the overhead.</p>
         </div>
     </div>
 

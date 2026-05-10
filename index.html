@@ -506,7 +506,7 @@
         /* Tooltips */
         .info-icon { display: inline-block; margin-left: 5px; width: 16px; height: 16px; background: #334155; color: #fff; font-size: 11px; text-align: center; line-height: 16px; border-radius: 2px; cursor: help; transition: background 0.2s; font-weight: bold;}
         .info-icon:hover { background: #ea580c; }
-        .tooltip { visibility: hidden; width: 260px; background-color: #f8fafc; color: #0f172a; text-align: left; padding: 15px; border-radius: 4px; border: 3px solid #ea580c; position: absolute; z-index: 100; bottom: 125%; left: 0; opacity: 0; transition: opacity 0.2s; font-weight: 600; font-size: 0.85rem; line-height: 1.5; box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4); }
+        .tooltip { visibility: hidden; width: 260px; background-color: #f8fafc; color: #0f172a; text-align: left; padding: 15px; border-radius: 4px; border: 3px solid #ea580c; position: absolute; z-index: 100; bottom: 125%; right: 0; opacity: 0; transition: opacity 0.2s; font-weight: 600; font-size: 0.85rem; line-height: 1.5; box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4); }
         .tooltip strong { color: #c2410c; display: block; margin-bottom: 6px; text-transform: uppercase; font-weight: 900;}
         .audit-step-line:hover .tooltip { visibility: visible; opacity: 1; }
 
@@ -520,12 +520,13 @@
 
         /* Reclaimed Growth Box */
         .gain-box-calc { background: #022c22; border: 2px solid #10b981; padding: 30px; border-radius: 6px; margin-bottom: 30px; box-shadow: inset 0 0 30px rgba(16,185,129,0.1); }
-        .gain-row-calc { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 700; font-size: 1.1rem; color: #a7f3d0; text-transform: uppercase;}
+        .gain-row-calc { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 700; font-size: 1.1rem; color: #a7f3d0; text-transform: uppercase; align-items: center; position: relative;}
         .gain-val-calc { font-weight: 900; color: #34d399; font-family: 'Courier New', Courier, monospace; font-size: 1.3rem;}
+        .gain-row-calc:hover .tooltip { visibility: visible; opacity: 1;}
 
-        /* Capture Fields base (modified in lock section) */
+        /* Capture Fields base */
         .btn-send { 
-            display: block; width: 100%; background-color: #ea580c; color: #ffffff; border: 3px solid #000; padding: 22px; font-size: 1.3rem; font-weight: 900; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.1s; margin-top: 20px; box-shadow: 6px 6px 0px #000; 
+            display: block; width: 100%; background-color: #ea580c; color: #ffffff; border: 3px solid #000; padding: 22px; font-size: 1.3rem; font-weight: 900; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.1s; margin-top: 20px; box-shadow: 6px 6px 0px #000; text-decoration: none; text-align: center;
         }
         .btn-send:hover { background-color: #f97316; transform: translate(2px, 2px); box-shadow: 4px 4px 0px #000; }
         .btn-send:active { transform: translate(6px, 6px); box-shadow: 0px 0px 0px #000; }
@@ -609,6 +610,55 @@
             font-weight: 900; font-size: 1.4rem; top: -4px; background: transparent; border: none;
         }
 
+        /* --- Exit Intent Popup --- */
+        .exit-popup-overlay {
+            display: none; 
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.9); /* Dark overlay */
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .exit-popup-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+        .exit-popup-content {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 6px;
+            border: 5px solid #ea580c;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+        .exit-popup-overlay.show .exit-popup-content {
+            transform: translateY(0);
+        }
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2.2rem;
+            color: #94a3b8;
+            cursor: pointer;
+            line-height: 1;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .close-popup:hover { color: #0f172a; }
+        .exit-popup-list { list-style: none; padding: 0; margin: 0; text-align: left;}
+        .exit-popup-list li { margin-bottom: 12px; font-size: 1.05rem; color: #334155; position: relative; padding-left: 30px; border:none; font-weight: 500;}
+        .exit-popup-list li strong { color: #0f172a; font-weight: 800;}
+        .exit-popup-list li::before { content: "✅"; position: absolute; left: 0; top: 0; font-size: 1.1rem;}
+
         /* --- Sticky Mobile CTA --- */
         .sticky-mobile-cta {
             display: none; 
@@ -654,6 +704,8 @@
             .audit-step-line { flex-direction: column; align-items: flex-start; }
             .audit-step-line .math-res { margin-top: 5px; }
             .locked-overlay { padding-top: 100px; }
+            .exit-popup-content { padding: 30px 20px; }
+            .exit-popup-content h3 { font-size: 1.6rem !important; }
         }
 
     </style>
@@ -951,23 +1003,43 @@
                 <div class="locked-content">
                     <div class="audit-results-box">
                         <div class="audit-step-line">
-                            <span>Fully Burdened Hourly Rate</span>
+                            <span>
+                                Fully Burdened Hourly Rate
+                                <span class="info-icon">?</span>
+                                <span class="tooltip"><strong>How it's calculated:</strong> Base Salary multiplied by (1 + Burden Rate %), divided by 2,080 working hours in a year. This represents the true cost of putting your estimator in their chair.</span>
+                            </span>
                             <span class="math-res" id="resHourlyRate">...</span>
                         </div>
                         <div class="audit-step-line">
-                            <span>Annual Labor Drain</span>
+                            <span>
+                                Annual Labor Drain
+                                <span class="info-icon">?</span>
+                                <span class="tooltip"><strong>How it's calculated:</strong> The total number of hours spent manually entering quotes per year, multiplied by your Fully Burdened Hourly Rate.</span>
+                            </span>
                             <span class="math-res" id="resLaborLeak">...</span>
                         </div>
                         <div class="audit-step-line" style="margin-top: 10px; padding-top: 10px; border-top: 2px dotted #334155;">
-                            <span>Annual Pipeline Volume</span>
+                            <span>
+                                Annual Pipeline Volume
+                                <span class="info-icon">?</span>
+                                <span class="tooltip"><strong>How it's calculated:</strong> Quotes per week × 52 weeks × Average Job Size. This is the total dollar value your estimators are pushing through their spreadsheets.</span>
+                            </span>
                             <span class="math-res" id="resPipelineVolume" style="color: #cbd5e1;">...</span>
                         </div>
                         <div class="audit-step-line">
-                            <span>1% Human Error Liability</span>
+                            <span>
+                                1% Human Error Liability
+                                <span class="info-icon">?</span>
+                                <span class="tooltip"><strong>How it's calculated:</strong> 1% of your total Annual Pipeline Volume. This covers the inevitable missed scope, fat-fingered typos, and bad labor guesses that occur in manual spreadsheets.</span>
+                            </span>
                             <span class="math-res" id="resErrorRisk">...</span>
                         </div>
                         <div class="audit-step-line" style="border-top: 2px solid #475569; padding-top: 12px; margin-top: 12px;">
-                            <span style="color:#fff; font-weight:800;">Gross 5-Year Profit Leak</span>
+                            <span style="color:#fff; font-weight:800;">
+                                Gross 5-Year Profit Leak
+                                <span class="info-icon">?</span>
+                                <span class="tooltip"><strong>How it's calculated:</strong> (Annual Labor Drain + Error Liability) multiplied by 5 years. This is what doing nothing will cost you over the next 60 months.</span>
+                            </span>
                             <span class="math-res" id="resFiveYear" style="color: #ef4444; font-size:1.25rem;">...</span>
                         </div>
                         <div class="audit-step-line" style="margin-top: 5px; font-size: 0.95rem; color: #94a3b8;">
@@ -975,7 +1047,11 @@
                             <span class="math-res" style="color: #ef4444;">-$9,800</span>
                         </div>
                         <div class="audit-step-line" style="margin-top: 12px; padding-top: 12px; border-top: 2px solid #475569;">
-                            <span style="color:#fff; font-weight:800; font-size:1.1rem;">Net 5-Year Strategic Gain</span>
+                            <span style="color:#fff; font-weight:800; font-size:1.1rem;">
+                                Net 5-Year Strategic Gain
+                                <span class="info-icon">?</span>
+                                <span class="tooltip" style="bottom: 150%;"><strong>How it's calculated:</strong> The Gross 5-Year Leak minus the one-time $9,800 cost of a custom estimating system. This is your pure financial upside.</span>
+                            </span>
                             <span class="math-res" id="resNetGain" style="color: #34d399; font-size:1.35rem;">...</span>
                         </div>
                     </div>
@@ -1002,11 +1078,19 @@
                     <span class="step-label-calc">3. Reclaimed Growth</span>
                     <div class="gain-box-calc">
                         <div class="gain-row-calc">
-                            <span>Hours Reclaimed (60% Speed Gain):</span>
+                            <span>
+                                Hours Reclaimed (60% Speed Gain):
+                                <span class="info-icon">?</span>
+                                <span class="tooltip"><strong>How it's calculated:</strong> A custom system cuts manual entry time by at least 60%. This shows the total annual hours your estimator gets back.</span>
+                            </span>
                             <span class="gain-val-calc" id="hoursResult">...</span>
                         </div>
                         <div class="gain-row-calc" style="border-top: 2px solid #064e3b; margin-top: 12px; padding-top: 12px;">
-                            <span>New Potential Revenue:</span>
+                            <span>
+                                New Potential Revenue:
+                                <span class="info-icon">?</span>
+                                <span class="tooltip"><strong>How it's calculated:</strong> If you repurpose those saved hours into bidding *more* jobs (with a conservative 2.5% win rate on those new bids), this is the extra revenue you could generate per year.</span>
+                            </span>
                             <span class="gain-val-calc" id="revOpp">...</span>
                         </div>
                     </div>
@@ -1014,9 +1098,37 @@
     </div>
 </div>
 
+<div id="exitPopup" class="exit-popup-overlay">
+    <div class="exit-popup-content">
+        <span class="close-popup" id="closePopup">&times;</span>
+        <h3 style="color: #ea580c; font-size: 2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; line-height: 1.1;">Wait! Don't Leave Your Profit On The Table.</h3>
+        
+        <p style="font-size: 1.15rem; margin-bottom: 20px; font-weight: 500; color: #334155;">
+            Before you go, take exactly 60 seconds to find out <strong>how much cash your current estimating spreadsheet is silently bleeding.</strong>
+        </p>
+        
+        <div style="background: #f8fafc; padding: 25px; border-left: 6px solid #0f172a; margin-bottom: 25px; text-align: left; border-radius: 4px;">
+            <p style="font-weight: 900; color: #0f172a; margin-bottom: 15px; text-transform: uppercase; font-size: 1.1rem; border-bottom: 2px solid #cbd5e1; padding-bottom: 8px;">Run your custom audit and instantly see:</p>
+            <ul class="exit-popup-list">
+                <li><strong>The Hidden Math:</strong> The exact dollar amount leaking from your margins right now.</li>
+                <li><strong>Reclaimed Time:</strong> How to slash your quoting time by <strong>50% to 60%.</strong></li>
+                <li><strong>The Next Step:</strong> Direct 1-on-1 access to Greg to custom engineer your new system.</li>
+            </ul>
+        </div>
+        
+        <a href="#audit-section" id="popupCtaBtn" class="btn-send" style="margin-top: 0;">Run My Free Profit Audit Now 👇</a>
+        <p style="text-align: center; margin-top: 15px;">
+            <a href="#" id="declinePopup" style="color: #64748b; font-size: 0.95rem; text-decoration: underline; font-weight: 500;">No thanks, I'm okay with guessing.</a>
+        </p>
+    </div>
+</div>
+
 <a href="#audit-section" class="sticky-mobile-cta">📊 Run Your Profit Audit</a>
 
 <script>
+    // ==========================================
+    // CALCULATOR LOGIC
+    // ==========================================
     const inputs = ['jobSize', 'quotes', 'salary', 'burden', 'minutes'];
     const elements = {};
     inputs.forEach(id => elements[id] = document.getElementById(id));
@@ -1135,6 +1247,52 @@
             // Fallback unlock if fetch fails
             lockWrapper.classList.add('unlocked');
         });
+    });
+
+    // ==========================================
+    // EXIT INTENT POPUP LOGIC
+    // ==========================================
+    let popupShown = false;
+    const exitPopup = document.getElementById('exitPopup');
+    const closePopupBtn = document.getElementById('closePopup');
+    const declinePopupBtn = document.getElementById('declinePopup');
+    const popupCtaBtn = document.getElementById('popupCtaBtn');
+
+    function showPopup() {
+        if (!popupShown) {
+            exitPopup.classList.add('show');
+            popupShown = true; // Ensures it only shows once per page load
+        }
+    }
+
+    function closePopup(e) {
+        if(e) e.preventDefault();
+        exitPopup.classList.remove('show');
+        // Wait for the fade-out animation to finish before hiding display
+        setTimeout(() => { exitPopup.style.display = 'none'; }, 300);
+    }
+
+    // Trigger when mouse leaves the top of the viewport
+    document.addEventListener('mouseleave', function(e) {
+        if (e.clientY < 10) {
+            showPopup();
+        }
+    });
+
+    // Event Listeners for closing the popup
+    closePopupBtn.addEventListener('click', closePopup);
+    declinePopupBtn.addEventListener('click', closePopup);
+    
+    // Close the popup if they click the CTA button to jump down to the calculator
+    popupCtaBtn.addEventListener('click', function() {
+        closePopup();
+    });
+
+    // Close the popup if they click anywhere outside the white box
+    window.addEventListener('click', function(e) {
+        if (e.target === exitPopup) {
+            closePopup();
+        }
     });
 
 </script>

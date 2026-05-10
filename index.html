@@ -407,7 +407,7 @@
         /* --- TOOLTIPS --- */
         .info-icon { display: inline-block; margin-left: 5px; width: 14px; height: 14px; background: #475569; color: #fff; font-size: 10px; text-align: center; line-height: 14px; border-radius: 50%; cursor: help; transition: background 0.3s; }
         .info-icon:hover { background: #ea580c; }
-        .tooltip { visibility: hidden; width: 240px; background-color: #1e293b; color: #fff; text-align: left; padding: 12px; border-radius: 8px; border: 1px solid #ea580c; position: absolute; z-index: 100; bottom: 125%; left: 0; opacity: 0; transition: opacity 0.3s; font-weight: normal; font-size: 0.8rem; line-height: 1.4; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
+        .tooltip { visibility: hidden; width: 250px; background-color: #1e293b; color: #fff; text-align: left; padding: 12px; border-radius: 8px; border: 1px solid #ea580c; position: absolute; z-index: 100; bottom: 125%; left: 0; opacity: 0; transition: opacity 0.3s; font-weight: normal; font-size: 0.8rem; line-height: 1.4; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
         .tooltip strong { color: #ea580c; display: block; margin-bottom: 4px; }
         .audit-step-line:hover .tooltip { visibility: visible; opacity: 1; }
 
@@ -663,13 +663,14 @@
     </div>
 
     <div id="audit-section" class="form-section">
-        <h3>Industrial Opportunity & Profit Auditor</h3>
-        <p class="note">Plug in your shop's numbers below to see the audit in real-time. We’ve broken down the math so you can see exactly where your profit is leaking and exactly how much new revenue you can unlock by stopping it.</p>
+        <h3>The 60-Second Profit Leak Auditor</h3>
+        <p class="note">Think your current estimating process is dialed in? Prove it. Drop your shop's raw numbers into the calculator below. In less than a minute, this real-time audit will expose the exact math on where you are bleeding cash—and precisely how much hidden revenue you can reclaim by fixing it.</p>
         
         <form action="https://formsubmit.co/gregwsheldon@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="New Profit Audit Result">
             <input type="hidden" id="h_drain" name="Annual_Profit_Drain">
             <input type="hidden" id="h_rate" name="Hourly_Rate">
+            <input type="hidden" id="h_volume" name="Annual_Pipeline_Volume">
             <input type="hidden" id="h_5yr" name="5yr_Profit_Leak">
             <input type="hidden" id="h_net_gain" name="Net_5yr_Gain">
             <input type="hidden" id="h_hours" name="Hours_Reclaimed">
@@ -698,7 +699,7 @@
                 </div>
             </div>
             <div class="input-group-calc" style="margin-top:15px;">
-                <label>Minutes Per Quote (Manual)</label>
+                <label>Minutes Per Quote (Manual Entry)</label>
                 <input type="number" id="minutes" value="45">
             </div>
 
@@ -719,9 +720,15 @@
                         </span>
                         <span class="math-res" id="resLaborLeak">...</span>
                     </div>
+                    <div class="audit-step-line" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155;">
+                        <span>Annual Pipeline Volume <span class="info-icon">ⓘ</span>
+                            <div class="tooltip"><strong>Total Quoted Dollars</strong>Quotes Per Week × 52 Weeks × Avg. Job Size. This is the total dollar value your estimators handle yearly.</div>
+                        </span>
+                        <span class="math-res" id="resPipelineVolume" style="color: #94a3b8;">...</span>
+                    </div>
                     <div class="audit-step-line">
                         <span>1% Human Error Liability <span class="info-icon">ⓘ</span>
-                            <div class="tooltip"><strong>Cost of Inaction</strong>(Total Pipeline Volume × 1% Risk). Conservative industry standard for manual typo risk.</div>
+                            <div class="tooltip"><strong>Cost of Inaction</strong>(Annual Pipeline Volume × 1% Risk). Conservative industry standard for manual typo risk across total bids.</div>
                         </span>
                         <span class="math-res" id="resErrorRisk">...</span>
                     </div>
@@ -748,7 +755,7 @@
                 <div class="math-title">Full Step-By-Step Logic</div>
                 <div class="math-item">
                     <strong>1. True Hourly Labor Cost:</strong>
-                    <p class="math-explanation">Most owners only look at base salary. We use a "Burden Rate" to account for the real cost.</p>
+                    <p class="math-explanation">Most owners only look at base salary. We use a "Burden Rate" to account for the real cost to the business.</p>
                     <span class="formula-line" id="formula-labor">...</span>
                 </div>
                 <div class="math-item">
@@ -757,8 +764,13 @@
                     <span class="formula-line" id="formula-time">...</span>
                 </div>
                 <div class="math-item">
-                    <strong>3. Error Risk (Cost of Inaction):</strong>
-                    <p class="math-explanation">Manual entry is a magnet for typos. A 1% error rate is a conservative industry standard.</p>
+                    <strong>3. Annual Pipeline Volume:</strong>
+                    <p class="math-explanation">The total dollar amount of quotes passing through your spreadsheet each year.</p>
+                    <span class="formula-line" id="formula-pipeline">...</span>
+                </div>
+                <div class="math-item">
+                    <strong>4. Error Risk (Cost of Inaction):</strong>
+                    <p class="math-explanation">Manual entry is a magnet for typos. A 1% error rate (missed scope, bad formulas, fat-finger typos) is a highly conservative industry standard measured against your total pipeline volume.</p>
                     <span class="formula-line" id="formula-error-risk">...</span>
                 </div>
             </div>
@@ -776,7 +788,7 @@
             </div>
 
             <div class="capture-fields">
-                <h4 style="color:#fff; margin-bottom: 15px; text-align: center;">Send This Audit Breakdown to Greg</h4>
+                <h4 style="color:#fff; margin-bottom: 15px; text-align: center;">Send this audit breakdown to Greg and he will reach back to you.</h4>
                 <div class="input-grid-calc">
                     <div class="input-group-calc">
                         <label>Name</label>
@@ -804,6 +816,7 @@
     const cashEl = document.getElementById('cashResult');
     const rHourlyRate = document.getElementById('resHourlyRate');
     const rLaborLeak = document.getElementById('resLaborLeak');
+    const rPipelineVolume = document.getElementById('resPipelineVolume');
     const rErrorRisk = document.getElementById('resErrorRisk');
     const rFiveYear = document.getElementById('resFiveYear');
     const rNetGain = document.getElementById('resNetGain');
@@ -812,10 +825,12 @@
 
     const fLabor = document.getElementById('formula-labor');
     const fTime = document.getElementById('formula-time');
+    const fPipeline = document.getElementById('formula-pipeline');
     const fErrorRisk = document.getElementById('formula-error-risk');
 
     const hDrain = document.getElementById('h_drain');
     const hRate = document.getElementById('h_rate');
+    const hVolume = document.getElementById('h_volume');
     const h5yr = document.getElementById('h_5yr');
     const hNet = document.getElementById('h_net_gain');
     const hHours = document.getElementById('h_hours');
@@ -855,12 +870,14 @@
         // Formula UI Updates
         fLabor.textContent = `Math: $${format(salaryVal)} × ${1+(burdenVal/100)} Burden / 2,080 hrs = $${hourlyRate.toFixed(2)}/hr`;
         fTime.textContent = `Math: ${format(bidsPerYear)} bids/yr × ${minsVal} mins = ${Math.round(yearlyHours)} hrs/yr`;
+        fPipeline.textContent = `Math: ${format(bidsPerYear)} Quotes/Yr × $${format(jobSizeVal)} = $${format(Math.round(annualVolume))}`;
         fErrorRisk.textContent = `Math: $${format(annualVolume)} Pipeline Volume × 1% = $${format(Math.round(errorRisk))}/yr Liability`;
 
         // Audit UI Updates
         cashEl.textContent = '$' + format(Math.round(totalLeak));
         rHourlyRate.textContent = '$' + hourlyRate.toFixed(2) + '/hr';
         rLaborLeak.textContent = '$' + format(Math.round(yearlyLaborCost));
+        rPipelineVolume.textContent = '$' + format(Math.round(annualVolume));
         rErrorRisk.textContent = '$' + format(Math.round(errorRisk));
         rFiveYear.textContent = '$' + format(Math.round(grossFiveYear));
         rNetGain.textContent = '$' + format(Math.round(netFiveYear));
@@ -870,6 +887,7 @@
         // Hidden Form Inputs
         hDrain.value = "$" + format(Math.round(totalLeak));
         hRate.value = "$" + hourlyRate.toFixed(2);
+        hVolume.value = "$" + format(Math.round(annualVolume));
         h5yr.value = "$" + format(Math.round(grossFiveYear));
         hNet.value = "$" + format(Math.round(netFiveYear));
         hHours.value = format(hoursBack) + " Hours";

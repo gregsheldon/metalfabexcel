@@ -913,7 +913,8 @@
             <strong style="color: #ea580c;">What happens next?</strong> After you submit your audit, you will have the opportunity to engage directly with me. When we work together, you get 1-on-1 access to me (Greg), and I will personally engineer and deploy these custom spreadsheet calculators exactly to your shop's specifications.
         </p>
         
-        <form id="auditForm" action="https://formsubmit.co/gregwsheldon@gmail.com" method="POST">
+        <form id="auditForm" action="https://formsubmit.co/gregwsheldon@gmail.com" method="POST" target="hidden_iframe">
+            
             <input type="hidden" name="_subject" value="New Profit Audit Result">
             <input type="hidden" name="_captcha" value="false">
             
@@ -1095,6 +1096,9 @@
                         </div>
                     </div>
                 </div> </div> </form>
+        
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+        
     </div>
 </div>
 
@@ -1218,35 +1222,31 @@
     inputs.forEach(id => elements[id].addEventListener('input', runMath));
     runMath();
 
-    // The Form Unlock Logic
+    // ==========================================
+    // THE FORM UNLOCK LOGIC (HIDDEN IFRAME SUBMIT)
+    // ==========================================
     document.getElementById('auditForm').addEventListener('submit', function(e) {
-        e.preventDefault(); 
+        // We DO NOT preventDefault here. We want the form to submit naturally
+        // to the "hidden_iframe" target so FormSubmit.co triggers the auto-email.
         
-        const form = e.target;
         const btn = document.getElementById('unlockBtn');
         const lockWrapper = document.getElementById('lockWrapper');
 
         // Visual feedback
         btn.textContent = "Unlocking...";
         btn.style.backgroundColor = "#64748b";
+        btn.style.pointerEvents = "none"; // prevent double click
 
-        // Submit form data to formsubmit.co in the background
-        fetch(form.action, {
-            method: form.method,
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-        }).then(response => {
-            // Success! Unblur the content
+        // Wait a brief moment to allow the background form submission to process,
+        // then unlock the math for the user visually.
+        setTimeout(() => {
             lockWrapper.classList.add('unlocked');
             
             // Show a temporary success message at the top of the unblurred section
             const successMsg = document.createElement('div');
             successMsg.innerHTML = `<div style="background: #059669; color: #fff; padding: 15px; text-align: center; font-weight: 800; border-radius: 4px; margin-bottom: 20px; border: 2px solid #047857; text-transform: uppercase;">✅ Report Emailed! Math Unlocked Below.</div>`;
             document.querySelector('.locked-content').prepend(successMsg);
-        }).catch(error => {
-            // Fallback unlock if fetch fails
-            lockWrapper.classList.add('unlocked');
-        });
+        }, 1500); 
     });
 
     // ==========================================

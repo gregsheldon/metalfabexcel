@@ -913,12 +913,13 @@
             <strong style="color: #ea580c;">What happens next?</strong> After you submit your audit, you will have the opportunity to engage directly with me. When we work together, you get 1-on-1 access to me (Greg), and I will personally engineer and deploy these custom spreadsheet calculators exactly to your shop's specifications.
         </p>
         
-        <form id="auditForm" action="https://formsubmit.co/gregwsheldon@gmail.com" method="POST" target="hidden_iframe">
+        <form id="auditForm" action="https://formsubmit.co/ajax/gregwsheldon@gmail.com" method="POST">
             
             <input type="hidden" name="_subject" value="New Profit Audit Result">
             <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
             
-            <input type="hidden" name="_autoresponse" value="Here is the copy of your 60-Second Profit Leak Audit that you requested. A copy of these results has also been sent to Greg Sheldon for review. Take a look at the math below to see exactly where your estimating spreadsheets are bleeding margin.">
+            <input type="hidden" name="_cc" id="dynamic_cc" value="">
             
             <input type="hidden" id="h_drain" name="1_Current_Annual_Drain">
             <input type="hidden" id="h_rate" name="2_True_Hourly_Rate">
@@ -993,7 +994,7 @@
                         </div>
                         <div class="input-group-calc">
                             <label>Work Email</label>
-                            <input type="email" name="email" required placeholder="john@company.com" style="text-align:left; font-size: 1.1rem;">
+                            <input type="email" name="email" id="userEmailInput" required placeholder="john@company.com" style="text-align:left; font-size: 1.1rem;">
                         </div>
                         
                         <button type="submit" id="unlockBtn" class="btn-send">Reveal My Hidden Leaks →</button>
@@ -1096,9 +1097,6 @@
                         </div>
                     </div>
                 </div> </div> </form>
-        
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-        
     </div>
 </div>
 
@@ -1223,30 +1221,43 @@
     runMath();
 
     // ==========================================
-    // THE FORM UNLOCK LOGIC (HIDDEN IFRAME SUBMIT)
+    // THE FORM UNLOCK LOGIC (AJAX + Dynamic CC)
     // ==========================================
     document.getElementById('auditForm').addEventListener('submit', function(e) {
-        // We DO NOT preventDefault here. We want the form to submit naturally
-        // to the "hidden_iframe" target so FormSubmit.co triggers the auto-email.
+        e.preventDefault(); 
         
+        const form = e.target;
         const btn = document.getElementById('unlockBtn');
         const lockWrapper = document.getElementById('lockWrapper');
+
+        // MAGIC FIX: Grab the email the user typed in and set it as the CC address
+        const userEmailInput = document.getElementById('userEmailInput').value;
+        document.getElementById('dynamic_cc').value = userEmailInput;
 
         // Visual feedback
         btn.textContent = "Unlocking...";
         btn.style.backgroundColor = "#64748b";
-        btn.style.pointerEvents = "none"; // prevent double click
+        btn.style.pointerEvents = "none";
 
-        // Wait a brief moment to allow the background form submission to process,
-        // then unlock the math for the user visually.
-        setTimeout(() => {
+        // Submit form data
+        fetch(form.action, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json'
+            },
+            body: new FormData(form)
+        }).then(response => {
+            // Success! Unblur the content
             lockWrapper.classList.add('unlocked');
             
             // Show a temporary success message at the top of the unblurred section
             const successMsg = document.createElement('div');
             successMsg.innerHTML = `<div style="background: #059669; color: #fff; padding: 15px; text-align: center; font-weight: 800; border-radius: 4px; margin-bottom: 20px; border: 2px solid #047857; text-transform: uppercase;">✅ Report Emailed! Math Unlocked Below.</div>`;
             document.querySelector('.locked-content').prepend(successMsg);
-        }, 1500); 
+        }).catch(error => {
+            // Fallback unlock if fetch fails
+            lockWrapper.classList.add('unlocked');
+        });
     });
 
     // ==========================================
@@ -1261,38 +1272,27 @@
     function showPopup() {
         if (!popupShown) {
             exitPopup.classList.add('show');
-            popupShown = true; // Ensures it only shows once per page load
+            popupShown = true; 
         }
     }
 
     function closePopup(e) {
         if(e) e.preventDefault();
         exitPopup.classList.remove('show');
-        // Wait for the fade-out animation to finish before hiding display
         setTimeout(() => { exitPopup.style.display = 'none'; }, 300);
     }
 
-    // Trigger when mouse leaves the top of the viewport
     document.addEventListener('mouseleave', function(e) {
-        if (e.clientY < 10) {
-            showPopup();
-        }
+        if (e.clientY < 10) { showPopup(); }
     });
 
-    // Event Listeners for closing the popup
     closePopupBtn.addEventListener('click', closePopup);
     declinePopupBtn.addEventListener('click', closePopup);
     
-    // Close the popup if they click the CTA button to jump down to the calculator
-    popupCtaBtn.addEventListener('click', function() {
-        closePopup();
-    });
+    popupCtaBtn.addEventListener('click', function() { closePopup(); });
 
-    // Close the popup if they click anywhere outside the white box
     window.addEventListener('click', function(e) {
-        if (e.target === exitPopup) {
-            closePopup();
-        }
+        if (e.target === exitPopup) { closePopup(); }
     });
 
 </script>

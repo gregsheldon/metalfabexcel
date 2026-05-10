@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Opportunity & Profit Auditor</title>
+    
+    <style>
+        /* --- Industrial Premium Styling --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; color: #1e293b; background-color: #f1f5f9; 
+            display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 40px 20px;
+        }
+        .calc-container { 
+            max-width: 850px; width: 100%; background: #ffffff; padding: 50px; 
+            border-radius: 24px; border: 1px solid #e2e8f0; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* --- Headline & Body Copy Styling --- */
+        .header { text-align: center; margin-bottom: 40px; }
+        .main-headline { 
+            font-size: 2.8rem; 
+            font-weight: 900; 
+            color: #0f172a; 
+            line-height: 1.1; 
+            letter-spacing: -0.05em;
+            margin-bottom: 20px;
+        }
+        .main-headline span { color: #ea580c; }
+        .body-intro { 
+            font-size: 1.15rem; 
+            color: #475569; 
+            max-width: 700px; 
+            margin: 0 auto 30px; 
+            line-height: 1.6;
+        }
+
+        .step-label { 
+            display: block; font-weight: 800; font-size: 0.8rem; color: #ea580c; 
+            text-transform: uppercase; margin: 30px 0 15px; border-bottom: 1px solid #fed7aa; padding-bottom: 5px;
+        }
+
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .input-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; font-weight: 700; margin-bottom: 8px; color: #475569; font-size: 0.85rem; }
+
+        input {
+            width: 100%; padding: 14px; background: #f8fafc; border: 2px solid #e2e8f0;
+            border-radius: 10px; color: #0f172a; font-size: 1.3rem; font-weight: 800; text-align: center;
+        }
+        input:focus { outline: none; border-color: #ea580c; background: #fff; box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.1); }
+
+        /* --- THE PAIN BOX (Results) --- */
+        .pain-box { background: #0f172a; color: #fff; padding: 35px; border-radius: 20px; margin: 30px 0; position: relative; }
+        .stat-label { color: #94a3b8; font-size: 0.9rem; text-transform: uppercase; font-weight: 700; text-align: center; margin-bottom: 10px;}
+        .leak-value { font-size: 3.5rem; font-weight: 900; color: #f87171; line-height: 1.2; text-align: center;}
+        
+        .audit-box {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 0.85rem;
+        }
+        .audit-step { 
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px; 
+            color: #cbd5e1; 
+            align-items: center;
+            position: relative;
+        }
+        .audit-step .math-result { font-weight: 700; color: #fff; }
+
+        /* --- INFO ICON & TOOLTIP --- */
+        .info-icon {
+            display: inline-block;
+            margin-left: 5px;
+            width: 16px;
+            height: 16px;
+            background: #475569;
+            color: #fff;
+            font-size: 11px;
+            text-align: center;
+            line-height: 16px;
+            border-radius: 50%;
+            cursor: help;
+            transition: background 0.3s ease;
+        }
+        .info-icon:hover { background: #ea580c; }
+
+        .tooltip {
+            visibility: hidden;
+            width: 260px;
+            background-color: #1e293b;
+            color: #fff;
+            text-align: left;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            position: absolute;
+            z-index: 100;
+            bottom: 125%;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            font-weight: normal;
+            font-size: 0.8rem;
+        }
+        .tooltip strong { color: #ea580c; display: block; margin-bottom: 4px; }
+        .audit-step:hover .tooltip { visibility: visible; opacity: 1; }
+
+        /* --- GAIN BOX --- */
+        .gain-box { background: #f0fdf4; border: 2px solid #dcfce7; padding: 30px; border-radius: 16px; margin-bottom: 30px; }
+        .gain-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 500; font-size: 1.05rem; }
+        .gain-val { font-weight: 800; color: #15803d; }
+        
+        .detailed-math {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-size: 0.85rem;
+        }
+        .math-title { font-weight: 800; color: #475569; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;}
+        .math-item { margin-bottom: 20px; color: #334155; }
+        .math-item strong { color: #ea580c; display: block; margin-bottom: 5px; font-size: 1rem;}
+        .formula-line { font-family: monospace; display: block; background: #e2e8f0; padding: 10px 15px; border-radius: 6px; margin-top: 5px; color: #0f172a; line-height: 1.4; border: 1px solid #cbd5e1;}
+        .math-explanation { margin-top: 5px; font-style: italic; color: #64748b; font-size: 0.8rem; }
+
+        .transparency-footer {
+            font-size: 0.85rem;
+            color: #64748b;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 1px solid #e2e8f0;
+        }
+        .transparency-footer h4 { margin-bottom: 10px; color: #475569; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em;}
+
+        .btn {
+            display: block; background: #ea580c; color: white; text-decoration: none; padding: 22px; 
+            border-radius: 12px; font-weight: 800; font-size: 1.4rem; text-align: center; box-shadow: 0 10px 20px rgba(234, 88, 12, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #c2410c;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(234, 88, 12, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calc-container">
+        <div class="header">
+            <h1 class="main-headline">Your Custom Profit Audit is Live: <span>Stop Paying the 'Manual Entry Tax' Today.</span></h1>
+            <p class="body-intro">
+                Plug in your shop's numbers below to see the audit in real-time. We’ve broken down the math so you can see exactly where your profit is leaking and exactly how much new revenue you can unlock by stopping it.
+            </p>
+        </div>
+
+        <span class="step-label">1. Shop Metrics</span>
+        <div class="input-grid">
+            <div class="input-group">
+                <label>Avg. Job Size ($)</label>
+                <input type="text" id="jobSize" value="25,000">
+            </div>
+            <div class="input-group">
+                <label>Quotes Per Week</label>
+                <input type="number" id="quotes" value="10">
+            </div>
+        </div>
+
+        <span class="step-label">2. Labor & Efficiency</span>
+        <div class="input-grid">
+            <div class="input-group">
+                <label>Estimator Salary ($)</label>
+                <input type="text" id="salary" value="80,000">
+            </div>
+            <div class="input-group">
+                <label>Burden Rate %</label>
+                <input type="number" id="burden" value="30">
+            </div>
+        </div>
+        <div class="input-group">
+            <label>Minutes Per Quote (Manual)</label>
+            <input type="number" id="minutes" value="45">
+        </div>
+
+        <div class="pain-box">
+            <p class="stat-label">Current Annual Profit Drain</p>
+            <div class="leak-value" id="cashResult">$15,600</div>
+            
+            <div class="audit-box">
+                <div class="audit-step">
+                    <span>Fully Burdened Hourly Rate <span class="info-icon">ⓘ</span>
+                        <div class="tooltip">
+                            <strong>True Labor Cost</strong>
+                            Salary × (1 + Burden Rate) ÷ 2,080 hours. Accounts for taxes, benefits, and insurance.
+                        </div>
+                    </span>
+                    <span class="math-result" id="resHourlyRate">...</span>
+                </div>
+                <div class="audit-step">
+                    <span>Annual Labor Drain <span class="info-icon">ⓘ</span>
+                        <div class="tooltip">
+                            <strong>Manual Entry Leak</strong>
+                            (Annual Bids × Minutes per Bid) ÷ 60 × Hourly Rate. Cash spent purely on data entry.
+                        </div>
+                    </span>
+                    <span class="math-result" id="resLaborLeak">...</span>
+                </div>
+                <div class="audit-step">
+                    <span>1% Human Error Liability <span class="info-icon">ⓘ</span>
+                        <div class="tooltip">
+                            <strong>Cost of Inaction</strong>
+                            (Total Pipeline Volume × 1% Risk). Conservative industry standard for manual typo risk.
+                        </div>
+                    </span>
+                    <span class="math-result" id="resErrorRisk">...</span>
+                </div>
+                <div class="audit-step" style="border-top: 1px solid #334155; padding-top: 10px; margin-top: 10px; font-weight: 700;">
+                    <span>Gross 5-Year Profit Leak <span class="info-icon">ⓘ</span>
+                        <div class="tooltip">
+                            <strong>The "Forever Tax"</strong>
+                            Projected cumulative loss if the shop continues using manual methods for the next 60 months.
+                        </div>
+                    </span>
+                    <span class="math-result" id="resFiveYear" style="color: #f87171;">...</span>
+                </div>
+                <div class="audit-step" style="margin-top: 5px; font-size: 0.9rem; color: #cbd5e1;">
+                    <span>Minus One-Time Investment Cost:</span>
+                    <span class="math-result" style="color: #f87171;">-$9,800</span>
+                </div>
+                <div class="audit-step" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155; font-weight: 800; font-size: 1.1rem;">
+                    <span>Net 5-Year Strategic Gain <span class="info-icon">ⓘ</span>
+                        <div class="tooltip">
+                            <strong>Net Strategic Gain</strong>
+                            Recovered profit after the one-time system implementation fee is subtracted.
+                        </div>
+                    </span>
+                    <span class="math-result" id="resNetGain" style="color: #4ade80;">...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detailed-math">
+            <div class="math-title">Full Step-By-Step Audit Logic</div>
+            
+            <div class="math-item">
+                <strong>1. True Hourly Labor Cost:</strong>
+                <p class="math-explanation">Most owners only look at the base salary, but the business pays much more. We use a "Burden Rate" to account for taxes, benefits, and insurance, then divide by the standard work year.</p>
+                <span class="formula-line" id="formula-labor">Formula: Salary × (1 + Burden Rate) ÷ 2,080 hours</span>
+            </div>
+
+            <div class="math-item">
+                <strong>2. Yearly Quoting Resources:</strong>
+                <p class="math-explanation">This calculates the literal cash spent on the act of manual data entry. If an estimator is re-typing data instead of solving technical problems, this is the cost.</p>
+                <span class="formula-line" id="formula-time">Formula: (Bids per Week × 52) × Minutes per Bid ÷ 60 = Annual Hours</span>
+                <span class="formula-line" id="formula-bids-year" style="margin-top:2px; font-size:0.8rem; background:none; border:none;"></span>
+            </div>
+
+            <div class="math-item">
+                <strong>3. Error Risk (Cost of Inaction):</strong>
+                <p class="math-explanation">Manual entry is a magnet for typos. A 1% error rate is a conservative industry standard for manual spreadsheets. We calculate this by identifying the total Pipeline Volume your shop processes.</p>
+                <span class="formula-line" id="formula-volume-calc" style="margin-bottom: 5px; background: #e2e8f0;">↳ Total Pipeline Volume: Bids per Year × Avg Job Size</span>
+                <span class="formula-line" id="formula-error-risk">Formula: Total Volume × 0.01 Risk</span>
+            </div>
+
+            <div class="math-item">
+                <strong>4. Revenue Growth Calculation:</strong>
+                <p class="math-explanation">When you reclaim time, you increase your Quoting Velocity. This math shows what happens when your estimator can bid more jobs without working more hours.</p>
+                <span class="formula-line" id="formula-rev">Logic: Reclaimed Hours × New Velocity × Job Size</span>
+            </div>
+
+            <div class="math-item" style="border-top: 1px solid #e2e8f0; padding-top: 10px; margin-top: 10px;">
+                <strong>5. Investment ROI Breakdown:</strong>
+                <p class="math-explanation">This shows the long-term impact of stopping the "leak." It proves that the $9,800 implementation fee is a minor speed bump compared to the five-year loss.</p>
+                <span class="formula-line" id="formula-roi" style="color:#166534; background:#f0fdf4;">Formula: (Annual Labor Drain + Error Liability) × 5 years - Fee</span>
+                <span class="formula-line" id="formula-monthly-leak" style="color:#b91c1c; background:#fee2e2; margin-top:5px;"></span>
+            </div>
+        </div>
+
+        <span class="step-label">3. Reclaimed Growth</span>
+        <div class="gain-box">
+            <div class="gain-row">
+                <span>Hours Reclaimed (60% Speed Gain):</span>
+                <span class="gain-val" id="hoursResult">...</span>
+            </div>
+            <div class="gain-row">
+                <span>New Quoting Capacity:</span>
+                <span class="gain-val" id="extraQuotes">...</span>
+            </div>
+            <div class="gain-row" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dcfce7;">
+                <span>New Potential Revenue:</span>
+                <span class="gain-val" id="revOpp">...</span>
+            </div>
+        </div>
+
+        <div class="transparency-footer">
+            <h4>How this math works:</h4>
+            <ul style="padding-left: 15px; font-size: 0.8rem;">
+                <li><strong>Labor Cost:</strong> (Salary × Burden) ÷ 2,080 hrs. Multipled by total annual quoting time.</li>
+                <li><strong>Error Risk:</strong> Conservative 1% of total annual bid volume to account for rework/missed scope.</li>
+                <li><strong>Speed Gain:</strong> Engineered Excel sheets reduce manual entry by 60% on average.</li>
+                <li><strong>Revenue Gap:</strong> Assumes a 2.5% win rate on the "extra" quotes your reclaimed time allows.</li>
+                <li><strong>Net Strategic Gain:</strong> Total recovered 5-year leak minus the one-time $9,800 implementation cost.</li>
+            </ul>
+        </div>
+        
+        <a href="https://gregsheldon.github.io/metalfabexcel/" class="btn">Stop the Drain Now →</a>
+    </div>
+
+    <script>
+        const inputs = ['jobSize', 'quotes', 'salary', 'burden', 'minutes'];
+        const elements = {};
+        inputs.forEach(id => elements[id] = document.getElementById(id));
+
+        const cashEl = document.getElementById('cashResult');
+        const rHourlyRate = document.getElementById('resHourlyRate');
+        const rLaborLeak = document.getElementById('resLaborLeak');
+        const rErrorRisk = document.getElementById('resErrorRisk');
+        const rFiveYear = document.getElementById('resFiveYear');
+        const rNetGain = document.getElementById('resNetGain');
+        const hoursEl = document.getElementById('hoursResult');
+        const extraQuotesEl = document.getElementById('extraQuotes');
+        const revOppEl = document.getElementById('revOpp');
+
+        // Formula display elements
+        const fLabor = document.getElementById('formula-labor');
+        const fTime = document.getElementById('formula-time');
+        const fBidsYear = document.getElementById('formula-bids-year');
+        const fVolumeCalc = document.getElementById('formula-volume-calc');
+        const fErrorRisk = document.getElementById('formula-error-risk');
+        const fRev = document.getElementById('formula-rev');
+        const fRoi = document.getElementById('formula-roi');
+        const fMonthlyLeak = document.getElementById('formula-monthly-leak');
+
+        const format = (val) => val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        const strip = (val) => val.replace(/,/g, '');
+
+        function runMath() {
+            ['salary', 'jobSize'].forEach(id => {
+                let raw = strip(elements[id].value);
+                if (elements[id] === document.activeElement) {
+                    elements[id].value = format(raw.replace(/[^\d]/g, ''));
+                }
+            });
+
+            const salaryVal = parseFloat(strip(elements.salary.value)) || 0;
+            const jobSizeVal = parseFloat(strip(elements.jobSize.value)) || 0;
+            const quotesVal = parseFloat(elements.quotes.value) || 0;
+            const minsVal = parseFloat(elements.minutes.value) || 0;
+            const burdenVal = parseFloat(elements.burden.value) || 0;
+
+            // 1. Calculations
+            const totalBurdened = salaryVal * (1 + (burdenVal / 100));
+            const hourlyRate = totalBurdened / 2080;
+            const bidsPerYear = quotesVal * 52;
+            const yearlyHours = (bidsPerYear * minsVal) / 60;
+            const yearlyLaborCost = yearlyHours * hourlyRate;
+            
+            const annualVolume = bidsPerYear * jobSizeVal;
+            const errorRisk = annualVolume * 0.01;
+            const totalLeak = yearlyLaborCost + errorRisk;
+            const grossFiveYear = totalLeak * 5;
+            const netFiveYear = grossFiveYear - 9800;
+
+            const hoursBack = Math.round(yearlyHours * 0.60);
+            const newMinsPerQuote = minsVal * 0.40;
+            const extraBidsPossible = Math.round((hoursBack * 60) / newMinsPerQuote);
+            const revenueOpportunity = extraBidsPossible * 0.025 * jobSizeVal;
+
+            // 2. Update Formula Strings for transparency
+            fLabor.textContent = `The Math: $${format(salaryVal)} Salary × ${1 + (burdenVal/100)} Burden = $${format(Math.round(totalBurdened))} / 2,080 hrs = $${hourlyRate.toFixed(2)}/hr`;
+            fTime.textContent = `The Math: (${quotesVal} bids/wk × 52 weeks) = ${format(bidsPerYear)} bids/yr × ${minsVal} mins / 60 = ${Math.round(yearlyHours)} hrs/yr`;
+            fBidsYear.textContent = `↳ Result: ${Math.round(yearlyHours)} hrs × $${hourlyRate.toFixed(2)}/hr = $${format(Math.round(yearlyLaborCost))}/yr Manual Drain`;
+            
+            fVolumeCalc.textContent = `↳ Pipeline Value: ${format(bidsPerYear)} bids/yr × $${format(jobSizeVal)} avg = $${format(annualVolume)} Volume`;
+            fErrorRisk.textContent = `The Math: $${format(annualVolume)} Volume × 1% Risk = $${format(Math.round(errorRisk))}/yr Liability`;
+            
+            fRev.textContent = `The Math: ${format(extraBidsPossible)} Extra Bids × 2.5% Win Rate × $${format(jobSizeVal)} Avg Job = $${format(Math.round(revenueOpportunity))} New Revenue`;
+            
+            fRoi.textContent = `Gross 5-Year Recovery ($${format(Math.round(grossFiveYear))}) - System Cost ($9,800) = $${format(Math.round(netFiveYear))} Total Net Gain`;
+            fMonthlyLeak.textContent = `Current Annual Drain ($${format(Math.round(totalLeak))}) / 12 months = $${format(Math.round(totalLeak / 12))}/mo Lost every 30 days.`;
+
+            // 3. UI Updates
+            cashEl.textContent = '$' + format(Math.round(totalLeak));
+            rHourlyRate.textContent = '$' + hourlyRate.toFixed(2) + ' / hr';
+            rLaborLeak.textContent = '$' + format(Math.round(yearlyLaborCost));
+            rErrorRisk.textContent = '$' + format(Math.round(errorRisk));
+            rFiveYear.textContent = '$' + format(Math.round(grossFiveYear));
+            rNetGain.textContent = '$' + format(Math.round(netFiveYear));
+            
+            hoursEl.textContent = format(hoursBack) + ' Hours';
+            extraQuotesEl.textContent = '+' + format(extraBidsPossible > 0 ? extraBidsPossible : 0);
+            revOppEl.textContent = '$' + format(Math.round(revenueOpportunity > 0 ? revenueOpportunity : 0));
+        }
+
+        inputs.forEach(id => elements[id].addEventListener('input', runMath));
+        runMath();
+    </script>
+</body>
+</html>

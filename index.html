@@ -25,91 +25,117 @@
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             line-height: 1.6; 
-            color: #111827; 
-            background-color: #e5e7eb; 
+            color: #0f172a; /* Slate 900 */
+            background-color: #cbd5e1; /* Industrial Steel Gray */
             margin: 0; 
             padding: 0; 
         }
 
         /* --- Top Contact Banner --- */
         .top-banner {
-            background-color: #1f2937;
-            color: #d1d5db;
+            background-color: #0f172a;
+            color: #cbd5e1;
             text-align: center;
             padding: 12px 20px;
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 700;
             width: 100%;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-bottom: 4px solid #ea580c; /* Safety Orange */
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         .top-banner a {
-            color: #f59e0b;
-            font-weight: 700;
+            color: #fca5a5; /* Light red/orange highlight */
             text-decoration: none;
             margin: 0 10px;
         }
-        .top-banner a:hover { text-decoration: underline; }
-        .top-divider { color: #4b5563; }
+        .top-banner a:hover { color: #fff; }
+        .top-divider { color: #475569; }
         
-        /* --- Main Container --- */
+        /* --- Main Container (The "Blueprint" Page) --- */
         .container { 
             max-width: 850px; 
             margin: 40px auto; 
             background: #ffffff; 
             padding: 50px 60px; 
-            border-radius: 8px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border-radius: 4px; 
+            border: 3px solid #1e293b;
+            box-shadow: 12px 12px 0px rgba(15, 23, 42, 0.2); /* Hard rugged shadow */
         }
         
-        /* --- Typography --- */
+        /* --- Typography & Text Highlights --- */
         .preheadline {
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
-            font-weight: 800;
+            font-weight: 900;
             color: #ea580c;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             margin-bottom: 15px;
-            display: block;
+            display: inline-block;
+            background: #fff7ed;
+            padding: 4px 10px;
+            border: 2px solid #ea580c;
+            border-radius: 2px;
         }
         h1 { 
             font-size: 2.6rem; 
-            font-weight: 800; 
-            line-height: 1.2; 
-            margin-bottom: 20px; 
+            font-weight: 900; /* Extra heavy */
+            line-height: 1.15; 
+            margin-bottom: 25px; 
             letter-spacing: -0.02em; 
-            color: #000000;
+            color: #0f172a;
         }
         .subhead { 
-            font-size: 1.3rem; 
-            color: #4b5563; 
+            font-size: 1.25rem; 
+            color: #334155; 
             margin-bottom: 30px; 
-            font-weight: 500; 
+            font-weight: 600; 
+            line-height: 1.5;
         }
         h2 { 
-            font-size: 1.75rem; 
+            font-size: 1.6rem; 
             margin: 50px 0 20px; 
-            border-bottom: 2px solid #f3f4f6; 
-            padding-bottom: 10px; 
-            color: #111827;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            color: #0f172a;
+            border-bottom: 5px solid #ea580c;
+            display: inline-block;
+            padding-bottom: 5px;
         }
         h3 {
             font-size: 1.4rem;
             margin-bottom: 15px;
-            color: #111827;
+            font-weight: 800;
+            color: #0f172a;
         }
-        p { margin-bottom: 20px; font-size: 1.1rem; }
+        p { margin-bottom: 20px; font-size: 1.1rem; color: #334155; }
         
-        /* --- Video Wrapper --- */
+        /* Inline Eye-Catchers */
+        .hl-orange { color: #ea580c; font-weight: 900; }
+        .hl-red { color: #e11d48; font-weight: 900; }
+        .hl-underline { border-bottom: 4px solid #ea580c; padding-bottom: 2px; }
+        
+        .highlight { 
+            color: #c2410c; 
+            font-weight: 800; 
+            background: #ffedd5; 
+            padding: 2px 6px; 
+            border-radius: 2px;
+            border-bottom: 2px solid #ea580c;
+        }
+
+        /* --- Video Wrapper (Built like a monitor) --- */
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%; 
             height: 0;
             overflow: hidden;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            border: 2px solid #1f2937;
+            margin-bottom: 35px;
+            border-radius: 4px;
+            border: 4px solid #1e293b;
             background: #000;
+            box-shadow: 8px 8px 0px rgba(15, 23, 42, 0.15);
         }
         .video-wrapper iframe {
             position: absolute;
@@ -121,31 +147,63 @@
 
         /* --- Authority Block --- */
         .authority { 
-            background: #fffbeb; 
-            border-left: 5px solid #f59e0b; 
+            background: #f8fafc; 
+            border-left: 6px solid #ea580c; 
+            border-right: 2px solid #e2e8f0;
+            border-top: 2px solid #e2e8f0;
+            border-bottom: 2px solid #e2e8f0;
             padding: 20px 25px; 
             margin: 30px 0; 
-            font-weight: 700; 
-            color: #92400e; 
+            font-weight: 800; 
+            color: #0f172a; 
             font-size: 1.15rem; 
+            box-shadow: 4px 4px 0px rgba(15, 23, 42, 0.05);
         }
         
-        /* --- Highlights --- */
-        .highlight { color: #ea580c; font-weight: 700; background: #fff7ed; padding: 2px 6px; border-radius: 4px;}
+        /* --- Spec-Sheet Lists --- */
+        ul { margin-bottom: 30px; list-style-type: none; padding: 0;}
+        ul li { 
+            margin-bottom: 12px; 
+            padding: 12px 15px 12px 45px; 
+            position: relative; 
+            font-size: 1.1rem; 
+            font-weight: 600;
+            border-radius: 4px;
+            border: 2px solid;
+        }
+        ul.problem li { 
+            background: #fef2f2; 
+            border-color: #fca5a5; 
+            color: #7f1d1d; 
+        }
+        ul.problem li::before { 
+            content: "⚠️"; 
+            position: absolute; 
+            left: 15px; 
+            font-size: 1.1rem; 
+            top: 12px;
+        }
+        ul.solution li { 
+            background: #f0fdf4; 
+            border-color: #86efac; 
+            color: #14532d; 
+        }
+        ul.solution li::before { 
+            content: "✅"; 
+            position: absolute; 
+            left: 15px; 
+            font-size: 1.1rem; 
+            top: 12px;
+        }
         
-        /* --- Lists --- */
-        ul { margin-bottom: 30px; list-style-type: none; }
-        ul li { margin-bottom: 14px; padding-left: 35px; position: relative; font-size: 1.15rem; font-weight: 500;}
-        ul.problem li::before { content: "⚠️"; position: absolute; left: 0; font-size: 1.2rem; }
-        ul.solution li::before { content: "✅"; position: absolute; left: 0; font-size: 1.2rem; }
-        
-        /* --- Comparison Table --- */
+        /* --- Industrial Comparison Table --- */
         .table-wrapper {
             margin: 30px 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            box-shadow: 8px 8px 0px rgba(15, 23, 42, 0.1);
+            border: 3px solid #1e293b;
             overflow: hidden; 
+            background: #fff;
         }
         table {
             width: 100%;
@@ -154,29 +212,33 @@
             font-size: 0.95rem;
         }
         th {
-            background-color: #1f2937;
+            background-color: #1e293b;
             color: #ffffff;
-            padding: 15px 12px;
-            font-weight: 700;
-            border-bottom: 2px solid #4b5563;
+            padding: 18px 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 4px solid #ea580c;
         }
         td {
-            padding: 12px;
-            border-bottom: 1px solid #e5e7eb;
-            color: #374151;
+            padding: 15px;
+            border-bottom: 1px solid #cbd5e1;
+            border-right: 1px dashed #e2e8f0;
+            color: #334155;
             vertical-align: middle;
+            font-weight: 500;
         }
-        tr:nth-child(even) td { background-color: #f9fafb; }
+        td:last-child { border-right: none; }
+        tr:nth-child(even) td { background-color: #f8fafc; }
         
         .highlight-row td {
-            background-color: #fffbeb;
-            color: #92400e;
-            font-weight: 700;
-            border-top: 2px solid #f59e0b;
-            border-bottom: 2px solid #f59e0b;
+            background-color: #fff7ed;
+            color: #c2410c;
+            font-weight: 800;
+            border-top: 3px solid #ea580c;
+            border-bottom: 3px solid #ea580c;
         }
-        .highlight-row td:first-child { border-left: 2px solid #f59e0b; color: #ea580c; font-size: 1.05rem;}
-        .highlight-row td:last-child { border-right: 2px solid #f59e0b; }
+        .highlight-row td:first-child { border-left: 5px solid #ea580c; font-size: 1.05rem; color: #ea580c;}
 
         /* --- 3-Step Process Grid --- */
         .process-grid {
@@ -186,23 +248,21 @@
             margin: 30px 0 40px;
         }
         .process-card {
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
+            background: #f8fafc;
+            border: 2px solid #cbd5e1;
+            border-top: 6px solid #ea580c;
             padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            box-shadow: 6px 6px 0px rgba(15, 23, 42, 0.05);
         }
         .process-card h4 {
-            color: #ea580c;
-            font-size: 1.25rem;
+            color: #0f172a;
+            text-transform: uppercase;
+            font-size: 1.2rem;
             margin-bottom: 10px;
-            font-weight: 800;
+            font-weight: 900;
         }
-        .process-card p {
-            font-size: 1rem;
-            margin-bottom: 0;
-            color: #4b5563;
-        }
+        .process-card p { font-size: 1rem; margin-bottom: 0; color: #475569; }
 
         /* --- Testimonials --- */
         .testimonials {
@@ -212,222 +272,265 @@
             gap: 20px;
         }
         .testimonial-item {
-            background: #f3f4f6;
+            background: #f1f5f9;
             padding: 25px;
-            border-radius: 8px;
-            border-top: 4px solid #ea580c;
+            border-radius: 4px;
+            border: 2px solid #cbd5e1;
+            border-left: 6px solid #334155;
         }
         .testimonial-item p {
             font-style: italic;
+            font-weight: 500;
             font-size: 1rem;
             margin-bottom: 15px;
+            color: #1e293b;
         }
         .testimonial-item span {
             display: block;
-            font-weight: 700;
-            color: #111827;
-            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #ea580c;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
         }
 
-        /* --- Product Image Adjustment --- */
+        /* --- Product Image --- */
         .product-image {
             display: block;
             max-width: 100%;
             height: auto;
             margin: 40px auto;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-radius: 4px;
+            border: 4px solid #1e293b;
+            box-shadow: 8px 8px 0px rgba(15, 23, 42, 0.15);
         }
 
-        /* --- Scarcity Alert --- */
+        /* --- Alerts & Warning Boxes --- */
         .scarcity-alert {
-            background: #fef2f2;
-            border-left: 5px solid #ef4444;
+            background: #fff1f2;
+            border: 2px solid #fecdd3;
+            border-left: 8px solid #e11d48;
             padding: 20px;
             margin: 30px 0;
-            color: #991b1b;
+            color: #9f1239;
             border-radius: 4px;
-            font-size: 1.05rem;
-            line-height: 1.5;
+            font-size: 1.1rem;
+            font-weight: 600;
         }
-        .scarcity-alert strong { color: #7f1d1d; font-weight: 800;}
+        .scarcity-alert strong { color: #881337; font-weight: 900; text-transform: uppercase;}
 
-        /* --- Urgency / Cost of Wait Block --- */
         .cost-of-inaction {
-            background: #111827;
-            color: #ffffff;
+            background: #0f172a;
+            color: #f8fafc;
             padding: 35px 30px;
-            border-radius: 8px;
+            border-radius: 4px;
             margin: 40px 0;
-            border: 2px solid #f59e0b;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border: 4px solid #ea580c;
+            box-shadow: 10px 10px 0px rgba(234, 88, 12, 0.2);
         }
         .cost-of-inaction h3 {
-            color: #f59e0b;
+            color: #ea580c;
             font-size: 1.6rem;
             margin-bottom: 15px;
-            font-weight: 800;
+            font-weight: 900;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        .cost-of-inaction p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 0;
-        }
+        .cost-of-inaction p { font-size: 1.2rem; font-weight: 500; margin-bottom: 0; color: #f8fafc; }
 
-        /* --- FAQ Section --- */
-        .faq-section { margin: 50px 0; }
-        .faq-item {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-question {
-            font-weight: 800;
-            color: #111827;
-            font-size: 1.15rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-        .faq-answer {
-            color: #4b5563;
-            font-size: 1.05rem;
-        }
-
-        /* --- Guarantee Box --- */
         .guarantee-box {
             background: #fffbeb;
             color: #92400e;
             padding: 35px 30px;
-            border-radius: 8px;
+            border-radius: 4px;
             margin: 40px 0;
             text-align: center;
-            border: 2px solid #fcd34d;
-            box-shadow: 0 8px 15px rgba(252, 211, 77, 0.15);
+            border: 4px solid #f59e0b;
+            box-shadow: 8px 8px 0px rgba(245, 158, 11, 0.2);
         }
         .guarantee-box h3 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin-bottom: 15px;
             color: #b45309;
-            font-weight: 800;
+            font-weight: 900;
+            text-transform: uppercase;
         }
-        .guarantee-box p {
-            font-size: 1.1rem;
-            margin-bottom: 0;
-            color: #92400e;
-            font-weight: 500;
-            line-height: 1.6;
+        .guarantee-box p { font-size: 1.15rem; margin-bottom: 0; font-weight: 600; color: #92400e; }
+
+        /* --- FAQ Section --- */
+        .faq-section { margin: 50px 0; }
+        .faq-item {
+            margin-bottom: 20px;
+            background: #f8fafc;
+            border: 2px solid #cbd5e1;
+            padding: 20px;
+            border-radius: 4px;
         }
+        .faq-question {
+            font-weight: 900;
+            color: #0f172a;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            display: block;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+        .faq-answer { color: #334155; font-size: 1.05rem; font-weight: 500;}
 
         /* --- Founder Section --- */
         .founder-note {
             display: flex;
             align-items: flex-start;
-            background: #f9fafb;
+            background: #f1f5f9;
             padding: 30px;
-            border-radius: 8px;
+            border-radius: 4px;
             margin: 40px 0;
-            border: 1px solid #e5e7eb;
+            border: 2px solid #cbd5e1;
+            box-shadow: 6px 6px 0px rgba(15, 23, 42, 0.05);
         }
         .founder-img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            border-radius: 4px; /* Square rugged photo */
             margin-right: 30px;
             flex-shrink: 0;
             object-fit: cover;
-            border: 3px solid #ffffff;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 4px solid #1e293b;
         }
-        .founder-text h3 { margin-bottom: 15px; font-size: 1.4rem; color: #111827; font-weight: 800;}
-        .founder-text p { font-size: 1.05rem; margin-bottom: 15px; color: #4b5563; line-height: 1.6;}
-        .founder-text p:last-child { margin-bottom: 0; }
+        .founder-text h3 { margin-bottom: 10px; font-size: 1.5rem; text-transform: uppercase; font-weight: 900;}
+        .founder-text p { font-size: 1.05rem; margin-bottom: 15px; font-weight: 500;}
 
-        /* --- BUTTONS --- */
+        /* --- BUTTONS (Physical/Punchy Style) --- */
         .btn-top {
             display: block; 
             width: 100%; 
             text-align: center;
             background-color: #ea580c; 
             color: #ffffff; 
-            border: none; 
-            padding: 20px; 
-            font-size: 1.25rem; 
-            font-weight: 800; 
-            border-radius: 6px; 
+            border: 3px solid #0f172a; 
+            padding: 22px; 
+            font-size: 1.4rem; 
+            font-weight: 900; 
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 4px; 
             cursor: pointer; 
-            transition: background-color 0.2s, transform 0.1s; 
+            box-shadow: 6px 6px 0px #0f172a; /* Hard shadow */
+            transition: all 0.1s ease; 
             text-decoration: none;
             margin: 10px 0 40px;
         }
-        .btn-top:hover { background-color: #c2410c; }
-        .btn-top:active { transform: scale(0.98); }
-
-        /* --- FULL CALCULATOR AUDIT SECTION --- */
-        .form-section { 
-            background: #1f2937; 
-            color: #ffffff;
-            padding: 50px 40px; 
-            border-radius: 12px; 
-            margin-top: 40px; 
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        .btn-top:hover { 
+            background-color: #f97316; 
+            transform: translate(2px, 2px);
+            box-shadow: 4px 4px 0px #0f172a;
         }
-        .form-section h3 { font-size: 2rem; margin-bottom: 10px; font-weight: 800; color: #f9fafb; line-height: 1.2;}
-        .form-section .note { color: #d1d5db; font-size: 1.05rem; margin-bottom: 25px; display: block;}
+        .btn-top:active { 
+            transform: translate(6px, 6px);
+            box-shadow: 0px 0px 0px #0f172a;
+        }
 
-        .step-label-calc { display: block; font-weight: 800; font-size: 0.8rem; color: #ea580c; text-transform: uppercase; margin: 30px 0 15px; border-bottom: 1px solid #fed7aa; padding-bottom: 5px; }
+        /* ====================================================
+           FULL CALCULATOR AUDIT SECTION (CONTROL PANEL VIBE)
+           ==================================================== */
+        .form-section { 
+            background: #0f172a; /* Deepest Slate */
+            color: #f8fafc;
+            padding: 50px 40px; 
+            border-radius: 6px; 
+            margin-top: 50px; 
+            border: 4px solid #334155;
+            box-shadow: 12px 12px 0px #1e293b;
+        }
+        .form-section h3 { font-size: 2.2rem; margin-bottom: 15px; font-weight: 900; color: #fff; line-height: 1.1; text-transform: uppercase;}
+        .form-section .note { color: #94a3b8; font-size: 1.1rem; margin-bottom: 30px; display: block; font-weight: 500;}
+
+        .step-label-calc { 
+            display: inline-block; 
+            background: #ea580c;
+            color: #fff;
+            font-weight: 900; 
+            font-size: 0.9rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em;
+            margin: 30px 0 15px; 
+            padding: 6px 12px;
+            border-radius: 2px;
+            box-shadow: 3px 3px 0px #000;
+        }
+        
         .input-grid-calc { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .input-group-calc { margin-bottom: 15px; text-align: left; }
-        .input-group-calc label { display: block; font-weight: 700; margin-bottom: 8px; color: #e5e7eb; font-size: 0.85rem; }
+        .input-group-calc label { display: block; font-weight: 800; margin-bottom: 8px; color: #cbd5e1; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
         
+        /* Digital Panel Inputs */
         .input-group-calc input { 
             width: 100%; 
-            padding: 14px; 
-            background: #374151; 
-            border: 1px solid #4b5563; 
-            border-radius: 8px; 
+            padding: 16px; 
+            background: #1e293b; 
+            border: 2px solid #475569; 
+            border-radius: 4px; 
             color: #fff; 
-            font-size: 1.3rem; 
-            font-weight: 800; 
+            font-family: 'Courier New', Courier, monospace; /* Digital feel */
+            font-size: 1.5rem; 
+            font-weight: 900; 
             text-align: center; 
+            box-shadow: inset 3px 3px 6px rgba(0,0,0,0.4);
             transition: all 0.2s;
         }
-        .input-group-calc input:focus { outline: none; border-color: #ea580c; background: #1f2937; box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.2); }
+        .input-group-calc input:focus { 
+            outline: none; 
+            border-color: #ea580c; 
+            background: #020617; 
+            box-shadow: inset 3px 3px 6px rgba(0,0,0,0.6), 0 0 0 2px rgba(234, 88, 12, 0.3); 
+        }
 
-        .pain-box-calc { background: #0f172a; color: #fff; padding: 35px; border-radius: 20px; margin: 30px 0; border: 1px solid #334155; position: relative;}
-        .stat-label-calc { color: #94a3b8; font-size: 0.9rem; text-transform: uppercase; font-weight: 700; text-align: center; margin-bottom: 10px;}
-        .leak-value { font-size: 3.5rem; font-weight: 900; color: #f87171; line-height: 1.2; text-align: center; margin-bottom: 20px;}
+        /* Critical Pain Box */
+        .pain-box-calc { 
+            background: #000; 
+            color: #fff; 
+            padding: 35px; 
+            border-radius: 6px; 
+            margin: 30px 0; 
+            border: 2px solid #ef4444; 
+            box-shadow: inset 0 0 30px rgba(239, 68, 68, 0.15);
+            position: relative;
+        }
+        .stat-label-calc { color: #fca5a5; font-size: 0.95rem; text-transform: uppercase; font-weight: 900; text-align: center; margin-bottom: 10px; letter-spacing: 0.05em;}
+        .leak-value { font-size: 4rem; font-family: 'Courier New', Courier, monospace; font-weight: 900; color: #ef4444; line-height: 1.1; text-align: center; margin-bottom: 25px; text-shadow: 0 0 15px rgba(239,68,68,0.4);}
         
-        .audit-results-box { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; font-size: 0.85rem; }
-        .audit-step-line { display: flex; justify-content: space-between; margin-bottom: 8px; color: #cbd5e1; align-items: center; position: relative;}
-        .audit-step-line .math-res { font-weight: 700; color: #fff; }
+        .audit-results-box { background: transparent; padding: 20px 0 0 0; border-top: 2px dashed #475569; font-size: 0.9rem; font-weight: 600;}
+        .audit-step-line { display: flex; justify-content: space-between; margin-bottom: 10px; color: #94a3b8; align-items: center; position: relative;}
+        .audit-step-line .math-res { font-weight: 900; color: #f8fafc; font-family: 'Courier New', Courier, monospace; font-size: 1.1rem;}
 
-        /* --- TOOLTIPS --- */
-        .info-icon { display: inline-block; margin-left: 5px; width: 14px; height: 14px; background: #475569; color: #fff; font-size: 10px; text-align: center; line-height: 14px; border-radius: 50%; cursor: help; transition: background 0.3s; }
+        /* Tooltips */
+        .info-icon { display: inline-block; margin-left: 5px; width: 16px; height: 16px; background: #334155; color: #fff; font-size: 11px; text-align: center; line-height: 16px; border-radius: 2px; cursor: help; transition: background 0.2s; font-weight: bold;}
         .info-icon:hover { background: #ea580c; }
-        .tooltip { visibility: hidden; width: 250px; background-color: #1e293b; color: #fff; text-align: left; padding: 12px; border-radius: 8px; border: 1px solid #ea580c; position: absolute; z-index: 100; bottom: 125%; left: 0; opacity: 0; transition: opacity 0.3s; font-weight: normal; font-size: 0.8rem; line-height: 1.4; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
-        .tooltip strong { color: #ea580c; display: block; margin-bottom: 4px; }
+        .tooltip { visibility: hidden; width: 260px; background-color: #f8fafc; color: #0f172a; text-align: left; padding: 15px; border-radius: 4px; border: 3px solid #ea580c; position: absolute; z-index: 100; bottom: 125%; left: 0; opacity: 0; transition: opacity 0.2s; font-weight: 600; font-size: 0.85rem; line-height: 1.5; box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4); }
+        .tooltip strong { color: #c2410c; display: block; margin-bottom: 6px; text-transform: uppercase; font-weight: 900;}
         .audit-step-line:hover .tooltip { visibility: visible; opacity: 1; }
 
-        /* --- MATH LOGIC BOX --- */
-        .detailed-math { background: #374151; border: 1px solid #4b5563; padding: 25px; border-radius: 12px; margin-bottom: 30px; font-size: 0.85rem; color: #e5e7eb; }
-        .math-title { font-weight: 800; color: #cbd5e1; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #4b5563; padding-bottom: 5px;}
+        /* Logic Block */
+        .detailed-math { background: #1e293b; border-left: 6px solid #3b82f6; padding: 25px; border-radius: 4px; margin-bottom: 30px; font-size: 0.9rem; color: #cbd5e1; }
+        .math-title { font-weight: 900; color: #fff; text-transform: uppercase; margin-bottom: 15px; border-bottom: 2px solid #334155; padding-bottom: 8px;}
         .math-item { margin-bottom: 20px; }
-        .math-item strong { color: #ea580c; display: block; margin-bottom: 5px; font-size: 1rem;}
-        .math-explanation { font-style: italic; color: #9ca3af; margin-bottom: 5px; }
-        .formula-line { font-family: monospace; display: block; background: #1f2937; padding: 10px 15px; border-radius: 6px; margin-top: 5px; color: #f3f4f6; line-height: 1.4; border: 1px solid #4b5563;}
+        .math-item strong { color: #60a5fa; display: block; margin-bottom: 5px; font-size: 1.05rem;}
+        .math-explanation { font-style: italic; color: #94a3b8; margin-bottom: 8px; font-weight: 500;}
+        .formula-line { font-family: 'Courier New', Courier, monospace; font-weight: bold; display: block; background: #020617; padding: 12px 15px; border-radius: 4px; margin-top: 5px; color: #38bdf8; line-height: 1.4; border: 1px solid #1e3a8a;}
 
-        /* --- GAIN BOX --- */
-        .gain-box-calc { background: #064e3b; border: 2px solid #065f46; padding: 30px; border-radius: 16px; margin-bottom: 30px; }
-        .gain-row-calc { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 500; font-size: 1.05rem; color: #d1fae5; }
-        .gain-val-calc { font-weight: 800; color: #6ee7b7; }
+        /* Reclaimed Growth Box */
+        .gain-box-calc { background: #022c22; border: 2px solid #10b981; padding: 30px; border-radius: 6px; margin-bottom: 30px; box-shadow: inset 0 0 30px rgba(16,185,129,0.1); }
+        .gain-row-calc { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 700; font-size: 1.1rem; color: #a7f3d0; text-transform: uppercase;}
+        .gain-val-calc { font-weight: 900; color: #34d399; font-family: 'Courier New', Courier, monospace; font-size: 1.3rem;}
 
-        /* --- CAPTURE FIELDS --- */
-        .capture-fields { background: #374151; padding: 25px; border-radius: 12px; border-top: 4px solid #ea580c; margin-top: 20px; }
-        .btn-send { display: block; width: 100%; background-color: #ea580c; color: #ffffff; border: none; padding: 20px; font-size: 1.4rem; font-weight: 800; border-radius: 6px; cursor: pointer; transition: 0.2s; margin-top: 15px; box-shadow: 0 10px 20px rgba(234, 88, 12, 0.3); }
-        .btn-send:hover { background-color: #c2410c; transform: translateY(-2px); }
+        /* Capture Fields */
+        .capture-fields { background: #1e293b; padding: 30px; border-radius: 4px; border-top: 6px solid #ea580c; margin-top: 20px; border-bottom: 2px solid #334155; border-left: 2px solid #334155; border-right: 2px solid #334155;}
+        
+        .btn-send { 
+            display: block; width: 100%; background-color: #ea580c; color: #ffffff; border: 3px solid #000; padding: 22px; font-size: 1.3rem; font-weight: 900; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.1s; margin-top: 20px; box-shadow: 6px 6px 0px #000; 
+        }
+        .btn-send:hover { background-color: #f97316; transform: translate(2px, 2px); box-shadow: 4px 4px 0px #000; }
+        .btn-send:active { transform: translate(6px, 6px); box-shadow: 0px 0px 0px #000; }
 
         /* --- Sticky Mobile CTA --- */
         .sticky-mobile-cta {
@@ -439,14 +542,15 @@
             background-color: #ea580c;
             color: #ffffff;
             text-align: center;
-            padding: 18px 20px;
+            padding: 20px;
             font-size: 1.2rem;
-            font-weight: 800;
+            font-weight: 900;
+            text-transform: uppercase;
             text-decoration: none;
             z-index: 9999;
-            box-shadow: 0 -4px 10px rgba(0,0,0,0.15);
+            border-top: 4px solid #000;
         }
-        .sticky-mobile-cta:hover { background-color: #c2410c; }
+        .sticky-mobile-cta:hover { background-color: #f97316; }
 
         /* --- Mobile Responsiveness --- */
         @media (max-width: 768px) {
@@ -461,13 +565,14 @@
             .top-banner .hide-mobile { display: none; }
             .top-banner a { display: inline-block; margin: 2px 8px; }
             .top-divider { display: none; }
-            .container { padding: 30px 20px; margin: 10px auto; }
-            h1 { font-size: 2.2rem; }
-            .form-section { padding: 30px 20px; }
+            .container { padding: 30px 20px; margin: 15px auto; border-width: 2px; box-shadow: 6px 6px 0px rgba(15, 23, 42, 0.2); }
+            h1 { font-size: 2.1rem; }
+            .form-section { padding: 30px 20px; box-shadow: 6px 6px 0px #1e293b; border-width: 2px;}
             .founder-note { flex-direction: column; text-align: center; align-items: center; }
             .founder-img { margin-right: 0; margin-bottom: 20px; }
             table { font-size: 0.85rem; }
-            th, td { padding: 10px 8px; }
+            th, td { padding: 12px 10px; }
+            .leak-value { font-size: 2.8rem; }
         }
 
     </style>
@@ -484,13 +589,13 @@
 <div class="container">
     
     <span class="preheadline">An Urgent Briefing For Established Metal Fabrication Shops Processing $2M+ In Annual Volume:</span>
-    <h1>You Are Currently Paying A Secret "Guesswork Tax" On Every Quote Your Shop Sends Out—And It's Quietly Costing You Tens Of Thousands In Lost Margins.</h1>
+    <h1>You Are Currently Paying A Secret <span class="hl-red">"Guesswork Tax"</span> On Every Quote Your Shop Sends Out - And It's Quietly Costing You <span class="hl-orange hl-underline">Tens Of Thousands</span> In Lost Margins.</h1>
     
-    <p class="subhead">Most owners blame the shop floor for shrinking profits. But the brutal truth is, the money was lost the exact moment your estimator was forced to guess on a labor formula.</p>
+    <p class="subhead">Most owners blame the shop floor for shrinking profits. But the brutal truth is, the money was lost the exact moment your estimator was forced to <strong>guess on a labor formula.</strong></p>
     
     <p>Right now, there is a massive disconnect between your front office and your shop floor. If two of your estimators can look at the exact same drawing and arrive at wildly different numbers... <span class="highlight">you aren't estimating. You are gambling.</span></p>
     
-    <p>You don't need a bloated, $50,000 generic software subscription to fix this. You need a bulletproof system built around <em>your</em> specific workflow. Before you spend another dime trying to solve this problem, let me prove exactly where your current estimating spreadsheets are bleeding cash. Use the 60-second auditor below, and I will show you the exact mathematics of your hidden profit leaks—entirely at my own expense.</p>
+    <p>You don't need a bloated, $50,000 generic software subscription to fix this. You need a bulletproof system built around <em>your</em> specific workflow. Before you spend another dime trying to solve this problem, let me prove exactly where your current estimating spreadsheets are bleeding cash. Use the 60-second auditor below, and I will show you the exact mathematics of your hidden profit leaks - entirely at my own expense.</p>
     
     <div class="video-wrapper">
     <iframe 
@@ -527,11 +632,11 @@
     <div class="testimonials">
         <div class="testimonial-item">
             <p>"Before Greg came in, my estimators were basically guessing on weld times. I was spending half my day double-checking their math. Now, these calculators do the heavy lifting for us. We're getting quotes out in minutes instead of hours, and I finally trust the numbers."</p>
-            <span>— Operations Manager, NC Fabrication Shop</span>
+            <span>- Operations Manager, NC Fabrication Shop</span>
         </div>
         <div class="testimonial-item">
             <p>"I’ve been in the trades 30 years and I've seen it all. Greg's calculators are the first time I've seen a system that actually works like a shop floor does. No more messy spreadsheets or 'finger in the wind' pricing. It’s saved us a massive amount of time on every bid."</p>
-            <span>— Owner, Custom Metal Fab Group</span>
+            <span>- Owner, Custom Metal Fab Group</span>
         </div>
     </div>
 
@@ -554,37 +659,37 @@
             <tbody>
                 <tr>
                     <td>Low-End ERP (Odoo, MRPeasy)</td>
-                    <td>$125–$250</td>
-                    <td>$0–$2,000</td>
-                    <td>$7,500–$17k</td>
+                    <td>$125 - $250</td>
+                    <td>$0 - $2,000</td>
+                    <td>$7,500 - $17k</td>
                     <td>Basic tools, still rely on spreadsheets</td>
                 </tr>
                 <tr>
                     <td>Fab-Specific Entry (Cetec)</td>
-                    <td>~$200–$250</td>
-                    <td>$0–$3,000</td>
-                    <td>~$12k–$18k</td>
+                    <td>~$200 - $250</td>
+                    <td>$0 - $3,000</td>
+                    <td>~$12k - $18k</td>
                     <td>Good entry point, limited depth</td>
                 </tr>
                 <tr>
                     <td>Mid-Tier ERP (JobBOSS²)</td>
                     <td>~$1,000+</td>
-                    <td>~$5k–$15k</td>
-                    <td>~$60k–$75k+</td>
+                    <td>~$5k - $15k</td>
+                    <td>~$60k - $75k+</td>
                     <td>Capable but rigid workflows</td>
                 </tr>
                 <tr>
                     <td>Heavy Fab ERP (Genius)</td>
-                    <td>$400–$875</td>
-                    <td>$20k–$200k</td>
-                    <td>$40k–$200k+</td>
+                    <td>$400 - $875</td>
+                    <td>$20k - $200k</td>
+                    <td>$40k - $200k+</td>
                     <td>Strong estimating, expensive setup</td>
                 </tr>
                 <tr>
                     <td>Enterprise (NetSuite, Epicor)</td>
-                    <td>$2,000–$3k+</td>
-                    <td>$25k–$100k+</td>
-                    <td>$120k–$300k+</td>
+                    <td>$2,000 - $3k+</td>
+                    <td>$25k - $100k+</td>
+                    <td>$120k - $300k+</td>
                     <td>Heavy, massive implementation</td>
                 </tr>
                 <tr class="highlight-row">
@@ -668,7 +773,7 @@
 
     <div id="audit-section" class="form-section">
         <h3>The 60-Second Profit Leak Auditor</h3>
-        <p class="note">Think your current estimating process is dialed in? Prove it. Drop your shop's raw numbers into the calculator below. In less than a minute, this real-time audit will expose the exact math on where you are bleeding cash—and precisely how much hidden revenue you can reclaim by fixing it.</p>
+        <p class="note">Think your current estimating process is dialed in? Prove it. Drop your shop's raw numbers into the calculator below. In less than a minute, this real-time audit will expose the exact math on where you are bleeding cash - and precisely how much hidden revenue you can reclaim by fixing it.</p>
         
         <form action="https://formsubmit.co/gregwsheldon@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="New Profit Audit Result">
@@ -724,11 +829,11 @@
                         </span>
                         <span class="math-res" id="resLaborLeak">...</span>
                     </div>
-                    <div class="audit-step-line" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155;">
+                    <div class="audit-step-line" style="margin-top: 10px; padding-top: 10px; border-top: 2px dotted #334155;">
                         <span>Annual Pipeline Volume <span class="info-icon">ⓘ</span>
                             <div class="tooltip"><strong>Total Quoted Dollars</strong>Quotes Per Week × 52 Weeks × Avg. Job Size. This is the total dollar value your estimators handle yearly.</div>
                         </span>
-                        <span class="math-res" id="resPipelineVolume" style="color: #94a3b8;">...</span>
+                        <span class="math-res" id="resPipelineVolume" style="color: #cbd5e1;">...</span>
                     </div>
                     <div class="audit-step-line">
                         <span>1% Human Error Liability <span class="info-icon">ⓘ</span>
@@ -736,21 +841,21 @@
                         </span>
                         <span class="math-res" id="resErrorRisk">...</span>
                     </div>
-                    <div class="audit-step-line" style="border-top: 1px solid #334155; padding-top: 10px; margin-top: 10px; font-weight: 700;">
-                        <span>Gross 5-Year Profit Leak <span class="info-icon">ⓘ</span>
+                    <div class="audit-step-line" style="border-top: 2px solid #475569; padding-top: 12px; margin-top: 12px;">
+                        <span style="color:#fff; font-weight:800;">Gross 5-Year Profit Leak <span class="info-icon">ⓘ</span>
                             <div class="tooltip"><strong>The "Forever Tax"</strong>Projected cumulative loss if the shop continues using manual methods for the next 60 months.</div>
                         </span>
-                        <span class="math-res" id="resFiveYear" style="color: #f87171;">...</span>
+                        <span class="math-res" id="resFiveYear" style="color: #ef4444; font-size:1.25rem;">...</span>
                     </div>
-                    <div class="audit-step-line" style="margin-top: 5px; font-size: 0.9rem; color: #cbd5e1;">
-                        <span>Minus One-Time Investment Cost:</span>
-                        <span class="math-res" style="color: #f87171;">-$9,800</span>
+                    <div class="audit-step-line" style="margin-top: 5px; font-size: 0.95rem; color: #94a3b8;">
+                        <span>Minus One-Time System Cost:</span>
+                        <span class="math-res" style="color: #ef4444;">-$9,800</span>
                     </div>
-                    <div class="audit-step-line" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155; font-weight: 800; font-size: 1.1rem;">
-                        <span>Net 5-Year Strategic Gain <span class="info-icon">ⓘ</span>
+                    <div class="audit-step-line" style="margin-top: 12px; padding-top: 12px; border-top: 2px solid #475569;">
+                        <span style="color:#fff; font-weight:800; font-size:1.1rem;">Net 5-Year Strategic Gain <span class="info-icon">ⓘ</span>
                             <div class="tooltip"><strong>Net Strategic Gain</strong>Recovered profit after the one-time system implementation fee is subtracted.</div>
                         </span>
-                        <span class="math-res" id="resNetGain" style="color: #4ade80;">...</span>
+                        <span class="math-res" id="resNetGain" style="color: #34d399; font-size:1.35rem;">...</span>
                     </div>
                 </div>
             </div>
@@ -785,26 +890,26 @@
                     <span>Hours Reclaimed (60% Speed Gain):</span>
                     <span class="gain-val-calc" id="hoursResult">...</span>
                 </div>
-                <div class="gain-row-calc" style="border-top: 1px solid #065f46; margin-top: 10px; padding-top: 10px;">
+                <div class="gain-row-calc" style="border-top: 2px solid #064e3b; margin-top: 12px; padding-top: 12px;">
                     <span>New Potential Revenue:</span>
                     <span class="gain-val-calc" id="revOpp">...</span>
                 </div>
             </div>
 
             <div class="capture-fields">
-                <h4 style="color:#fff; margin-bottom: 15px; text-align: center;">Send this audit breakdown to Greg and he will reach back to you.</h4>
+                <h4 style="color:#f8fafc; margin-bottom: 20px; text-align: center; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em;">Save & Email This Full Audit Breakdown</h4>
                 <div class="input-grid-calc">
                     <div class="input-group-calc">
-                        <label>Name</label>
-                        <input type="text" name="name" required placeholder="John Doe" style="text-align:left; font-size: 1rem;">
+                        <label>Your Name</label>
+                        <input type="text" name="name" required placeholder="John Doe" style="text-align:left; font-size: 1.1rem; font-family: -apple-system, sans-serif; font-weight: 600;">
                     </div>
                     <div class="input-group-calc">
-                        <label>Email</label>
-                        <input type="email" name="email" required placeholder="john@company.com" style="text-align:left; font-size: 1rem;">
+                        <label>Work Email</label>
+                        <input type="email" name="email" required placeholder="john@company.com" style="text-align:left; font-size: 1.1rem; font-family: -apple-system, sans-serif; font-weight: 600;">
                     </div>
                 </div>
                 <button type="submit" class="btn-send">Send My Audit Results →</button>
-                <p style="text-align: center; font-size: 0.8rem; color: #9ca3af; margin-top: 15px;">🔒 Your data is confidential and treated as strict intellectual property.</p>
+                <p style="text-align: center; font-size: 0.85rem; color: #94a3b8; margin-top: 20px; font-weight: 600;">🔒 Your data is confidential and treated as strict intellectual property.</p>
             </div>
         </form>
     </div>
@@ -872,10 +977,10 @@
         const revenueOpportunity = (hoursBack * 60 / (minsVal * 0.4)) * 0.025 * jobSizeVal;
 
         // Formula UI Updates
-        fLabor.textContent = `Math: $${format(salaryVal)} × ${1+(burdenVal/100)} Burden / 2,080 hrs = $${hourlyRate.toFixed(2)}/hr`;
-        fTime.textContent = `Math: ${format(bidsPerYear)} bids/yr × ${minsVal} mins = ${Math.round(yearlyHours)} hrs/yr`;
-        fPipeline.textContent = `Math: ${format(bidsPerYear)} Quotes/Yr × $${format(jobSizeVal)} = $${format(Math.round(annualVolume))}`;
-        fErrorRisk.textContent = `Math: $${format(annualVolume)} Pipeline Volume × 1% = $${format(Math.round(errorRisk))}/yr Liability`;
+        fLabor.textContent = `> Math: $${format(salaryVal)} × ${1+(burdenVal/100)} Burden / 2,080 hrs = $${hourlyRate.toFixed(2)}/hr`;
+        fTime.textContent = `> Math: ${format(bidsPerYear)} bids/yr × ${minsVal} mins = ${Math.round(yearlyHours)} hrs/yr`;
+        fPipeline.textContent = `> Math: ${format(bidsPerYear)} Quotes/Yr × $${format(jobSizeVal)} = $${format(Math.round(annualVolume))}`;
+        fErrorRisk.textContent = `> Math: $${format(annualVolume)} Pipeline Volume × 1% = $${format(Math.round(errorRisk))}/yr Liability`;
 
         // Audit UI Updates
         cashEl.textContent = '$' + format(Math.round(totalLeak));
@@ -885,7 +990,7 @@
         rErrorRisk.textContent = '$' + format(Math.round(errorRisk));
         rFiveYear.textContent = '$' + format(Math.round(grossFiveYear));
         rNetGain.textContent = '$' + format(Math.round(netFiveYear));
-        hoursEl.textContent = format(hoursBack) + ' Hours';
+        hoursEl.textContent = format(hoursBack) + ' HOURS';
         revOppEl.textContent = '$' + format(Math.round(revenueOpportunity));
 
         // Hidden Form Inputs

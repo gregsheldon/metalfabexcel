@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success - Book Your Teardown</title>
+
+    <style>
+        /* --- Base & Reset --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; 
+            color: #0f172a; 
+            background-color: #cbd5e1; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        /* --- Top Progress Bar --- */
+        .progress-bar {
+            background-color: #0f172a;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 4px solid #10b981; 
+        }
+
+        /* --- Main Container --- */
+        .container { 
+            max-width: 850px; 
+            margin: 40px auto; 
+            background: #ffffff; 
+            padding: 50px 60px 80px; 
+            border-radius: 4px; 
+            border: 3px solid #1e293b;
+            box-shadow: 12px 12px 0px rgba(15, 23, 42, 0.2); 
+            text-align: center;
+        }
+
+        /* --- Typography --- */
+        h1 { font-size: 2.4rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; }
+        .subhead { font-size: 1.2rem; color: #334155; margin-bottom: 35px; font-weight: 600; }
+        h2 { font-size: 1.6rem; margin: 40px 0 20px; text-transform: uppercase; font-weight: 900; border-bottom: 5px solid #ea580c; display: inline-block; padding-bottom: 5px; }
+        p { margin-bottom: 20px; font-size: 1.1rem; color: #334155; text-align: left; }
+
+        /* --- Video Wrapper --- */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border-radius: 4px;
+            border: 4px solid #1e293b;
+            background: #000;
+        }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* --- Qualifiers --- */
+        .qualifier-box {
+            background: #f8fafc;
+            border: 2px solid #cbd5e1;
+            border-left: 8px solid #ea580c;
+            padding: 30px;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        ul { list-style-type: none; padding: 0; }
+        ul li { 
+            margin-bottom: 12px; padding: 12px 15px 12px 45px; position: relative; 
+            font-size: 1.05rem; font-weight: 600; border: 1px solid #e2e8f0; color: #1e293b;
+        }
+        ul li::before { content: "✓"; position: absolute; left: 15px; font-size: 1.2rem; top: 10px; color: #ea580c; font-weight: 900; }
+
+        /* --- Footer --- */
+        .container-footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px dashed #cbd5e1;
+            text-align: center;
+            color: #475569;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="progress-bar">
+    <span>Step 2 Complete</span> | Secure Your Strategy Call
+</div>
+
+<div class="container">
+    <h1>Success. The Math Is On Its Way To Your Inbox.</h1>
+    <p class="subhead">Before you check your email, watch this short briefing and book your free 1-on-1 strategy call below.</p>
+    
+    <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="qualifier-box">
+        <h3>Who this Teardown Call is for:</h3>
+        <p>I limit these calls to shops where I know I can provide massive value. Please only book if:</p>
+        <ul>
+            <li>You are the owner or key decision-maker of a metal fabrication shop.</li>
+            <li>Your shop processes $1M+ in annual volume.</li>
+            <li>You are tired of manual estimating and ready to invest in a repeatable system.</li>
+        </ul>
+    </div>
+
+    <p><strong>What to expect:</strong> We will look at your current estimating bottlenecks, map out where you are losing money, and build a roadmap to plug those leaks. If it's a fit, we'll discuss the custom system; if not, you still walk away with a plan.</p>
+
+    <div class="calendar-section">
+        <h2>Select A Time Below</h2>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/gregwsheldon/30-min-call" style="min-width:320px;height:1150px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    </div>
+
+    <div class="container-footer">
+        <p>Greg Sheldon | Expert Estimating & Fabrication Systems</p>
+        <p>Direct: 613-813-3529 | gregwsheldon@gmail.com</p>
+    </div>
+</div>
+
+</body>
+</html>

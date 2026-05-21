@@ -16,7 +16,6 @@
     
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="fb:app_id" content="123456789"> 
 
     <style>
         /* --- Base & Reset --- */
@@ -31,27 +30,6 @@
             padding: 0; 
         }
 
-        /* --- Top Contact Banner --- */
-        .top-banner {
-            background-color: #0f172a;
-            color: #cbd5e1;
-            text-align: center;
-            padding: 12px 20px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            width: 100%;
-            border-bottom: 4px solid #ea580c; /* Safety Orange */
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .top-banner a {
-            color: #fca5a5; /* Light red/orange highlight */
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .top-banner a:hover { color: #fff; }
-        .top-divider { color: #475569; }
-        
         /* --- Main Container (The "Blueprint" Page) --- */
         .container { 
             max-width: 850px; 
@@ -60,7 +38,7 @@
             padding: 50px 60px; 
             border-radius: 4px; 
             border: 3px solid #1e293b;
-            box-shadow: 12px 12px 0px rgba(15, 23, 42, 0.2); /* Hard rugged shadow */
+            box-shadow: 12px 12px 0px rgba(15, 23, 42, 0.2); 
         }
         
         /* --- Typography & Text Highlights --- */
@@ -79,7 +57,7 @@
         }
         h1 { 
             font-size: 2.6rem; 
-            font-weight: 900; /* Extra heavy */
+            font-weight: 900; 
             line-height: 1.15; 
             margin-bottom: 25px; 
             letter-spacing: -0.02em; 
@@ -125,7 +103,7 @@
             border-bottom: 2px solid #ea580c;
         }
 
-        /* --- Video Wrapper (Built like a monitor) --- */
+        /* --- Video Wrapper --- */
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%; 
@@ -196,104 +174,6 @@
             top: 12px;
         }
         
-        /* --- Industrial Comparison Table --- */
-        .table-wrapper {
-            margin: 30px 0;
-            border-radius: 4px;
-            box-shadow: 8px 8px 0px rgba(15, 23, 42, 0.1);
-            border: 3px solid #1e293b;
-            overflow: hidden; 
-            background: #fff;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 0.95rem;
-        }
-        th {
-            background-color: #1e293b;
-            color: #ffffff;
-            padding: 18px 15px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-bottom: 4px solid #ea580c;
-        }
-        td {
-            padding: 15px;
-            border-bottom: 1px solid #cbd5e1;
-            border-right: 1px dashed #e2e8f0;
-            color: #334155;
-            vertical-align: middle;
-            font-weight: 500;
-        }
-        td:last-child { border-right: none; }
-        tr:nth-child(even) td { background-color: #f8fafc; }
-        
-        .highlight-row td {
-            background-color: #fff7ed;
-            color: #c2410c;
-            font-weight: 800;
-            border-top: 3px solid #ea580c;
-            border-bottom: 3px solid #ea580c;
-        }
-        .highlight-row td:first-child { border-left: 5px solid #ea580c; font-size: 1.05rem; color: #ea580c;}
-
-        /* --- 3-Step Process Grid --- */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin: 30px 0 40px;
-        }
-        .process-card {
-            background: #f8fafc;
-            border: 2px solid #cbd5e1;
-            border-top: 6px solid #ea580c;
-            padding: 25px;
-            border-radius: 4px;
-            box-shadow: 6px 6px 0px rgba(15, 23, 42, 0.05);
-        }
-        .process-card h4 {
-            color: #0f172a;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            font-weight: 900;
-        }
-        .process-card p { font-size: 1rem; margin-bottom: 0; color: #475569; }
-
-        /* --- Testimonials --- */
-        .testimonials {
-            margin: 40px 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .testimonial-item {
-            background: #f1f5f9;
-            padding: 25px;
-            border-radius: 4px;
-            border: 2px solid #cbd5e1;
-            border-left: 6px solid #334155;
-        }
-        .testimonial-item p {
-            font-style: italic;
-            font-weight: 500;
-            font-size: 1rem;
-            margin-bottom: 15px;
-            color: #1e293b;
-        }
-        .testimonial-item span {
-            display: block;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #ea580c;
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-        }
-
         /* --- Product Image --- */
         .product-image {
             display: block;
@@ -306,19 +186,6 @@
         }
 
         /* --- Alerts & Warning Boxes --- */
-        .scarcity-alert {
-            background: #fff1f2;
-            border: 2px solid #fecdd3;
-            border-left: 8px solid #e11d48;
-            padding: 20px;
-            margin: 30px 0;
-            color: #9f1239;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        .scarcity-alert strong { color: #881337; font-weight: 900; text-transform: uppercase;}
-
         .cost-of-inaction {
             background: #0f172a;
             color: #f8fafc;
@@ -357,26 +224,6 @@
         }
         .guarantee-box p { font-size: 1.15rem; margin-bottom: 0; font-weight: 600; color: #92400e; }
 
-        /* --- FAQ Section --- */
-        .faq-section { margin: 50px 0; }
-        .faq-item {
-            margin-bottom: 20px;
-            background: #f8fafc;
-            border: 2px solid #cbd5e1;
-            padding: 20px;
-            border-radius: 4px;
-        }
-        .faq-question {
-            font-weight: 900;
-            color: #0f172a;
-            font-size: 1.15rem;
-            margin-bottom: 10px;
-            display: block;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 8px;
-        }
-        .faq-answer { color: #334155; font-size: 1.05rem; font-weight: 500;}
-
         /* --- Founder Section --- */
         .founder-note {
             display: flex;
@@ -391,7 +238,7 @@
         .founder-img {
             width: 120px;
             height: 120px;
-            border-radius: 4px; /* Square rugged photo */
+            border-radius: 4px;
             margin-right: 30px;
             flex-shrink: 0;
             object-fit: cover;
@@ -400,7 +247,7 @@
         .founder-text h3 { margin-bottom: 10px; font-size: 1.5rem; text-transform: uppercase; font-weight: 900;}
         .founder-text p { font-size: 1.05rem; margin-bottom: 15px; font-weight: 500;}
 
-        /* --- BUTTONS (Physical/Punchy Style) --- */
+        /* --- BUTTONS --- */
         .btn-top {
             display: block; 
             width: 100%; 
@@ -415,7 +262,7 @@
             letter-spacing: 0.05em;
             border-radius: 4px; 
             cursor: pointer; 
-            box-shadow: 6px 6px 0px #0f172a; /* Hard shadow */
+            box-shadow: 6px 6px 0px #0f172a;
             transition: all 0.1s ease; 
             text-decoration: none;
             margin: 10px 0 40px;
@@ -430,11 +277,125 @@
             box-shadow: 0px 0px 0px #0f172a;
         }
 
+        /* --- PRICING TIERS (Perfectly Even 3-Column) --- */
+        .pricing-section {
+            margin: 60px 0;
+            padding-top: 50px;
+            border-top: 4px solid #1e293b;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .pricing-card {
+            background: #ffffff;
+            border: 3px solid #1e293b;
+            border-radius: 4px;
+            padding: 30px 25px;
+            box-shadow: 8px 8px 0px rgba(15, 23, 42, 0.15);
+            display: flex;
+            flex-direction: column;
+        }
+        .pricing-card.popular {
+            border-color: #ea580c;
+            box-shadow: 8px 8px 0px rgba(234, 88, 12, 0.2);
+            position: relative;
+        }
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ea580c;
+            color: #fff;
+            padding: 4px 15px;
+            font-size: 0.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid #1e293b;
+            white-space: nowrap;
+        }
+        .pricing-card h4 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+        .pricing-price {
+            font-size: 2.1rem;
+            font-weight: 900;
+            color: #ea580c;
+            margin-bottom: 15px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .pricing-desc {
+            font-size: 0.95rem;
+            color: #475569;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #cbd5e1;
+            line-height: 1.4;
+        }
+        .pricing-subtitle {
+            font-size: 1.05rem;
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+        .pricing-features li {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            line-height: 1.3;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+        }
+        .pricing-features li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            top: -3px;
+            font-size: 1.4rem;
+            color: #94a3b8;
+            font-weight: normal;
+        }
+        .pricing-meta {
+            background: #f8fafc;
+            border: 2px solid #cbd5e1;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+        }
+        .pricing-meta p {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+        .pricing-meta p:last-child { margin-bottom: 0; }
+        .pricing-meta span { color: #ea580c; font-weight: 900; display: block;}
+
         /* ====================================================
-           FULL CALCULATOR AUDIT SECTION (CONTROL PANEL VIBE)
+           FULL CALCULATOR AUDIT SECTION 
            ==================================================== */
         .form-section { 
-            background: #0f172a; /* Deepest Slate */
+            background: #0f172a; 
             color: #f8fafc;
             padding: 50px 40px; 
             border-radius: 6px; 
@@ -444,6 +405,33 @@
         }
         .form-section h3 { font-size: 2.2rem; margin-bottom: 15px; font-weight: 900; color: #fff; line-height: 1.1; text-transform: uppercase;}
         .form-section .note { color: #94a3b8; font-size: 1.1rem; margin-bottom: 30px; display: block; font-weight: 500;}
+
+        /* Dynamic Selected Tier Badge */
+        .selected-tier-badge {
+            background: #020617;
+            border: 2px solid #ea580c;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            text-align: center;
+            display: none; 
+            box-shadow: inset 0 0 20px rgba(234, 88, 12, 0.1);
+        }
+        .selected-tier-badge span.label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .selected-tier-badge span.value {
+            color: #ea580c;
+            font-size: 1.4rem;
+            font-weight: 900;
+            font-family: 'Courier New', Courier, monospace;
+        }
 
         .step-label-calc { 
             display: inline-block; 
@@ -463,7 +451,6 @@
         .input-group-calc { margin-bottom: 15px; text-align: left; }
         .input-group-calc label { display: block; font-weight: 800; margin-bottom: 8px; color: #cbd5e1; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
         
-        /* Digital Panel Inputs */
         .input-group-calc input { 
             width: 100%; 
             padding: 16px; 
@@ -471,7 +458,7 @@
             border: 2px solid #475569; 
             border-radius: 4px; 
             color: #fff; 
-            font-family: 'Courier New', Courier, monospace; /* Digital feel */
+            font-family: 'Courier New', Courier, monospace;
             font-size: 1.5rem; 
             font-weight: 900; 
             text-align: center; 
@@ -485,7 +472,6 @@
             box-shadow: inset 3px 3px 6px rgba(0,0,0,0.6), 0 0 0 2px rgba(234, 12, 0.3); 
         }
 
-        /* Critical Pain Box */
         .pain-box-calc { 
             background: #000; 
             color: #fff; 
@@ -503,14 +489,12 @@
         .audit-step-line { display: flex; justify-content: space-between; margin-bottom: 10px; color: #94a3b8; align-items: center; position: relative;}
         .audit-step-line .math-res { font-weight: 900; color: #f8fafc; font-family: 'Courier New', Courier, monospace; font-size: 1.1rem;}
 
-        /* Tooltips */
         .info-icon { display: inline-block; margin-left: 5px; width: 16px; height: 16px; background: #334155; color: #fff; font-size: 11px; text-align: center; line-height: 16px; border-radius: 2px; cursor: help; transition: background 0.2s; font-weight: bold;}
         .info-icon:hover { background: #ea580c; }
         .tooltip { visibility: hidden; width: 260px; background-color: #f8fafc; color: #0f172a; text-align: left; padding: 15px; border-radius: 4px; border: 3px solid #ea580c; position: absolute; z-index: 100; bottom: 125%; right: 0; opacity: 0; transition: opacity 0.2s; font-weight: 600; font-size: 0.85rem; line-height: 1.5; box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4); }
         .tooltip strong { color: #c2410c; display: block; margin-bottom: 6px; text-transform: uppercase; font-weight: 900;}
         .audit-step-line:hover .tooltip { visibility: visible; opacity: 1; }
 
-        /* Logic Block */
         .detailed-math { background: #1e293b; border-left: 6px solid #3b82f6; padding: 25px; border-radius: 4px; margin-bottom: 30px; font-size: 0.9rem; color: #cbd5e1; }
         .math-title { font-weight: 900; color: #fff; text-transform: uppercase; margin-bottom: 15px; border-bottom: 2px solid #334155; padding-bottom: 8px;}
         .math-item { margin-bottom: 20px; }
@@ -518,15 +502,13 @@
         .math-explanation { font-style: italic; color: #94a3b8; margin-bottom: 8px; font-weight: 500;}
         .formula-line { font-family: 'Courier New', Courier, monospace; font-weight: bold; display: block; background: #020617; padding: 12px 15px; border-radius: 4px; margin-top: 5px; color: #38bdf8; line-height: 1.4; border: 1px solid #1e3a8a;}
 
-        /* Reclaimed Growth Box */
         .gain-box-calc { background: #022c22; border: 2px solid #10b981; padding: 30px; border-radius: 6px; margin-bottom: 30px; box-shadow: inset 0 0 30px rgba(16,185,129,0.1); }
         .gain-row-calc { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 700; font-size: 1.1rem; color: #a7f3d0; text-transform: uppercase; align-items: center; position: relative;}
         .gain-val-calc { font-weight: 900; color: #34d399; font-family: 'Courier New', Courier, monospace; font-size: 1.3rem;}
         .gain-row-calc:hover .tooltip { visibility: visible; opacity: 1;}
 
-        /* Capture Fields base */
         .btn-send { 
-            display: block; width: 100%; background-color: #ea580c; color: #ffffff; border: 3px solid #000; padding: 22px; font-size: 1.3rem; font-weight: 900; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.1s; margin-top: 20px; box-shadow: 6px 6px 0px #000; text-decoration: none; text-align: center;
+            display: inline-block; width: 100%; background-color: #ea580c; color: #ffffff; border: 3px solid #000; padding: 22px; font-size: 1.3rem; font-weight: 900; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.1s; margin-top: 20px; box-shadow: 6px 6px 0px #000; text-decoration: none; text-align: center;
         }
         .btn-send:hover { background-color: #f97316; transform: translate(2px, 2px); box-shadow: 4px 4px 0px #000; }
         .btn-send:active { transform: translate(6px, 6px); box-shadow: 0px 0px 0px #000; }
@@ -541,7 +523,6 @@
             user-select: none;
             transition: all 0.5s ease;
         }
-
         .unlocked .locked-content {
             filter: blur(0);
             pointer-events: auto;
@@ -556,19 +537,17 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding-top: 150px;
+            padding-top: 120px;
             background: transparent;
             border-radius: 6px;
             transition: opacity 0.5s ease;
         }
-
         .unlocked .locked-overlay {
             opacity: 0;
             pointer-events: none;
             display: none;
         }
 
-        /* Capture Fields inside overlay */
         .capture-fields { 
             background: #1e293b; 
             padding: 40px; 
@@ -582,7 +561,6 @@
             margin: 0 auto;
         }
         
-        /* Lock Icon Animation */
         @keyframes pulse-lock {
             0% { transform: scale(1); }
             50% { transform: scale(1.15); }
@@ -595,7 +573,6 @@
             animation: pulse-lock 2.5s infinite ease-in-out;
         }
 
-        /* Custom List Styling for the Lock Box */
         .lock-list {
             text-align: left; color: #cbd5e1; font-size: 1.05rem; font-weight: 500; 
             max-width: 440px; margin: 0 auto 25px; list-style-type: none; padding: 0;
@@ -610,8 +587,26 @@
             font-weight: 900; font-size: 1.4rem; top: -4px; background: transparent; border: none;
         }
 
+        /* --- Footer --- */
+        .quiet-footer {
+            margin-top: 60px;
+            padding: 30px;
+            text-align: center;
+            color: #475569;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .quiet-footer a {
+            color: #334155;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .quiet-footer a:hover {
+            color: #ea580c;
+        }
+
         /* ========================================== */
-        /* ENHANCED EXIT POPUP STYLES                 */
+        /* EXIT POPUP STYLES                          */
         /* ========================================== */
         .popup-overlay {
             position: fixed;
@@ -749,27 +744,11 @@
         }
         .decline-btn:hover { color: #334155; }
 
-        /* --- Sticky Mobile CTA --- */
-        .sticky-mobile-cta {
-            display: none; 
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #ea580c;
-            color: #ffffff;
-            text-align: center;
-            padding: 20px;
-            font-size: 1.2rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            text-decoration: none;
-            z-index: 9999;
-            border-top: 4px solid #000;
-        }
-        .sticky-mobile-cta:hover { background-color: #f97316; }
 
         /* --- Mobile Responsiveness --- */
+        @media (max-width: 900px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
         @media (max-width: 768px) {
             .table-wrapper { overflow-x: auto; }
             .process-grid { grid-template-columns: 1fr; }
@@ -777,11 +756,6 @@
         }
         @media (max-width: 600px) {
             body { padding-bottom: 70px; } 
-            .sticky-mobile-cta { display: block; }
-            .top-banner { font-size: 0.85rem; padding: 10px; }
-            .top-banner .hide-mobile { display: none; }
-            .top-banner a { display: inline-block; margin: 2px 8px; }
-            .top-divider { display: none; }
             .container { padding: 30px 20px; margin: 15px auto; border-width: 2px; box-shadow: 6px 6px 0px rgba(15, 23, 42, 0.2); }
             h1 { font-size: 2.1rem; }
             .form-section { padding: 30px 20px; box-shadow: 6px 6px 0px #1e293b; border-width: 2px;}
@@ -793,7 +767,7 @@
             .capture-fields { padding: 30px 20px; width: 100%; transform: none; }
             .audit-step-line { flex-direction: column; align-items: flex-start; }
             .audit-step-line .math-res { margin-top: 5px; }
-            .locked-overlay { padding-top: 100px; }
+            .locked-overlay { padding-top: 80px; }
             .popup-content { padding: 30px 20px; }
             .popup-content h2 { font-size: 1.6rem !important; }
         }
@@ -802,23 +776,14 @@
 </head>
 <body>
 
-<div class="top-banner">
-    <span class="hide-mobile">Direct Contact: </span>
-    <a href="tel:+16138133529">📞 613-813-3529</a> 
-    <span class="top-divider">|</span> 
-    <a href="mailto:gregwsheldon@gmail.com">✉️ gregwsheldon@gmail.com</a>
-</div>
-
 <div class="container">
     
     <span class="preheadline">An Urgent Briefing For Established Metal Fabrication Shops Processing $1M+ In Annual Volume:</span>
-    <h1>You Are Currently Paying A Secret <span class="hl-red">"Guesswork Tax"</span> On Every Quote Your Shop Sends Out - And It's Quietly Costing You <span class="hl-orange hl-underline">Tens Of Thousands</span> In Lost Margins.</h1>
+    <h1>Why Two Of Your Best Estimators Can Look At The Exact Same Drawing And Arrive At Wildly Different Labor Numbers... And How To Fix This Costly Disconnect Forever.</h1>
     
-    <p class="subhead">Most owners blame the shop floor for shrinking profits. But the truth is, the money was lost the moment an estimator had to guess on a labor formula.</p>
+    <p class="subhead">Stop blaming the shop floor for shrinking profits. If your quoting process relies on "gut feelings" or messy, unlocked Excel formulas, you aren't estimating—you are gambling. Here is how to locate the exact mathematics of your hidden profit leaks, and how to plug them today.</p>
     
-    <p>Right now, there is a massive disconnect between your front office and your shop floor. If two of your estimators can look at the exact same drawing and arrive at wildly different numbers... <span class="highlight">you aren't estimating. You are gambling.</span></p>
-    
-    <p>You don't need a bloated, $50,000 generic software subscription to fix this. You need a bulletproof system built around <em>your</em> specific workflow. Before you spend another dime trying to solve this problem, let me prove exactly where your current estimating spreadsheets are bleeding cash. Use the 60-second auditor below, and I will show you the exact mathematics of your hidden profit leaks - entirely at my own expense.</p>
+    <p>Right now, there is a massive disconnect between your front office and your shop floor. You don't need a bloated, $50,000 generic software subscription to fix this. You need a bulletproof system built around <em>your</em> specific workflow. Before you spend another dime trying to solve this problem, let me prove exactly where your current estimating spreadsheets are bleeding cash. Use the 60-second auditor below, and I will show you the exact mathematics of your hidden profit leaks - entirely at my own expense.</p>
     
     <div class="video-wrapper">
     <iframe 
@@ -844,87 +809,14 @@
         <li>When formulas aren't locked down, mistakes get hidden.</li>
         <li>When labor hours are guessed, the guys on the floor pay the price.</li>
     </ul>
-    <p>If two of your estimators can look at the exact same drawing and arrive at wildly different numbers... <span class="highlight">you aren't estimating. You are gambling.</span></p>
 
     <div class="cost-of-inaction">
         <h3>The Real Cost of "Doing it Later"</h3>
         <p>If your shop quotes $1M a year and you have a 3% "guesswork leak" in your labor formulas, you are losing <strong>$60,000 every year.</strong> Every month you wait to fix your system is a <strong>$5,000 donation</strong> to your competitors.</p>
     </div>
 
-    <h2>What Other Shop Owners Say</h2>
-    <div class="testimonials">
-        <div class="testimonial-item">
-            <p>"Before Greg came in, my estimators were basically guessing on weld times. I was spending half my day double-checking their math. Now, these calculators do the heavy lifting for us. We're getting quotes out in minutes instead of hours, and I finally trust the numbers."</p>
-            <span>- Operations Manager, NC Fabrication Shop</span>
-        </div>
-        <div class="testimonial-item">
-            <p>"I’ve been in the trades 30 years and I've seen it all. Greg's calculators are the first time I've seen a system that actually works like a shop floor does. No more messy spreadsheets or 'finger in the wind' pricing. It’s saved us a massive amount of time on every bid."</p>
-            <span>- Owner, Custom Metal Fab Group</span>
-        </div>
-    </div>
-
     <h2>The Expensive "Software" Trap</h2>
-    <p>When the pain gets bad enough, you might think the answer is to buy a massive, $50,000 estimating software or a generic SaaS subscription.</p>
-    <p>But here is the trap: <strong>Generic software forces you to run your business their way.</strong> It doesn't understand your unique shop floor, your specific bottlenecks, or how your brain actually works. Eventually, you get frustrated and go right back to using broken Excel sheets.</p>
-
-    <h2>The Real Cost of Estimating Software</h2>
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Software Tier (Examples)</th>
-                    <th>Monthly (5 Users)</th>
-                    <th>Setup Cost</th>
-                    <th>5-Year Total</th>
-                    <th>The Reality</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Low-End ERP (Odoo, MRPeasy)</td>
-                    <td>$125 - $250</td>
-                    <td>$0 - $2,000</td>
-                    <td>$7,500 - $17k</td>
-                    <td>Basic tools, still rely on spreadsheets</td>
-                </tr>
-                <tr>
-                    <td>Fab-Specific Entry (Cetec)</td>
-                    <td>~$200 - $250</td>
-                    <td>$0 - $3,000</td>
-                    <td>~$12k - $18k</td>
-                    <td>Good entry point, limited depth</td>
-                </tr>
-                <tr>
-                    <td>Mid-Tier ERP (JobBOSS²)</td>
-                    <td>~$1,000+</td>
-                    <td>~$5k - $15k</td>
-                    <td>~$60k - $75k+</td>
-                    <td>Capable but rigid workflows</td>
-                </tr>
-                <tr>
-                    <td>Heavy Fab ERP (Genius)</td>
-                    <td>$400 - $875</td>
-                    <td>$20k - $200k</td>
-                    <td>$40k - $200k+</td>
-                    <td>Strong estimating, expensive setup</td>
-                </tr>
-                <tr>
-                    <td>Enterprise (NetSuite, Epicor)</td>
-                    <td>$2,000 - $3k+</td>
-                    <td>$25k - $100k+</td>
-                    <td>$120k - $300k+</td>
-                    <td>Heavy, massive implementation</td>
-                </tr>
-                <tr class="highlight-row">
-                    <td>A System Built For YOUR Shop</td>
-                    <td>$0</td>
-                    <td>$9,800 one-time</td>
-                    <td>$9,800</td>
-                    <td>Built exactly for your workflow</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <p>When the pain gets bad enough, you might think the answer is to buy a massive, $50,000 estimating software or a generic SaaS subscription. But generic software forces you to run your business their way. It doesn't understand your unique shop floor. Eventually, you get frustrated and go right back to using broken Excel sheets.</p>
 
     <h2>The Solution: A System Built Around YOU</h2>
     <p>You don't need expensive software. You need a better system. I build custom estimating systems in Excel that do the heavy lifting for you.</p>
@@ -934,56 +826,103 @@
         <li>It automatically connects your material inputs to your labor realities.</li>
         <li>The complex math is locked away safely in the background.</li>
         <li>It creates a clear, undeniable Bill of Materials for your shop floor.</li>
-        <li><strong>It will cut your time to quote work by at least 50% to 60%.</strong> This massive reduction in manual entry and guesswork is exactly how you save time and instantly reclaim lost profits on every job.</li>
+        <li><strong>It will cut your time to quote work by at least 50% to 60%.</strong></li>
     </ul>
-
-    <h2>How It Works: A Simple 3-Step Process</h2>
-    <div class="process-grid">
-        <div class="process-card">
-            <h4>Phase 1: The Teardown</h4>
-            <p>You send me your current files and a recent job drawing. I record a private Loom video showing exactly where your current sheet is leaking profit.</p>
-        </div>
-        <div class="process-card">
-            <h4>Phase 2: The Build</h4>
-            <p>If you hire me, I spend 2-3 weeks engineering and stress-testing a custom workbook mapped specifically to how your shop operates.</p>
-        </div>
-        <div class="process-card">
-            <h4>Phase 3: Handover & Support</h4>
-            <p>I train your team on the new system and provide 30 days of free tweaks to ensure it works perfectly on the shop floor.</p>
-        </div>
-    </div>
 
     <img src="https://gregsheldon.github.io/metalfabexcel/metal_fab_excel_graphic.png" alt="Custom Excel Estimating Dashboard" class="product-image">
 
-    <h2>Let's Do The Math on Your Investment</h2>
-    <p>I charge a one-time fee of <strong>$9,800</strong> to engineer a custom system for your shop.</p>
-    <p>Before you say that's too much, consider the opportunity cost. Spread over 5 years, $9,800 breaks down to <strong>under $40 a week.</strong></p>
-    <p>That is less than one hour of shop labor. Ask yourself honestly: Is your current, messy quoting process costing you more than one hour of wasted shop labor per week in missed scope, confusion, or rework?</p>
-    <p>Of course it is. <span class="highlight">You are already paying for this system in lost margins. You just don't have the system to show for it.</span></p>
+    <div class="pricing-section">
+        <h2>Custom Estimating Spreadsheet Packages</h2>
+        <p style="font-size: 1.15rem; font-weight: 600; color: #334155; margin-bottom: 20px;">Choose the system that fits your current volume and quoting process.</p>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h4>Starter System</h4>
+                <div class="pricing-price">$3,500</div>
+                <div class="pricing-desc">For small fabrication shops that need a cleaner, faster, more reliable way to quote work.</div>
+                
+                <div class="pricing-meta">
+                    <p>Timeline: <span>5 to 10 Business Days</span></p>
+                    <p>Best for: <span>Owners quoting manually</span></p>
+                </div>
 
-    <div class="scarcity-alert">
-        <strong>⚠️ Limited Availability:</strong> Because I build every system myself and provide 30 days of hands-on support, <strong>I only take on 2 custom builds per month.</strong> Submit your teardown request today to secure your spot in the queue.
+                <div class="pricing-subtitle">System Includes:</div>
+                <ul class="pricing-features">
+                    <li>Custom quote sheet</li>
+                    <li>Customer and project info section</li>
+                    <li>Material cost input area</li>
+                    <li>Labour cost input area</li>
+                    <li>Shop and install labour sections</li>
+                    <li>Consumables, rentals, and subcontractors</li>
+                    <li>Overhead, markup, and margin calculations</li>
+                    <li>Final quote summary</li>
+                    <li>Basic proposal output & printable PDF</li>
+                    <li>One training walkthrough</li>
+                </ul>
+                <a href="#audit-section" class="btn-top pricing-select-btn" data-name="Starter System" data-price="3500" style="padding: 15px; font-size: 1.1rem; margin-top: auto;">Select Starter</a>
+            </div>
+
+            <div class="pricing-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <h4>Pro System</h4>
+                <div class="pricing-price">$7,500</div>
+                <div class="pricing-desc">For fabrication shops that quote regularly and need a full estimating workbook, not just a quote sheet.</div>
+                
+                <div class="pricing-meta">
+                    <p>Timeline: <span>2 to 3 Weeks</span></p>
+                    <p>Best for: <span>Shops quoting weekly</span></p>
+                </div>
+
+                <div class="pricing-subtitle">Includes Starter, Plus:</div>
+                <ul class="pricing-features">
+                    <li>Multi-tab estimating workbook</li>
+                    <li>Material, Labour, Rental, Consumable tabs</li>
+                    <li>Customer Summary & Proposal tabs</li>
+                    <li>Scope Checklist & Quote Review tabs</li>
+                    <li>Shop and field labour breakdown</li>
+                    <li>Margin and markup controls</li>
+                    <li>Gross profit calculations</li>
+                    <li>Quote health check & risk checklist</li>
+                    <li>Missing input warnings</li>
+                    <li>1 Custom Calculator Module</li>
+                </ul>
+                <a href="#audit-section" class="btn-top pricing-select-btn" data-name="Pro System" data-price="7500" style="padding: 15px; font-size: 1.1rem; margin-top: auto;">Select Pro</a>
+            </div>
+
+            <div class="pricing-card">
+                <h4>Premium System</h4>
+                <div class="pricing-price">$9,800+</div>
+                <div class="pricing-desc">For shops that want a complete estimating system from quote request to proposal to job handoff.</div>
+                
+                <div class="pricing-meta">
+                    <p>Timeline: <span>3 to 6 Weeks</span></p>
+                    <p>Best for: <span>Shops quoting multiple jobs/month</span></p>
+                </div>
+
+                <div class="pricing-subtitle">Includes Pro, Plus:</div>
+                <ul class="pricing-features">
+                    <li>Advanced visual dashboard</li>
+                    <li>Multiple custom calculator modules</li>
+                    <li>Material ordering output</li>
+                    <li>Job handoff & Change order sheets</li>
+                    <li>Internal cost summary</li>
+                    <li>Customer-facing proposal package</li>
+                    <li>Quote approval & Risk review system</li>
+                    <li>Low-margin & missing scope warnings</li>
+                    <li>Install cost checks & mobilization</li>
+                    <li>Coatings, finishing & engineering</li>
+                    <li>Price-per-foot and price-per-pound outputs</li>
+                    <li>Crew-day calculations</li>
+                    <li>Team training & real-quote testing period</li>
+                </ul>
+                <a href="#audit-section" class="btn-top pricing-select-btn" data-name="Premium System" data-price="9800" style="padding: 15px; font-size: 1.1rem; margin-top: auto;">Select Premium</a>
+            </div>
+        </div>
     </div>
-
-    <div class="faq-section">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-item">
-            <span class="faq-question">"What if my shop floor labor rates or material costs change?"</span>
-            <div class="faq-answer">The system is built to be dynamic. I build a dedicated "Admin" tab where you can update your material markup, shop rate, and weld speeds in seconds. The math updates across the entire sheet automatically.</div>
-        </div>
-        <div class="faq-item">
-            <span class="faq-question">"Is my proprietary data safe?"</span>
-            <div class="faq-answer">Absolutely. Your drawings and margins are treated as strict intellectual property. I never share your spreadsheets or formulas with anyone outside your organization.</div>
-        </div>
-        <div class="faq-item">
-            <span class="faq-question">"How long does it take to learn?"</span>
-            <div class="faq-answer">If you can type a dimension into a cell, you can use this. It’s designed to be intuitive for estimators, removing the need to navigate complex ERP menus just to get a basic quote out.</div>
-        </div>
-    </div>
-
+    
     <div class="guarantee-box">
         <h3>🛡️ The "Shop-Floor Ready" Guarantee</h3>
-        <p>I don't just email you an Excel file and vanish. Your $9,800 includes 30 days of post-launch support. As your team uses it on live jobs, I will refine, adjust, and tweak the formulas until it fits your workflow like a glove.</p>
+        <p>I don't just email you an Excel file and vanish. Your investment includes post-launch support. As your team uses it on live jobs, I will refine, adjust, and tweak the formulas until it fits your workflow like a glove.</p>
     </div>
 
     <div class="founder-note">
@@ -996,19 +935,24 @@
     </div>
 
     <div id="audit-section" class="form-section">
+        
+        <div id="selectedTierDisplay" class="selected-tier-badge">
+            <span class="label">Targeting Implementation For:</span>
+            <span id="displayTierName" class="value">Pro System ($7,500)</span>
+        </div>
+
         <h3>The 60-Second Profit Leak Auditor</h3>
         <p class="note">
             Drop your shop's raw numbers into the calculator below. In less than a minute, this real-time audit will expose the exact math on where you are bleeding cash. 
-            <br><br>
-            <strong style="color: #ea580c;">What happens next?</strong> After you submit your audit, you will have the opportunity to engage directly with me. When we work together, you get 1-on-1 access to me (Greg), and I will personally engineer and deploy these custom spreadsheet calculators exactly to your shop's specifications.
         </p>
         
         <form id="auditForm" action="https://formsubmit.co/ajax/gregwsheldon@gmail.com" method="POST">
             
             <input type="hidden" name="_subject" value="New Profit Audit Result">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-
+            
+            <input type="hidden" name="_template" value="https://gregsheldon.github.io/metalfabexcel/email.html">
+            
             <input type="hidden" name="_webhook" value="https://hooks.zapier.com/hooks/catch/3118089/4yitzv3/">
             
             <input type="hidden" name="_cc" id="dynamic_cc" value="">
@@ -1022,6 +966,7 @@
             <input type="hidden" id="h_net" name="7_Net_5_Year_Strategic_Gain">
             <input type="hidden" id="h_hours" name="8_Hours_Reclaimed">
             <input type="hidden" id="h_rev" name="9_New_Revenue_Opportunity">
+            <input type="hidden" id="h_tier" name="Selected_Tier">
 
             <span class="step-label-calc">1. Shop Metrics</span>
             <div class="input-grid-calc">
@@ -1062,17 +1007,18 @@
                     <div class="capture-fields">
                         <div style="text-align: center; margin-bottom: 25px;">
                             <span class="lock-icon">🔒</span>
+                            
                             <h4 style="color:#f8fafc; font-size: 1.6rem; text-transform: uppercase; font-weight: 900; line-height: 1.15;">
-                                Don't just stare at the loss.<br><span style="color: #ea580c;">See exactly where it's happening.</span>
+                                Don't just stare at the loss.<br><span style="color: #ea580c;">See how fast the <span id="lockTierName">Pro System</span> pays for itself.</span>
                             </h4>
                             <p style="color: #94a3b8; font-size: 1.05rem; font-weight: 500; margin-top: 15px; margin-bottom: 20px;">
                                 Drop your email below to instantly unblur your custom diagnostics and reveal:
                             </p>
                             
                             <ul class="lock-list">
-                                <li><strong>The specific math</strong> silently bleeding your margins.</li>
-                                <li><strong>The exact number of hours</strong> you can claw back this week.</li>
-                                <li><strong>Your projected 5-Year Net Gain</strong> when you fix this leak today.</li>
+                                <li><strong>The Payoff Timeline:</strong> Exactly how many days until your investment is 100% paid off.</li>
+                                <li><strong>The Revenue Multiplier:</strong> How reclaiming these lost hours multiplies your bottom line.</li>
+                                <li><strong>Your 5-Year Net Gain:</strong> The pure financial upside of fixing this process today.</li>
                             </ul>
                             
                             <p style="color: #64748b; font-size: 0.9rem; font-weight: 500; font-style: italic; margin-bottom: 5px;">
@@ -1089,7 +1035,7 @@
                             <input type="email" name="email" id="userEmailInput" required placeholder="john@company.com" style="text-align:left; font-size: 1.1rem;">
                         </div>
                         
-                        <button type="submit" id="unlockBtn" class="btn-send">Reveal My Hidden Leaks →</button>
+                        <button type="submit" id="unlockBtn" class="btn-send">Reveal My Payoff Timeline →</button>
                         <p style="text-align: center; font-size: 0.8rem; color: #64748b; margin-top: 20px; font-weight: 600;">Your data is confidential and treated as strict intellectual property.</p>
                     </div>
                 </div>
@@ -1097,57 +1043,47 @@
                 <div class="locked-content">
                     <div class="audit-results-box">
                         <div class="audit-step-line">
-                            <span>
-                                Fully Burdened Hourly Rate
-                                <span class="info-icon">?</span>
-                                <span class="tooltip"><strong>How it's calculated:</strong> Base Salary multiplied by (1 + Burden Rate %), divided by 2,080 working hours in a year. This represents the true cost of putting your estimator in their chair.</span>
-                            </span>
+                            <span>Fully Burdened Hourly Rate</span>
                             <span class="math-res" id="resHourlyRate">...</span>
                         </div>
                         <div class="audit-step-line">
-                            <span>
-                                Annual Labor Drain
-                                <span class="info-icon">?</span>
-                                <span class="tooltip"><strong>How it's calculated:</strong> The total number of hours spent manually entering quotes per year, multiplied by your Fully Burdened Hourly Rate.</span>
-                            </span>
+                            <span>Annual Labor Drain</span>
                             <span class="math-res" id="resLaborLeak">...</span>
                         </div>
                         <div class="audit-step-line" style="margin-top: 10px; padding-top: 10px; border-top: 2px dotted #334155;">
-                            <span>
-                                Annual Pipeline Volume
-                                <span class="info-icon">?</span>
-                                <span class="tooltip"><strong>How it's calculated:</strong> Quotes per week × 52 weeks × Average Job Size. This is the total dollar value your estimators are pushing through their spreadsheets.</span>
-                            </span>
+                            <span>Annual Pipeline Volume</span>
                             <span class="math-res" id="resPipelineVolume" style="color: #cbd5e1;">...</span>
                         </div>
                         <div class="audit-step-line">
-                            <span>
-                                1% Human Error Liability
-                                <span class="info-icon">?</span>
-                                <span class="tooltip"><strong>How it's calculated:</strong> 1% of your total Annual Pipeline Volume. This covers the inevitable missed scope, fat-fingered typos, and bad labor guesses that occur in manual spreadsheets.</span>
-                            </span>
+                            <span>1% Human Error Liability</span>
                             <span class="math-res" id="resErrorRisk">...</span>
                         </div>
                         <div class="audit-step-line" style="border-top: 2px solid #475569; padding-top: 12px; margin-top: 12px;">
-                            <span style="color:#fff; font-weight:800;">
-                                Gross 5-Year Profit Leak
-                                <span class="info-icon">?</span>
-                                <span class="tooltip"><strong>How it's calculated:</strong> (Annual Labor Drain + Error Liability) multiplied by 5 years. This is what doing nothing will cost you over the next 60 months.</span>
-                            </span>
+                            <span style="color:#fff; font-weight:800;">Gross 5-Year Profit Leak</span>
                             <span class="math-res" id="resFiveYear" style="color: #ef4444; font-size:1.25rem;">...</span>
                         </div>
                         <div class="audit-step-line" style="margin-top: 5px; font-size: 0.95rem; color: #94a3b8;">
-                            <span>Minus One-Time System Cost:</span>
-                            <span class="math-res" style="color: #ef4444;">-$9,800</span>
+                            <span>Minus System Cost:</span>
+                            <span class="math-res" id="resSystemCost" style="color: #ef4444;">-$7,500</span>
                         </div>
                         <div class="audit-step-line" style="margin-top: 12px; padding-top: 12px; border-top: 2px solid #475569;">
                             <span style="color:#fff; font-weight:800; font-size:1.1rem;">
                                 Net 5-Year Strategic Gain
                                 <span class="info-icon">?</span>
-                                <span class="tooltip" style="bottom: 150%;"><strong>How it's calculated:</strong> The Gross 5-Year Leak minus the one-time $9,800 cost of a custom estimating system. This is your pure financial upside.</span>
+                                <span class="tooltip" style="bottom: 150%;"><strong>How it's calculated:</strong> The Gross 5-Year Leak minus the cost of your selected estimating system.</span>
                             </span>
                             <span class="math-res" id="resNetGain" style="color: #34d399; font-size:1.35rem;">...</span>
                         </div>
+                        
+                        <div class="audit-step-line" style="margin-top: 12px; padding-top: 12px; border-top: 2px dashed #475569;">
+                            <span style="color:#ea580c; font-weight:900; font-size:1.2rem; text-transform:uppercase;">
+                                System Payoff Timeline
+                                <span class="info-icon">?</span>
+                                <span class="tooltip" style="bottom: 150%;"><strong>How it's calculated:</strong> Based on the annual profit you are currently draining, this is exactly how many days it will take for your custom system to pay for itself.</span>
+                            </span>
+                            <span class="math-res" id="resPayoffDays" style="color: #fde047; font-size:1.6rem; text-shadow: 0 0 10px rgba(253,224,71,0.3);">...</span>
+                        </div>
+
                     </div>
 
                     <div class="detailed-math">
@@ -1188,22 +1124,15 @@
                             <span class="gain-val-calc" id="revOpp">...</span>
                         </div>
                     </div>
+
+                    <div style="margin-top: 50px; text-align: center; border-top: 4px solid #1e293b; padding-top: 40px;">
+                        <h4 style="color: #fff; font-size: 1.8rem; text-transform: uppercase; font-weight: 900; margin-bottom: 15px;">Your Math Is Unlocked. Now Let's Fix It.</h4>
+                        <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 25px;">The diagnostic report has been sent to your inbox. Let's build a custom plan for your shop floor.</p>
+                        <a href="thankyou.html" class="btn-send" style="width: auto; padding: 25px 40px; display: inline-block;">Book Your Free 1-on-1 Teardown Call &rarr;</a>
+                    </div>
                 </div> 
             </div> 
         </form>
-    </div>
-
-    <h2>Book a time to talk with Greg</h2>
-    <div class="calendly-inline-widget" data-url="https://calendly.com/gregwsheldon/30-min-call" style="min-width:320px;height:1150px;"></div>
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    <div style="margin-top: 60px; border-top: 3px solid #0f172a; padding-top: 40px; text-align: center;">
-        <p style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin-bottom: 15px; line-height: 1.4;">
-            Additionally, I offer professional estimating services for shops that don't have the manpower to get things done. 
-            <br><span style="color: #334155; font-size: 1.1rem; font-weight: 500;">If you need senior-level support to win more work without the overhead of a full-time hire, let's talk.</span>
-        </p>
-        <p style="font-weight: 900; color: #ea580c; text-transform: uppercase; letter-spacing: 0.05em; font-size: 1.1rem; background: #f8fafc; display: inline-block; padding: 10px 20px; border: 2px dashed #cbd5e1;">
-            Direct Contact: 📞 <a href="tel:+16138133529" style="color: inherit; text-decoration: none;">613-813-3529</a> | ✉️ <a href="mailto:gregwsheldon@gmail.com" style="color: inherit; text-decoration: none;">gregwsheldon@gmail.com</a>
-        </p>
     </div>
 
 </div>
@@ -1232,9 +1161,37 @@
     </div>
 </div>
 
-<a href="#audit-section" class="sticky-mobile-cta">📊 Run Your Profit Audit</a>
+<footer class="quiet-footer">
+    <p>Greg Sheldon | Expert Estimating & Fabrication Systems</p>
+    <p>Direct: <a href="tel:+16138133529">613-813-3529</a> | <a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></p>
+</footer>
+
 
 <script>
+    // ==========================================
+    // PRICING SELECTION LOGIC
+    // ==========================================
+    let currentTierPrice = 7500; // Default to Pro
+    let currentTierName = "Pro System";
+
+    document.querySelectorAll('.pricing-select-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            // Get data from clicked button
+            currentTierPrice = parseInt(this.getAttribute('data-price'));
+            currentTierName = this.getAttribute('data-name');
+            
+            // Update UI elements
+            document.getElementById('selectedTierDisplay').style.display = 'block';
+            document.getElementById('displayTierName').textContent = currentTierName + ' ($' + format(currentTierPrice) + ')';
+            document.getElementById('lockTierName').textContent = currentTierName;
+            document.getElementById('resSystemCost').textContent = '-$' + format(currentTierPrice);
+            document.getElementById('h_tier').value = currentTierName + ' ($' + format(currentTierPrice) + ')';
+            
+            // Re-run math with new price
+            runMath();
+        });
+    });
+
     // ==========================================
     // CALCULATOR LOGIC
     // ==========================================
@@ -1249,6 +1206,7 @@
     const rErrorRisk = document.getElementById('resErrorRisk');
     const rFiveYear = document.getElementById('resFiveYear');
     const rNetGain = document.getElementById('resNetGain');
+    const rPayoffDays = document.getElementById('resPayoffDays');
     const hoursEl = document.getElementById('hoursResult');
     const revOppEl = document.getElementById('revOpp');
 
@@ -1291,9 +1249,13 @@
         const yearlyLaborCost = yearlyHours * hourlyRate;
         const annualVolume = bidsPerYear * jobSizeVal;
         const errorRisk = annualVolume * 0.01;
+        
         const totalLeak = yearlyLaborCost + errorRisk;
         const grossFiveYear = totalLeak * 5;
-        const netFiveYear = grossFiveYear - 9800;
+        
+        // Calculate dynamic ROI
+        const netFiveYear = grossFiveYear - currentTierPrice;
+        const payoffDays = totalLeak > 0 ? Math.ceil((currentTierPrice / totalLeak) * 365) : 0;
 
         const hoursBack = Math.round(yearlyHours * 0.60);
         const revenueOpportunity = (hoursBack * 60 / (minsVal * 0.4)) * 0.025 * jobSizeVal;
@@ -1309,10 +1271,12 @@
         rErrorRisk.textContent = '$' + format(Math.round(errorRisk));
         rFiveYear.textContent = '$' + format(Math.round(grossFiveYear));
         rNetGain.textContent = '$' + format(Math.round(netFiveYear));
+        rPayoffDays.textContent = payoffDays + " Days";
+        
         hoursEl.textContent = format(hoursBack) + ' HOURS';
         revOppEl.textContent = '$' + format(Math.round(revenueOpportunity));
 
-        // Populate hidden fields so the emailed report is complete
+        // Populate hidden fields
         hDrain.value = "$" + format(Math.round(totalLeak));
         hRate.value = "$" + hourlyRate.toFixed(2) + "/hr";
         hLabor.value = "$" + format(Math.round(yearlyLaborCost));
@@ -1322,6 +1286,11 @@
         hNet.value = "$" + format(Math.round(netFiveYear));
         hHours.value = format(hoursBack) + " Hours";
         hRev.value = "$" + format(Math.round(revenueOpportunity));
+        
+        // Ensure default tier is logged if they don't click a button
+        if(!document.getElementById('h_tier').value) {
+            document.getElementById('h_tier').value = currentTierName + ' ($' + format(currentTierPrice) + ')';
+        }
     }
 
     inputs.forEach(id => elements[id].addEventListener('input', runMath));
@@ -1337,16 +1306,13 @@
         const btn = document.getElementById('unlockBtn');
         const lockWrapper = document.getElementById('lockWrapper');
 
-        // MAGIC FIX: Grab the email the user typed in and set it as the CC address
         const userEmailInput = document.getElementById('userEmailInput').value;
         document.getElementById('dynamic_cc').value = userEmailInput;
 
-        // Visual feedback
         btn.textContent = "Unlocking...";
         btn.style.backgroundColor = "#64748b";
         btn.style.pointerEvents = "none";
 
-        // Submit form data
         fetch(form.action, {
             method: "POST",
             headers: {
@@ -1354,15 +1320,11 @@
             },
             body: new FormData(form)
         }).then(response => {
-            // Success! Unblur the content
             lockWrapper.classList.add('unlocked');
-            
-            // Show a temporary success message at the top of the unblurred section
             const successMsg = document.createElement('div');
             successMsg.innerHTML = `<div style="background: #059669; color: #fff; padding: 15px; text-align: center; font-weight: 800; border-radius: 4px; margin-bottom: 20px; border: 2px solid #047857; text-transform: uppercase;">✅ Report Emailed! Math Unlocked Below.</div>`;
             document.querySelector('.locked-content').prepend(successMsg);
         }).catch(error => {
-            // Fallback unlock if fetch fails
             lockWrapper.classList.add('unlocked');
         });
     });

@@ -698,6 +698,112 @@
       box-shadow: 0 16px 34px rgba(234, 88, 12, .13);
     }
 
+    .calculator-explainer {
+      margin-top: 1.15rem;
+      border: 1px solid var(--slate-200);
+      background: linear-gradient(135deg, #fff, var(--orange-50));
+      padding: 1rem;
+    }
+
+    .calculator-explainer h3 {
+      margin: 0 0 .8rem;
+      font-size: 1.25rem;
+      line-height: 1.1;
+      letter-spacing: -.035em;
+      color: var(--slate-950);
+    }
+
+    .calculator-explainer p {
+      color: var(--slate-600);
+      margin: 0 0 .85rem;
+      font-weight: 650;
+      line-height: 1.55;
+    }
+
+    .calc-note-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .75rem;
+    }
+
+    .calc-note {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      padding: .85rem;
+      min-height: 135px;
+    }
+
+    .calc-note span {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      background: var(--orange-600);
+      color: #fff;
+      font-weight: 950;
+      margin-bottom: .65rem;
+    }
+
+    .calc-note strong {
+      display: block;
+      color: var(--slate-950);
+      margin-bottom: .35rem;
+      font-size: .98rem;
+      line-height: 1.15;
+    }
+
+    .calc-note small {
+      display: block;
+      color: var(--slate-600);
+      line-height: 1.45;
+      font-weight: 700;
+      font-size: .86rem;
+    }
+
+    .email-report-list {
+      display: grid;
+      gap: .55rem;
+      margin: .9rem 0 1rem;
+    }
+
+    .email-report-list div {
+      display: flex;
+      gap: .55rem;
+      align-items: flex-start;
+      color: var(--slate-200);
+      font-size: .86rem;
+      line-height: 1.45;
+      font-weight: 750;
+    }
+
+    .email-report-list span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      flex: 0 0 auto;
+      background: rgba(249, 115, 22, .18);
+      border: 1px solid rgba(249, 115, 22, .45);
+      color: #fed7aa;
+      font-size: .78rem;
+      font-weight: 950;
+    }
+
+    .privacy-strong {
+      color: #cbd5e1;
+      font-size: .8rem;
+      line-height: 1.55;
+      margin: .75rem 0 0;
+    }
+
+    .big-result .result-helper {
+      color: #fecaca;
+      font-size: .84rem;
+      line-height: 1.45;
+      margin: .75rem 0 0;
+      font-weight: 700;
+    }
+
     .big-result {
       background: linear-gradient(135deg, var(--red-950), #7f1d1d);
       border: 1px solid rgba(248, 113, 113, .38);
@@ -1540,6 +1646,7 @@
       .result-grid,
       .capacity-card,
       .mini-grid,
+      .calc-note-grid,
       .about-card {
         grid-template-columns: 1fr;
       }
@@ -1769,6 +1876,28 @@
                       <small>Full workflow</small>
                     </button>
                   </div>
+
+                  <div class="calculator-explainer">
+                    <h3>Your emailed report goes deeper than the number on this screen.</h3>
+                    <p>The calculator gives you the conservative baseline. When you opt in, the email report gives you the breakdown, the scenarios, and the estimating system blueprint behind the numbers.</p>
+                    <div class="calc-note-grid">
+                      <div class="calc-note">
+                        <span>1</span>
+                        <strong>Your current quoting drag</strong>
+                        <small>Annual quoting hours, monthly time cost, labour leak, and quoted volume based on the numbers you entered.</small>
+                      </div>
+                      <div class="calc-note">
+                        <span>2</span>
+                        <strong>20%, 40%, and 60% speed scenarios</strong>
+                        <small>A conservative upside range so you can see what faster estimating could mean without overpromising.</small>
+                      </div>
+                      <div class="calc-note">
+                        <span>3</span>
+                        <strong>Payback, checklist, and workbook blueprint</strong>
+                        <small>See what package likely fits, what to fix first, and the missed-scope checklist your shop can use right away.</small>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div id="report" class="report" aria-live="polite">
@@ -1815,6 +1944,7 @@
                 <div class="big-result">
                   <span>Annual Estimating Cost</span>
                   <strong id="annualCost">$0</strong>
+                  <p class="result-helper">This is the on-screen baseline. Your email report includes the full conservative analysis and system blueprint.</p>
                 </div>
                 <p class="side-note">This is a conservative estimate of what your current process may be costing every year in manual labour and preventable estimating risk.</p>
                 <div class="mini-grid">
@@ -1829,13 +1959,20 @@
                 </div>
 
                 <div class="email-box">
-                  <p style="font-weight: 900; margin-bottom: .75rem;">Enter your details to reveal the complete breakdown.</p>
+                  <p style="font-weight: 950; margin-bottom: .35rem; font-size:1.02rem;">Email me the full conservative report.</p>
+                  <p style="color:var(--slate-300); margin:.25rem 0 .75rem; font-size:.9rem; line-height:1.45;">You get everything shown on this page, plus the opt-in-only breakdown below.</p>
+                  <div class="email-report-list" aria-label="What the email report includes">
+                    <div><span>✓</span><strong>Estimating Leak Score and where the money is likely leaking.</strong></div>
+                    <div><span>✓</span><strong>20%, 40%, and 60% speed improvement scenarios.</strong></div>
+                    <div><span>✓</span><strong>Payback range, saved-hours view, and 5-year conservative outlook.</strong></div>
+                    <div><span>✓</span><strong>Missed-scope checklist and recommended workbook blueprint.</strong></div>
+                  </div>
                   <div class="email-grid">
                     <input class="dark-input" id="firstName" name="firstName" placeholder="First name" required />
                     <input class="dark-input" id="email" name="email" type="email" placeholder="Work email" required />
                   </div>
-                  <button class="btn btn-primary" type="submit" style="width:100%;">Reveal My Conservative Baseline</button>
-                  <p class="privacy">Your numbers stay private. We'll never sell or share your email. You'll only receive your estimating cost report and practical tips to quote faster and protect margin.</p>
+                  <button class="btn btn-primary" type="submit" style="width:100%;">Send My Full Conservative Report</button>
+                  <p class="privacy-strong">Your numbers stay private. We’ll never sell or share your email. You’ll only receive your estimating cost report and practical tips to quote faster and protect margin.</p>
                   <p id="formStatus" class="privacy" aria-live="polite"></p>
                 </div>
               </aside>
@@ -2124,9 +2261,34 @@
       const grossFiveYear = totalLeak * 5;
       const netFiveYear = grossFiveYear - state.selectedPrice;
       const payoffDays = totalLeak > 0 ? Math.ceil((state.selectedPrice / totalLeak) * 365) : 0;
-      const hoursBack = Math.round(yearlyHours * 0.4);
+      const hoursSaved20 = Math.round(yearlyHours * 0.2);
+      const hoursSaved40 = Math.round(yearlyHours * 0.4);
+      const hoursSaved60 = Math.round(yearlyHours * 0.6);
+      const newHours40 = Math.max(0, Math.round(yearlyHours - hoursSaved40));
+      const hoursSavedPerMonth40 = Math.round((hoursSaved40 / 12) * 10) / 10;
+      const hoursSavedPerWeek40 = Math.round((hoursSaved40 / 52) * 10) / 10;
+      const workdaysSaved40 = Math.round((hoursSaved40 / 8) * 10) / 10;
       const newMinutes = input.minutes * 0.6;
-      const revenueOpportunity = newMinutes > 0 ? (hoursBack * 60 / newMinutes) * 0.01 * input.jobSize : 0;
+      const revenueOpportunity = newMinutes > 0 ? (hoursSaved40 * 60 / newMinutes) * 0.01 * input.jobSize : 0;
+      const laborSavings20 = Math.round(yearlyLaborCost * 0.2);
+      const laborSavings40 = Math.round(yearlyLaborCost * 0.4);
+      const laborSavings60 = Math.round(yearlyLaborCost * 0.6);
+      const monthlyLeak = Math.round(totalLeak / 12);
+      const weeklyLeak = Math.round(totalLeak / 52);
+      const annualQuotingHours = Math.round(yearlyHours);
+      const annualQuotes = Math.round(bidsPerYear);
+
+      let leakScore = 0;
+      leakScore += input.minutes >= 60 ? 25 : input.minutes >= 30 ? 16 : 8;
+      leakScore += yearlyHours >= 500 ? 25 : yearlyHours >= 250 ? 18 : 10;
+      leakScore += errorRisk >= 50000 ? 25 : errorRisk >= 15000 ? 16 : 8;
+      leakScore += input.quotes >= 10 ? 15 : input.quotes >= 5 ? 10 : 5;
+      leakScore += input.burden >= 25 ? 10 : 5;
+      leakScore = Math.min(100, Math.max(0, Math.round(leakScore)));
+
+      const leakScoreLabel = leakScore >= 81 ? "High-risk quoting system" : leakScore >= 61 ? "Serious estimating drag" : leakScore >= 31 ? "Watch the process" : "Low concern";
+      const recommendedSystem = (totalLeak > 100000 || input.quotes >= 15 || annualVolume > 20000000) ? "Premium System" : (totalLeak < 25000 || input.quotes <= 4) ? "Starter System" : "Pro System";
+      const conservativeNote = "These figures use conservative assumptions: 0.5% estimating risk, a 40% speed-gain target, and a 1% revenue-opportunity model. They are planning estimates, not guaranteed outcomes.";
 
       state.results = {
         ...input,
@@ -2138,10 +2300,28 @@
         grossFiveYear: Math.round(grossFiveYear),
         netFiveYear: Math.round(netFiveYear),
         payoffDays,
-        hoursBack,
+        hoursBack: hoursSaved40,
         revenueOpportunity: Math.round(revenueOpportunity),
         selectedTier: state.selectedTier,
-        selectedPrice: state.selectedPrice
+        selectedPrice: state.selectedPrice,
+        annualQuotes,
+        annualQuotingHours,
+        monthlyLeak,
+        weeklyLeak,
+        hoursSaved20,
+        hoursSaved40,
+        hoursSaved60,
+        newHours40,
+        hoursSavedPerMonth40,
+        hoursSavedPerWeek40,
+        workdaysSaved40,
+        laborSavings20,
+        laborSavings40,
+        laborSavings60,
+        leakScore,
+        leakScoreLabel,
+        recommendedSystem,
+        conservativeNote
       };
 
       renderResults();
@@ -2186,7 +2366,7 @@
     function revealReport() {
       state.unlocked = true;
       $("#report").classList.add("show");
-      $("#formStatus").textContent = "Sent. Your report is unlocked below.";
+      $("#formStatus").textContent = "Sent. Your on-page report is unlocked below. The full conservative email report is on its way.";
       setTimeout(() => $("#report").scrollIntoView({ behavior: "smooth", block: "start" }), 120);
     }
 
@@ -2256,22 +2436,58 @@
 
         // Systeme.io friendly field names for personalized report emails
         average_job_size: state.results.jobSize,
+        average_job_size_formatted: money(state.results.jobSize),
         quotes_per_week: state.results.quotes,
         estimator_salary: state.results.salary,
+        estimator_salary_formatted: money(state.results.salary),
         burden_rate: state.results.burden,
         minutes_per_quote: state.results.minutes,
         selected_system: state.selectedTier,
         selected_price: state.selectedPrice,
+        selected_price_formatted: money(state.selectedPrice),
+        recommended_system: state.results.recommendedSystem,
         burdened_hourly_rate: money(state.results.hourlyRate),
-        annual_quotes: Math.round(state.results.quotes * 52),
-        annual_quoting_hours: Math.round((state.results.quotes * 52 * state.results.minutes) / 60),
+        annual_quotes: state.results.annualQuotes,
+        annual_quoting_hours: state.results.annualQuotingHours,
+        current_monthly_quoting_hours: Math.round((state.results.annualQuotingHours / 12) * 10) / 10,
+        current_weekly_quoting_hours: Math.round((state.results.annualQuotingHours / 52) * 10) / 10,
         yearly_labor_leak: state.results.yearlyLaborCost,
+        yearly_labor_leak_formatted: money(state.results.yearlyLaborCost),
         annual_quoted_volume: state.results.annualVolume,
+        annual_quoted_volume_formatted: money(state.results.annualVolume),
+        error_risk_conservative: state.results.errorRisk,
+        error_risk_conservative_formatted: money(state.results.errorRisk),
         total_annual_estimating_cost: state.results.totalLeak,
-        hours_reclaimed_40_percent: state.results.hoursBack,
+        total_annual_estimating_cost_formatted: money(state.results.totalLeak),
+        monthly_estimating_cost: state.results.monthlyLeak,
+        monthly_estimating_cost_formatted: money(state.results.monthlyLeak),
+        weekly_estimating_cost: state.results.weeklyLeak,
+        weekly_estimating_cost_formatted: money(state.results.weeklyLeak),
+        hours_reclaimed_20_percent: state.results.hoursSaved20,
+        hours_reclaimed_40_percent: state.results.hoursSaved40,
+        hours_reclaimed_60_percent: state.results.hoursSaved60,
+        new_annual_quoting_hours_40_percent: state.results.newHours40,
+        hours_saved_per_month_40_percent: state.results.hoursSavedPerMonth40,
+        hours_saved_per_week_40_percent: state.results.hoursSavedPerWeek40,
+        workdays_saved_40_percent: state.results.workdaysSaved40,
+        labor_savings_20_percent: state.results.laborSavings20,
+        labor_savings_20_percent_formatted: money(state.results.laborSavings20),
+        labor_savings_40_percent: state.results.laborSavings40,
+        labor_savings_40_percent_formatted: money(state.results.laborSavings40),
+        labor_savings_60_percent: state.results.laborSavings60,
+        labor_savings_60_percent_formatted: money(state.results.laborSavings60),
         five_year_cost: state.results.grossFiveYear,
+        five_year_cost_formatted: money(state.results.grossFiveYear),
         five_year_net_gain: state.results.netFiveYear,
+        five_year_net_gain_formatted: money(state.results.netFiveYear),
+        payoff_days: state.results.payoffDays,
         projected_revenue_opportunity: state.results.revenueOpportunity,
+        projected_revenue_opportunity_formatted: money(state.results.revenueOpportunity),
+        estimating_leak_score: state.results.leakScore,
+        estimating_leak_score_label: state.results.leakScoreLabel,
+        conservative_assumption_note: state.results.conservativeNote,
+        missed_scope_checklist: "Material grade/shape, labour by task, coating/finishing, install access, lift equipment/rentals, trucking/freight, hardware/anchors, subcontractor pricing, contingency, and final margin review.",
+        workbook_blueprint: "Customer/project info, material takeoff, labour build-up, install assumptions, coating/finishing, rentals/equipment, trucking/freight, subcontractors, markup/margin controls, quote review checklist, proposal output, shop handoff, and change order tracker.",
         submitted_at: new Date().toISOString()
       };
 

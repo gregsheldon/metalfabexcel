@@ -1,1370 +1,2340 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fix Your Hidden Estimating Leaks</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AntiERP Fabrication Estimating | Metal Fabrication Estimating Calculator</title>
+  <meta name="description" content="Watch Greg Sheldon explain how rushed fabrication estimates, copied spreadsheets, and missed scope drain margin before the job hits the floor. Then run the calculator to see your estimating leak." />
+  <meta property="og:title" content="The Hidden Cost of Manual Estimating in Metal Fabrication" />
+  <meta property="og:description" content="Greg explains why most fabrication shops do not need another ERP. They need a tighter estimating process and a custom Excel workbook built around how they quote." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://gregsheldon.github.io/metalfabexcel/social-share.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    :root {
+      --slate-950: #020617;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --orange-700: #c2410c;
+      --orange-600: #ea580c;
+      --orange-500: #f97316;
+      --orange-100: #ffedd5;
+      --orange-50: #fff7ed;
+      --red-950: #450a0a;
+      --red-700: #b91c1c;
+      --red-100: #fee2e2;
+      --green-950: #052e16;
+      --green-800: #166534;
+      --green-700: #15803d;
+      --green-100: #dcfce7;
+      --blue-100: #dbeafe;
+      --blue-950: #172554;
+      --purple-100: #f3e8ff;
+      --purple-950: #3b0764;
+      --amber-100: #fef3c7;
+      --amber-800: #92400e;
+      --shadow: 0 24px 80px rgba(15, 23, 42, .12);
+      --shadow-soft: 0 14px 40px rgba(15, 23, 42, .08);
+      --radius: 0;
+      --radius-sm: 0;
+    }
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+    * {
+      box-sizing: border-box;
+    }
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gregsheldon.github.io/metalfabexcel/">
-    <meta property="og:title" content="How to plug the hidden profit leaks in your estimating spreadsheets.">
-    <meta property="og:description" content="Most owners blame the shop floor for shrinking profits. But the truth is, the money was lost the moment an estimator had to guess on a labor formula.">
-    
-    <meta property="og:image" content="https://gregsheldon.github.io/metalfabexcel/300k_wasted.png">
-    
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    html {
+      scroll-behavior: smooth;
+    }
 
-    <style>
-        /* --- Base & Reset --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            line-height: 1.6; 
-            color: #0f172a; /* Slate 900 */
-            background-color: #cbd5e1; /* Industrial Steel Gray */
-            margin: 0; 
-            padding: 0; 
-        }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--slate-900);
+      background:
+        radial-gradient(circle at 14% 4%, rgba(249, 115, 22, .14), transparent 32rem),
+        linear-gradient(180deg, #fff 0%, var(--slate-50) 38%, var(--slate-100) 100%);
+      line-height: 1.5;
+    }
 
-        /* --- Main Container (The "Blueprint" Page) --- */
-        .container { 
-            max-width: 850px; 
-            margin: 40px auto; 
-            background: #ffffff; 
-            padding: 50px 60px; 
-            border-radius: 4px; 
-            border: 3px solid #1e293b;
-            box-shadow: 12px 12px 0px rgba(15, 23, 42, 0.2); 
-        }
-        
-        /* --- Typography & Text Highlights --- */
-        .preheadline {
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            font-weight: 900;
-            color: #ea580c;
-            letter-spacing: 0.08em;
-            margin-bottom: 15px;
-            display: inline-block;
-            background: #fff7ed;
-            padding: 4px 10px;
-            border: 2px solid #ea580c;
-            border-radius: 2px;
-        }
-        h1 { 
-            font-size: 2.6rem; 
-            font-weight: 900; 
-            line-height: 1.15; 
-            margin-bottom: 25px; 
-            letter-spacing: -0.02em; 
-            color: #0f172a;
-        }
-        .subhead { 
-            font-size: 1.25rem; 
-            color: #334155; 
-            margin-bottom: 30px; 
-            font-weight: 600; 
-            line-height: 1.5;
-        }
-        h2 { 
-            font-size: 1.6rem; 
-            margin: 50px 0 20px; 
-            text-transform: uppercase;
-            font-weight: 900;
-            letter-spacing: 0.05em;
-            color: #0f172a;
-            border-bottom: 5px solid #ea580c;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-        h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            font-weight: 800;
-            color: #0f172a;
-        }
-        p { margin-bottom: 20px; font-size: 1.1rem; color: #334155; }
-        
-        /* Inline Eye-Catchers */
-        .hl-orange { color: #ea580c; font-weight: 900; }
-        .hl-red { color: #e11d48; font-weight: 900; }
-        .hl-underline { border-bottom: 4px solid #ea580c; padding-bottom: 2px; }
-        
-        .highlight { 
-            color: #c2410c; 
-            font-weight: 800; 
-            background: #ffedd5; 
-            padding: 2px 6px; 
-            border-radius: 2px;
-            border-bottom: 2px solid #ea580c;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        /* --- Video Wrapper --- */
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; 
-            height: 0;
-            overflow: hidden;
-            margin-bottom: 35px;
-            border-radius: 4px;
-            border: 4px solid #1e293b;
-            background: #000;
-            box-shadow: 8px 8px 0px rgba(15, 23, 42, 0.15);
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+    button,
+    input {
+      font: inherit;
+    }
 
-        /* --- Authority Block --- */
-        .authority { 
-            background: #f8fafc; 
-            border-left: 6px solid #ea580c; 
-            border-right: 2px solid #e2e8f0;
-            border-top: 2px solid #e2e8f0;
-            border-bottom: 2px solid #e2e8f0;
-            padding: 20px 25px; 
-            margin: 30px 0; 
-            font-weight: 800; 
-            color: #0f172a; 
-            font-size: 1.15rem; 
-            box-shadow: 4px 4px 0px rgba(15, 23, 42, 0.05);
-        }
-        
-        /* --- Spec-Sheet Lists --- */
-        ul { margin-bottom: 30px; list-style-type: none; padding: 0;}
-        ul li { 
-            margin-bottom: 12px; 
-            padding: 12px 15px 12px 45px; 
-            position: relative; 
-            font-size: 1.1rem; 
-            font-weight: 600;
-            border-radius: 4px;
-            border: 2px solid;
-        }
-        ul.problem li { 
-            background: #fef2f2; 
-            border-color: #fca5a5; 
-            color: #7f1d1d; 
-        }
-        ul.problem li::before { 
-            content: "⚠️"; 
-            position: absolute; 
-            left: 15px; 
-            font-size: 1.1rem; 
-            top: 12px;
-        }
-        ul.solution li { 
-            background: #f0fdf4; 
-            border-color: #86efac; 
-            color: #14532d; 
-        }
-        ul.solution li::before { 
-            content: "✅"; 
-            position: absolute; 
-            left: 15px; 
-            font-size: 1.1rem; 
-            top: 12px;
-        }
-        
-        /* --- Product Image --- */
-        .product-image {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            margin: 40px auto;
-            border-radius: 4px;
-            border: 4px solid #1e293b;
-            box-shadow: 8px 8px 0px rgba(15, 23, 42, 0.15);
-        }
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-        /* --- Alerts & Warning Boxes --- */
-        .cost-of-inaction {
-            background: #0f172a;
-            color: #f8fafc;
-            padding: 35px 30px;
-            border-radius: 4px;
-            margin: 40px 0;
-            border: 4px solid #ea580c;
-            box-shadow: 10px 10px 0px rgba(234, 88, 12, 0.2);
-        }
-        .cost-of-inaction h3 {
-            color: #ea580c;
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .cost-of-inaction p { font-size: 1.2rem; font-weight: 500; margin-bottom: 0; color: #f8fafc; }
+    .top-strip {
+      background: var(--slate-950);
+      color: #fff;
+      font-size: .88rem;
+      text-align: center;
+      padding: .55rem 1rem;
+    }
 
-        .guarantee-box {
-            background: #fffbeb;
-            color: #92400e;
-            padding: 35px 30px;
-            border-radius: 4px;
-            margin: 40px 0;
-            text-align: center;
-            border: 4px solid #f59e0b;
-            box-shadow: 8px 8px 0px rgba(245, 158, 11, 0.2);
-        }
-        .guarantee-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #b45309;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-        .guarantee-box p { font-size: 1.15rem; margin-bottom: 0; font-weight: 600; color: #92400e; }
+    .top-strip strong {
+      color: #fed7aa;
+    }
 
-        /* --- Founder Section --- */
-        .founder-note {
-            display: flex;
-            align-items: flex-start;
-            background: #f1f5f9;
-            padding: 30px;
-            border-radius: 4px;
-            margin: 40px 0;
-            border: 2px solid #cbd5e1;
-            box-shadow: 6px 6px 0px rgba(15, 23, 42, 0.05);
-        }
-        .founder-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 4px;
-            margin-right: 30px;
-            flex-shrink: 0;
-            object-fit: cover;
-            border: 4px solid #1e293b;
-        }
-        .founder-text h3 { margin-bottom: 10px; font-size: 1.5rem; text-transform: uppercase; font-weight: 900;}
-        .founder-text p { font-size: 1.05rem; margin-bottom: 15px; font-weight: 500;}
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, .88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(226, 232, 240, .9);
+    }
 
-        /* --- BUTTONS --- */
-        .btn-top {
-            display: block; 
-            width: 100%; 
-            text-align: center;
-            background-color: #ea580c; 
-            color: #ffffff; 
-            border: 3px solid #0f172a; 
-            padding: 22px; 
-            font-size: 1.4rem; 
-            font-weight: 900; 
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-radius: 4px; 
-            cursor: pointer; 
-            box-shadow: 6px 6px 0px #0f172a;
-            transition: all 0.1s ease; 
-            text-decoration: none;
-            margin: 10px 0 40px;
-        }
-        .btn-top:hover { 
-            background-color: #f97316; 
-            transform: translate(2px, 2px);
-            box-shadow: 4px 4px 0px #0f172a;
-        }
-        .btn-top:active { 
-            transform: translate(6px, 6px);
-            box-shadow: 0px 0px 0px #0f172a;
-        }
+    .header-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
 
-        /* --- PRICING TIERS (Perfectly Even 3-Column) --- */
-        .pricing-section {
-            margin: 60px 0;
-            padding-top: 50px;
-            border-top: 4px solid #1e293b;
-        }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 25px;
-            margin-top: 40px;
-        }
-        .pricing-card {
-            background: #ffffff;
-            border: 3px solid #1e293b;
-            border-radius: 4px;
-            padding: 30px 25px;
-            box-shadow: 8px 8px 0px rgba(15, 23, 42, 0.15);
-            display: flex;
-            flex-direction: column;
-        }
-        .pricing-card.popular {
-            border-color: #ea580c;
-            box-shadow: 8px 8px 0px rgba(234, 88, 12, 0.2);
-            position: relative;
-        }
-        .popular-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #ea580c;
-            color: #fff;
-            padding: 4px 15px;
-            font-size: 0.8rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border: 2px solid #1e293b;
-            white-space: nowrap;
-        }
-        .pricing-card h4 {
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            font-weight: 900;
-            color: #0f172a;
-            margin-bottom: 5px;
-        }
-        .pricing-price {
-            font-size: 2.1rem;
-            font-weight: 900;
-            color: #ea580c;
-            margin-bottom: 15px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .pricing-desc {
-            font-size: 0.95rem;
-            color: #475569;
-            font-weight: 600;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 2px dashed #cbd5e1;
-            line-height: 1.4;
-        }
-        .pricing-subtitle {
-            font-size: 1.05rem;
-            font-weight: 900;
-            color: #0f172a;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        .pricing-features {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 30px;
-            flex-grow: 1;
-        }
-        .pricing-features li {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #334155;
-            margin-bottom: 12px;
-            padding-left: 28px;
-            position: relative;
-            line-height: 1.3;
-            border: none;
-            border-radius: 0;
-            background: transparent;
-        }
-        .pricing-features li::before {
-            content: "☐";
-            position: absolute;
-            left: 0;
-            top: -3px;
-            font-size: 1.4rem;
-            color: #94a3b8;
-            font-weight: normal;
-        }
-        .pricing-meta {
-            background: #f8fafc;
-            border: 2px solid #cbd5e1;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 25px;
-        }
-        .pricing-meta p {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 5px;
-        }
-        .pricing-meta p:last-child { margin-bottom: 0; }
-        .pricing-meta span { color: #ea580c; font-weight: 900; display: block;}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      font-weight: 950;
+      letter-spacing: -.04em;
+      font-size: 1.35rem;
+    }
 
-        /* ====================================================
-           FULL CALCULATOR AUDIT SECTION 
-           ==================================================== */
-        .form-section { 
-            background: #0f172a; 
-            color: #f8fafc;
-            padding: 50px 40px; 
-            border-radius: 6px; 
-            margin-top: 50px; 
-            border: 4px solid #334155;
-            box-shadow: 12px 12px 0px #1e293b;
-        }
-        .form-section h3 { font-size: 2.2rem; margin-bottom: 15px; font-weight: 900; color: #fff; line-height: 1.1; text-transform: uppercase;}
-        .form-section .note { color: #94a3b8; font-size: 1.1rem; margin-bottom: 30px; display: block; font-weight: 500;}
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 0;
+      background: linear-gradient(135deg, var(--orange-500), var(--orange-700));
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(234, 88, 12, .28);
+    }
 
-        /* Dynamic Selected Tier Badge */
-        .selected-tier-badge {
-            background: #020617;
-            border: 2px solid #ea580c;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 30px;
-            text-align: center;
-            display: none; 
-            box-shadow: inset 0 0 20px rgba(234, 88, 12, 0.1);
-        }
-        .selected-tier-badge span.label {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            display: block;
-            margin-bottom: 5px;
-        }
-        .selected-tier-badge span.value {
-            color: #ea580c;
-            font-size: 1.4rem;
-            font-weight: 900;
-            font-family: 'Courier New', Courier, monospace;
-        }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.35rem;
+      font-size: .93rem;
+      color: var(--slate-600);
+      font-weight: 750;
+    }
 
-        .step-label-calc { 
-            display: inline-block; 
-            background: #ea580c;
-            color: #fff;
-            font-weight: 900; 
-            font-size: 0.9rem; 
-            text-transform: uppercase; 
-            letter-spacing: 0.05em;
-            margin: 30px 0 15px; 
-            padding: 6px 12px;
-            border-radius: 2px;
-            box-shadow: 3px 3px 0px #000;
-        }
-        
-        .input-grid-calc { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .input-group-calc { margin-bottom: 15px; text-align: left; }
-        .input-group-calc label { display: block; font-weight: 800; margin-bottom: 8px; color: #cbd5e1; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        
-        .input-group-calc input { 
-            width: 100%; 
-            padding: 16px; 
-            background: #1e293b; 
-            border: 2px solid #475569; 
-            border-radius: 4px; 
-            color: #fff; 
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.5rem; 
-            font-weight: 900; 
-            text-align: center; 
-            box-shadow: inset 3px 3px 6px rgba(0,0,0,0.4);
-            transition: all 0.2s;
-        }
-        .input-group-calc input:focus { 
-            outline: none; 
-            border-color: #ea580c; 
-            background: #020617; 
-            box-shadow: inset 3px 3px 6px rgba(0,0,0,0.6), 0 0 0 2px rgba(234, 12, 0.3); 
-        }
+    .nav a:hover {
+      color: var(--slate-950);
+    }
 
-        .pain-box-calc { 
-            background: #000; 
-            color: #fff; 
-            padding: 35px; 
-            border-radius: 6px; 
-            margin: 30px 0; 
-            border: 2px solid #ef4444; 
-            box-shadow: inset 0 0 30px rgba(239, 68, 68, 0.15);
-            position: relative;
-        }
-        .stat-label-calc { color: #fca5a5; font-size: 0.95rem; text-transform: uppercase; font-weight: 900; text-align: center; margin-bottom: 10px; letter-spacing: 0.05em;}
-        .leak-value { font-size: 4rem; font-family: 'Courier New', Courier, monospace; font-weight: 900; color: #ef4444; line-height: 1.1; text-align: center; margin-bottom: 25px; text-shadow: 0 0 15px rgba(239,68,68,0.4);}
-        
-        .audit-results-box { background: transparent; padding: 20px 0 0 0; border-top: 2px dashed #475569; font-size: 0.9rem; font-weight: 600;}
-        .audit-step-line { display: flex; justify-content: space-between; margin-bottom: 10px; color: #94a3b8; align-items: center; position: relative;}
-        .audit-step-line .math-res { font-weight: 900; color: #f8fafc; font-family: 'Courier New', Courier, monospace; font-size: 1.1rem;}
+    .btn {
+      border: 0;
+      border-radius: 0;
+      padding: .95rem 1.25rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      white-space: nowrap;
+    }
 
-        .info-icon { display: inline-block; margin-left: 5px; width: 16px; height: 16px; background: #334155; color: #fff; font-size: 11px; text-align: center; line-height: 16px; border-radius: 2px; cursor: help; transition: background 0.2s; font-weight: bold;}
-        .info-icon:hover { background: #ea580c; }
-        .tooltip { visibility: hidden; width: 260px; background-color: #f8fafc; color: #0f172a; text-align: left; padding: 15px; border-radius: 4px; border: 3px solid #ea580c; position: absolute; z-index: 100; bottom: 125%; right: 0; opacity: 0; transition: opacity 0.2s; font-weight: 600; font-size: 0.85rem; line-height: 1.5; box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4); }
-        .tooltip strong { color: #c2410c; display: block; margin-bottom: 6px; text-transform: uppercase; font-weight: 900;}
-        .audit-step-line:hover .tooltip { visibility: visible; opacity: 1; }
+    .btn:hover {
+      transform: translateY(-1px);
+    }
 
-        .detailed-math { background: #1e293b; border-left: 6px solid #3b82f6; padding: 25px; border-radius: 4px; margin-bottom: 30px; font-size: 0.9rem; color: #cbd5e1; }
-        .math-title { font-weight: 900; color: #fff; text-transform: uppercase; margin-bottom: 15px; border-bottom: 2px solid #334155; padding-bottom: 8px;}
-        .math-item { margin-bottom: 20px; }
-        .math-item strong { color: #60a5fa; display: block; margin-bottom: 5px; font-size: 1.05rem;}
-        .math-explanation { font-style: italic; color: #94a3b8; margin-bottom: 8px; font-weight: 500;}
-        .formula-line { font-family: 'Courier New', Courier, monospace; font-weight: bold; display: block; background: #020617; padding: 12px 15px; border-radius: 4px; margin-top: 5px; color: #38bdf8; line-height: 1.4; border: 1px solid #1e3a8a;}
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--orange-500), var(--orange-700));
+      box-shadow: 0 14px 35px rgba(234, 88, 12, .30);
+    }
 
-        .gain-box-calc { background: #022c22; border: 2px solid #10b981; padding: 30px; border-radius: 6px; margin-bottom: 30px; box-shadow: inset 0 0 30px rgba(16,185,129,0.1); }
-        .gain-row-calc { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 700; font-size: 1.1rem; color: #a7f3d0; text-transform: uppercase; align-items: center; position: relative;}
-        .gain-val-calc { font-weight: 900; color: #34d399; font-family: 'Courier New', Courier, monospace; font-size: 1.3rem;}
-        .gain-row-calc:hover .tooltip { visibility: visible; opacity: 1;}
+    .btn-primary:hover {
+      box-shadow: 0 18px 42px rgba(234, 88, 12, .36);
+    }
 
-        .btn-send { 
-            display: inline-block; width: 100%; background-color: #ea580c; color: #ffffff; border: 3px solid #000; padding: 22px; font-size: 1.3rem; font-weight: 900; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.1s; margin-top: 20px; box-shadow: 6px 6px 0px #000; text-decoration: none; text-align: center;
-        }
-        .btn-send:hover { background-color: #f97316; transform: translate(2px, 2px); box-shadow: 4px 4px 0px #000; }
-        .btn-send:active { transform: translate(6px, 6px); box-shadow: 0px 0px 0px #000; }
+    .btn-dark {
+      color: #fff;
+      background: var(--slate-950);
+      box-shadow: 0 14px 35px rgba(2, 6, 23, .18);
+    }
 
-        /* --- THE BLUR & LOCK MECHANISM --- */
-        .locked-wrapper { position: relative; margin-top: 30px; }
-        
-        .locked-content {
-            filter: blur(5px);
-            opacity: 1;
-            pointer-events: none;
-            user-select: none;
-            transition: all 0.5s ease;
-        }
-        .unlocked .locked-content {
-            filter: blur(0);
-            pointer-events: auto;
-            user-select: auto;
-        }
+    .btn-light {
+      color: var(--slate-950);
+      background: #fff;
+      border: 1px solid var(--slate-200);
+    }
 
-        .locked-overlay {
-            position: absolute;
-            top: -20px; left: 0; right: 0; bottom: 0;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding-top: 120px;
-            background: transparent;
-            border-radius: 6px;
-            transition: opacity 0.5s ease;
-        }
-        .unlocked .locked-overlay {
-            opacity: 0;
-            pointer-events: none;
-            display: none;
-        }
+    .hero {
+      padding: 72px 0 46px;
+    }
 
-        .capture-fields { 
-            background: #1e293b; 
-            padding: 40px; 
-            border-radius: 6px; 
-            border: 2px solid #ea580c; 
-            border-top: 8px solid #ea580c; 
-            width: 90%; 
-            max-width: 550px; 
-            box-shadow: 0 0 40px rgba(234, 88, 12, 0.25), 0 25px 50px -12px rgba(0,0,0,0.9);
-            transform: scale(1.02);
-            margin: 0 auto;
-        }
-        
-        @keyframes pulse-lock {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
-        }
-        .lock-icon {
-            display: inline-block;
-            font-size: 3rem;
-            margin-bottom: 10px;
-            animation: pulse-lock 2.5s infinite ease-in-out;
-        }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
+      gap: 42px;
+      align-items: center;
+    }
 
-        .lock-list {
-            text-align: left; color: #cbd5e1; font-size: 1.05rem; font-weight: 500; 
-            max-width: 440px; margin: 0 auto 25px; list-style-type: none; padding: 0;
-        }
-        .lock-list li {
-            margin-bottom: 12px; padding: 0 0 0 35px; position: relative; line-height: 1.4;
-            border: none; border-radius: 0; background: transparent;
-        }
-        .lock-list li strong { color: #f8fafc; font-weight: 800;}
-        .lock-list li::before { 
-            content: "→"; position: absolute; left: 0; color: #ea580c; 
-            font-weight: 900; font-size: 1.4rem; top: -4px; background: transparent; border: none;
-        }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      border: 1px solid rgba(234, 88, 12, .22);
+      background: var(--orange-50);
+      color: var(--orange-700);
+      padding: .55rem .75rem;
+      border-radius: 0;
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+    }
 
-        /* --- Footer --- */
-        .quiet-footer {
-            margin-top: 60px;
-            padding: 30px;
-            text-align: center;
-            color: #475569;
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-        .quiet-footer a {
-            color: #334155;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .quiet-footer a:hover {
-            color: #ea580c;
-        }
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
 
-        /* ========================================== */
-        /* EXIT POPUP STYLES                          */
-        /* ========================================== */
-        .popup-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-        }
-        .popup-overlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .popup-content {
-            background: #ffffff;
-            padding: 45px 40px;
-            max-width: 580px;
-            width: 90%;
-            border-radius: 4px;
-            border: 5px solid #ea580c;
-            box-shadow: 15px 15px 0px rgba(0,0,0,0.6);
-            position: relative;
-            text-align: center;
-            transform: translateY(-20px);
-            transition: transform 0.3s ease;
-        }
-        .popup-overlay.show .popup-content {
-            transform: translateY(0);
-        }
-        .close-btn {
-            position: absolute;
-            top: 10px; right: 20px;
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #94a3b8;
-            cursor: pointer;
-            transition: color 0.2s;
-            line-height: 1;
-        }
-        .close-btn:hover { color: #0f172a; }
-        .popup-header {
-            display: inline-block;
-            background: #fff7ed;
-            color: #c2410c;
-            padding: 6px 18px;
-            border-radius: 2px;
-            font-weight: 900;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 20px;
-            border: 2px solid #ea580c;
-        }
-        .pulse-dot {
-            height: 10px; width: 10px;
-            background-color: #ea580c;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 6px;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(234, 88, 12, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(234, 88, 12, 0); }
-        }
-        .popup-content h2 {
-            color: #0f172a;
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            line-height: 1.1;
-            text-transform: uppercase;
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-        .popup-content p {
-            font-size: 1.15rem;
-            color: #334155;
-            margin-bottom: 25px;
-            font-weight: 600;
-            line-height: 1.5;
-        }
-        .popup-bullets {
-            text-align: left;
-            margin: 0 auto 35px;
-            max-width: 450px;
-            list-style: none;
-            padding: 0;
-        }
-        .popup-bullets li {
-            padding: 10px 15px;
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-left: 4px solid #334155;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 8px;
-            border-radius: 2px;
-        }
-        .popup-btn {
-            display: block;
-            background: #ea580c;
-            color: #fff !important;
-            font-size: 1.3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            text-decoration: none;
-            padding: 22px;
-            border-radius: 4px;
-            box-shadow: 8px 8px 0px #0f172a;
-            transition: all 0.1s;
-            border: 3px solid #0f172a;
-            letter-spacing: 0.05em;
-        }
-        .popup-btn:hover {
-            background: #f97316;
-            transform: translate(3px, 3px);
-            box-shadow: 5px 5px 0px #0f172a;
-        }
-        .decline-btn {
-            background: none;
-            border: none;
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-top: 25px;
-            text-decoration: underline;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        .decline-btn:hover { color: #334155; }
+    h1 {
+      font-size: clamp(2.55rem, 6vw, 5.85rem);
+      line-height: .96;
+      letter-spacing: -.075em;
+      margin-bottom: 1.25rem;
+      color: var(--slate-950);
+    }
+
+    .hero-lede {
+      font-size: clamp(1.08rem, 2vw, 1.33rem);
+      color: var(--slate-600);
+      max-width: 760px;
+      margin-bottom: 1.65rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin: 1.75rem 0 1.5rem;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 2rem;
+    }
+
+    .trust-card {
+      background: rgba(255, 255, 255, .86);
+      border: 1px solid var(--slate-200);
+      border-radius: 0;
+      padding: 1rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .trust-card strong {
+      display: block;
+      font-size: 1.3rem;
+      letter-spacing: -.04em;
+      color: var(--slate-950);
+    }
+
+    .trust-card span {
+      color: var(--slate-600);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .hero-panel {
+      background: var(--slate-950);
+      color: #fff;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 28px 90px rgba(2, 6, 23, .28);
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-panel:before {
+      content: "";
+      position: absolute;
+      inset: -80px -110px auto auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 0;
+      background: rgba(249, 115, 22, .28);
+      filter: blur(8px);
+      z-index: -1;
+    }
+
+    .panel-top {
+      padding: 1.3rem 1.4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .10);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .8rem;
+    }
+
+    .status-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      color: #bbf7d0;
+      font-weight: 850;
+      font-size: .83rem;
+    }
+
+    .status-dot:before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 0;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, .12);
+    }
+
+    .panel-body {
+      padding: 1.5rem;
+    }
+
+    .panel-total {
+      background: linear-gradient(135deg, rgba(127, 29, 29, .74), rgba(234, 88, 12, .20));
+      border: 1px solid rgba(248, 113, 113, .38);
+      border-radius: 0;
+      padding: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .panel-total span {
+      display: block;
+      color: #fecaca;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .78rem;
+      font-weight: 900;
+      margin-bottom: .35rem;
+    }
+
+    .panel-total strong {
+      display: block;
+      font-size: clamp(2.6rem, 6vw, 4.3rem);
+      line-height: .95;
+      letter-spacing: -.07em;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+
+    .mini-stat {
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .09);
+      border-radius: 0;
+      padding: 1rem;
+    }
+
+    .mini-stat span {
+      display: block;
+      color: var(--slate-300);
+      font-size: .75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.45rem;
+      letter-spacing: -.04em;
+      margin-top: .25rem;
+    }
 
 
-        /* --- Mobile Responsiveness --- */
-        @media (max-width: 900px) {
-            .pricing-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 768px) {
-            .table-wrapper { overflow-x: auto; }
-            .process-grid { grid-template-columns: 1fr; }
-            .input-grid-calc { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 600px) {
-            body { padding-bottom: 70px; } 
-            .container { padding: 30px 20px; margin: 15px auto; border-width: 2px; box-shadow: 6px 6px 0px rgba(15, 23, 42, 0.2); }
-            h1 { font-size: 2.1rem; }
-            .form-section { padding: 30px 20px; box-shadow: 6px 6px 0px #1e293b; border-width: 2px;}
-            .founder-note { flex-direction: column; text-align: center; align-items: center; }
-            .founder-img { margin-right: 0; margin-bottom: 20px; }
-            table { font-size: 0.85rem; }
-            th, td { padding: 12px 10px; }
-            .leak-value { font-size: 2.8rem; }
-            .capture-fields { padding: 30px 20px; width: 100%; transform: none; }
-            .audit-step-line { flex-direction: column; align-items: flex-start; }
-            .audit-step-line .math-res { margin-top: 5px; }
-            .locked-overlay { padding-top: 80px; }
-            .popup-content { padding: 30px 20px; }
-            .popup-content h2 { font-size: 1.6rem !important; }
-        }
+    .video-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+      align-items: stretch;
+    }
 
-    </style>
+    .video-copy,
+    .video-shell {
+      border: 2px solid var(--slate-950);
+      border-radius: 0;
+      box-shadow: var(--shadow-soft);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-copy {
+      background: #fff;
+      padding: clamp(1.25rem, 3vw, 2rem);
+      justify-content: center;
+    }
+
+    .video-copy h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      margin-bottom: .8rem;
+      color: var(--slate-950);
+    }
+
+    .video-copy p {
+      color: var(--slate-600);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    .video-points {
+      list-style: none;
+      padding: 0;
+      margin: .25rem 0 0;
+      display: grid;
+      gap: .65rem;
+    }
+
+    .video-points li {
+      display: flex;
+      gap: .6rem;
+      align-items: flex-start;
+      color: var(--slate-700);
+      font-weight: 800;
+    }
+
+    .video-points li:before {
+      content: "✓";
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      display: grid;
+      place-items: center;
+      background: var(--orange-600);
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 950;
+    }
+
+    .video-shell {
+      background: var(--slate-950);
+      padding: clamp(1.25rem, 3vw, 2rem);
+      color: #fff;
+      justify-content: center;
+    }
+
+    .video-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      background:
+        linear-gradient(135deg, rgba(234, 88, 12, .22), rgba(15, 23, 42, .12)),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.055) 0 10px, rgba(255,255,255,.025) 10px 20px),
+        var(--slate-900);
+      border: 1px solid rgba(255, 255, 255, .28);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .video-frame iframe,
+    .video-frame video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-placeholder {
+      text-align: center;
+      padding: 1.5rem;
+      max-width: 520px;
+    }
+
+    .play-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 1rem;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--orange-500), var(--orange-700));
+      color: #fff;
+      font-size: 1.8rem;
+      box-shadow: 0 18px 42px rgba(234, 88, 12, .34);
+    }
+
+    .video-placeholder strong {
+      display: block;
+      font-size: clamp(1.35rem, 3vw, 2.25rem);
+      letter-spacing: -.055em;
+      line-height: 1;
+      margin-bottom: .55rem;
+    }
+
+    .video-placeholder span {
+      display: block;
+      color: var(--slate-300);
+      font-weight: 750;
+    }
+
+    .embed-note {
+      color: var(--slate-300);
+      font-size: .86rem;
+      margin: .9rem 0 0;
+      font-weight: 750;
+    }
+
+    .video-action-card {
+      margin-top: 1rem;
+      background: rgba(255, 255, 255, .065);
+      border: 1px solid rgba(255, 255, 255, .14);
+      padding: 1rem;
+      display: grid;
+      gap: .75rem;
+    }
+
+    .video-action-card h3 {
+      color: #fff;
+      font-size: 1.35rem;
+      line-height: 1.05;
+      letter-spacing: -.045em;
+      margin: 0;
+    }
+
+    .video-action-card p {
+      color: var(--slate-300);
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .video-action-card .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-heading {
+      max-width: 790px;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -.06em;
+      margin-bottom: .75rem;
+      color: var(--slate-950);
+    }
+
+    .section-heading p {
+      color: var(--slate-600);
+      font-size: 1.08rem;
+    }
+
+    .calculator-card {
+      background: #fff;
+      border: 2px solid var(--slate-950);
+      border-radius: 0;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .calculator-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 0;
+    }
+
+    .calculator-main {
+      padding: clamp(1.2rem, 3vw, 2.3rem);
+      border-right: 1px solid var(--slate-200);
+    }
+
+    .calculator-side {
+      padding: clamp(1.2rem, 3vw, 2rem);
+      background: linear-gradient(180deg, var(--slate-950), var(--slate-900));
+      color: #fff;
+    }
+
+    .step-tag {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      background: var(--orange-600);
+      color: #fff;
+      border-radius: 0;
+      padding: .45rem .7rem;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 950;
+      margin-bottom: 1rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--slate-600);
+      font-weight: 950;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid var(--slate-200);
+      background: #fff;
+      border-radius: 0;
+      padding: .95rem 1rem;
+      color: var(--slate-950);
+      outline: none;
+      font-weight: 850;
+      transition: border .18s ease, box-shadow .18s ease;
+    }
+
+    input:focus {
+      border-color: var(--orange-500);
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, .14);
+    }
+
+    .dark-input {
+      background: rgba(255, 255, 255, .08);
+      border-color: rgba(255, 255, 255, .14);
+      color: #fff;
+    }
+
+    .dark-input::placeholder {
+      color: var(--slate-400);
+    }
+
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .8rem;
+      margin: 1.4rem 0;
+    }
+
+    .tier-button {
+      border: 2px solid var(--slate-200);
+      background: #fff;
+      border-radius: 0;
+      padding: 1rem;
+      text-align: left;
+      cursor: pointer;
+      color: var(--slate-900);
+      min-height: 122px;
+    }
+
+    .tier-button small {
+      display: block;
+      color: var(--orange-600);
+      font-weight: 950;
+      text-transform: uppercase;
+      margin-top: .2rem;
+      letter-spacing: .08em;
+    }
+
+    .tier-button strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: .35rem;
+    }
+
+    .tier-button span {
+      display: block;
+      color: var(--orange-600);
+      font-size: 1.45rem;
+      font-weight: 950;
+      letter-spacing: -.04em;
+    }
+
+    .tier-button.active {
+      border-color: var(--orange-600);
+      background: var(--orange-50);
+      box-shadow: 0 16px 34px rgba(234, 88, 12, .13);
+    }
+
+    .big-result {
+      background: linear-gradient(135deg, var(--red-950), #7f1d1d);
+      border: 1px solid rgba(248, 113, 113, .38);
+      border-radius: 0;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .big-result span {
+      display: block;
+      color: #fecaca;
+      font-size: .75rem;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: .35rem;
+    }
+
+    .big-result strong {
+      display: block;
+      font-size: clamp(2.2rem, 5vw, 3.7rem);
+      line-height: .98;
+      letter-spacing: -.07em;
+    }
+
+    .side-note {
+      color: var(--slate-300);
+      font-size: .96rem;
+      margin-bottom: 1rem;
+    }
+
+    .email-box {
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 0;
+      padding: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    .email-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .75rem;
+      margin-bottom: .85rem;
+    }
+
+    .privacy {
+      color: var(--slate-400);
+      font-size: .78rem;
+      margin: .75rem 0 0;
+    }
+
+    .report {
+      display: none;
+      margin-top: 1.4rem;
+      border-top: 1px solid var(--slate-200);
+      padding-top: 1.4rem;
+    }
+
+    .report.show {
+      display: block;
+    }
+
+    .success-banner {
+      display: flex;
+      gap: .75rem;
+      align-items: center;
+      background: var(--green-100);
+      color: var(--green-950);
+      border: 2px solid var(--green-700);
+      border-radius: 0;
+      padding: 1rem;
+      font-weight: 950;
+      margin-bottom: 1rem;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-card {
+      border-radius: 0;
+      padding: 1rem;
+      min-height: 126px;
+    }
+
+    .result-card.blue {
+      background: var(--blue-100);
+      color: var(--blue-950);
+    }
+
+    .result-card.red {
+      background: var(--red-100);
+      color: var(--red-950);
+    }
+
+    .result-card.purple {
+      background: var(--purple-100);
+      color: var(--purple-950);
+    }
+
+    .result-card span {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .72rem;
+      font-weight: 950;
+      margin-bottom: .45rem;
+      opacity: .76;
+    }
+
+    .result-card strong {
+      display: block;
+      font-size: 1.7rem;
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .capacity-card {
+      background: linear-gradient(135deg, var(--green-950), var(--green-800));
+      color: #fff;
+      border-radius: 0;
+      padding: 1.35rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .capacity-card span {
+      display: block;
+      color: #bbf7d0;
+      text-transform: uppercase;
+      font-size: .75rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      margin-bottom: .4rem;
+    }
+
+    .capacity-card strong {
+      font-size: 2.2rem;
+      letter-spacing: -.055em;
+      display: block;
+      line-height: 1;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      align-items: stretch;
+    }
+
+    .story-card,
+    .proof-card,
+    .testimonial,
+    .offer-card,
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      border-radius: 0;
+      box-shadow: var(--shadow-soft);
+      padding: 1.35rem;
+    }
+
+    .list-stack {
+      display: grid;
+      gap: .8rem;
+      margin: 1.2rem 0 0;
+    }
+
+    .pain-row,
+    .win-row {
+      display: flex;
+      gap: .8rem;
+      align-items: flex-start;
+      border-left: 5px solid var(--red-700);
+      background: #fff5f5;
+      border-radius: 0;
+      padding: 1rem;
+      color: var(--slate-800);
+      font-weight: 700;
+    }
+
+    .win-row {
+      border-left-color: var(--green-700);
+      background: #f0fdf4;
+    }
+
+    .icon-badge {
+      width: 30px;
+      height: 30px;
+      border-radius: 0;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, .08);
+    }
+
+    .dark-callout {
+      background: var(--slate-950);
+      color: #fff;
+      border: 2px solid var(--orange-600);
+      border-radius: 0;
+      padding: 1.5rem;
+      margin-top: 1.1rem;
+    }
+
+    .dark-callout h3 {
+      color: #fed7aa;
+      letter-spacing: -.04em;
+      font-size: 1.55rem;
+      margin-bottom: .55rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .offer-card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .offer-card.featured {
+      border: 2px solid var(--orange-600);
+      background: var(--orange-50);
+      transform: translateY(-8px);
+    }
+
+    .ribbon {
+      margin: -1.35rem -1.35rem 1rem;
+      background: var(--orange-600);
+      color: #fff;
+      text-align: center;
+      padding: .62rem;
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .price {
+      display: block;
+      color: var(--orange-600);
+      font-size: 2.35rem;
+      font-weight: 950;
+      letter-spacing: -.06em;
+      margin: .35rem 0 .55rem;
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 1.35rem;
+      display: grid;
+      gap: .65rem;
+      color: var(--slate-700);
+      font-weight: 700;
+      font-size: .94rem;
+    }
+
+    .features li:before {
+      content: "✓";
+      color: var(--green-700);
+      font-weight: 950;
+      margin-right: .45rem;
+    }
+
+    .offer-card .btn {
+      margin-top: auto;
+    }
+
+    .guarantee {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #fff7db 0%, #fff3cd 45%, #fffbeb 100%);
+      border: 2px solid #f59e0b;
+      color: #8a3b00;
+      border-radius: 0;
+      padding: clamp(1.25rem, 3vw, 2rem);
+      box-shadow: 0 18px 40px rgba(245, 158, 11, .14);
+    }
+
+    .guarantee:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(249, 115, 22, .14), transparent 25%),
+        linear-gradient(90deg, rgba(245, 158, 11, .09) 0, rgba(245, 158, 11, 0) 28%);
+      pointer-events: none;
+    }
+
+    .guarantee > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .guarantee-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(280px, .9fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .guarantee-intro {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+    }
+
+    .guarantee-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      width: fit-content;
+      background: rgba(255,255,255,.58);
+      border: 1px solid rgba(245, 158, 11, .45);
+      padding: .5rem .8rem;
+      font-size: .8rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #9a3412;
+    }
+
+    .guarantee-title {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      color: #9a3412;
+    }
+
+    .guarantee-icon {
+      flex: 0 0 auto;
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: #fff;
+      font-size: 1.45rem;
+      box-shadow: 0 14px 28px rgba(234, 88, 12, .22);
+    }
+
+    .guarantee-copy {
+      font-size: 1.1rem;
+      line-height: 1.65;
+      color: #9a3412;
+      max-width: 62ch;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .guarantee-highlight {
+      background: #fff;
+      border: 1px solid rgba(245, 158, 11, .5);
+      padding: 1rem;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, .06);
+    }
+
+    .guarantee-highlight strong {
+      display: block;
+      font-size: 1.35rem;
+      line-height: 1.08;
+      letter-spacing: -.04em;
+      margin-bottom: .5rem;
+      color: #7c2d12;
+    }
+
+    .guarantee-highlight p {
+      margin: 0;
+      color: #9a3412;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .guarantee-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .9rem;
+      margin-top: 1.1rem;
+    }
+
+    .guarantee-card {
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(245, 158, 11, .42);
+      padding: 1rem;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, .05);
+    }
+
+    .guarantee-card .g-icon {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      border: 1px solid rgba(245,158,11,.45);
+      color: #ea580c;
+      font-size: 1.15rem;
+      margin-bottom: .75rem;
+    }
+
+    .guarantee-card h3 {
+      margin: 0 0 .35rem;
+      font-size: 1.02rem;
+      line-height: 1.15;
+      letter-spacing: -.025em;
+      color: #7c2d12;
+    }
+
+    .guarantee-card p {
+      margin: 0;
+      color: #9a3412;
+      font-size: .95rem;
+      line-height: 1.55;
+      font-weight: 650;
+    }
+
+    .guarantee-bottom {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .75rem 1rem;
+    }
+
+    .guarantee-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: #fff;
+      border: 1px solid rgba(245, 158, 11, .45);
+      padding: .7rem .95rem;
+      font-weight: 850;
+      color: #9a3412;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .quote-mark {
+      color: var(--orange-600);
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .testimonial p {
+      color: var(--slate-700);
+      font-weight: 650;
+    }
+
+    .testimonial small {
+      color: var(--slate-500);
+      font-weight: 850;
+    }
+
+    .about-card {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 1.5rem;
+      background: #fff;
+      border: 2px solid var(--slate-200);
+      border-radius: 0;
+      padding: 1.4rem;
+      box-shadow: var(--shadow-soft);
+      align-items: center;
+    }
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 0;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border: 2px solid var(--orange-600);
+      box-shadow: 0 22px 45px rgba(234, 88, 12, .24);
+    }
+
+    .contact-lines {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+
+    .contact-pill {
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      border-radius: 0;
+      padding: .65rem .85rem;
+      color: var(--slate-700);
+      font-weight: 850;
+    }
+
+    .cta-band {
+      background: var(--slate-950);
+      color: #fff;
+      border-radius: 0;
+      padding: clamp(1.4rem, 4vw, 2.3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1rem;
+      align-items: center;
+      box-shadow: 0 28px 80px rgba(2, 6, 23, .22);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cta-band:after {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      right: -80px;
+      top: -80px;
+      border-radius: 0;
+      background: rgba(249, 115, 22, .27);
+    }
+
+    .cta-band > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-footer {
+      background: var(--slate-950);
+      color: var(--slate-300);
+      text-align: center;
+      padding: 2.3rem 1rem;
+      margin-top: 3rem;
+    }
+
+    .site-footer a {
+      color: #fed7aa;
+      font-weight: 850;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, .72);
+      display: none;
+      place-items: center;
+      padding: 1rem;
+      z-index: 100;
+    }
+
+    .modal.show {
+      display: grid;
+    }
+
+    .modal-card {
+      width: min(1020px, calc(100vw - 2rem));
+      max-height: calc(100vh - 2rem);
+      overflow: auto;
+      background: #fff;
+      border: 2px solid var(--orange-600);
+      border-radius: 0;
+      box-shadow: 0 30px 100px rgba(2, 6, 23, .35);
+      padding: 1.25rem;
+      position: relative;
+      animation: pop .18s ease-out;
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .modal-copy,
+    .modal-panel {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 0;
+      padding: 1.25rem;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: .85rem;
+    }
+
+    .modal-copy .eyebrow {
+      margin-bottom: 0 !important;
+      width: max-content;
+    }
+
+    .modal-copy h2 {
+      font-size: clamp(2rem, 3.2vw, 2.75rem);
+      line-height: .95;
+      letter-spacing: -.07em;
+      margin: 0;
+      max-width: 13ch;
+    }
+
+    .modal-copy p {
+      color: var(--slate-600);
+      font-size: .98rem;
+      line-height: 1.5;
+      margin: 0;
+      max-width: 52ch;
+    }
+
+    .modal-panel h3 {
+      margin: 0;
+      padding-right: 2.5rem;
+      font-size: 1.45rem;
+      line-height: 1.05;
+      letter-spacing: -.045em;
+    }
+
+    .modal-panel p {
+      margin: 0;
+      color: var(--slate-600);
+      font-size: .98rem;
+      line-height: 1.5;
+    }
+
+    #exitForm {
+      display: grid;
+      gap: .75rem;
+    }
+
+    #exitForm .email-grid {
+      margin-bottom: 0;
+    }
+
+    #exitForm .btn {
+      width: 100%;
+      margin-top: 0 !important;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.25;
+      min-height: 54px;
+    }
+
+
+
+    .video-proof {
+      display: grid;
+      gap: .55rem;
+    }
+
+    .video-proof div {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      padding: .75rem;
+      font-weight: 800;
+      color: var(--slate-700);
+      line-height: 1.35;
+    }
+
+    .video-proof strong {
+      color: var(--slate-950);
+    }
+
+    .modal-note {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #7c2d12;
+      padding: .85rem;
+      font-weight: 850;
+      line-height: 1.4;
+    }
+
+    .field-note {
+      font-size: .86rem;
+      line-height: 1.45;
+      color: var(--slate-600);
+      font-weight: 700;
+      margin: -.15rem 0 .1rem;
+    }
+
+    @keyframes pop {
+      from { transform: translateY(10px) scale(.98); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      border: 0;
+      background: var(--slate-100);
+      color: var(--slate-600);
+      width: 40px;
+      height: 40px;
+      border-radius: 0;
+      cursor: pointer;
+      font-size: 1.35rem;
+      line-height: 1;
+      z-index: 2;
+    }
+
+    .modal-list {
+      display: grid;
+      gap: .55rem;
+      margin: 0;
+    }
+
+    .modal-list div {
+      display: flex;
+      gap: .65rem;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      border-radius: 0;
+      padding: .75rem;
+      color: var(--slate-700);
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .utility-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+
+
+    /* Popup balance: compact copy and evenly sized columns without forcing extra blank space. */
+    .modal-copy,
+    .modal-panel {
+      min-height: 0;
+    }
+
+    #exitForm {
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+    }
+
+    @media (max-width: 1040px) {
+      .guarantee-top,
+      .guarantee-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .modal {
+        padding: .5rem;
+      }
+
+      .modal-card {
+        width: calc(100vw - 1rem);
+        padding: .85rem;
+      }
+
+      .modal-grid {
+        grid-template-columns: 1fr;
+        gap: .85rem;
+      }
+
+      .modal-copy,
+      .modal-panel {
+        padding: 1rem;
+        height: auto;
+        min-height: 0;
+        justify-content: flex-start;
+      }
+
+      .modal-copy h2 {
+        font-size: 2rem;
+        max-width: 100%;
+        padding-right: 2.5rem;
+      }
+    }
+
+    @media (max-width: 1040px) {
+      .hero-grid,
+      .video-wrap,
+      .calculator-layout,
+      .two-col,
+      .cta-band {
+        grid-template-columns: 1fr;
+      }
+
+      .calculator-main {
+        border-right: 0;
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .calculator-side {
+        border-radius: 0;
+      }
+
+      .pricing-grid,
+      .testimonials,
+      .result-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        display: none;
+      }
+
+      .header-inner {
+        min-height: 66px;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .trust-row,
+      .tier-grid,
+      .field-grid,
+      .pricing-grid,
+      .testimonials,
+      .result-grid,
+      .capacity-card,
+      .mini-grid,
+      .about-card {
+        grid-template-columns: 1fr;
+      }
+
+      .offer-card.featured {
+        transform: none;
+      }
+
+      .hero-actions .btn,
+      .utility-row .btn {
+        width: 100%;
+      }
+
+      .about-card {
+        justify-items: start;
+      }
+
+      .avatar {
+        width: 120px;
+        height: 120px;
+        font-size: 2.3rem;
+      }
+    }
+
+    @media print {
+      .top-strip,
+      .site-header,
+      .hero,
+      .calculator-side,
+      .site-footer,
+      .cta-band,
+      .modal,
+      .no-print {
+        display: none !important;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .container {
+        width: 100%;
+      }
+
+      .calculator-card,
+      .story-card,
+      .proof-card,
+      .offer-card,
+      .guarantee,
+      .about-card {
+        box-shadow: none;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="top-strip">
+    <strong>Free calculator:</strong> see what slow manual estimating may be costing your fabrication shop each year.
+  </div>
 
-<div class="container">
-    
-    <span class="preheadline">An Urgent Briefing For Established Metal Fabrication Shops Processing $1M+ In Annual Volume:</span>
-    <h1>Why Two Of Your Best Estimators Can Look At The Exact Same Drawing And Arrive At Wildly Different Labor Numbers... And How To Fix This Costly Disconnect Forever.</h1>
-    
-    <p class="subhead">Stop blaming the shop floor for shrinking profits. If your quoting process relies on "gut feelings" or messy, unlocked Excel formulas, you aren't estimating—you are gambling. Here is how to locate the exact mathematics of your hidden profit leaks, and how to plug them today.</p>
-    
-    <p>Right now, there is a massive disconnect between your front office and your shop floor. You don't need a bloated, $50,000 generic software subscription to fix this. You need a bulletproof system built around <em>your</em> specific workflow. Before you spend another dime trying to solve this problem, let me prove exactly where your current estimating spreadsheets are bleeding cash. Use the 60-second auditor below, and I will show you the exact mathematics of your hidden profit leaks - entirely at my own expense.</p>
-    
-    <div class="video-wrapper">
-    <iframe 
-        src="https://www.youtube.com/embed/FI35iEhLzyw?rel=0&modestbranding=1&controls=1&showinfo=0" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowfullscreen>
-    </iframe>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="AntiERP Fabrication Estimating home">
+        <span>AntiERP Fabrication Estimating</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#calculator">Calculator</a>
+        <a href="#video">Video</a>
+        <a href="#proof">Proof</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="#calculator">Run The Numbers</a>
     </div>
-    
-    <a href="#audit-section" class="btn-top">Find Your Profit Leaks 👇</a>
-    
-    <div class="authority">
-        Insights from the trenches: Built on the reality of pricing and winning over $16,000,000 in awarded metal fabrication work.
-    </div>
+  </header>
 
-    <h2>The Problem You Already Know You Have</h2>
-    <p>Most fabrication owners think their biggest losses happen on the shop floor. They blame slow workers or bad equipment. But the truth is, the loss happens much earlier.</p>
-    <p>It happens in your estimating spreadsheet.</p>
-    
-    <ul class="problem">
-        <li>When your estimators are rushed, they miss scope.</li>
-        <li>When formulas aren't locked down, mistakes get hidden.</li>
-        <li>When labor hours are guessed, the guys on the floor pay the price.</li>
-    </ul>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Built for welding and metal fabrication shops</div>
+          <h1>Stop losing margin before the job hits the floor.</h1>
+          <p class="hero-lede">
+            Greg explains the quoting problem every fabrication shop knows: drawings come in, the customer wants a number fast, and rushed estimates miss labour, material, install time, coating, hardware, rentals, trucking, and the small details that eat profit later.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#calculator">Calculate My Estimating Leak</a>
+            <a class="btn btn-light" href="#video">Watch Greg Explain It</a>
+          </div>
+          <div class="trust-row" aria-label="Trust signals">
+            <div class="trust-card">
+              <strong>25+ Years</strong>
+              <span>fabrication and estimating experience</span>
+            </div>
+            <div class="trust-card">
+              <strong>$16M+</strong>
+              <span>awarded fabrication work helped generate</span>
+            </div>
+            <div class="trust-card">
+              <strong>40% Faster</strong>
+              <span>conservative quoting speed target</span>
+            </div>
+          </div>
+        </div>
 
-    <div class="cost-of-inaction">
-        <h3>The Real Cost of "Doing it Later"</h3>
-        <p>If your shop quotes $1M a year and you have a 3% "guesswork leak" in your labor formulas, you are losing <strong>$60,000 every year.</strong> Every month you wait to fix your system is a <strong>$5,000 donation</strong> to your competitors.</p>
-    </div>
+        <aside class="hero-panel" aria-label="Calculator preview">
+          <div class="panel-top">
+            <strong>Live Baseline Preview</strong>
+            <span class="status-dot">Updating</span>
+          </div>
+          <div class="panel-body">
+            <div class="panel-total">
+              <span>Current annual estimating cost</span>
+              <strong id="heroTotal">$0</strong>
+              <p id="heroSelected" style="margin: .6rem 0 0; color: #fecaca; font-weight: 800;">Based on the Pro System</p>
+            </div>
+            <div class="mini-grid">
+              <div class="mini-stat">
+                <span>5-Year Net Gain</span>
+                <strong id="heroNet">$0</strong>
+              </div>
+              <div class="mini-stat">
+                <span>Payoff Estimate</span>
+                <strong id="heroPayoff">0 days</strong>
+              </div>
+              <div class="mini-stat">
+                <span>Hours Back</span>
+                <strong id="heroHours">0</strong>
+              </div>
+              <div class="mini-stat">
+                <span>Revenue Upside</span>
+                <strong id="heroRevenue">$0</strong>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-    <h2>The Expensive "Software" Trap</h2>
-    <p>When the pain gets bad enough, you might think the answer is to buy a massive, $50,000 estimating software or a generic SaaS subscription. But generic software forces you to run your business their way. It doesn't understand your unique shop floor. Eventually, you get frustrated and go right back to using broken Excel sheets.</p>
+    <section id="video" aria-label="Video walkthrough">
+      <div class="container video-wrap">
+        <div class="video-copy">
+          <div class="eyebrow">Greg explains it in plain shop language</div>
+          <h2>Watch why bad quotes follow the job into the shop.</h2>
+          <p>
+            In the video, Greg walks through what happens when drawings come in, pressure hits, and the spreadsheet is not tight enough. He explains why shops do not need another massive ERP just to quote better, then shows a practical custom Excel estimating build in use.
+          </p>
+          <ul class="video-points">
+            <li>See how missed labour, material, install time, coating, hardware, rentals, and trucking leak margin.</li>
+            <li>Understand why copied spreadsheets and old templates make it easy to miss scope.</li>
+            <li>Watch how a custom workbook helps catch missed items, price labour, show margin, and build cleaner proposals.</li>
+            <li>See the AntiERP idea: pay once, own the tool, and avoid another monthly software bill.</li>
+          </ul>
+        </div>
 
-    <h2>The Solution: A System Built Around YOU</h2>
-    <p>You don't need expensive software. You need a better system. I build custom estimating systems in Excel that do the heavy lifting for you.</p>
-    
-    <ul class="solution">
-        <li>It maps perfectly to how you actually quote.</li>
-        <li>It automatically connects your material inputs to your labor realities.</li>
-        <li>The complex math is locked away safely in the background.</li>
-        <li>It creates a clear, undeniable Bill of Materials for your shop floor.</li>
-        <li><strong>It will cut your time to quote work by at least 50% to 60%.</strong></li>
-    </ul>
+        <div class="video-shell">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/RFHSdzOVC6s"
+              title="Greg Sheldon explains AntiERP Fabrication Estimating"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-action-card">
+            <h3>Watch first, then run your numbers.</h3>
+            <p>The video sets up exactly what the calculator measures: the cost of rushed manual estimating and the upside of a tighter quote system.</p>
+            <a class="btn btn-primary" href="#calculator">Run The Calculator After Watching</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <img src="https://gregsheldon.github.io/metalfabexcel/metal_fab_excel_graphic.png" alt="Custom Excel Estimating Dashboard" class="product-image">
+    <section id="calculator">
+      <div class="container">
+        <div class="section-heading">
+          <h2>The Baseline Efficiency Calculator</h2>
+          <p>Use the same logic Greg explains in the video. Plug in your job size, quote volume, estimator cost, burden, and quote time to see what manual quoting may already be costing your shop.</p>
+        </div>
 
-    <div class="pricing-section">
-        <h2>Custom Estimating Spreadsheet Packages</h2>
-        <p style="font-size: 1.15rem; font-weight: 600; color: #334155; margin-bottom: 20px;">Choose the system that fits your current volume and quoting process.</p>
-        
+        <div class="calculator-card">
+          <form id="leadForm" autocomplete="on">
+            <div class="calculator-layout">
+              <div class="calculator-main">
+                <span class="step-tag">Step 1: Your Shop Numbers</span>
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="jobSize">Average Job Size</label>
+                    <input id="jobSize" name="jobSize" inputmode="decimal" value="25000" />
+                  </div>
+                  <div class="field">
+                    <label for="quotes">Quotes Per Week</label>
+                    <input id="quotes" name="quotes" type="number" min="0" step="1" value="10" />
+                  </div>
+                  <div class="field">
+                    <label for="salary">Estimator Salary</label>
+                    <input id="salary" name="salary" inputmode="decimal" value="80000" />
+                  </div>
+                  <div class="field">
+                    <label for="burden">Burden Rate %</label>
+                    <input id="burden" name="burden" type="number" min="0" step="1" value="30" />
+                  </div>
+                  <div class="field full">
+                    <label for="minutes">Minutes Per Quote</label>
+                    <input id="minutes" name="minutes" type="number" min="0" step="1" value="45" />
+                  </div>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                  <span class="step-tag">Step 2: Choose Your System</span>
+                  <div class="tier-grid" role="radiogroup" aria-label="Spreadsheet package selection">
+                    <button class="tier-button" type="button" data-tier="Starter System" data-price="3500" aria-pressed="false">
+                      <strong>Starter System</strong>
+                      <span>$3,500</span>
+                      <small>Simple shop build</small>
+                    </button>
+                    <button class="tier-button active" type="button" data-tier="Pro System" data-price="7500" aria-pressed="true">
+                      <strong>Pro System</strong>
+                      <span>$7,500</span>
+                      <small>Most popular</small>
+                    </button>
+                    <button class="tier-button" type="button" data-tier="Premium System" data-price="9800" aria-pressed="false">
+                      <strong>Premium System</strong>
+                      <span>$9,800+</span>
+                      <small>Full workflow</small>
+                    </button>
+                  </div>
+                </div>
+
+                <div id="report" class="report" aria-live="polite">
+                  <div class="success-banner">✓ Baseline report unlocked. Your numbers are below.</div>
+                  <div class="result-grid">
+                    <div class="result-card blue">
+                      <span>True Hourly Labor Cost</span>
+                      <strong id="hourlyRate">$0/hr</strong>
+                    </div>
+                    <div class="result-card blue">
+                      <span>Yearly Labor Leak</span>
+                      <strong id="yearlyLaborCost">$0</strong>
+                    </div>
+                    <div class="result-card red">
+                      <span>Error Risk at 0.5%</span>
+                      <strong id="errorRisk">$0</strong>
+                    </div>
+                    <div class="result-card purple">
+                      <span>5-Year Net Gain</span>
+                      <strong id="netFiveYear">$0</strong>
+                    </div>
+                  </div>
+                  <div class="capacity-card">
+                    <div>
+                      <span>Reclaimed Baseline Capacity</span>
+                      <strong id="hoursBack">0 hours</strong>
+                      <p style="color:#bbf7d0; margin:.45rem 0 0;">Estimated hours reclaimed using a 40% speed gain.</p>
+                    </div>
+                    <div>
+                      <span>Projected Revenue Opportunity</span>
+                      <strong id="revenueOpportunity">$0</strong>
+                      <p style="color:#bbf7d0; margin:.45rem 0 0;">Based on winning just 1% more from reclaimed estimating capacity.</p>
+                    </div>
+                  </div>
+                  <div class="utility-row no-print">
+                    <button class="btn btn-dark" type="button" id="printReport">Print My Report</button>
+                    <a class="btn btn-primary" href="mailto:gregwsheldon@gmail.com?subject=Fabrication%20Estimating%20System%20Inquiry">Ask Greg About This</a>
+                  </div>
+                </div>
+              </div>
+
+              <aside class="calculator-side">
+                <span class="step-tag">Step 3: Unlock Full Report</span>
+                <div class="big-result">
+                  <span>Annual Estimating Cost</span>
+                  <strong id="annualCost">$0</strong>
+                </div>
+                <p class="side-note">This is a conservative estimate of what your current process may be costing every year in manual labour and preventable estimating risk.</p>
+                <div class="mini-grid">
+                  <div class="mini-stat">
+                    <span>Annual Volume</span>
+                    <strong id="annualVolume">$0</strong>
+                  </div>
+                  <div class="mini-stat">
+                    <span>Selected Build</span>
+                    <strong id="selectedPrice">$7,500</strong>
+                  </div>
+                </div>
+
+                <div class="email-box">
+                  <p style="font-weight: 900; margin-bottom: .75rem;">Enter your details to reveal the complete breakdown.</p>
+                  <div class="email-grid">
+                    <input class="dark-input" id="firstName" name="firstName" placeholder="First name" required />
+                    <input class="dark-input" id="email" name="email" type="email" placeholder="Work email" required />
+                  </div>
+                  <button class="btn btn-primary" type="submit" style="width:100%;">Reveal My Conservative Baseline</button>
+                  <p class="privacy">This sends the lead and calculator numbers to your Zapier webhook. Update the webhook URL in the JavaScript if needed.</p>
+                  <p id="formStatus" class="privacy" aria-live="polite"></p>
+                </div>
+              </aside>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof">
+      <div class="container two-col">
+        <div class="story-card">
+          <div class="section-heading" style="margin-bottom: 0;">
+            <h2>A bad quote does not stay on paper.</h2>
+            <p>It follows the job into the shop, the guys on the floor, the install crew, and the owner when the job is done and the profit is not there.</p>
+          </div>
+          <div class="list-stack">
+            <div class="pain-row"><span class="icon-badge">⚠</span><span>The customer wants the number fast and the pressure hits.</span></div>
+            <div class="pain-row"><span class="icon-badge">⚠</span><span>The quote gets built from an old spreadsheet, copied file, or loose template.</span></div>
+            <div class="pain-row"><span class="icon-badge">⚠</span><span>Labour is light, material is missed, install time is guessed, and the shop eats it later.</span></div>
+          </div>
+          <div class="dark-callout">
+            <h3>The real problem is not your crew</h3>
+            <p>Margin usually disappears before the first cut is made. Not because your guys cannot build the job, but because the estimating system was not built tight enough.</p>
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="section-heading" style="margin-bottom: 0;">
+            <h2>The fix is a tighter estimating process.</h2>
+            <p>You do not need a giant ERP system just to quote better. You need a practical Excel tool built around how your shop already prices, reviews, and hands off work.</p>
+          </div>
+          <div class="list-stack">
+            <div class="win-row"><span class="icon-badge">✓</span><span>Built around your labour rates, material categories, install assumptions, and markups.</span></div>
+            <div class="win-row"><span class="icon-badge">✓</span><span>Helps catch the stuff that usually gets missed before the quote goes out.</span></div>
+            <div class="win-row"><span class="icon-badge">✓</span><span>Shows labour, material, consumables, rentals, subcontractors, markup, and margin clearly.</span></div>
+            <div class="win-row"><span class="icon-badge">✓</span><span>Creates cleaner proposal outputs and better job handoff information.</span></div>
+            <div class="win-row"><span class="icon-badge">✓</span><span>One-time custom build. No monthly fee. No subscription. You own the spreadsheet.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Custom estimating spreadsheet packages.</h2>
+          <p>Pay once. Own the tool. No monthly subscription, no bloated software, no rebuilding your whole company around someone else's system.</p>
+        </div>
+
         <div class="pricing-grid">
-            <div class="pricing-card">
-                <h4>Starter System</h4>
-                <div class="pricing-price">$3,500</div>
-                <div class="pricing-desc">For small fabrication shops that need a cleaner, faster, more reliable way to quote work.</div>
-                
-                <div class="pricing-meta">
-                    <p>Timeline: <span>5 to 10 Business Days</span></p>
-                    <p>Best for: <span>Owners quoting manually</span></p>
-                </div>
+          <article class="offer-card">
+            <h3>Starter System</h3>
+            <span class="price">$3,500</span>
+            <p>For small fabrication shops that need a cleaner, faster, more reliable way to quote work.</p>
+            <ul class="features">
+              <li>Custom quote sheet</li>
+              <li>Customer and project info section</li>
+              <li>Material cost input area</li>
+              <li>Labour cost input area</li>
+              <li>Basic proposal output</li>
+            </ul>
+            <a class="btn btn-dark" href="mailto:gregwsheldon@gmail.com?subject=Starter%20Estimating%20System">Ask About Starter</a>
+          </article>
 
-                <div class="pricing-subtitle">System Includes:</div>
-                <ul class="pricing-features">
-                    <li>Custom quote sheet</li>
-                    <li>Customer and project info section</li>
-                    <li>Material cost input area</li>
-                    <li>Labour cost input area</li>
-                    <li>Shop and install labour sections</li>
-                    <li>Consumables, rentals, and subcontractors</li>
-                    <li>Overhead, markup, and margin calculations</li>
-                    <li>Final quote summary</li>
-                    <li>Basic proposal output & printable PDF</li>
-                    <li>One training walkthrough</li>
-                </ul>
-                <a href="#audit-section" class="btn-top pricing-select-btn" data-name="Starter System" data-price="3500" style="padding: 15px; font-size: 1.1rem; margin-top: auto;">Select Starter</a>
-            </div>
+          <article class="offer-card featured">
+            <div class="ribbon">Most Popular</div>
+            <h3>Pro System</h3>
+            <span class="price">$7,500</span>
+            <p>For fabrication shops that quote regularly and need a full, interconnected estimating workbook.</p>
+            <ul class="features">
+              <li>Multi-tab estimating workbook</li>
+              <li>Material, labour, rental, and subcontractor tabs</li>
+              <li>Scope checklist and quote review</li>
+              <li>Margin and markup controls</li>
+              <li>One custom calculator module</li>
+            </ul>
+            <a class="btn btn-primary" href="mailto:gregwsheldon@gmail.com?subject=Pro%20Estimating%20System">Ask About Pro</a>
+          </article>
 
-            <div class="pricing-card popular">
-                <div class="popular-badge">Most Popular</div>
-                <h4>Pro System</h4>
-                <div class="pricing-price">$7,500</div>
-                <div class="pricing-desc">For fabrication shops that quote regularly and need a full estimating workbook, not just a quote sheet.</div>
-                
-                <div class="pricing-meta">
-                    <p>Timeline: <span>2 to 3 Weeks</span></p>
-                    <p>Best for: <span>Shops quoting weekly</span></p>
-                </div>
-
-                <div class="pricing-subtitle">Includes Starter, Plus:</div>
-                <ul class="pricing-features">
-                    <li>Multi-tab estimating workbook</li>
-                    <li>Material, Labour, Rental, Consumable tabs</li>
-                    <li>Customer Summary & Proposal tabs</li>
-                    <li>Scope Checklist & Quote Review tabs</li>
-                    <li>Shop and field labour breakdown</li>
-                    <li>Margin and markup controls</li>
-                    <li>Gross profit calculations</li>
-                    <li>Quote health check & risk checklist</li>
-                    <li>Missing input warnings</li>
-                    <li>1 Custom Calculator Module</li>
-                </ul>
-                <a href="#audit-section" class="btn-top pricing-select-btn" data-name="Pro System" data-price="7500" style="padding: 15px; font-size: 1.1rem; margin-top: auto;">Select Pro</a>
-            </div>
-
-            <div class="pricing-card">
-                <h4>Premium System</h4>
-                <div class="pricing-price">$9,800+</div>
-                <div class="pricing-desc">For shops that want a complete estimating system from quote request to proposal to job handoff.</div>
-                
-                <div class="pricing-meta">
-                    <p>Timeline: <span>3 to 6 Weeks</span></p>
-                    <p>Best for: <span>Shops quoting multiple jobs/month</span></p>
-                </div>
-
-                <div class="pricing-subtitle">Includes Pro, Plus:</div>
-                <ul class="pricing-features">
-                    <li>Advanced visual dashboard</li>
-                    <li>Multiple custom calculator modules</li>
-                    <li>Material ordering output</li>
-                    <li>Job handoff & Change order sheets</li>
-                    <li>Internal cost summary</li>
-                    <li>Customer-facing proposal package</li>
-                    <li>Quote approval & Risk review system</li>
-                    <li>Low-margin & missing scope warnings</li>
-                    <li>Install cost checks & mobilization</li>
-                    <li>Coatings, finishing & engineering</li>
-                    <li>Price-per-foot and price-per-pound outputs</li>
-                    <li>Crew-day calculations</li>
-                    <li>Team training & real-quote testing period</li>
-                </ul>
-                <a href="#audit-section" class="btn-top pricing-select-btn" data-name="Premium System" data-price="9800" style="padding: 15px; font-size: 1.1rem; margin-top: auto;">Select Premium</a>
-            </div>
+          <article class="offer-card">
+            <h3>Premium System</h3>
+            <span class="price">$9,800+</span>
+            <p>For shops that want a complete estimating system from quote request to job floor handoff.</p>
+            <ul class="features">
+              <li>Advanced visual dashboard</li>
+              <li>Multiple custom calculator modules</li>
+              <li>Material ordering output</li>
+              <li>Job handoff and change order sheets</li>
+              <li>Team training included</li>
+            </ul>
+            <a class="btn btn-dark" href="mailto:gregwsheldon@gmail.com?subject=Premium%20Estimating%20System">Ask About Premium</a>
+          </article>
         </div>
-    </div>
-    
-    <div class="guarantee-box">
-        <h3>🛡️ The "Shop-Floor Ready" Guarantee</h3>
-        <p>I don't just email you an Excel file and vanish. Your investment includes post-launch support. As your team uses it on live jobs, I will refine, adjust, and tweak the formulas until it fits your workflow like a glove.</p>
-    </div>
+      </div>
+    </section>
 
-    <div class="founder-note">
-        <img src="https://gregsheldon.github.io/metalfabexcel/gregsheldon.jpg" class="founder-img" alt="Greg Sheldon">
-        <div class="founder-text">
-            <h3>Meet Your Estimator</h3>
-            <p><strong>I’m Greg Sheldon.</strong></p>
-            <p>For over 25 years, I’ve worked in fabrication. Not just estimating, but seeing how jobs actually play out on the shop floor. I’ve helped generate over $16M+ in awarded fabrication work, and I’ve seen exactly where things go wrong.</p>
+    <section>
+      <div class="container">
+        <div class="guarantee">
+          <div class="guarantee-top">
+            <div class="guarantee-intro">
+              <div class="guarantee-eyebrow">Low-Risk One-Time Build</div>
+              <h2 class="guarantee-title"><span class="guarantee-icon">🛡</span><span>The Shop-Floor Ready Guarantee</span></h2>
+              <p class="guarantee-copy">You are not buying a generic spreadsheet and hoping it works. You are getting a custom estimating workbook built around how your shop actually quotes, plus post-launch refinement so it performs where it matters most: on real jobs, under real pressure.</p>
+            </div>
+            <div class="guarantee-highlight">
+              <strong>Pay once. Own it. Get it dialed in.</strong>
+              <p>If something feels clunky, confusing, or incomplete once your team starts using it, I refine, adjust, and tighten the workbook until it fits your real workflow.</p>
+            </div>
+          </div>
+
+          <div class="guarantee-grid">
+            <div class="guarantee-card">
+              <div class="g-icon">⚙</div>
+              <h3>Built Around Your Shop</h3>
+              <p>Your labour rates, material categories, markups, proposal format, and common job types are built into the workbook from the start.</p>
+            </div>
+            <div class="guarantee-card">
+              <div class="g-icon">🧪</div>
+              <h3>Refined On Live Jobs</h3>
+              <p>This is not a hand-off-and-hope build. As your team uses it on actual quotes, I help tighten the weak spots and improve the flow.</p>
+            </div>
+            <div class="guarantee-card">
+              <div class="g-icon">💵</div>
+              <h3>No Subscription Trap</h3>
+              <p>You pay once and own the spreadsheet. No monthly software fee, no bloated ERP contract, and no vendor holding your quoting system hostage.</p>
+            </div>
+          </div>
+
+          <div class="guarantee-bottom">
+            <div class="guarantee-pill">✓ Practical support after launch</div>
+            <div class="guarantee-pill">✓ Real-world workbook refinement included</div>
+            <a class="btn btn-primary" href="#contact">Ask Greg How The Build Works</a>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 
-    <div id="audit-section" class="form-section">
-        
-        <div id="selectedTierDisplay" class="selected-tier-badge">
-            <span class="label">Targeting Implementation For:</span>
-            <span id="displayTierName" class="value">Pro System ($7,500)</span>
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <h2>Built for owners who are tired of guessing.</h2>
+          <p>Use these as placeholders until you have real client quotes. Keeping this section makes the page feel more proven and conversion-ready.</p>
         </div>
-
-        <h3>The 60-Second Profit Leak Auditor</h3>
-        <p class="note">
-            Drop your shop's raw numbers into the calculator below. In less than a minute, this real-time audit will expose the exact math on where you are bleeding cash. 
-        </p>
-        
-        <form id="auditForm" action="https://formsubmit.co/ajax/gregwsheldon@gmail.com" method="POST">
-            
-            <input type="hidden" name="_subject" value="New Profit Audit Result">
-            <input type="hidden" name="_captcha" value="false">
-            
-            <input type="hidden" name="_template" value="https://gregsheldon.github.io/metalfabexcel/email.html">
-            
-            <input type="hidden" name="_webhook" value="https://hooks.zapier.com/hooks/catch/3118089/4yitzv3/">
-            
-            <input type="hidden" name="_cc" id="dynamic_cc" value="">
-            
-            <input type="hidden" id="h_drain" name="1_Current_Annual_Drain">
-            <input type="hidden" id="h_rate" name="2_True_Hourly_Rate">
-            <input type="hidden" id="h_labor" name="3_Annual_Labor_Leak">
-            <input type="hidden" id="h_volume" name="4_Annual_Pipeline_Volume">
-            <input type="hidden" id="h_error" name="5_Error_Risk_Liability">
-            <input type="hidden" id="h_5yr" name="6_Gross_5_Year_Leak">
-            <input type="hidden" id="h_net" name="7_Net_5_Year_Strategic_Gain">
-            <input type="hidden" id="h_hours" name="8_Hours_Reclaimed">
-            <input type="hidden" id="h_rev" name="9_New_Revenue_Opportunity">
-            <input type="hidden" id="h_tier" name="Selected_Tier">
-
-            <span class="step-label-calc">1. Shop Metrics</span>
-            <div class="input-grid-calc">
-                <div class="input-group-calc">
-                    <label>Avg. Job Size ($)</label>
-                    <input type="text" id="jobSize" value="25,000">
-                </div>
-                <div class="input-group-calc">
-                    <label>Quotes Per Week</label>
-                    <input type="number" id="quotes" value="10">
-                </div>
-            </div>
-
-            <span class="step-label-calc">2. Labor & Efficiency</span>
-            <div class="input-grid-calc">
-                <div class="input-group-calc">
-                    <label>Estimator Salary ($)</label>
-                    <input type="text" id="salary" value="80,000">
-                </div>
-                <div class="input-group-calc">
-                    <label>Burden Rate %</label>
-                    <input type="number" id="burden" value="30">
-                </div>
-            </div>
-            <div class="input-group-calc" style="margin-top:15px;">
-                <label>Minutes Per Quote (Manual Entry)</label>
-                <input type="number" id="minutes" value="45">
-            </div>
-
-            <div class="pain-box-calc">
-                <p class="stat-label-calc">Current Annual Profit Drain</p>
-                <div class="leak-value" id="cashResult">$0</div>
-            </div>
-
-            <div id="lockWrapper" class="locked-wrapper">
-                
-                <div class="locked-overlay">
-                    <div class="capture-fields">
-                        <div style="text-align: center; margin-bottom: 25px;">
-                            <span class="lock-icon">🔒</span>
-                            
-                            <h4 style="color:#f8fafc; font-size: 1.6rem; text-transform: uppercase; font-weight: 900; line-height: 1.15;">
-                                Don't just stare at the loss.<br><span style="color: #ea580c;">See how fast the <span id="lockTierName">Pro System</span> pays for itself.</span>
-                            </h4>
-                            <p style="color: #94a3b8; font-size: 1.05rem; font-weight: 500; margin-top: 15px; margin-bottom: 20px;">
-                                Drop your email below to instantly unblur your custom diagnostics and reveal:
-                            </p>
-                            
-                            <ul class="lock-list">
-                                <li><strong>The Payoff Timeline:</strong> Exactly how many days until your investment is 100% paid off.</li>
-                                <li><strong>The Revenue Multiplier:</strong> How reclaiming these lost hours multiplies your bottom line.</li>
-                                <li><strong>Your 5-Year Net Gain:</strong> The pure financial upside of fixing this process today.</li>
-                            </ul>
-                            
-                            <p style="color: #64748b; font-size: 0.9rem; font-weight: 500; font-style: italic; margin-bottom: 5px;">
-                                (Plus, I'll send a permanent copy straight to your inbox).
-                            </p>
-                        </div>
-
-                        <div class="input-group-calc">
-                            <label>Your Name</label>
-                            <input type="text" name="name" required placeholder="John Doe" style="text-align:left; font-size: 1.1rem;">
-                        </div>
-                        <div class="input-group-calc">
-                            <label>Work Email</label>
-                            <input type="email" name="email" id="userEmailInput" required placeholder="john@company.com" style="text-align:left; font-size: 1.1rem;">
-                        </div>
-                        
-                        <button type="submit" id="unlockBtn" class="btn-send">Reveal My Payoff Timeline →</button>
-                        <p style="text-align: center; font-size: 0.8rem; color: #64748b; margin-top: 20px; font-weight: 600;">Your data is confidential and treated as strict intellectual property.</p>
-                    </div>
-                </div>
-
-                <div class="locked-content">
-                    <div class="audit-results-box">
-                        <div class="audit-step-line">
-                            <span>Fully Burdened Hourly Rate</span>
-                            <span class="math-res" id="resHourlyRate">...</span>
-                        </div>
-                        <div class="audit-step-line">
-                            <span>Annual Labor Drain</span>
-                            <span class="math-res" id="resLaborLeak">...</span>
-                        </div>
-                        <div class="audit-step-line" style="margin-top: 10px; padding-top: 10px; border-top: 2px dotted #334155;">
-                            <span>Annual Pipeline Volume</span>
-                            <span class="math-res" id="resPipelineVolume" style="color: #cbd5e1;">...</span>
-                        </div>
-                        <div class="audit-step-line">
-                            <span>1% Human Error Liability</span>
-                            <span class="math-res" id="resErrorRisk">...</span>
-                        </div>
-                        <div class="audit-step-line" style="border-top: 2px solid #475569; padding-top: 12px; margin-top: 12px;">
-                            <span style="color:#fff; font-weight:800;">Gross 5-Year Profit Leak</span>
-                            <span class="math-res" id="resFiveYear" style="color: #ef4444; font-size:1.25rem;">...</span>
-                        </div>
-                        <div class="audit-step-line" style="margin-top: 5px; font-size: 0.95rem; color: #94a3b8;">
-                            <span>Minus System Cost:</span>
-                            <span class="math-res" id="resSystemCost" style="color: #ef4444;">-$7,500</span>
-                        </div>
-                        <div class="audit-step-line" style="margin-top: 12px; padding-top: 12px; border-top: 2px solid #475569;">
-                            <span style="color:#fff; font-weight:800; font-size:1.1rem;">
-                                Net 5-Year Strategic Gain
-                                <span class="info-icon">?</span>
-                                <span class="tooltip" style="bottom: 150%;"><strong>How it's calculated:</strong> The Gross 5-Year Leak minus the cost of your selected estimating system.</span>
-                            </span>
-                            <span class="math-res" id="resNetGain" style="color: #34d399; font-size:1.35rem;">...</span>
-                        </div>
-                        
-                        <div class="audit-step-line" style="margin-top: 12px; padding-top: 12px; border-top: 2px dashed #475569;">
-                            <span style="color:#ea580c; font-weight:900; font-size:1.2rem; text-transform:uppercase;">
-                                System Payoff Timeline
-                                <span class="info-icon">?</span>
-                                <span class="tooltip" style="bottom: 150%;"><strong>How it's calculated:</strong> Based on the annual profit you are currently draining, this is exactly how many days it will take for your custom system to pay for itself.</span>
-                            </span>
-                            <span class="math-res" id="resPayoffDays" style="color: #fde047; font-size:1.6rem; text-shadow: 0 0 10px rgba(253,224,71,0.3);">...</span>
-                        </div>
-
-                    </div>
-
-                    <div class="detailed-math">
-                        <div class="math-title">Full Step-By-Step Logic</div>
-                        <div class="math-item">
-                            <strong>1. True Hourly Labor Cost:</strong>
-                            <p class="math-explanation">Most owners only look at base salary. We use a "Burden Rate" to account for the real cost to the business.</p>
-                            <span class="formula-line" id="formula-labor">...</span>
-                        </div>
-                        <div class="math-item">
-                            <strong>2. Yearly Quoting Resources:</strong>
-                            <p class="math-explanation">The literal cash spent on manual data entry instead of technical problem solving.</p>
-                            <span class="formula-line" id="formula-time">...</span>
-                        </div>
-                        <div class="math-item">
-                            <strong>3. Error Risk (Cost of Inaction):</strong>
-                            <p class="math-explanation">A 1% error rate (missed scope, bad formulas, fat-finger typos) is a highly conservative industry standard.</p>
-                            <span class="formula-line" id="formula-error-risk">...</span>
-                        </div>
-                    </div>
-
-                    <span class="step-label-calc">3. Reclaimed Growth</span>
-                    <div class="gain-box-calc">
-                        <div class="gain-row-calc">
-                            <span>
-                                Hours Reclaimed (60% Speed Gain):
-                                <span class="info-icon">?</span>
-                                <span class="tooltip"><strong>How it's calculated:</strong> A custom system cuts manual entry time by at least 60%. This shows the total annual hours your estimator gets back.</span>
-                            </span>
-                            <span class="gain-val-calc" id="hoursResult">...</span>
-                        </div>
-                        <div class="gain-row-calc" style="border-top: 2px solid #064e3b; margin-top: 12px; padding-top: 12px;">
-                            <span>
-                                New Potential Revenue:
-                                <span class="info-icon">?</span>
-                                <span class="tooltip"><strong>How it's calculated:</strong> If you repurpose those saved hours into bidding *more* jobs (with a conservative 2.5% win rate on those new bids), this is the extra revenue you could generate per year.</span>
-                            </span>
-                            <span class="gain-val-calc" id="revOpp">...</span>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 50px; text-align: center; border-top: 4px solid #1e293b; padding-top: 40px;">
-                        <h4 style="color: #fff; font-size: 1.8rem; text-transform: uppercase; font-weight: 900; margin-bottom: 15px;">Your Math Is Unlocked. Now Let's Fix It.</h4>
-                        <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 25px;">The diagnostic report has been sent to your inbox. Let's build a custom plan for your shop floor.</p>
-                        <a href="thankyou.html" class="btn-send" style="width: auto; padding: 25px 40px; display: inline-block;">Book Your Free 1-on-1 Teardown Call &rarr;</a>
-                    </div>
-                </div> 
-            </div> 
-        </form>
-    </div>
-
-</div>
-
-<div id="exitPopup" class="popup-overlay">
-    <div class="popup-content">
-        <span class="close-btn" id="closePopup">&times;</span>
-        
-        <div class="popup-header">
-            <span class="pulse-dot"></span> Confidential Briefing
+        <div class="testimonials">
+          <div class="testimonial">
+            <div class="quote-mark">“</div>
+            <p>We finally had one estimating flow instead of ten different versions of the same spreadsheet.</p>
+            <small>Shop Owner, Miscellaneous Steel</small>
+          </div>
+          <div class="testimonial">
+            <div class="quote-mark">“</div>
+            <p>The biggest win was not speed alone. It was catching the little missed items before the quote went out.</p>
+            <small>Operations Manager, Fabrication Shop</small>
+          </div>
+          <div class="testimonial">
+            <div class="quote-mark">“</div>
+            <p>It felt like it was made by someone who has actually been around a shop floor.</p>
+            <small>Estimator, Welding Contractor</small>
+          </div>
         </div>
-        
-        <h2>Wait! Before You Quote Another Job...</h2>
-        
-        <p>You aren't losing money on the shop floor—you're losing it in the estimate. Watch a private 15-minute briefing designed for fab shops processing $1M+ in annual volume.</p>
-        
-        <ul class="popup-bullets">
-            <li><strong style="color: #ea580c;">🚫 The ERP Trap:</strong> Why $100k software fails fab shops.</li>
-            <li><strong style="color: #ea580c;">⚙️ The Strategic Fix:</strong> Plugging leaks with precision spreadsheets.</li>
-            <li><strong style="color: #ea580c;">🎁 Exclusive Access:</strong> Unlock a 20% discount code inside.</li>
-        </ul>
-        
-        <a href="https://gregsheldon.github.io/metalfabexcel/trust.html" id="popupCtaBtn" class="popup-btn">Watch the Free Briefing Now &rarr;</a>
-        
-        <button id="declinePopup" class="decline-btn">No thanks, I'll keep guessing on my labor hours.</button>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="about-card">
+          <img class="avatar" src="https://gregsheldon.github.io/metalfabexcel/gregsheldon.jpg" alt="Greg Sheldon, fabrication estimating specialist" loading="lazy" />
+          <div>
+            <h2 style="letter-spacing:-.05em; margin-bottom:.6rem;">Meet your estimator.</h2>
+            <p style="color:var(--slate-700); font-size:1.05rem;"><strong>I'm Greg Sheldon.</strong> For over 25 years, I have worked in fabrication, estimating, shop leadership, and practical business systems. I have helped generate over $16M in awarded fabrication work and I understand where quotes break down before they become expensive shop-floor problems.</p>
+            <div class="contact-lines">
+              <a class="contact-pill" href="tel:+16138133529">Direct: 613-813-3529</a>
+              <a class="contact-pill" href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2 style="margin-bottom:.45rem; letter-spacing:-.06em; font-size:clamp(1.9rem,4vw,3rem);">Want a quoting system that fits your shop?</h2>
+            <p style="color:var(--slate-300); margin-bottom:0; font-size:1.05rem;">Run the calculator, send the numbers, and use the report as the starting point for a custom estimating workbook.</p>
+          </div>
+          <a class="btn btn-primary" href="#calculator">Run The Calculator</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="exitModal" aria-hidden="true" role="dialog" aria-label="Exit offer popup">
+    <div class="modal-card">
+      <button class="close-modal" type="button" id="closeModal" aria-label="Close popup">×</button>
+      <div class="modal-grid">
+        <div class="modal-copy">
+          <div class="eyebrow">Free video walkthrough</div>
+          <h2>Watch Greg explain where margin disappears.</h2>
+          <p>Greg breaks down the real shop scenario: drawings come in, pressure hits, the quote goes out, and missed labour or material follows the job into the shop.</p>
+          <div class="modal-list">
+            <div><span>⚠</span><span><strong>Quoting pressure:</strong> customers want numbers fast and small misses get expensive.</span></div>
+            <div><span>📊</span><span><strong>Spreadsheet demo:</strong> see the quote sheet, labour, material, margin, and proposal flow.</span></div>
+            <div><span>🚫</span><span><strong>AntiERP approach:</strong> pay once, own the tool, and avoid another monthly software bill.</span></div>
+          </div>
+        </div>
+        <div class="modal-panel">
+          <h3>Go to the video</h3>
+          <p>Enter your email and go straight to Greg's walkthrough.</p>
+          <div class="video-proof">
+            <div><strong>On screen:</strong> Greg shows how a custom estimating workbook helps catch missed scope and protect margin.</div>
+            <div><strong>Best for:</strong> owners and estimators tired of guessing, copied spreadsheets, and subscriptions.</div>
+          </div>
+          <form id="exitForm">
+            <div class="email-grid">
+              <input id="exitName" name="exitName" placeholder="First name" required />
+              <input id="exitEmail" name="exitEmail" type="email" placeholder="Work email" required />
+            </div>
+            <button class="btn btn-primary" type="submit">Take Me To The Video</button>
+            <button class="btn btn-light" type="button" id="declineModal">No thanks, I am not interested.</button>
+            <p id="exitStatus" class="privacy" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<footer class="quiet-footer">
-    <p>Greg Sheldon | Expert Estimating & Fabrication Systems</p>
-    <p>Direct: <a href="tel:+16138133529">613-813-3529</a> | <a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></p>
-</footer>
+  <footer class="site-footer">
+    <p style="margin-bottom:.35rem; font-weight:850;">Greg Sheldon | Expert Estimating & Fabrication Systems</p>
+    <p style="margin-bottom:0;">Direct: <a href="tel:+16138133529">613-813-3529</a> | <a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></p>
+  </footer>
 
+  <script>
+    // Update this if your Zapier hook changes.
+    const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/3118089/4owev0n/";
+    // Popup opt-ins are sent to the embedded video section on this page.
+    const VIDEO_PAGE_URL = "#video";
 
-<script>
-    // ==========================================
-    // PRICING SELECTION LOGIC
-    // ==========================================
-    let currentTierPrice = 7500; // Default to Pro
-    let currentTierName = "Pro System";
+    const state = {
+      selectedTier: "Pro System",
+      selectedPrice: 7500,
+      exitShown: false,
+      unlocked: false,
+      results: {}
+    };
 
-    document.querySelectorAll('.pricing-select-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            // Get data from clicked button
-            currentTierPrice = parseInt(this.getAttribute('data-price'));
-            currentTierName = this.getAttribute('data-name');
-            
-            // Update UI elements
-            document.getElementById('selectedTierDisplay').style.display = 'block';
-            document.getElementById('displayTierName').textContent = currentTierName + ' ($' + format(currentTierPrice) + ')';
-            document.getElementById('lockTierName').textContent = currentTierName;
-            document.getElementById('resSystemCost').textContent = '-$' + format(currentTierPrice);
-            document.getElementById('h_tier').value = currentTierName + ' ($' + format(currentTierPrice) + ')';
-            
-            // Re-run math with new price
-            runMath();
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => Array.from(document.querySelectorAll(selector));
+
+    const money = (value) => {
+      const number = Number.isFinite(value) ? value : 0;
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0
+      }).format(number);
+    };
+
+    const numberOnly = (value) => {
+      if (typeof value !== "string") return Number(value) || 0;
+      return Number(value.replace(/[^0-9.]/g, "")) || 0;
+    };
+
+    function getInputs() {
+      return {
+        jobSize: numberOnly($("#jobSize").value),
+        quotes: numberOnly($("#quotes").value),
+        salary: numberOnly($("#salary").value),
+        burden: numberOnly($("#burden").value),
+        minutes: numberOnly($("#minutes").value)
+      };
+    }
+
+    function calculate() {
+      const input = getInputs();
+      const totalBurdened = input.salary * (1 + input.burden / 100);
+      const hourlyRate = totalBurdened / 2080;
+      const bidsPerYear = input.quotes * 52;
+      const yearlyHours = (bidsPerYear * input.minutes) / 60;
+      const yearlyLaborCost = yearlyHours * hourlyRate;
+      const annualVolume = bidsPerYear * input.jobSize;
+      const errorRisk = annualVolume * 0.005;
+      const totalLeak = yearlyLaborCost + errorRisk;
+      const grossFiveYear = totalLeak * 5;
+      const netFiveYear = grossFiveYear - state.selectedPrice;
+      const payoffDays = totalLeak > 0 ? Math.ceil((state.selectedPrice / totalLeak) * 365) : 0;
+      const hoursBack = Math.round(yearlyHours * 0.4);
+      const newMinutes = input.minutes * 0.6;
+      const revenueOpportunity = newMinutes > 0 ? (hoursBack * 60 / newMinutes) * 0.01 * input.jobSize : 0;
+
+      state.results = {
+        ...input,
+        hourlyRate,
+        yearlyLaborCost: Math.round(yearlyLaborCost),
+        annualVolume: Math.round(annualVolume),
+        errorRisk: Math.round(errorRisk),
+        totalLeak: Math.round(totalLeak),
+        grossFiveYear: Math.round(grossFiveYear),
+        netFiveYear: Math.round(netFiveYear),
+        payoffDays,
+        hoursBack,
+        revenueOpportunity: Math.round(revenueOpportunity),
+        selectedTier: state.selectedTier,
+        selectedPrice: state.selectedPrice
+      };
+
+      renderResults();
+    }
+
+    function renderResults() {
+      const r = state.results;
+      $("#heroTotal").textContent = money(r.totalLeak);
+      $("#heroSelected").textContent = "Based on the " + state.selectedTier;
+      $("#heroNet").textContent = money(r.netFiveYear);
+      $("#heroPayoff").textContent = r.payoffDays + " days";
+      $("#heroHours").textContent = (r.hoursBack || 0).toLocaleString();
+      $("#heroRevenue").textContent = money(r.revenueOpportunity);
+
+      $("#annualCost").textContent = money(r.totalLeak);
+      $("#annualVolume").textContent = money(r.annualVolume);
+      $("#selectedPrice").textContent = money(state.selectedPrice);
+
+      $("#hourlyRate").textContent = money(r.hourlyRate) + "/hr";
+      $("#yearlyLaborCost").textContent = money(r.yearlyLaborCost);
+      $("#errorRisk").textContent = money(r.errorRisk);
+      $("#netFiveYear").textContent = money(r.netFiveYear);
+      $("#hoursBack").textContent = (r.hoursBack || 0).toLocaleString() + " hours";
+      $("#revenueOpportunity").textContent = money(r.revenueOpportunity);
+    }
+
+    async function postLead(payload) {
+      const body = JSON.stringify(payload);
+      try {
+        await fetch(WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body
         });
+        return true;
+      } catch (error) {
+        console.warn("Webhook submission failed. Unlocking the report anyway.", error);
+        return false;
+      }
+    }
+
+    function revealReport() {
+      state.unlocked = true;
+      $("#report").classList.add("show");
+      $("#formStatus").textContent = "Sent. Your report is unlocked below.";
+      setTimeout(() => $("#report").scrollIntoView({ behavior: "smooth", block: "start" }), 120);
+    }
+
+    function setTier(button) {
+      state.selectedTier = button.dataset.tier;
+      state.selectedPrice = numberOnly(button.dataset.price);
+      $$(".tier-button").forEach(btn => {
+        const active = btn === button;
+        btn.classList.toggle("active", active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+      calculate();
+    }
+
+    function openModal() {
+      if (state.exitShown || state.unlocked) return;
+      state.exitShown = true;
+      const modal = $("#exitModal");
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal() {
+      const modal = $("#exitModal");
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    $$("#jobSize, #quotes, #salary, #burden, #minutes").forEach(input => {
+      input.addEventListener("input", calculate);
     });
 
-    // ==========================================
-    // CALCULATOR LOGIC
-    // ==========================================
-    const inputs = ['jobSize', 'quotes', 'salary', 'burden', 'minutes'];
-    const elements = {};
-    inputs.forEach(id => elements[id] = document.getElementById(id));
+    $$(".tier-button").forEach(button => {
+      button.addEventListener("click", () => setTier(button));
+    });
 
-    const cashEl = document.getElementById('cashResult');
-    const rHourlyRate = document.getElementById('resHourlyRate');
-    const rLaborLeak = document.getElementById('resLaborLeak');
-    const rPipelineVolume = document.getElementById('resPipelineVolume');
-    const rErrorRisk = document.getElementById('resErrorRisk');
-    const rFiveYear = document.getElementById('resFiveYear');
-    const rNetGain = document.getElementById('resNetGain');
-    const rPayoffDays = document.getElementById('resPayoffDays');
-    const hoursEl = document.getElementById('hoursResult');
-    const revOppEl = document.getElementById('revOpp');
+    $("#leadForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      calculate();
 
-    const fLabor = document.getElementById('formula-labor');
-    const fTime = document.getElementById('formula-time');
-    const fErrorRisk = document.getElementById('formula-error-risk');
+      const firstName = $("#firstName").value.trim();
+      const email = $("#email").value.trim();
+      if (!firstName || !email) return;
 
-    // Hidden inputs for form submission
-    const hDrain = document.getElementById('h_drain');
-    const hRate = document.getElementById('h_rate');
-    const hLabor = document.getElementById('h_labor');
-    const hVolume = document.getElementById('h_volume');
-    const hError = document.getElementById('h_error');
-    const h5yr = document.getElementById('h_5yr');
-    const hNet = document.getElementById('h_net');
-    const hHours = document.getElementById('h_hours');
-    const hRev = document.getElementById('h_rev');
+      $("#formStatus").textContent = "Sending your numbers...";
+      const payload = {
+        source: "main_calculator",
+        first_name: firstName,
+        email,
+        job_size: state.results.jobSize,
+        quotes: state.results.quotes,
+        salary: state.results.salary,
+        burden: state.results.burden,
+        minutes: state.results.minutes,
+        tier: state.selectedTier,
+        price: state.selectedPrice,
+        hourly_rate: state.results.hourlyRate,
+        yearly_labor_cost: state.results.yearlyLaborCost,
+        annual_volume: state.results.annualVolume,
+        error_risk: state.results.errorRisk,
+        total_leak: state.results.totalLeak,
+        gross_five_year: state.results.grossFiveYear,
+        net_five_year: state.results.netFiveYear,
+        payoff_days: state.results.payoffDays,
+        hours_back: state.results.hoursBack,
+        revenue_opportunity: state.results.revenueOpportunity,
 
-    const format = (val) => val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    const strip = (val) => val.replace(/,/g, '');
+        // Systeme.io friendly field names for personalized report emails
+        average_job_size: state.results.jobSize,
+        quotes_per_week: state.results.quotes,
+        estimator_salary: state.results.salary,
+        burden_rate: state.results.burden,
+        minutes_per_quote: state.results.minutes,
+        selected_system: state.selectedTier,
+        selected_price: state.selectedPrice,
+        burdened_hourly_rate: money(state.results.hourlyRate),
+        annual_quotes: Math.round(state.results.quotes * 52),
+        annual_quoting_hours: Math.round((state.results.quotes * 52 * state.results.minutes) / 60),
+        yearly_labor_leak: state.results.yearlyLaborCost,
+        annual_quoted_volume: state.results.annualVolume,
+        total_annual_estimating_cost: state.results.totalLeak,
+        hours_reclaimed_40_percent: state.results.hoursBack,
+        five_year_cost: state.results.grossFiveYear,
+        five_year_net_gain: state.results.netFiveYear,
+        projected_revenue_opportunity: state.results.revenueOpportunity,
+        submitted_at: new Date().toISOString()
+      };
 
-    function runMath() {
-        ['salary', 'jobSize'].forEach(id => {
-            let raw = strip(elements[id].value);
-            if (elements[id] === document.activeElement) {
-                elements[id].value = format(raw.replace(/[^\d]/g, ''));
-            }
-        });
+      await postLead(payload);
+      revealReport();
+    });
 
-        const salaryVal = parseFloat(strip(elements.salary.value)) || 0;
-        const jobSizeVal = parseFloat(strip(elements.jobSize.value)) || 0;
-        const quotesVal = parseFloat(elements.quotes.value) || 0;
-        const minsVal = parseFloat(elements.minutes.value) || 0;
-        const burdenVal = parseFloat(elements.burden.value) || 0;
+    $("#exitForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const firstName = $("#exitName").value.trim();
+      const email = $("#exitEmail").value.trim();
+      if (!firstName || !email) return;
 
-        const totalBurdened = salaryVal * (1 + (burdenVal / 100));
-        const hourlyRate = totalBurdened / 2080;
-        const bidsPerYear = quotesVal * 52;
-        const yearlyHours = (bidsPerYear * minsVal) / 60;
-        const yearlyLaborCost = yearlyHours * hourlyRate;
-        const annualVolume = bidsPerYear * jobSizeVal;
-        const errorRisk = annualVolume * 0.01;
-        
-        const totalLeak = yearlyLaborCost + errorRisk;
-        const grossFiveYear = totalLeak * 5;
-        
-        // Calculate dynamic ROI
-        const netFiveYear = grossFiveYear - currentTierPrice;
-        const payoffDays = totalLeak > 0 ? Math.ceil((currentTierPrice / totalLeak) * 365) : 0;
-
-        const hoursBack = Math.round(yearlyHours * 0.60);
-        const revenueOpportunity = (hoursBack * 60 / (minsVal * 0.4)) * 0.025 * jobSizeVal;
-
-        fLabor.textContent = `> Math: $${format(salaryVal)} × ${1+(burdenVal/100)} Burden / 2,080 hrs = $${hourlyRate.toFixed(2)}/hr`;
-        fTime.textContent = `> Math: ${format(bidsPerYear)} bids/yr × ${minsVal} mins = ${Math.round(yearlyHours)} hrs/yr`;
-        fErrorRisk.textContent = `> Math: $${format(annualVolume)} Pipeline Volume × 1% = $${format(Math.round(errorRisk))}/yr Liability`;
-
-        cashEl.textContent = '$' + format(Math.round(totalLeak));
-        rHourlyRate.textContent = '$' + hourlyRate.toFixed(2) + '/hr';
-        rLaborLeak.textContent = '$' + format(Math.round(yearlyLaborCost));
-        rPipelineVolume.textContent = '$' + format(Math.round(annualVolume));
-        rErrorRisk.textContent = '$' + format(Math.round(errorRisk));
-        rFiveYear.textContent = '$' + format(Math.round(grossFiveYear));
-        rNetGain.textContent = '$' + format(Math.round(netFiveYear));
-        rPayoffDays.textContent = payoffDays + " Days";
-        
-        hoursEl.textContent = format(hoursBack) + ' HOURS';
-        revOppEl.textContent = '$' + format(Math.round(revenueOpportunity));
-
-        // Populate hidden fields
-        hDrain.value = "$" + format(Math.round(totalLeak));
-        hRate.value = "$" + hourlyRate.toFixed(2) + "/hr";
-        hLabor.value = "$" + format(Math.round(yearlyLaborCost));
-        hVolume.value = "$" + format(Math.round(annualVolume));
-        hError.value = "$" + format(Math.round(errorRisk));
-        h5yr.value = "$" + format(Math.round(grossFiveYear));
-        hNet.value = "$" + format(Math.round(netFiveYear));
-        hHours.value = format(hoursBack) + " Hours";
-        hRev.value = "$" + format(Math.round(revenueOpportunity));
-        
-        // Ensure default tier is logged if they don't click a button
-        if(!document.getElementById('h_tier').value) {
-            document.getElementById('h_tier').value = currentTierName + ' ($' + format(currentTierPrice) + ')';
+      $("#exitStatus").textContent = "Sending...";
+      await postLead({
+        source: "exit_intent_popup",
+        first_name: firstName,
+        email,
+        selected_tier: state.selectedTier,
+        selected_price: state.selectedPrice,
+        total_leak: state.results.totalLeak,
+        submitted_at: new Date().toISOString()
+      });
+      $("#exitStatus").textContent = "Sent. Taking you to the video...";
+      setTimeout(() => {
+        if (VIDEO_PAGE_URL && VIDEO_PAGE_URL.startsWith("#")) {
+          closeModal();
+          const target = document.querySelector(VIDEO_PAGE_URL);
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else if (VIDEO_PAGE_URL) {
+          window.location.href = VIDEO_PAGE_URL;
+        } else {
+          closeModal();
         }
-    }
-
-    inputs.forEach(id => elements[id].addEventListener('input', runMath));
-    runMath();
-
-    // ==========================================
-    // THE FORM UNLOCK LOGIC (AJAX + Dynamic CC)
-    // ==========================================
-    document.getElementById('auditForm').addEventListener('submit', function(e) {
-        e.preventDefault(); 
-        
-        const form = e.target;
-        const btn = document.getElementById('unlockBtn');
-        const lockWrapper = document.getElementById('lockWrapper');
-
-        const userEmailInput = document.getElementById('userEmailInput').value;
-        document.getElementById('dynamic_cc').value = userEmailInput;
-
-        btn.textContent = "Unlocking...";
-        btn.style.backgroundColor = "#64748b";
-        btn.style.pointerEvents = "none";
-
-        fetch(form.action, {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json'
-            },
-            body: new FormData(form)
-        }).then(response => {
-            lockWrapper.classList.add('unlocked');
-            const successMsg = document.createElement('div');
-            successMsg.innerHTML = `<div style="background: #059669; color: #fff; padding: 15px; text-align: center; font-weight: 800; border-radius: 4px; margin-bottom: 20px; border: 2px solid #047857; text-transform: uppercase;">✅ Report Emailed! Math Unlocked Below.</div>`;
-            document.querySelector('.locked-content').prepend(successMsg);
-        }).catch(error => {
-            lockWrapper.classList.add('unlocked');
-        });
+      }, 700);
     });
 
-    // ==========================================
-    // EXIT INTENT POPUP LOGIC
-    // ==========================================
-    let popupShown = false;
-    const exitPopup = document.getElementById('exitPopup');
-    const closePopupBtn = document.getElementById('closePopup');
-    const declinePopupBtn = document.getElementById('declinePopup');
-    const popupCtaBtn = document.getElementById('popupCtaBtn');
-
-    function showPopup() {
-        if (!popupShown) {
-            exitPopup.classList.add('show');
-            popupShown = true; 
-        }
-    }
-
-    function closePopup(e) {
-        if(e) e.preventDefault();
-        exitPopup.classList.remove('show');
-        setTimeout(() => { exitPopup.style.display = 'none'; }, 300);
-    }
-
-    document.addEventListener('mouseleave', function(e) {
-        if (e.clientY < 10) { showPopup(); }
+    $("#closeModal").addEventListener("click", closeModal);
+    $("#declineModal").addEventListener("click", closeModal);
+    $("#exitModal").addEventListener("click", (event) => {
+      if (event.target.id === "exitModal") closeModal();
     });
 
-    closePopupBtn.addEventListener('click', closePopup);
-    declinePopupBtn.addEventListener('click', closePopup);
-    
-    popupCtaBtn.addEventListener('click', function() { closePopup(); });
+    $("#printReport").addEventListener("click", () => window.print());
 
-    window.addEventListener('click', function(e) {
-        if (e.target === exitPopup) { closePopup(); }
+    document.addEventListener("mouseleave", (event) => {
+      if (event.clientY <= 8) openModal();
     });
 
-</script>
+    let mobilePopupArmed = true;
+    window.addEventListener("scroll", () => {
+      const scrollDepth = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (mobilePopupArmed && window.innerWidth <= 720 && scrollDepth > 0.62) {
+        mobilePopupArmed = false;
+        openModal();
+      }
+    }, { passive: true });
 
+    setTimeout(() => {
+      if (window.innerWidth <= 720) openModal();
+    }, 22000);
+
+    calculate();
+  </script>
 </body>
 </html>

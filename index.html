@@ -1878,8 +1878,8 @@
                   </div>
 
                   <div class="calculator-explainer">
-                    <h3>Your emailed report goes deeper than the number on this screen.</h3>
-                    <p>The calculator gives you the conservative baseline. When you opt in, the email report gives you the breakdown, the scenarios, and the estimating system blueprint behind the numbers.</p>
+                    <h3>Your instant report page goes deeper than the number on this screen.</h3>
+                    <p>The calculator gives you the conservative baseline. When you opt in, your private report page gives you the deeper breakdown, speed scenarios, and estimating system blueprint behind the numbers.</p>
                     <div class="calc-note-grid">
                       <div class="calc-note">
                         <span>1</span>
@@ -1944,7 +1944,7 @@
                 <div class="big-result">
                   <span>Annual Estimating Cost</span>
                   <strong id="annualCost">$0</strong>
-                  <p class="result-helper">This is the on-screen baseline. Your email report includes the full conservative analysis and system blueprint.</p>
+                  <p class="result-helper">This is the on-screen baseline. Your full report page includes the conservative analysis, scenarios, checklist, and workbook blueprint.</p>
                 </div>
                 <p class="side-note">This is a conservative estimate of what your current process may be costing every year in manual labour and preventable estimating risk.</p>
                 <div class="mini-grid">
@@ -1959,8 +1959,8 @@
                 </div>
 
                 <div class="email-box">
-                  <p style="font-weight: 950; margin-bottom: .35rem; font-size:1.02rem;">Email me the full conservative report.</p>
-                  <p style="color:var(--slate-300); margin:.25rem 0 .75rem; font-size:.9rem; line-height:1.45;">You get everything shown on this page, plus the opt-in-only breakdown below.</p>
+                  <p style="font-weight: 950; margin-bottom: .35rem; font-size:1.02rem;">Unlock my full conservative report.</p>
+                  <p style="color:var(--slate-300); margin:.25rem 0 .75rem; font-size:.9rem; line-height:1.45;">You get everything shown on this page, plus the opt-in-only breakdown on a printable report page.</p>
                   <div class="email-report-list" aria-label="What the email report includes">
                     <div><span>✓</span><strong>Estimating Leak Score and where the money is likely leaking.</strong></div>
                     <div><span>✓</span><strong>20%, 40%, and 60% speed improvement scenarios.</strong></div>
@@ -1971,8 +1971,8 @@
                     <input class="dark-input" id="firstName" name="firstName" placeholder="First name" required />
                     <input class="dark-input" id="email" name="email" type="email" placeholder="Work email" required />
                   </div>
-                  <button class="btn btn-primary" type="submit" style="width:100%;">Send My Full Conservative Report</button>
-                  <p class="privacy-strong">Your numbers stay private. We’ll never sell or share your email. You’ll only receive your estimating cost report and practical tips to quote faster and protect margin.</p>
+                  <button class="btn btn-primary" type="submit" style="width:100%;">Open My Full Conservative Report</button>
+                  <p class="privacy-strong">We’ll never sell or share your email. Your first name and email unlock the private report page. Your calculator numbers are used to build your printable report.</p>
                   <p id="formStatus" class="privacy" aria-live="polite"></p>
                 </div>
               </aside>
@@ -2208,9 +2208,11 @@
   </footer>
 
   <script>
-    // Update this if your Zapier hook changes.
-    const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/3118089/4owev0n/";
-    // Popup opt-ins are sent to the embedded video section on this page.
+    // Calculator opt-in flow:
+    // 1) The visitor's calculator report data is stored locally and sent to the report page.
+    // 2) Only first name and email are sent to Zapier for the signup/opt-in.
+    const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/3118089/4ol0qs7/";
+    const REPORT_PAGE_URL = "https://gregsheldon.github.io/metalfabexcel/antierp-estimating-report.html";
     const VIDEO_PAGE_URL = "#video";
 
     const state = {
@@ -2348,25 +2350,51 @@
       $("#revenueOpportunity").textContent = money(r.revenueOpportunity);
     }
 
-    async function postLead(payload) {
-      const body = JSON.stringify(payload);
+    function encodeReportPayload(payload) {
+      try {
+        const json = JSON.stringify(payload);
+        const utf8 = encodeURIComponent(json).replace(/%([0-9A-F]{2})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+        return btoa(utf8).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+      } catch (error) {
+        console.warn("Could not encode report data.", error);
+        return "";
+      }
+    }
+
+    async function sendOptinToZapier(firstName, email) {
+      const signupPayload = {
+        first_name: firstName,
+        email: email
+      };
+
       try {
         await fetch(WEBHOOK_URL, {
           method: "POST",
           mode: "no-cors",
-          body
+          body: JSON.stringify(signupPayload),
+          headers: { "Content-Type": "text/plain;charset=utf-8" }
         });
-        return true;
       } catch (error) {
-        console.warn("Webhook submission failed. Unlocking the report anyway.", error);
-        return false;
+        console.warn("Zapier opt-in submit failed, but report will still open.", error);
       }
+    }
+
+    function openFullReport(payload) {
+      try {
+        sessionStorage.setItem("antierp_est_report", JSON.stringify(payload));
+        localStorage.setItem("antierp_est_report", JSON.stringify(payload));
+      } catch (error) {
+        console.warn("Could not store report data locally.", error);
+      }
+
+      const encoded = encodeReportPayload(payload);
+      window.location.href = encoded ? `${REPORT_PAGE_URL}#report=${encoded}` : REPORT_PAGE_URL;
     }
 
     function revealReport() {
       state.unlocked = true;
       $("#report").classList.add("show");
-      $("#formStatus").textContent = "Sent. Your on-page report is unlocked below. The full conservative email report is on its way.";
+      $("#formStatus").textContent = "Your on-page baseline is unlocked below. Use the full report button for the detailed printable report.";
       setTimeout(() => $("#report").scrollIntoView({ behavior: "smooth", block: "start" }), 120);
     }
 
@@ -2411,7 +2439,7 @@
       const email = $("#email").value.trim();
       if (!firstName || !email) return;
 
-      $("#formStatus").textContent = "Sending your numbers...";
+      $("#formStatus").textContent = "Opening your private report...";
       const payload = {
         source: "main_calculator",
         first_name: firstName,
@@ -2491,8 +2519,8 @@
         submitted_at: new Date().toISOString()
       };
 
-      await postLead(payload);
-      revealReport();
+      await sendOptinToZapier(firstName, email);
+      openFullReport(payload);
     });
 
     $("#exitForm").addEventListener("submit", async (event) => {
@@ -2502,16 +2530,18 @@
       if (!firstName || !email) return;
 
       $("#exitStatus").textContent = "Sending...";
-      await postLead({
-        source: "exit_intent_popup",
-        first_name: firstName,
-        email,
-        selected_tier: state.selectedTier,
-        selected_price: state.selectedPrice,
-        total_leak: state.results.totalLeak,
-        submitted_at: new Date().toISOString()
-      });
-      $("#exitStatus").textContent = "Sent. Taking you to the video...";
+      try {
+        localStorage.setItem("antierp_exit_optin", JSON.stringify({
+          source: "exit_intent_popup",
+          first_name: firstName,
+          email,
+          selected_tier: state.selectedTier,
+          selected_price: state.selectedPrice,
+          total_leak: state.results.totalLeak,
+          submitted_at: new Date().toISOString()
+        }));
+      } catch (error) {}
+      $("#exitStatus").textContent = "Taking you to the video...";
       setTimeout(() => {
         if (VIDEO_PAGE_URL && VIDEO_PAGE_URL.startsWith("#")) {
           closeModal();

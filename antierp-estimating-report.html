@@ -504,7 +504,32 @@
     const fallbackChecklist = "Material grade/shape, labour by task, coating/finishing, install access, lift equipment/rentals, trucking/freight, hardware/anchors, subcontractor pricing, contingency, and final margin review.";
     const fallbackBlueprint = "Customer/project info, material takeoff, labour build-up, install assumptions, coating/finishing, rentals/equipment, trucking/freight, subcontractors, markup/margin controls, quote review checklist, proposal output, shop handoff, and change order tracker.";
 
+    function decodeReportPayload(encoded) {
+      if (!encoded) return null;
+      try {
+        const base64 = encoded.replace(/-/g, "+").replace(/_/g, "/");
+        const padded = base64 + "=".repeat((4 - base64.length % 4) % 4);
+        const binary = atob(padded);
+        const json = decodeURIComponent(Array.prototype.map.call(binary, ch => "%" + ch.charCodeAt(0).toString(16).padStart(2, "0")).join(""));
+        return JSON.parse(json);
+      } catch (error) {
+        console.warn("Could not read report data from URL.", error);
+        return null;
+      }
+    }
+
     function getReportData() {
+      const hash = window.location.hash || "";
+      const match = hash.match(/report=([^&]+)/);
+      const fromHash = match ? decodeReportPayload(match[1]) : null;
+      if (fromHash) {
+        try {
+          sessionStorage.setItem("antierp_est_report", JSON.stringify(fromHash));
+          localStorage.setItem("antierp_est_report", JSON.stringify(fromHash));
+        } catch (error) {}
+        return fromHash;
+      }
+
       const raw = sessionStorage.getItem("antierp_est_report") || localStorage.getItem("antierp_est_report");
       if (!raw) return null;
       try { return JSON.parse(raw); } catch (error) { return null; }

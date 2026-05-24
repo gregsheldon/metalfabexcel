@@ -32,6 +32,9 @@
       --blue-900:#1e3a8a;
       --blue-100:#dbeafe;
       --amber-100:#fef3c7;
+      --amber-50:#fffbeb;
+      --purple-100:#ede9fe;
+      --purple-900:#581c87;
       --shadow: 0 24px 60px rgba(15,23,42,.10);
     }
 
@@ -258,6 +261,192 @@
       padding: .95rem;
     }
 
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+
+    .summary-card {
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      padding: 1rem;
+      min-height: 145px;
+    }
+
+    .summary-card span {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--slate-500);
+      font-size: .72rem;
+      font-weight: 950;
+      margin-bottom: .45rem;
+    }
+
+    .summary-card strong {
+      display: block;
+      color: var(--slate-950);
+      font-size: 1.75rem;
+      line-height: 1;
+      letter-spacing: -.055em;
+      margin-bottom: .45rem;
+    }
+
+    .audit-note {
+      background: var(--orange-50);
+      border-left: 5px solid var(--orange-600);
+      padding: 1rem;
+      margin-top: 1rem;
+      color: var(--slate-700);
+      font-weight: 700;
+    }
+
+    .risk-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+
+    .risk-card {
+      border: 1px solid var(--slate-200);
+      background: #fff;
+      padding: .95rem;
+      display: grid;
+      gap: .5rem;
+      min-height: 126px;
+    }
+
+    .risk-card .risk-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: .75rem;
+    }
+
+    .risk-card h3 { font-size: 1.02rem; line-height: 1.15; }
+    .risk-card p { margin: 0; font-size: .92rem; }
+
+    .risk-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 84px;
+      padding: .4rem .55rem;
+      font-weight: 950;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      border: 1px solid var(--slate-200);
+      background: var(--slate-100);
+      color: var(--slate-700);
+    }
+
+    .risk-badge.low { background: var(--green-100); color: var(--green-900); border-color: #86efac; }
+    .risk-badge.medium { background: var(--amber-100); color: #92400e; border-color: #fcd34d; }
+    .risk-badge.high { background: var(--red-100); color: var(--red-900); border-color: #fca5a5; }
+
+    .workflow-table td:first-child { background: #fff7f7; }
+    .workflow-table td:nth-child(2) { background: #f0fdf4; }
+
+    .payback-band {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, .6fr);
+      gap: 1rem;
+      align-items: stretch;
+      background: linear-gradient(135deg, var(--slate-950), var(--slate-800));
+      color: #fff;
+      border: 2px solid var(--orange-600);
+      padding: 1.15rem;
+      margin-top: 1rem;
+    }
+
+    .payback-band p { color: var(--slate-300); }
+    .payback-number {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .payback-number span { text-transform: uppercase; letter-spacing: .08em; color: #fed7aa; font-size: .72rem; font-weight:950; }
+    .payback-number strong { font-size: 2.65rem; line-height: .9; letter-spacing: -.07em; color: #fff; }
+
+    .check-table { min-width: 760px; }
+    .check-box {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--slate-400);
+      vertical-align: middle;
+      margin-right: .45rem;
+      background: #fff;
+    }
+
+    .priority-list {
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+    }
+
+    .priority-list li {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: .75rem;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      padding: .85rem;
+      margin-bottom: .65rem;
+      font-weight: 700;
+    }
+
+    .priority-list li:before {
+      content: counter(step);
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      background: var(--orange-600);
+      color: #fff;
+      font-weight: 950;
+    }
+
+    .assumption-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+
+    .assumption-card {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      padding: .9rem;
+      font-weight: 700;
+      color: var(--slate-700);
+    }
+
+    .next-step-card {
+      background: linear-gradient(135deg, var(--orange-50), #fff);
+      border: 2px solid var(--orange-600);
+      padding: 1.15rem;
+      margin-top: 1rem;
+    }
+
+    .next-step-card strong {
+      color: var(--orange-700);
+      font-size: 1.4rem;
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      display: block;
+      margin-bottom: .5rem;
+    }
+
     ul { margin: .75rem 0 0; padding-left: 1.15rem; color: var(--slate-700); font-weight: 700; }
     li { margin-bottom: .45rem; }
 
@@ -303,7 +492,7 @@
     }
 
     @media (max-width: 960px) {
-      .hero-report, .body-grid, .list-grid { grid-template-columns: 1fr; }
+      .hero-report, .body-grid, .list-grid, .summary-grid, .risk-grid, .payback-band, .assumption-grid { grid-template-columns: 1fr; }
       .kpi-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .sidebar { position: static; }
       h1 { max-width: 100%; }
@@ -334,9 +523,10 @@
     <div class="container topbar-inner">
       <div class="brand">AntiERP Fabrication Estimating</div>
       <div class="actions">
+        <a class="btn btn-light" href="https://gregsheldon.github.io/metalfabexcel">Back To Home</a>
         <button class="btn btn-primary" id="printBtn" type="button">Print / Save PDF</button>
         <button class="btn btn-light" id="copyBtn" type="button">Copy Report</button>
-        <a class="btn btn-dark" href="antierp-fabrication-estimating-no-zapier.html#calculator">Run Again</a>
+        <a class="btn btn-dark" href="https://gregsheldon.github.io/metalfabexcel#calculator">Run Again</a>
       </div>
     </div>
   </header>
@@ -347,7 +537,8 @@
         <div class="eyebrow">Report Not Found</div>
         <h1 style="font-size:2.6rem; max-width:100%;">Run the calculator first.</h1>
         <p>This report page is generated from calculator data stored locally in your browser. Go back to the calculator, enter your numbers, and open the full report again.</p>
-        <a class="btn btn-primary" href="antierp-fabrication-estimating-no-zapier.html#calculator">Go To Calculator</a>
+        <a class="btn btn-primary" href="https://gregsheldon.github.io/metalfabexcel#calculator">Go To Calculator</a>
+        <a class="btn btn-light" href="https://gregsheldon.github.io/metalfabexcel">Back To Home</a>
       </div>
     </div>
 
@@ -370,6 +561,17 @@
         <div class="body-grid">
           <div>
             <section class="section">
+              <h2>Executive owner summary</h2>
+              <p>This report turns your calculator entries into a practical estimating-process audit. The goal is not to make a wild promise. The goal is to show, conservatively, where slow or inconsistent quoting can drain time, create missed-scope risk, and reduce confidence before a job ever reaches the shop floor.</p>
+              <div class="summary-grid">
+                <div class="summary-card"><span>Annual Estimating Drag</span><strong data-field="total_annual_estimating_cost_formatted">$0</strong><p>Manual estimating labour plus a conservative 0.5% estimating-risk factor.</p></div>
+                <div class="summary-card"><span>40% Faster Target</span><strong><span data-field="hours_reclaimed_40_percent">0</span> hrs</strong><p>Estimated yearly time reclaimed if the quoting process is tightened and standardized.</p></div>
+                <div class="summary-card"><span>Estimated Payback</span><strong><span data-field="payoff_days">0</span> days</strong><p>How quickly the selected system could be covered by the estimated annual leak.</p></div>
+              </div>
+              <div class="audit-note">The value is not just saving admin time. A better quoting system can help catch missed material, labour, install assumptions, coating, hardware, rentals, trucking, and subcontractor costs before the quote goes out.</div>
+            </section>
+
+            <section class="section">
               <h2>Your entered numbers</h2>
               <div class="kpi-grid">
                 <div class="kpi"><span>Average Job Size</span><strong data-field="average_job_size_formatted">$0</strong></div>
@@ -385,6 +587,7 @@
 
             <section class="section">
               <h2>On-screen calculator breakdown</h2>
+              <p>These are the core numbers from the calculator, shown again in a more complete business context so an owner, manager, or estimator can review the assumptions clearly.</p>
               <div class="table-wrap">
                 <table>
                   <thead><tr><th>Metric</th><th>Your Conservative Number</th><th>What It Means</th></tr></thead>
@@ -405,6 +608,19 @@
               </div>
             </section>
 
+            <section class="section">
+              <h2>Estimating risk heat map</h2>
+              <p>This section translates the calculator into practical operating risks an owner or manager can act on. It is not meant to scare you. It is meant to show which areas deserve attention first.</p>
+              <div class="risk-grid">
+                <div class="risk-card"><div class="risk-top"><h3>Manual quoting time</h3><span class="risk-badge" id="manualTimeRisk">Medium</span></div><p id="manualTimeRiskText">How much yearly estimating capacity is being consumed by the current process.</p></div>
+                <div class="risk-card"><div class="risk-top"><h3>Missed scope risk</h3><span class="risk-badge" id="scopeRisk">Medium</span></div><p id="scopeRiskText">Exposure to missed material, coating, hardware, trucking, rentals, and subcontractors.</p></div>
+                <div class="risk-card"><div class="risk-top"><h3>Install and labour risk</h3><span class="risk-badge" id="laborRisk">Medium</span></div><p id="laborRiskText">How much pressure gets placed on labour assumptions when quotes are rushed.</p></div>
+                <div class="risk-card"><div class="risk-top"><h3>Margin visibility</h3><span class="risk-badge" id="marginRisk">Medium</span></div><p id="marginRiskText">Whether the system makes it easy to see margin before the quote goes out.</p></div>
+                <div class="risk-card"><div class="risk-top"><h3>Quote response speed</h3><span class="risk-badge" id="speedRisk">Medium</span></div><p id="speedRiskText">How much quoting time could be reclaimed for review, follow-up, and cleaner handoff.</p></div>
+                <div class="risk-card"><div class="risk-top"><h3>Copied spreadsheet risk</h3><span class="risk-badge high">Check</span></div><p>Any shop using copied files or old templates should check formulas, hidden rows, stale markups, and missing scope categories.</p></div>
+              </div>
+            </section>
+
             <section class="section dark">
               <h2>Your estimating leak score</h2>
               <div class="score-card" style="margin-top:1rem;">
@@ -412,11 +628,12 @@
                 <strong><span data-field="estimating_leak_score">0</span> / 100</strong>
                 <p><span data-field="estimating_leak_score_label">Low concern</span></p>
               </div>
-              <p><strong>What this means:</strong> If your quote process depends on copied spreadsheets, rushed manual entry, old templates, or too much memory, the risk is not just time. It is missed material, light labour, guessed install time, coating, hardware, rentals, trucking, and subcontractor costs that get caught after the quote is already gone.</p>
+              <p><strong>What this means:</strong> this score combines quote time, annual quoting hours, quoted volume risk, quote frequency, and burdened estimating cost. The higher the score, the more important it becomes to standardize how quotes are built, checked, and handed off.</p>
             </section>
 
             <section class="section">
               <h2>What 40% faster estimating could look like</h2>
+              <p>A 40% improvement is used as a planning target, not a guarantee. The point is to show what happens when a quoting system removes repeated manual entry, forces missed-scope checks, and makes review faster.</p>
               <div class="kpi-grid">
                 <div class="kpi"><span>Current Annual Quoting Hours</span><strong data-field="annual_quoting_hours">0</strong></div>
                 <div class="kpi"><span>Hours Reclaimed at 40%</span><strong data-field="hours_reclaimed_40_percent">0</strong></div>
@@ -444,28 +661,137 @@
             </section>
 
             <section class="section">
-              <h2>Your recommended system fit</h2>
-              <p><strong data-field="recommended_system">Pro System</strong></p>
-              <p>This does not mean you need a massive ERP system. It means your estimating process likely needs to be tighter, clearer, and easier to repeat.</p>
+              <h2>What one saved mistake could mean</h2>
+              <p>A better system does not need to magically fix every quote to be worth taking seriously. In fabrication, one underpriced install package, missed coating scope, rental, trucking line, hardware package, or labour build-up mistake can hurt a job fast.</p>
+              <div class="payback-band">
+                <div>
+                  <h3>One avoided miss can change the math.</h3>
+                  <p>If the selected system costs <strong data-field="selected_price_formatted">$0</strong>, compare that to the cost of even one serious quote miss. This is why the report focuses on conservative prevention, not hype.</p>
+                </div>
+                <div class="payback-number"><span>Estimated Payback</span><strong><span data-field="payoff_days">0</span> days</strong></div>
+              </div>
             </section>
 
             <section class="section">
-              <h2>Missed-scope checklist for your next quote</h2>
+              <h2>Common missed-scope cost examples</h2>
+              <p>These are not promises or exact costs. They are practical examples of the kinds of items a controlled estimating workbook should force the team to review before the number leaves the building.</p>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Missed Item</th><th>Conservative Cost Range</th><th>Why It Matters</th></tr></thead>
+                  <tbody>
+                    <tr><td>Coating, galvanizing, or paint missed</td><td><strong>$1,500 to $8,000</strong></td><td>Finishing scope can be easy to overlook when drawings are rushed or specs are separate.</td></tr>
+                    <tr><td>Install labour underpriced</td><td><strong>$2,500 to $15,000</strong></td><td>Site access, crew size, travel, and field conditions can erase margin.</td></tr>
+                    <tr><td>Trucking or freight missed</td><td><strong>$750 to $5,000</strong></td><td>Delivery is often small compared to steel, but it still comes directly out of margin.</td></tr>
+                    <tr><td>Rentals, lifts, scaffold, or equipment</td><td><strong>$1,000 to $10,000</strong></td><td>Equipment assumptions can change quickly once the job moves to site.</td></tr>
+                    <tr><td>Hardware, anchors, or consumables</td><td><strong>$250 to $3,500</strong></td><td>Small items stack up, especially on handrails, stairs, platforms, and install work.</td></tr>
+                    <tr><td>Subcontractor scope gap</td><td><strong>$2,000 to $20,000+</strong></td><td>Outside scope needs clear pricing, exclusions, and review before submission.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2>Quote response speed advantage</h2>
+              <p>Faster quoting is not just about getting done sooner. It can change how the shop competes and how confidently managers review the work before it is submitted.</p>
+              <div class="list-grid">
+                <div class="list-card"><h3>Commercial upside</h3><ul><li>Respond faster to good opportunities</li><li>Spend more time following up on active bids</li><li>Decide faster which jobs are worth chasing</li><li>Look more organized and professional to customers</li></ul></div>
+                <div class="list-card"><h3>Operational upside</h3><ul><li>Reduce rushed last-minute estimating</li><li>Give managers more time for review</li><li>Create cleaner handoffs for the floor and field</li><li>Catch margin problems before the quote goes out</li></ul></div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2>Your recommended system fit</h2>
+              <p><strong data-field="recommended_system">Pro System</strong></p>
+              <p>This does not mean you need a massive ERP system. It means your estimating process likely needs to be tighter, clearer, and easier to repeat. The best system is the one your team will actually use on live quotes.</p>
+              <div class="next-step-card">
+                <strong id="recommendedNextStep">Recommended next step will appear here.</strong>
+                <p id="recommendedNextStepText">This recommendation is based on your score, quoting volume, and calculated estimating drag.</p>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2>Recommended quote-to-handoff workbook blueprint</h2>
+              <p>This is the type of structure that helps move a shop from copied spreadsheets and memory-based quoting to a repeatable process.</p>
               <div class="list-grid">
                 <div class="list-card">
-                  <h3>Before the quote goes out</h3>
+                  <h3>Missed-scope checklist for your next quote</h3>
                   <ul id="checklistList"></ul>
                 </div>
                 <div class="list-card">
-                  <h3>Recommended workbook blueprint</h3>
+                  <h3>Workbook blueprint</h3>
                   <ul id="blueprintList"></ul>
                 </div>
               </div>
             </section>
 
             <section class="section">
-              <h2>Conservative assumption note</h2>
+              <h2>Before vs. after workflow</h2>
+              <p>This is the real operational value: making the quoting process easier to repeat, review, and hand off.</p>
+              <div class="table-wrap">
+                <table class="workflow-table">
+                  <thead><tr><th>Current Process Risk</th><th>Streamlined System</th></tr></thead>
+                  <tbody>
+                    <tr><td>Copy an old spreadsheet and hope the old formulas still fit.</td><td>Start from a controlled quote template built around your actual work.</td></tr>
+                    <tr><td>Remember scope from experience and catch misses manually.</td><td>Use a checklist-driven quote flow that forces key scope categories.</td></tr>
+                    <tr><td>Guess labour quickly when the customer needs the number fast.</td><td>Build labour by task, split shop vs. install, and review assumptions clearly.</td></tr>
+                    <tr><td>Check margin late, after the quote is mostly built.</td><td>See cost, markup, margin, and risk live as the estimate develops.</td></tr>
+                    <tr><td>Create proposal and handoff documents separately.</td><td>Auto-populate proposal output and shop handoff from the estimate.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2>What to fix first</h2>
+              <p>These first moves create the most value because they reduce the places where quoting errors and margin leaks usually begin.</p>
+              <ol class="priority-list">
+                <li>Standardize labour build-ups so hours are built by task, not guessed from memory.</li>
+                <li>Add a missed-scope checklist before every quote leaves the shop.</li>
+                <li>Separate shop labour from install labour so field work is not buried in one number.</li>
+                <li>Add forced checks for coating, trucking, rentals, hardware, anchors, and subcontractors.</li>
+                <li>Build a final quote review dashboard that shows margin before submission.</li>
+                <li>Auto-populate proposal and handoff outputs so the estimate carries through to the customer and shop floor.</li>
+              </ol>
+            </section>
+
+            <section class="section">
+              <h2>Manager discussion questions</h2>
+              <p>Use these questions with your estimator, shop manager, project manager, or business partner. The answers will usually reveal where the estimating system needs to be tightened first.</p>
+              <div class="list-grid">
+                <div class="list-card"><h3>Process questions</h3><ul><li>Where do we usually miss scope?</li><li>Which quote types take the longest?</li><li>Are labour hours being built up or guessed?</li><li>Do we have one controlled workbook or several versions?</li></ul></div>
+                <div class="list-card"><h3>Margin questions</h3><ul><li>Do we know margin before sending every quote?</li><li>Are install assumptions separate from shop labour?</li><li>Are rentals, trucking, coating, and hardware checked every time?</li><li>Can someone else quote the same job consistently?</li></ul></div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2>Owner scorecard</h2>
+              <p>Print this page and mark where your current process stands. Every “No” is a possible improvement area.</p>
+              <div class="table-wrap">
+                <table class="check-table">
+                  <thead><tr><th>Question</th><th>Yes</th><th>No</th><th>Notes</th></tr></thead>
+                  <tbody>
+                    <tr><td>Do we use one controlled estimating workbook?</td><td><span class="check-box"></span></td><td><span class="check-box"></span></td><td></td></tr>
+                    <tr><td>Do we separate shop and field labour?</td><td><span class="check-box"></span></td><td><span class="check-box"></span></td><td></td></tr>
+                    <tr><td>Do we have a missed-scope checklist?</td><td><span class="check-box"></span></td><td><span class="check-box"></span></td><td></td></tr>
+                    <tr><td>Do we track coating, hardware, rentals, and trucking?</td><td><span class="check-box"></span></td><td><span class="check-box"></span></td><td></td></tr>
+                    <tr><td>Do we review margin before sending quotes?</td><td><span class="check-box"></span></td><td><span class="check-box"></span></td><td></td></tr>
+                    <tr><td>Can another estimator quote the same job consistently?</td><td><span class="check-box"></span></td><td><span class="check-box"></span></td><td></td></tr>
+                    <tr><td>Does the proposal auto-fill from the estimate?</td><td><span class="check-box"></span></td><td><span class="check-box"></span></td><td></td></tr>
+                    <tr><td>Does the shop get a clean handoff from the quote?</td><td><span class="check-box"></span></td><td><span class="check-box"></span></td><td></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2>Why these numbers are conservative</h2>
               <p data-field="conservative_assumption_note">These figures use conservative assumptions and are planning estimates, not guaranteed outcomes.</p>
+              <div class="assumption-grid">
+                <div class="assumption-card">The report uses a 0.5% estimating risk factor. It does not assume every quote has mistakes.</div>
+                <div class="assumption-card">It does not assume every saved hour becomes new revenue. The revenue opportunity is deliberately conservative.</div>
+                <div class="assumption-card">It does not include every possible loss from rework, delay, customer disputes, bad handoff, or schedule damage.</div>
+                <div class="assumption-card">The goal is not to exaggerate. The goal is to create a practical baseline for improving your quoting process.</div>
+              </div>
             </section>
 
             <section class="section dark">
@@ -484,6 +810,7 @@
               <h3>Want Greg to review this?</h3>
               <p>Send your summary to Greg and ask what he would build first for your shop.</p>
               <a class="btn btn-primary" id="emailGreg" href="#">Email Greg My Numbers</a>
+              <a class="btn btn-light" href="https://gregsheldon.github.io/metalfabexcel">Back To Home</a>
             </div>
             <div class="side-card">
               <h3>Save this report</h3>
@@ -559,6 +886,49 @@
       return `Hey Greg,\n\nI ran the AntiERP Fabrication Estimating Calculator and would like you to review my numbers.\n\nName: ${data.first_name || ""}\nEmail: ${data.email || ""}\nAverage job size: ${data.average_job_size_formatted || ""}\nQuotes per week: ${data.quotes_per_week || ""}\nMinutes per quote: ${data.minutes_per_quote || ""}\nSelected system: ${data.selected_system || ""}\n\nEstimated annual estimating cost: ${data.total_annual_estimating_cost_formatted || ""}\nYearly labour leak: ${data.yearly_labor_leak_formatted || ""}\nConservative estimating risk: ${data.error_risk_conservative_formatted || ""}\nHours reclaimed at 40% faster: ${data.hours_reclaimed_40_percent || ""}\nFive-year net opportunity: ${data.five_year_net_gain_formatted || ""}\nPayoff estimate: ${data.payoff_days || ""} days\nEstimating leak score: ${data.estimating_leak_score || ""}/100 - ${data.estimating_leak_score_label || ""}\nRecommended fit: ${data.recommended_system || ""}\n\nPlease tell me what you would build first for my shop.\n\nSpreadsheet`;
     }
 
+    function setRiskBadge(id, level, textId, text) {
+      const badge = document.getElementById(id);
+      if (!badge) return;
+      const normalized = String(level || "medium").toLowerCase();
+      badge.textContent = level;
+      badge.classList.remove("low", "medium", "high");
+      badge.classList.add(normalized.includes("high") ? "high" : normalized.includes("low") ? "low" : "medium");
+      const paragraph = document.getElementById(textId);
+      if (paragraph && text) paragraph.textContent = text;
+    }
+
+    function renderDerivedAudit(data) {
+      const hours = Number(data.annual_quoting_hours || 0);
+      const minutes = Number(data.minutes_per_quote || 0);
+      const errorRisk = Number(data.error_risk_conservative || data.errorRisk || 0);
+      const score = Number(data.estimating_leak_score || 0);
+      const quotes = Number(data.quotes_per_week || 0);
+
+      setRiskBadge("manualTimeRisk", hours >= 500 ? "High" : hours >= 250 ? "Medium" : "Low", "manualTimeRiskText", hours >= 500 ? "Your current process appears to consume a large amount of yearly estimating capacity." : hours >= 250 ? "Your current process appears to consume meaningful estimating capacity that may be worth tightening." : "Your estimated quoting hours are lower, but standardization can still protect consistency.");
+      setRiskBadge("scopeRisk", errorRisk >= 50000 ? "High" : errorRisk >= 15000 ? "Medium" : "Low", "scopeRiskText", errorRisk >= 50000 ? "The conservative 0.5% risk factor shows a large enough number to justify tighter missed-scope controls." : errorRisk >= 15000 ? "The risk number is meaningful enough to review how material, install, coating, rentals, trucking, and subs are checked." : "The conservative risk number is lower, but missed-scope checklists still help protect margin.");
+      setRiskBadge("laborRisk", minutes >= 60 ? "High" : minutes >= 30 ? "Medium" : "Low", "laborRiskText", minutes >= 60 ? "Long quote times often mean more manual entry, more checking, and more chances for labour assumptions to drift." : minutes >= 30 ? "Quote time is meaningful, so labour build-up and review controls are worth standardizing." : "Quote time is lean, but the system should still force the key labour checks.");
+      setRiskBadge("marginRisk", score >= 70 ? "High" : score >= 40 ? "Medium" : "Low", "marginRiskText", score >= 70 ? "Your overall score suggests margin visibility should be treated as a priority before quotes leave the shop." : score >= 40 ? "Your score suggests margin should be easier to review and explain before submission." : "Your score is lower, but a live margin view still helps prevent surprises.");
+      setRiskBadge("speedRisk", quotes >= 10 ? "High" : quotes >= 5 ? "Medium" : "Low", "speedRiskText", quotes >= 10 ? "High quote volume means even small time savings can add up quickly over the year." : quotes >= 5 ? "Moderate quote volume still creates enough repetition to benefit from a cleaner workflow." : "Lower quote volume may still justify better controls if jobs are complex or margin-sensitive.");
+
+      const next = document.getElementById("recommendedNextStep");
+      const nextText = document.getElementById("recommendedNextStepText");
+      if (next && nextText) {
+        if (score >= 81) {
+          next.textContent = "Priority: review estimating immediately before more margin leaks into live jobs.";
+          nextText.textContent = "Your score suggests the next step is a full quote-to-handoff system with labour build-ups, missed-scope checks, live margin review, proposal output, and shop handoff.";
+        } else if (score >= 61) {
+          next.textContent = "Priority: build a standardized estimating workbook.";
+          nextText.textContent = "Your numbers suggest serious estimating drag. The first move should be a controlled workbook that reduces copied-spreadsheet errors and forces the major scope checks.";
+        } else if (score >= 31) {
+          next.textContent = "Priority: tighten the checklist, labour build-up, and proposal output.";
+          nextText.textContent = "Your process may not need a large rebuild, but it would likely benefit from clearer checks, consistent labour assumptions, and a cleaner customer-facing output.";
+        } else {
+          next.textContent = "Priority: protect consistency before the process becomes painful.";
+          nextText.textContent = "Your score is lower, so the best move is to standardize the basics now: checklist, margin review, and clean quote output.";
+        }
+      }
+    }
+
     const data = getReportData();
     if (!data) {
       document.getElementById("missing").hidden = false;
@@ -567,6 +937,7 @@
       Object.keys(data).forEach(key => setText(key, data[key]));
       renderList("checklistList", splitList(data.missed_scope_checklist || fallbackChecklist));
       renderList("blueprintList", splitList(data.workbook_blueprint || fallbackBlueprint));
+      renderDerivedAudit(data);
       const subject = encodeURIComponent("Please review my fabrication estimating report");
       const body = encodeURIComponent(buildEmailBody(data));
       document.getElementById("emailGreg").href = `mailto:gregwsheldon@gmail.com?subject=${subject}&body=${body}`;

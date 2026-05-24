@@ -372,8 +372,12 @@
       flex-direction: column;
       justify-content: center;
     }
-    .payback-number span { text-transform: uppercase; letter-spacing: .08em; color: #fed7aa; font-size: .72rem; font-weight:950; }
-    .payback-number strong { font-size: 2.65rem; line-height: .9; letter-spacing: -.07em; color: #fff; }
+    .payback-number > span { text-transform: uppercase; letter-spacing: .08em; color: #fed7aa; font-size: .72rem; font-weight:950; }
+    .payback-number strong { display:block; font-size: clamp(4.2rem, 7vw, 6.3rem); line-height: .82; letter-spacing: -.08em; color: #fff; margin-top: .25rem; }
+    .payback-number strong span { display:inline; text-transform:none; letter-spacing:inherit; color:inherit; font-size:inherit; font-weight:inherit; margin:0; }
+    .payback-number strong::after { content: ""; }
+    .payback-number strong { white-space: nowrap; }
+    .payback-number strong .payback-unit { font-size: .52em; letter-spacing: -.055em; }
 
     .check-table { min-width: 760px; }
     .check-box {
@@ -668,7 +672,7 @@
                   <h3>One avoided miss can change the math.</h3>
                   <p>If the selected system costs <strong data-field="selected_price_formatted">$0</strong>, compare that to the cost of even one serious quote miss. This is why the report focuses on conservative prevention, not hype.</p>
                 </div>
-                <div class="payback-number"><span>Estimated Payback</span><strong><span data-field="payoff_days">0</span> days</strong></div>
+                <div class="payback-number"><span>Estimated Payback</span><strong><span data-field="payoff_days">0</span> <span class="payback-unit">days</span></strong></div>
               </div>
             </section>
 

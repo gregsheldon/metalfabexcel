@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your AntiERP Fabrication Estimating Report</title>
+  <meta name="description" content="A conservative estimating cost report generated from the AntiERP Fabrication Estimating Calculator." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --slate-950:#020617;
+      --slate-900:#0f172a;
+      --slate-800:#1e293b;
+      --slate-700:#334155;
+      --slate-600:#475569;
+      --slate-500:#64748b;
+      --slate-300:#cbd5e1;
+      --slate-200:#e2e8f0;
+      --slate-100:#f1f5f9;
+      --slate-50:#f8fafc;
+      --orange-700:#c2410c;
+      --orange-600:#ea580c;
+      --orange-500:#f97316;
+      --orange-100:#ffedd5;
+      --orange-50:#fff7ed;
+      --red-900:#7f1d1d;
+      --red-100:#fee2e2;
+      --green-900:#14532d;
+      --green-100:#dcfce7;
+      --blue-900:#1e3a8a;
+      --blue-100:#dbeafe;
+      --amber-100:#fef3c7;
+      --shadow: 0 24px 60px rgba(15,23,42,.10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #ffffff 0%, var(--slate-50) 70%, #eef2f7 100%);
+      color: var(--slate-900);
+      line-height: 1.55;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-weight: 950;
+      letter-spacing: -.035em;
+      color: var(--slate-950);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      min-height: 44px;
+      padding: .75rem 1rem;
+      border: 2px solid transparent;
+      font-weight: 950;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 0;
+      font-family: inherit;
+      line-height: 1;
+    }
+
+    .btn-primary { background: linear-gradient(135deg, var(--orange-500), var(--orange-700)); color: #fff; }
+    .btn-dark { background: var(--slate-950); color: #fff; }
+    .btn-light { background: #fff; color: var(--slate-900); border-color: var(--slate-200); }
+
+    main { padding: 2rem 0 4rem; }
+
+    .report-shell {
+      background: #fff;
+      border: 2px solid var(--slate-950);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-report {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
+      gap: 1.5rem;
+      padding: clamp(1.2rem, 4vw, 2rem);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(249,115,22,.16), transparent 28%),
+        linear-gradient(135deg, #fff 0%, #fff 55%, var(--orange-50) 100%);
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      background: var(--orange-50);
+      border: 1px solid #fed7aa;
+      color: var(--orange-700);
+      padding: .55rem .8rem;
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3 { margin: 0; letter-spacing: -.05em; line-height: 1; }
+    h1 { font-size: clamp(2.5rem, 6vw, 5rem); max-width: 10ch; }
+    h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); }
+    h3 { font-size: 1.2rem; letter-spacing: -.025em; }
+    p { color: var(--slate-600); }
+
+    .big-number {
+      background: var(--red-900);
+      color: #fff;
+      padding: 1.25rem;
+      border: 2px solid #ef4444;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .big-number span {
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .8rem;
+      color: #fecaca;
+      font-weight: 950;
+      margin-bottom: .4rem;
+    }
+
+    .big-number strong {
+      font-size: clamp(3rem, 7vw, 5.25rem);
+      line-height: .9;
+      letter-spacing: -.08em;
+    }
+
+    .body-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 1.25rem;
+      padding: clamp(1.2rem, 4vw, 2rem);
+    }
+
+    .section {
+      border: 1px solid var(--slate-200);
+      background: #fff;
+      padding: 1.15rem;
+      margin-bottom: 1rem;
+      break-inside: avoid;
+    }
+
+    .section.dark {
+      background: var(--slate-950);
+      color: #fff;
+      border-color: var(--slate-800);
+    }
+
+    .section.dark p, .section.dark li { color: var(--slate-300); }
+    .section.dark h2, .section.dark h3 { color: #fff; }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+
+    .kpi {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      padding: .95rem;
+      min-height: 112px;
+    }
+
+    .kpi span {
+      display: block;
+      text-transform: uppercase;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      color: var(--slate-500);
+      font-weight: 950;
+      margin-bottom: .45rem;
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1;
+      letter-spacing: -.05em;
+      color: var(--slate-950);
+    }
+
+    .score-card {
+      background: linear-gradient(135deg, var(--slate-950), var(--slate-800));
+      color: #fff;
+      padding: 1.25rem;
+      border: 2px solid var(--orange-600);
+    }
+
+    .score-card strong {
+      display: block;
+      font-size: 4rem;
+      line-height: .9;
+      letter-spacing: -.08em;
+      margin: .3rem 0;
+    }
+
+    .score-card p { color: var(--slate-300); margin-bottom: 0; }
+
+    .table-wrap { overflow-x: auto; margin-top: .9rem; }
+    table { width: 100%; border-collapse: collapse; min-width: 620px; }
+    th, td { text-align: left; border: 1px solid var(--slate-200); padding: .75rem; vertical-align: top; }
+    th { background: var(--slate-950); color: #fff; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
+    td strong { color: var(--slate-950); }
+
+    .list-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+
+    .list-card {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      padding: .95rem;
+    }
+
+    ul { margin: .75rem 0 0; padding-left: 1.15rem; color: var(--slate-700); font-weight: 700; }
+    li { margin-bottom: .45rem; }
+
+    .sidebar {
+      position: sticky;
+      top: 82px;
+      align-self: start;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .side-card {
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      padding: 1rem;
+    }
+
+    .side-card strong { color: var(--slate-950); }
+
+    .cta-card {
+      background: var(--orange-50);
+      border: 2px solid var(--orange-600);
+      padding: 1rem;
+    }
+
+    .cta-card p { margin-bottom: 1rem; }
+
+    .missing {
+      max-width: 760px;
+      margin: 3rem auto;
+      background: #fff;
+      border: 2px solid var(--slate-950);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .footer {
+      border-top: 1px solid var(--slate-200);
+      padding: 1.5rem 0;
+      color: var(--slate-500);
+      text-align: center;
+      font-weight: 700;
+    }
+
+    @media (max-width: 960px) {
+      .hero-report, .body-grid, .list-grid { grid-template-columns: 1fr; }
+      .kpi-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .sidebar { position: static; }
+      h1 { max-width: 100%; }
+    }
+
+    @media (max-width: 560px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+      .actions { width: 100%; justify-content: stretch; }
+      .btn { width: 100%; }
+    }
+
+    @media print {
+      .topbar, .actions, .no-print, .footer { display: none !important; }
+      body { background: #fff; }
+      main { padding: 0; }
+      .container { width: 100%; }
+      .report-shell { border: 0; box-shadow: none; }
+      .hero-report, .body-grid { padding: .65rem; }
+      .section { page-break-inside: avoid; }
+      .sidebar { position: static; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar no-print">
+    <div class="container topbar-inner">
+      <div class="brand">AntiERP Fabrication Estimating</div>
+      <div class="actions">
+        <button class="btn btn-primary" id="printBtn" type="button">Print / Save PDF</button>
+        <button class="btn btn-light" id="copyBtn" type="button">Copy Report</button>
+        <a class="btn btn-dark" href="antierp-fabrication-estimating-no-zapier.html#calculator">Run Again</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container" id="missing" hidden>
+      <div class="missing">
+        <div class="eyebrow">Report Not Found</div>
+        <h1 style="font-size:2.6rem; max-width:100%;">Run the calculator first.</h1>
+        <p>This report page is generated from calculator data stored locally in your browser. Go back to the calculator, enter your numbers, and open the full report again.</p>
+        <a class="btn btn-primary" href="antierp-fabrication-estimating-no-zapier.html#calculator">Go To Calculator</a>
+      </div>
+    </div>
+
+    <div class="container" id="reportPage" hidden>
+      <article class="report-shell" id="reportBody">
+        <section class="hero-report">
+          <div>
+            <div class="eyebrow">Private Conservative Report</div>
+            <h1>Your estimating cost report</h1>
+            <p style="font-size:1.05rem; max-width:68ch;">Hey <strong data-field="first_name">there</strong>, thanks for running the AntiERP Fabrication Estimating Calculator. This report gives you the on-screen calculator results plus the deeper opt-in-only breakdown.</p>
+            <p><strong>Important:</strong> this is not a promise or guaranteed result. It is a conservative planning estimate based on your inputs, a 0.5% estimating risk factor, and practical speed-improvement scenarios.</p>
+          </div>
+          <div class="big-number">
+            <span>Estimated Annual Estimating Cost</span>
+            <strong data-field="total_annual_estimating_cost_formatted">$0</strong>
+            <p style="color:#fecaca; font-weight:800; margin:.8rem 0 0;">Conservative baseline based on manual labour and preventable estimating risk.</p>
+          </div>
+        </section>
+
+        <div class="body-grid">
+          <div>
+            <section class="section">
+              <h2>Your entered numbers</h2>
+              <div class="kpi-grid">
+                <div class="kpi"><span>Average Job Size</span><strong data-field="average_job_size_formatted">$0</strong></div>
+                <div class="kpi"><span>Quotes Per Week</span><strong data-field="quotes_per_week">0</strong></div>
+                <div class="kpi"><span>Estimator Salary</span><strong data-field="estimator_salary_formatted">$0</strong></div>
+                <div class="kpi"><span>Burden Rate</span><strong><span data-field="burden_rate">0</span>%</strong></div>
+                <div class="kpi"><span>Minutes Per Quote</span><strong data-field="minutes_per_quote">0</strong></div>
+                <div class="kpi"><span>Selected System</span><strong data-field="selected_system">Pro System</strong></div>
+                <div class="kpi"><span>Selected Price</span><strong data-field="selected_price_formatted">$0</strong></div>
+                <div class="kpi"><span>Recommended Fit</span><strong data-field="recommended_system">Pro System</strong></div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2>On-screen calculator breakdown</h2>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Metric</th><th>Your Conservative Number</th><th>What It Means</th></tr></thead>
+                  <tbody>
+                    <tr><td>Annual quoted volume</td><td><strong data-field="annual_quoted_volume_formatted">$0</strong></td><td>The estimated yearly value of the work your shop is quoting.</td></tr>
+                    <tr><td>Annual quotes</td><td><strong data-field="annual_quotes">0</strong></td><td>Quotes per week multiplied by 52 weeks.</td></tr>
+                    <tr><td>Annual quoting hours</td><td><strong data-field="annual_quoting_hours">0</strong></td><td>Estimated time spent building quotes each year.</td></tr>
+                    <tr><td>Burdened hourly estimator cost</td><td><strong data-field="burdened_hourly_rate">$0/hr</strong></td><td>Salary plus burden, divided by 2,080 working hours.</td></tr>
+                    <tr><td>Yearly manual estimating labour leak</td><td><strong data-field="yearly_labor_leak_formatted">$0</strong></td><td>The labour cost of quote time under the current process.</td></tr>
+                    <tr><td>Conservative estimating risk</td><td><strong data-field="error_risk_conservative_formatted">$0</strong></td><td>A 0.5% planning factor on quoted volume for missed scope and estimating risk.</td></tr>
+                    <tr><td>Total annual estimating cost</td><td><strong data-field="total_annual_estimating_cost_formatted">$0</strong></td><td>Manual estimating labour plus conservative estimating risk.</td></tr>
+                    <tr><td>Five-year cost if nothing changes</td><td><strong data-field="five_year_cost_formatted">$0</strong></td><td>Annual estimating cost multiplied over five years.</td></tr>
+                    <tr><td>Estimated five-year net opportunity</td><td><strong data-field="five_year_net_gain_formatted">$0</strong></td><td>Five-year cost less the selected system cost.</td></tr>
+                    <tr><td>Estimated payoff period</td><td><strong><span data-field="payoff_days">0</span> days</strong></td><td>How quickly the selected build could be covered by the estimated annual leak.</td></tr>
+                    <tr><td>Projected revenue opportunity</td><td><strong data-field="projected_revenue_opportunity_formatted">$0</strong></td><td>A conservative 1% revenue opportunity model from reclaimed estimating capacity.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="section dark">
+              <h2>Your estimating leak score</h2>
+              <div class="score-card" style="margin-top:1rem;">
+                <span style="text-transform:uppercase; letter-spacing:.08em; color:#fed7aa; font-weight:950;">Score</span>
+                <strong><span data-field="estimating_leak_score">0</span> / 100</strong>
+                <p><span data-field="estimating_leak_score_label">Low concern</span></p>
+              </div>
+              <p><strong>What this means:</strong> If your quote process depends on copied spreadsheets, rushed manual entry, old templates, or too much memory, the risk is not just time. It is missed material, light labour, guessed install time, coating, hardware, rentals, trucking, and subcontractor costs that get caught after the quote is already gone.</p>
+            </section>
+
+            <section class="section">
+              <h2>What 40% faster estimating could look like</h2>
+              <div class="kpi-grid">
+                <div class="kpi"><span>Current Annual Quoting Hours</span><strong data-field="annual_quoting_hours">0</strong></div>
+                <div class="kpi"><span>Hours Reclaimed at 40%</span><strong data-field="hours_reclaimed_40_percent">0</strong></div>
+                <div class="kpi"><span>New Annual Quoting Hours</span><strong data-field="new_annual_quoting_hours_40_percent">0</strong></div>
+                <div class="kpi"><span>Workdays Saved/Year</span><strong data-field="workdays_saved_40_percent">0</strong></div>
+                <div class="kpi"><span>Hours Saved/Month</span><strong data-field="hours_saved_per_month_40_percent">0</strong></div>
+                <div class="kpi"><span>Hours Saved/Week</span><strong data-field="hours_saved_per_week_40_percent">0</strong></div>
+                <div class="kpi"><span>Labour Capacity Saved</span><strong data-field="labor_savings_40_percent_formatted">$0</strong></div>
+                <div class="kpi"><span>Payoff Estimate</span><strong><span data-field="payoff_days">0</span> days</strong></div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2>Conservative speed scenarios</h2>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Scenario</th><th>Hours Reclaimed</th><th>Labour Capacity</th><th>Why It Matters</th></tr></thead>
+                  <tbody>
+                    <tr><td>20% faster</td><td><strong><span data-field="hours_reclaimed_20_percent">0</span> hours</strong></td><td><strong data-field="labor_savings_20_percent_formatted">$0</strong></td><td>Conservative improvement from a cleaner process.</td></tr>
+                    <tr><td>40% faster</td><td><strong><span data-field="hours_reclaimed_40_percent">0</span> hours</strong></td><td><strong data-field="labor_savings_40_percent_formatted">$0</strong></td><td>Realistic target for a tighter estimating workbook.</td></tr>
+                    <tr><td>60% faster</td><td><strong><span data-field="hours_reclaimed_60_percent">0</span> hours</strong></td><td><strong data-field="labor_savings_60_percent_formatted">$0</strong></td><td>Aggressive upside if the workflow becomes highly standardized.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2>Your recommended system fit</h2>
+              <p><strong data-field="recommended_system">Pro System</strong></p>
+              <p>This does not mean you need a massive ERP system. It means your estimating process likely needs to be tighter, clearer, and easier to repeat.</p>
+            </section>
+
+            <section class="section">
+              <h2>Missed-scope checklist for your next quote</h2>
+              <div class="list-grid">
+                <div class="list-card">
+                  <h3>Before the quote goes out</h3>
+                  <ul id="checklistList"></ul>
+                </div>
+                <div class="list-card">
+                  <h3>Recommended workbook blueprint</h3>
+                  <ul id="blueprintList"></ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2>Conservative assumption note</h2>
+              <p data-field="conservative_assumption_note">These figures use conservative assumptions and are planning estimates, not guaranteed outcomes.</p>
+            </section>
+
+            <section class="section dark">
+              <h2>The point is simple</h2>
+              <p>A custom Excel estimating system should help your shop catch missed scope before the quote goes out, price labour more consistently, see margin more clearly, reduce copied-spreadsheet mistakes, and create cleaner handoffs for the shop and install crew.</p>
+              <p>If you want me to look at your numbers and tell you what I would build first, click the button to send Greg your summary.</p>
+            </section>
+          </div>
+
+          <aside class="sidebar no-print">
+            <div class="side-card">
+              <h3>Generated for</h3>
+              <p><strong data-field="first_name">there</strong><br><span data-field="email">No email entered</span></p>
+            </div>
+            <div class="cta-card">
+              <h3>Want Greg to review this?</h3>
+              <p>Send your summary to Greg and ask what he would build first for your shop.</p>
+              <a class="btn btn-primary" id="emailGreg" href="#">Email Greg My Numbers</a>
+            </div>
+            <div class="side-card">
+              <h3>Save this report</h3>
+              <p>Use the print button and choose “Save as PDF” to keep a copy or share it with your team.</p>
+              <button class="btn btn-dark" type="button" onclick="window.print()">Print / Save PDF</button>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    Greg Sheldon | AntiERP Fabrication Estimating | Custom Excel Estimating Systems for Welding & Metal Fabrication Shops
+  </footer>
+
+  <script>
+    const fallbackChecklist = "Material grade/shape, labour by task, coating/finishing, install access, lift equipment/rentals, trucking/freight, hardware/anchors, subcontractor pricing, contingency, and final margin review.";
+    const fallbackBlueprint = "Customer/project info, material takeoff, labour build-up, install assumptions, coating/finishing, rentals/equipment, trucking/freight, subcontractors, markup/margin controls, quote review checklist, proposal output, shop handoff, and change order tracker.";
+
+    function getReportData() {
+      const raw = sessionStorage.getItem("antierp_est_report") || localStorage.getItem("antierp_est_report");
+      if (!raw) return null;
+      try { return JSON.parse(raw); } catch (error) { return null; }
+    }
+
+    function setText(field, value) {
+      document.querySelectorAll(`[data-field="${field}"]`).forEach(el => {
+        el.textContent = value ?? "";
+      });
+    }
+
+    function splitList(value) {
+      return String(value || "").split(/,|\band\b/).map(item => item.trim()).filter(Boolean);
+    }
+
+    function renderList(id, items) {
+      const ul = document.getElementById(id);
+      ul.innerHTML = "";
+      items.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+    }
+
+    function buildEmailBody(data) {
+      return `Hey Greg,\n\nI ran the AntiERP Fabrication Estimating Calculator and would like you to review my numbers.\n\nName: ${data.first_name || ""}\nEmail: ${data.email || ""}\nAverage job size: ${data.average_job_size_formatted || ""}\nQuotes per week: ${data.quotes_per_week || ""}\nMinutes per quote: ${data.minutes_per_quote || ""}\nSelected system: ${data.selected_system || ""}\n\nEstimated annual estimating cost: ${data.total_annual_estimating_cost_formatted || ""}\nYearly labour leak: ${data.yearly_labor_leak_formatted || ""}\nConservative estimating risk: ${data.error_risk_conservative_formatted || ""}\nHours reclaimed at 40% faster: ${data.hours_reclaimed_40_percent || ""}\nFive-year net opportunity: ${data.five_year_net_gain_formatted || ""}\nPayoff estimate: ${data.payoff_days || ""} days\nEstimating leak score: ${data.estimating_leak_score || ""}/100 - ${data.estimating_leak_score_label || ""}\nRecommended fit: ${data.recommended_system || ""}\n\nPlease tell me what you would build first for my shop.\n\nSpreadsheet`;
+    }
+
+    const data = getReportData();
+    if (!data) {
+      document.getElementById("missing").hidden = false;
+    } else {
+      document.getElementById("reportPage").hidden = false;
+      Object.keys(data).forEach(key => setText(key, data[key]));
+      renderList("checklistList", splitList(data.missed_scope_checklist || fallbackChecklist));
+      renderList("blueprintList", splitList(data.workbook_blueprint || fallbackBlueprint));
+      const subject = encodeURIComponent("Please review my fabrication estimating report");
+      const body = encodeURIComponent(buildEmailBody(data));
+      document.getElementById("emailGreg").href = `mailto:gregwsheldon@gmail.com?subject=${subject}&body=${body}`;
+    }
+
+    document.getElementById("printBtn").addEventListener("click", () => window.print());
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      const text = document.getElementById("reportBody")?.innerText || "";
+      try {
+        await navigator.clipboard.writeText(text);
+        document.getElementById("copyBtn").textContent = "Copied";
+        setTimeout(() => document.getElementById("copyBtn").textContent = "Copy Report", 1500);
+      } catch (error) {
+        alert("Copy failed. You can select the report text manually and copy it.");
+      }
+    });
+  </script>
+</body>
+</html>

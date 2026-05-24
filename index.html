@@ -843,22 +843,6 @@
       margin-top: 1rem;
     }
 
-
-    .systeme-form-shell {
-      background: rgba(255, 255, 255, .08);
-      border: 1px solid rgba(255, 255, 255, .14);
-      padding: .85rem;
-      margin: .9rem 0 .75rem;
-      min-height: 96px;
-    }
-
-    .report-fallback-link {
-      width: 100%;
-      justify-content: center;
-      margin-top: .75rem;
-      font-size: .9rem;
-    }
-
     .email-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -1846,7 +1830,7 @@
         </div>
 
         <div class="calculator-card">
-          <div id="leadForm" autocomplete="on">
+          <form id="leadForm" autocomplete="on">
             <div class="calculator-layout">
               <div class="calculator-main">
                 <span class="step-tag">Step 1: Your Shop Numbers</span>
@@ -1974,25 +1958,26 @@
                   </div>
                 </div>
 
-                <div class="email-box systeme-optin-box">
+                <div class="email-box">
                   <p style="font-weight: 950; margin-bottom: .35rem; font-size:1.02rem;">Unlock my full conservative report.</p>
-                  <p style="color:var(--slate-300); margin:.25rem 0 .75rem; font-size:.9rem; line-height:1.45;">Enter your first name and email below. You get everything shown on this page, plus the full printable estimating audit report.</p>
-                  <div class="email-report-list" aria-label="What the report includes">
+                  <p style="color:var(--slate-300); margin:.25rem 0 .75rem; font-size:.9rem; line-height:1.45;">You get everything shown on this page, plus the opt-in-only breakdown on a printable report page.</p>
+                  <div class="email-report-list" aria-label="What the email report includes">
                     <div><span>✓</span><strong>Estimating Leak Score and where the money is likely leaking.</strong></div>
                     <div><span>✓</span><strong>20%, 40%, and 60% speed improvement scenarios.</strong></div>
                     <div><span>✓</span><strong>Payback range, saved-hours view, and 5-year conservative outlook.</strong></div>
                     <div><span>✓</span><strong>Missed-scope checklist and recommended workbook blueprint.</strong></div>
                   </div>
-                  <div class="systeme-form-shell" aria-label="Report opt-in form">
-                    <script id="form-script-tag-24133226" src="https://grsh.systeme.io/public/remote/page/41158958506727adcdfa42e93d92ba313bc692fa.js"></script>
+                  <div class="email-grid">
+                    <input class="dark-input" id="firstName" name="firstName" placeholder="First name" required />
+                    <input class="dark-input" id="email" name="email" type="email" placeholder="Work email" required />
                   </div>
-                  <p class="privacy-strong">We’ll never sell or share your email. After you submit, your calculator numbers are used only to build your private printable report.</p>
-                  <a class="btn btn-light report-fallback-link" id="openReportFallback" href="https://gregsheldon.github.io/metalfabexcel/antierp-estimating-report.html">Already signed up? Open My Report</a>
+                  <button class="btn btn-primary" type="submit" style="width:100%;">Open My Full Conservative Report</button>
+                  <p class="privacy-strong">We’ll never sell or share your email. Your first name and email unlock the private report page. Your calculator numbers are used to build your printable report.</p>
                   <p id="formStatus" class="privacy" aria-live="polite"></p>
                 </div>
               </aside>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>
@@ -2224,9 +2209,9 @@
 
   <script>
     // Calculator opt-in flow:
-    // 1) The calculator builds the visitor's report data in the browser.
-    // 2) The Systeme.io embedded form collects first name and email.
-    // 3) After the Systeme.io form redirects to the report page, the report page reads the saved calculator data.
+    // 1) The visitor's calculator report data is stored locally and sent to the report page.
+    // 2) Only first name and email are sent to Make for the signup/opt-in.
+    const WEBHOOK_URL = "https://hook.us2.make.com/cnyn61efcoeqrtg4sfrmqn3bro5p5yb7";
     const REPORT_PAGE_URL = "https://gregsheldon.github.io/metalfabexcel/antierp-estimating-report.html";
     const VIDEO_PAGE_URL = "#video";
 
@@ -2363,7 +2348,6 @@
       $("#netFiveYear").textContent = money(r.netFiveYear);
       $("#hoursBack").textContent = (r.hoursBack || 0).toLocaleString() + " hours";
       $("#revenueOpportunity").textContent = money(r.revenueOpportunity);
-      saveCurrentReportPayload();
     }
 
     function encodeReportPayload(payload) {
@@ -2377,101 +2361,89 @@
       }
     }
 
-    function buildReportPayload() {
-      return {
-        source: "main_calculator_systeme_form",
-        first_name: "",
-        email: "",
-        job_size: state.results.jobSize,
-        quotes: state.results.quotes,
-        salary: state.results.salary,
-        burden: state.results.burden,
-        minutes: state.results.minutes,
-        tier: state.selectedTier,
-        price: state.selectedPrice,
-        hourly_rate: state.results.hourlyRate,
-        yearly_labor_cost: state.results.yearlyLaborCost,
-        annual_volume: state.results.annualVolume,
-        error_risk: state.results.errorRisk,
-        total_leak: state.results.totalLeak,
-        gross_five_year: state.results.grossFiveYear,
-        net_five_year: state.results.netFiveYear,
-        payoff_days: state.results.payoffDays,
-        hours_back: state.results.hoursBack,
-        revenue_opportunity: state.results.revenueOpportunity,
-        average_job_size: state.results.jobSize,
-        average_job_size_formatted: money(state.results.jobSize),
-        quotes_per_week: state.results.quotes,
-        estimator_salary: state.results.salary,
-        estimator_salary_formatted: money(state.results.salary),
-        burden_rate: state.results.burden,
-        minutes_per_quote: state.results.minutes,
-        selected_system: state.selectedTier,
-        selected_price: state.selectedPrice,
-        selected_price_formatted: money(state.selectedPrice),
-        recommended_system: state.results.recommendedSystem,
-        burdened_hourly_rate: money(state.results.hourlyRate),
-        annual_quotes: state.results.annualQuotes,
-        annual_quoting_hours: state.results.annualQuotingHours,
-        current_monthly_quoting_hours: Math.round((state.results.annualQuotingHours / 12) * 10) / 10,
-        current_weekly_quoting_hours: Math.round((state.results.annualQuotingHours / 52) * 10) / 10,
-        yearly_labor_leak: state.results.yearlyLaborCost,
-        yearly_labor_leak_formatted: money(state.results.yearlyLaborCost),
-        annual_quoted_volume: state.results.annualVolume,
-        annual_quoted_volume_formatted: money(state.results.annualVolume),
-        error_risk_conservative: state.results.errorRisk,
-        error_risk_conservative_formatted: money(state.results.errorRisk),
-        total_annual_estimating_cost: state.results.totalLeak,
-        total_annual_estimating_cost_formatted: money(state.results.totalLeak),
-        monthly_estimating_cost: state.results.monthlyLeak,
-        monthly_estimating_cost_formatted: money(state.results.monthlyLeak),
-        weekly_estimating_cost: state.results.weeklyLeak,
-        weekly_estimating_cost_formatted: money(state.results.weeklyLeak),
-        hours_reclaimed_20_percent: state.results.hoursSaved20,
-        hours_reclaimed_40_percent: state.results.hoursSaved40,
-        hours_reclaimed_60_percent: state.results.hoursSaved60,
-        new_annual_quoting_hours_40_percent: state.results.newHours40,
-        hours_saved_per_month_40_percent: state.results.hoursSavedPerMonth40,
-        hours_saved_per_week_40_percent: state.results.hoursSavedPerWeek40,
-        workdays_saved_40_percent: state.results.workdaysSaved40,
-        labor_savings_20_percent: state.results.laborSavings20,
-        labor_savings_20_percent_formatted: money(state.results.laborSavings20),
-        labor_savings_40_percent: state.results.laborSavings40,
-        labor_savings_40_percent_formatted: money(state.results.laborSavings40),
-        labor_savings_60_percent: state.results.laborSavings60,
-        labor_savings_60_percent_formatted: money(state.results.laborSavings60),
-        five_year_cost: state.results.grossFiveYear,
-        five_year_cost_formatted: money(state.results.grossFiveYear),
-        five_year_net_gain: state.results.netFiveYear,
-        five_year_net_gain_formatted: money(state.results.netFiveYear),
-        projected_revenue_opportunity: state.results.revenueOpportunity,
-        projected_revenue_opportunity_formatted: money(state.results.revenueOpportunity),
-        estimating_leak_score: state.results.leakScore,
-        estimating_leak_score_label: state.results.leakScoreLabel,
-        conservative_assumption_note: state.results.conservativeNote,
-        missed_scope_checklist: "Material grade/shape, labour by task, coating/finishing, install access, lift equipment/rentals, trucking/freight, hardware/anchors, subcontractor pricing, contingency, and final margin review.",
-        workbook_blueprint: "Customer/project info, material takeoff, labour build-up, install assumptions, coating/finishing, rentals/equipment, trucking/freight, subcontractors, markup/margin controls, quote review checklist, proposal output, shop handoff, and change order tracker.",
-        submitted_at: new Date().toISOString()
-      };
-    }
+    async function sendOptinToMake(firstName, email) {
+      // Only first name and email are sent to Make.
+      // Form-encoded + no-cors avoids browser CORS issues on static hosting.
+      const signupPayload = new URLSearchParams();
+      signupPayload.append("first_name", firstName);
+      signupPayload.append("email", email);
 
-    function saveCurrentReportPayload() {
       try {
-        const payload = buildReportPayloadNoRecalculate();
-        sessionStorage.setItem("antierp_est_report", JSON.stringify(payload));
-        localStorage.setItem("antierp_est_report", JSON.stringify(payload));
-        return payload;
+        await fetch(WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body: signupPayload
+        });
       } catch (error) {
-        console.warn("Could not save current report data.", error);
-        return null;
+        console.warn("Make opt-in submit failed, but report will still open.", error);
       }
     }
 
-    function buildReportPayloadNoRecalculate() {
-      return {
-        source: "main_calculator_systeme_form",
-        first_name: "",
-        email: "",
+    function openFullReport(payload) {
+      try {
+        sessionStorage.setItem("antierp_est_report", JSON.stringify(payload));
+        localStorage.setItem("antierp_est_report", JSON.stringify(payload));
+      } catch (error) {
+        console.warn("Could not store report data locally.", error);
+      }
+
+      const encoded = encodeReportPayload(payload);
+      window.location.href = encoded ? `${REPORT_PAGE_URL}#report=${encoded}` : REPORT_PAGE_URL;
+    }
+
+    function revealReport() {
+      state.unlocked = true;
+      $("#report").classList.add("show");
+      $("#formStatus").textContent = "Your on-page baseline is unlocked below. Use the full report button for the detailed printable report.";
+      setTimeout(() => $("#report").scrollIntoView({ behavior: "smooth", block: "start" }), 120);
+    }
+
+    function setTier(button) {
+      state.selectedTier = button.dataset.tier;
+      state.selectedPrice = numberOnly(button.dataset.price);
+      $$(".tier-button").forEach(btn => {
+        const active = btn === button;
+        btn.classList.toggle("active", active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+      calculate();
+    }
+
+    function openModal() {
+      if (state.exitShown || state.unlocked) return;
+      state.exitShown = true;
+      const modal = $("#exitModal");
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal() {
+      const modal = $("#exitModal");
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    $$("#jobSize, #quotes, #salary, #burden, #minutes").forEach(input => {
+      input.addEventListener("input", calculate);
+    });
+
+    $$(".tier-button").forEach(button => {
+      button.addEventListener("click", () => setTier(button));
+    });
+
+    $("#leadForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      calculate();
+
+      const firstName = $("#firstName").value.trim();
+      const email = $("#email").value.trim();
+      if (!firstName || !email) return;
+
+      $("#formStatus").textContent = "Opening your private report...";
+      const payload = {
+        source: "main_calculator",
+        first_name: firstName,
+        email,
         job_size: state.results.jobSize,
         quotes: state.results.quotes,
         salary: state.results.salary,
@@ -2489,6 +2461,8 @@
         payoff_days: state.results.payoffDays,
         hours_back: state.results.hoursBack,
         revenue_opportunity: state.results.revenueOpportunity,
+
+        // Systeme.io friendly field names for personalized report emails
         average_job_size: state.results.jobSize,
         average_job_size_formatted: money(state.results.jobSize),
         quotes_per_week: state.results.quotes,
@@ -2534,6 +2508,7 @@
         five_year_cost_formatted: money(state.results.grossFiveYear),
         five_year_net_gain: state.results.netFiveYear,
         five_year_net_gain_formatted: money(state.results.netFiveYear),
+        payoff_days: state.results.payoffDays,
         projected_revenue_opportunity: state.results.revenueOpportunity,
         projected_revenue_opportunity_formatted: money(state.results.revenueOpportunity),
         estimating_leak_score: state.results.leakScore,
@@ -2543,17 +2518,10 @@
         workbook_blueprint: "Customer/project info, material takeoff, labour build-up, install assumptions, coating/finishing, rentals/equipment, trucking/freight, subcontractors, markup/margin controls, quote review checklist, proposal output, shop handoff, and change order tracker.",
         submitted_at: new Date().toISOString()
       };
-    }
 
-    const fallbackReportLink = document.getElementById("openReportFallback");
-    if (fallbackReportLink) {
-      fallbackReportLink.addEventListener("click", (event) => {
-        event.preventDefault();
-        const payload = saveCurrentReportPayload();
-        if (payload) openFullReport(payload);
-        else window.location.href = REPORT_PAGE_URL;
-      });
-    }
+      await sendOptinToMake(firstName, email);
+      openFullReport(payload);
+    });
 
     $("#exitForm").addEventListener("submit", async (event) => {
       event.preventDefault();

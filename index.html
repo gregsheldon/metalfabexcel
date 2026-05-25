@@ -678,6 +678,17 @@
       letter-spacing: .08em;
     }
 
+    .tier-button .tier-desc {
+      display: block;
+      margin: .65rem 0 0;
+      color: var(--slate-600);
+      font-size: .86rem;
+      line-height: 1.35;
+      font-weight: 750;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
     .tier-button strong {
       display: block;
       font-size: 1rem;
@@ -1700,6 +1711,575 @@
         box-shadow: none;
       }
     }
+
+
+    /* Enhanced Shop-Floor Ready Guarantee Section */
+    .guarantee-section {
+      padding: 52px 0;
+    }
+
+    .guarantee {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(249, 115, 22, .15), transparent 24rem),
+        radial-gradient(circle at 18% 0%, rgba(245, 158, 11, .16), transparent 22rem),
+        linear-gradient(135deg, #fffaf0 0%, #fff7e6 48%, #fffdf7 100%);
+      border: 1px solid rgba(249, 115, 22, .45);
+      color: #431407;
+      border-radius: 0;
+      padding: clamp(1.4rem, 3vw, 2.6rem);
+      box-shadow: 0 28px 90px rgba(124, 45, 18, .16);
+      isolation: isolate;
+    }
+
+    .guarantee:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.58), rgba(255,255,255,0) 52%),
+        repeating-linear-gradient(135deg, rgba(154, 52, 18, .035) 0 1px, transparent 1px 14px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .guarantee > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .guarantee-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr);
+      gap: clamp(1.3rem, 4vw, 3rem);
+      align-items: start;
+    }
+
+    .guarantee-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      width: fit-content;
+      background: rgba(255,255,255,.76);
+      border: 1px solid rgba(249, 115, 22, .45);
+      color: #9a3412;
+      padding: .62rem .95rem;
+      border-radius: 0;
+      font-size: .82rem;
+      font-weight: 950;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 28px rgba(124, 45, 18, .06);
+      margin-bottom: 1.15rem;
+    }
+
+    .guarantee-eyebrow:before {
+      content: "🛡";
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .guarantee-title-row {
+      display: grid;
+      grid-template-columns: 104px minmax(0, 1fr);
+      gap: 1.15rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .guarantee-shield {
+      width: 104px;
+      height: 104px;
+      border-radius: 0;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 32% 24%, rgba(255,255,255,.72), transparent 22%),
+        linear-gradient(135deg, #fb923c, #c2410c 72%);
+      color: #fff7ed;
+      box-shadow: 0 22px 44px rgba(194, 65, 12, .26);
+      border: 1px solid rgba(255, 237, 213, .82);
+      position: relative;
+    }
+
+    .guarantee-shield:before {
+      content: "✓";
+      font-size: 3.3rem;
+      font-weight: 950;
+      text-shadow: 0 6px 18px rgba(67, 20, 7, .28);
+    }
+
+    .guarantee-title {
+      display: block;
+      margin: 0;
+      color: #351508;
+      font-size: clamp(2.35rem, 5.1vw, 5rem);
+      line-height: .92;
+      letter-spacing: -.075em;
+      text-wrap: balance;
+    }
+
+    .guarantee-title .guarantee-icon {
+      display: none;
+    }
+
+    .guarantee-copy {
+      max-width: 760px;
+      margin: 0;
+      color: #431407;
+      font-size: clamp(1.05rem, 1.45vw, 1.22rem);
+      line-height: 1.65;
+      font-weight: 400;
+    }
+
+    .guarantee-copy strong {
+      color: #c2410c;
+      font-weight: 950;
+    }
+
+    .guarantee-visual {
+      display: grid;
+      gap: 1.05rem;
+    }
+
+    .guarantee-highlight {
+      display: grid;
+      grid-template-columns: 74px minmax(0, 1fr);
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(249, 115, 22, .34);
+      border-radius: 0;
+      padding: 1.15rem;
+      box-shadow: 0 20px 45px rgba(124, 45, 18, .10);
+    }
+
+    .guarantee-highlight-icon {
+      width: 74px;
+      height: 74px;
+      border-radius: 0;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, #f97316, #c2410c);
+      box-shadow: 0 16px 35px rgba(194, 65, 12, .26);
+      font-size: 2rem;
+    }
+
+    .guarantee-highlight strong {
+      display: block;
+      color: #9a3412;
+      font-size: clamp(1.45rem, 2.3vw, 2rem);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+      margin-bottom: .35rem;
+    }
+
+    .guarantee-highlight p {
+      margin: 0;
+      color: #431407;
+      font-size: 1.02rem;
+      line-height: 1.55;
+      font-weight: 400;
+    }
+
+    .guarantee-workbook {
+      min-height: 300px;
+      position: relative;
+      border-radius: 0;
+      overflow: hidden;
+      border: 1px solid rgba(249, 115, 22, .25);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 22px 55px rgba(124, 45, 18, .11);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,247,237,.32)),
+        radial-gradient(circle at 70% 44%, rgba(249, 115, 22, .17), transparent 16rem);
+    }
+
+    .workbook-sheet {
+      position: absolute;
+      right: -32px;
+      bottom: 20px;
+      width: min(520px, 86%);
+      transform: rotate(-5deg);
+      background: #fff;
+      border: 1px solid rgba(154, 52, 18, .14);
+      border-radius: 0;
+      box-shadow: 0 22px 55px rgba(67, 20, 7, .16);
+      padding: 1rem;
+    }
+
+    .workbook-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: .75rem;
+      color: #9a3412;
+      font-weight: 950;
+      letter-spacing: .06em;
+      font-size: .78rem;
+      text-transform: uppercase;
+    }
+
+    .workbook-table {
+      display: grid;
+      gap: .42rem;
+    }
+
+    .workbook-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr .85fr .85fr;
+      gap: .35rem;
+      align-items: center;
+    }
+
+    .workbook-cell {
+      height: 13px;
+      border-radius: 0;
+      background: #e7ded4;
+    }
+
+    .workbook-row:first-child .workbook-cell {
+      height: 22px;
+      border-radius: 0;
+      background: #f97316;
+    }
+
+    .workbook-cell.good {
+      background: #86efac;
+    }
+
+    .workbook-cell.warn {
+      background: #fdba74;
+    }
+
+    .workbook-summary {
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      width: 130px;
+      background: #fff;
+      border: 1px solid rgba(154, 52, 18, .12);
+      border-radius: 0;
+      padding: .85rem;
+      box-shadow: 0 14px 35px rgba(67, 20, 7, .10);
+    }
+
+    .summary-donut {
+      width: 62px;
+      height: 62px;
+      border-radius: 0;
+      margin: 0 auto .65rem;
+      background: conic-gradient(#f97316 0 38%, #facc15 38% 58%, #22c55e 58% 80%, #e2e8f0 80% 100%);
+      position: relative;
+    }
+
+    .summary-donut:after {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border-radius: 0;
+      background: #fff;
+    }
+
+    .summary-bars {
+      display: grid;
+      gap: .32rem;
+    }
+
+    .summary-bars span {
+      display: block;
+      height: 8px;
+      border-radius: 0;
+      background: #e2e8f0;
+    }
+
+    .summary-bars span:nth-child(1) { width: 82%; background: #fdba74; }
+    .summary-bars span:nth-child(2) { width: 62%; background: #86efac; }
+    .summary-bars span:nth-child(3) { width: 74%; background: #facc15; }
+
+    .guarantee-seal {
+      position: absolute;
+      left: 36px;
+      bottom: 28px;
+      width: 156px;
+      height: 156px;
+      border-radius: 0;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at center, #431407 0 48%, #7c2d12 49% 58%, #f59e0b 59% 70%, #92400e 71% 100%);
+      color: #fff7ed;
+      box-shadow: 0 20px 46px rgba(67, 20, 7, .24);
+      text-align: center;
+      border: 4px solid #fed7aa;
+      transform: rotate(-6deg);
+    }
+
+    .guarantee-seal strong {
+      display: block;
+      font-size: 1.22rem;
+      line-height: .95;
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+      color: #fed7aa;
+    }
+
+    .guarantee-seal span {
+      display: block;
+      font-size: .62rem;
+      line-height: 1.25;
+      margin-top: .45rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+
+    .guarantee-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+
+    .guarantee-card {
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(249, 115, 22, .24);
+      border-radius: 0;
+      padding: 1.25rem;
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 1rem;
+      align-items: center;
+      box-shadow: 0 20px 46px rgba(124, 45, 18, .08);
+    }
+
+    .guarantee-card .g-icon {
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      border-radius: 0;
+      background: linear-gradient(135deg, #fff7ed, #ffedd5);
+      border: 1px solid rgba(249, 115, 22, .22);
+      color: #c2410c;
+      font-size: 2rem;
+      margin: 0;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.85);
+    }
+
+    .guarantee-card h3 {
+      margin: 0 0 .38rem;
+      color: #431407;
+      font-size: 1.2rem;
+      line-height: 1.1;
+      letter-spacing: -.035em;
+    }
+
+    .guarantee-card p {
+      margin: 0;
+      color: #431407;
+      font-size: .98rem;
+      line-height: 1.48;
+      font-weight: 400;
+    }
+
+    .guarantee-bottom {
+      margin-top: 1.25rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(280px, 1.28fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .guarantee-pill {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(249, 115, 22, .22);
+      color: #431407;
+      border-radius: 0;
+      padding: .9rem 1rem;
+      font-weight: 900;
+      box-shadow: 0 14px 34px rgba(124, 45, 18, .07);
+    }
+
+    .guarantee-pill .pill-icon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 0;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #f97316, #c2410c);
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(194, 65, 12, .20);
+    }
+
+    .guarantee-cta {
+      min-height: 68px;
+      border-radius: 0;
+      padding: 1rem 1.25rem;
+      justify-content: space-between;
+      font-size: 1.15rem;
+      box-shadow: 0 18px 42px rgba(194, 65, 12, .25);
+    }
+
+    .guarantee-cta .arrow {
+      width: 42px;
+      height: 42px;
+      border-radius: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.95);
+      color: #c2410c;
+      font-size: 1.4rem;
+      line-height: 1;
+      flex: 0 0 42px;
+    }
+
+    .guarantee-footnote {
+      margin: 1.45rem auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .8rem;
+      color: #9a3412;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-weight: 950;
+      text-align: center;
+    }
+
+    .guarantee-footnote:before,
+    .guarantee-footnote:after {
+      content: "";
+      width: min(130px, 12vw);
+      height: 1px;
+      background: rgba(154, 52, 18, .22);
+    }
+
+    .guarantee-workbook {
+      min-height: 360px;
+      position: relative;
+      overflow: visible;
+      border: 0;
+      box-shadow: none;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: .25rem 0 0;
+      margin: .35rem -2.75rem -1.4rem 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .guarantee-image {
+      width: min(120%, 820px);
+      max-width: none;
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 0;
+      transform: translate(12%, 0);
+      filter: drop-shadow(0 28px 55px rgba(67, 20, 7, .20));
+    }
+
+    .guarantee-intro,
+    .guarantee-highlight,
+    .guarantee-grid,
+    .guarantee-bottom,
+    .guarantee-footnote {
+      position: relative;
+      z-index: 3;
+    }
+
+    .guarantee-highlight {
+      grid-template-columns: 1fr;
+    }
+
+    .guarantee .guarantee-copy,
+    .guarantee .guarantee-highlight p,
+    .guarantee .guarantee-card p {
+      font-weight: 400;
+    }
+
+    @media (max-width: 1040px) {
+      .guarantee-top,
+      .guarantee-grid,
+      .guarantee-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .guarantee-workbook {
+        min-height: 280px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .guarantee {
+        border-radius: 0;
+      }
+
+      .guarantee-title-row,
+      .guarantee-highlight,
+      .guarantee-card {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+
+      .guarantee-shield {
+        width: 82px;
+        height: 82px;
+      }
+
+      .guarantee-shield:before {
+        font-size: 2.6rem;
+      }
+
+      .guarantee-seal {
+        width: 126px;
+        height: 126px;
+        left: 18px;
+        bottom: 22px;
+      }
+
+      .workbook-sheet {
+        right: -70px;
+        width: 112%;
+      }
+
+      .workbook-summary {
+        right: 14px;
+        top: 14px;
+      }
+
+      .guarantee-footnote {
+        align-items: flex-start;
+        line-height: 1.5;
+      }
+
+      .guarantee-footnote:before,
+      .guarantee-footnote:after {
+        display: none;
+      }
+
+      .guarantee-workbook {
+        min-height: auto;
+        padding-top: .5rem;
+      }
+
+      .guarantee-image {
+        width: 132%;
+        max-width: none;
+        margin-left: -16%;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1864,16 +2444,19 @@
                       <strong>Starter System</strong>
                       <span>$3,500</span>
                       <small>Simple shop build</small>
+                      <em class="tier-desc">Best if you need one cleaner quote sheet for basic shop estimating.</em>
                     </button>
                     <button class="tier-button active" type="button" data-tier="Pro System" data-price="7500" aria-pressed="true">
                       <strong>Pro System</strong>
                       <span>$7,500</span>
                       <small>Most popular</small>
+                      <em class="tier-desc">Best if you quote weekly and need material, labour, margin, and proposal flow connected.</em>
                     </button>
                     <button class="tier-button" type="button" data-tier="Premium System" data-price="9800" aria-pressed="false">
                       <strong>Premium System</strong>
                       <span>$9,800+</span>
                       <small>Full workflow</small>
+                      <em class="tier-desc">Best if you want the full quote-to-handoff system with dashboards and shop outputs.</em>
                     </button>
                   </div>
 
@@ -2070,44 +2653,69 @@
       </div>
     </section>
 
-    <section>
+    <section class="guarantee-section">
       <div class="container">
         <div class="guarantee">
           <div class="guarantee-top">
             <div class="guarantee-intro">
               <div class="guarantee-eyebrow">Low-Risk One-Time Build</div>
-              <h2 class="guarantee-title"><span class="guarantee-icon">🛡</span><span>The Shop-Floor Ready Guarantee</span></h2>
-              <p class="guarantee-copy">You are not buying a generic spreadsheet and hoping it works. You are getting a custom estimating workbook built around how your shop actually quotes, plus post-launch refinement so it performs where it matters most: on real jobs, under real pressure.</p>
+              <div class="guarantee-title-row">
+                <div class="guarantee-shield" aria-hidden="true"></div>
+                <h2 class="guarantee-title">The Shop-Floor Ready Guarantee</h2>
+              </div>
+              <p class="guarantee-copy">You are not buying a generic spreadsheet and hoping it works. You are getting a custom estimating workbook built around how your shop actually quotes, plus post-launch refinement so it performs where it matters most: <strong>on real jobs, under real pressure.</strong></p>
             </div>
-            <div class="guarantee-highlight">
-              <strong>Pay once. Own it. Get it dialed in.</strong>
-              <p>If something feels clunky, confusing, or incomplete once your team starts using it, I refine, adjust, and tighten the workbook until it fits your real workflow.</p>
+
+            <div class="guarantee-visual" aria-label="Shop-floor ready guarantee visual proof">
+              <div class="guarantee-highlight">
+                <div>
+                  <strong>Pay once. Own it. Get it dialed in.</strong>
+                  <p>If something feels clunky, confusing, or incomplete once your team starts using it, I refine, adjust, and tighten the workbook until it fits your real workflow.</p>
+                </div>
+              </div>
+
+              <div class="guarantee-workbook">
+                <img
+                  class="guarantee-image"
+                  src="https://gregsheldon.github.io/metalfabexcel/shopfloor-guarantee.png"
+                  alt="Shop-Floor Ready Guarantee built for real jobs with estimate workbook visual"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
 
           <div class="guarantee-grid">
             <div class="guarantee-card">
-              <div class="g-icon">⚙</div>
-              <h3>Built Around Your Shop</h3>
-              <p>Your labour rates, material categories, markups, proposal format, and common job types are built into the workbook from the start.</p>
+              <div class="g-icon" aria-hidden="true">🏗</div>
+              <div>
+                <h3>Built Around Your Shop</h3>
+                <p>Your labour rates, material categories, markups, proposal format, and common job types are built into the workbook from the start.</p>
+              </div>
             </div>
             <div class="guarantee-card">
-              <div class="g-icon">🧪</div>
-              <h3>Refined On Live Jobs</h3>
-              <p>This is not a hand-off-and-hope build. As your team uses it on actual quotes, I help tighten the weak spots and improve the flow.</p>
+              <div class="g-icon" aria-hidden="true">📋</div>
+              <div>
+                <h3>Refined On Live Jobs</h3>
+                <p>This is not a hand-off-and-hope build. As your team uses it on actual quotes, I help tighten the weak spots and improve the flow.</p>
+              </div>
             </div>
             <div class="guarantee-card">
-              <div class="g-icon">💵</div>
-              <h3>No Subscription Trap</h3>
-              <p>You pay once and own the spreadsheet. No monthly software fee, no bloated ERP contract, and no vendor holding your quoting system hostage.</p>
+              <div class="g-icon" aria-hidden="true">🔒</div>
+              <div>
+                <h3>No Subscription Trap</h3>
+                <p>You pay once and own the spreadsheet. No monthly software fee, no bloated ERP contract, and no vendor holding your quoting system hostage.</p>
+              </div>
             </div>
           </div>
 
           <div class="guarantee-bottom">
-            <div class="guarantee-pill">✓ Practical support after launch</div>
-            <div class="guarantee-pill">✓ Real-world workbook refinement included</div>
-            <a class="btn btn-primary" href="#contact">Ask Greg How The Build Works</a>
+            <div class="guarantee-pill"><span class="pill-icon">🎧</span><span>Practical support after launch</span></div>
+            <div class="guarantee-pill"><span class="pill-icon">🛠</span><span>Real-world workbook refinement included</span></div>
+            <a class="btn btn-primary guarantee-cta" href="#contact"><span>Ask Greg How The Build Works</span><span class="arrow">→</span></a>
           </div>
+
+          <div class="guarantee-footnote">Built for shops. Backed by experience. Guaranteed to work where it counts.</div>
         </div>
       </div>
     </section>

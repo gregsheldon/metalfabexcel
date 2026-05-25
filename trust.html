@@ -59,7 +59,7 @@
     a { color: inherit; text-decoration: none; }
     ul { padding-left: 1.15rem; }
     button { font: inherit; }
-    .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .container { width: min(1320px, calc(100% - 32px)); margin: 0 auto; }
 
     .top-strip {
       background: var(--slate-950);
@@ -138,11 +138,11 @@
     .btn-dark { color: #fff; background: var(--slate-950); box-shadow: 0 14px 35px rgba(2,6,23,.18); }
     .btn-light { color: var(--slate-950); background: #fff; border: 1px solid var(--slate-200); }
 
-    .hero { padding: 72px 0 38px; }
+    .hero { padding: 52px 0 30px; }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(420px, .98fr);
-      gap: 2rem;
+      grid-template-columns: minmax(320px, .58fr) minmax(0, 1.42fr);
+      gap: 1.35rem;
       align-items: stretch;
     }
     .hero-copy,
@@ -152,8 +152,8 @@
       background: #fff;
       min-height: 100%;
     }
-    .hero-copy { padding: clamp(1.35rem, 4vw, 2.5rem); display: flex; flex-direction: column; justify-content: center; }
-    .hero-video-card { background: var(--slate-950); color: #fff; padding: clamp(1.2rem, 3vw, 2rem); display: flex; flex-direction: column; justify-content: center; }
+    .hero-copy { padding: clamp(1.1rem, 2.3vw, 1.8rem); display: flex; flex-direction: column; justify-content: center; }
+    .hero-video-card { background: var(--slate-950); color: #fff; padding: clamp(.9rem, 1.8vw, 1.35rem); display: flex; flex-direction: column; justify-content: center; border-color: var(--orange-600); }
 
     .eyebrow {
       display: inline-flex;
@@ -172,34 +172,48 @@
     }
     h1, h2, h3, p { margin-top: 0; }
     h1 {
-      font-size: clamp(2.55rem, 5.7vw, 5.3rem);
+      font-size: clamp(2.25rem, 4.2vw, 4.25rem);
       line-height: .96;
       letter-spacing: -.075em;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
       color: var(--slate-950);
     }
     .subhead {
       font-size: clamp(1.05rem, 1.8vw, 1.25rem);
       color: var(--slate-600);
       font-weight: 650;
-      max-width: 760px;
-      margin-bottom: 1.5rem;
+      max-width: 720px;
+      margin-bottom: 1rem;
     }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.55rem 0 0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.2rem 0 0; }
 
     .proof-row {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: .8rem;
-      margin-top: 1.8rem;
+      gap: .6rem;
+      margin-top: 1.15rem;
     }
     .proof-stat {
       border: 1px solid var(--slate-200);
       background: var(--slate-50);
-      padding: 1rem;
+      padding: .85rem;
     }
     .proof-stat strong { display: block; font-size: 1.25rem; letter-spacing: -.04em; color: var(--slate-950); }
     .proof-stat span { display: block; color: var(--slate-600); font-size: .86rem; font-weight: 750; }
+
+    .video-feature-label {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: .75rem;
+      padding: .45rem .65rem;
+      background: rgba(249, 115, 22, .18);
+      border: 1px solid rgba(249, 115, 22, .45);
+      color: #fed7aa;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .72rem;
+      font-weight: 950;
+    }
 
     .video-frame {
       position: relative;
@@ -215,7 +229,7 @@
     #player,
     .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
     .video-note {
-      margin-top: 1rem;
+      margin-top: .85rem;
       background: rgba(255,255,255,.065);
       border: 1px solid rgba(255,255,255,.14);
       color: var(--slate-300);
@@ -544,6 +558,7 @@
         </div>
 
         <div class="hero-video-card">
+          <div class="video-feature-label">Main Briefing Video</div>
           <div class="video-frame">
             <div id="player"></div>
           </div>

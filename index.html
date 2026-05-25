@@ -2210,8 +2210,9 @@
   <script>
     // Calculator opt-in flow:
     // 1) The visitor's calculator report data is stored locally and sent to the report page.
-    // 2) Only first name and email are sent to Zapier for the signup/opt-in.
-    const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/3118089/4oe4osh/";
+    // 2) Only first name and email are sent to the Google Apps Script webhook.
+    // 3) The Apps Script imports/updates the contact in Systeme.io and applies the Calculator Opt-In tag.
+    const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycby3WoP9Udt1OaWYNnHaVK1VgLIFQLEH-xYYuxgXFBwH8shB2r1MzhMwoUYmNjpMEzPw/exec";
     const REPORT_PAGE_URL = "https://gregsheldon.github.io/metalfabexcel/antierp-estimating-report.html";
     const VIDEO_PAGE_URL = "#video";
 
@@ -2362,7 +2363,8 @@
     }
 
     async function sendOptinToWebhook(firstName, email) {
-      // Only first name and email are sent to Zapier.
+      // Only first name and email are sent to the Google Apps Script webhook.
+      // Google Apps Script then imports/updates the contact in Systeme.io and adds tag ID 2024606: Calculator Opt-In.
       // Form-encoded + no-cors avoids browser CORS issues on static hosting.
       const signupPayload = new URLSearchParams();
       signupPayload.append("first_name", firstName);
@@ -2375,7 +2377,7 @@
           body: signupPayload
         });
       } catch (error) {
-        console.warn("Webhook opt-in submit failed, but report will still open.", error);
+        console.warn("Google Apps Script opt-in submit failed, but the visitor flow will continue.", error);
       }
     }
 
@@ -2541,6 +2543,9 @@
           submitted_at: new Date().toISOString()
         }));
       } catch (error) {}
+
+      await sendOptinToWebhook(firstName, email);
+
       $("#exitStatus").textContent = "Taking you to the video...";
       setTimeout(() => {
         if (VIDEO_PAGE_URL && VIDEO_PAGE_URL.startsWith("#")) {

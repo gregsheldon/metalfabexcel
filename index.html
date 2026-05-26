@@ -1810,6 +1810,24 @@
       text-shadow: 0 6px 18px rgba(67, 20, 7, .28);
     }
 
+    .guarantee-shield {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .guarantee-shield:before {
+      display: none;
+    }
+
+    .guarantee-shield-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      filter: drop-shadow(0 16px 28px rgba(194, 65, 12, .20));
+    }
+
     .guarantee-title {
       display: block;
       margin: 0;
@@ -2904,7 +2922,9 @@
             <div class="guarantee-intro">
               <div class="guarantee-eyebrow">Low-Risk One-Time Build</div>
               <div class="guarantee-title-row">
-                <div class="guarantee-shield" aria-hidden="true"></div>
+                <div class="guarantee-shield" aria-hidden="true">
+                  <img class="guarantee-shield-img" src="https://gregsheldon.github.io/metalfabexcel/crest-check-guar.png" alt="" loading="lazy" />
+                </div>
                 <h2 class="guarantee-title">The Shop-Floor Ready Guarantee</h2>
               </div>
               <p class="guarantee-copy">You are not buying a generic spreadsheet and hoping it works. You are getting a custom estimating workbook built around how your shop actually quotes, plus post-launch refinement so it performs where it matters most: <strong>on real jobs, under real pressure.</strong></p>

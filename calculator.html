@@ -2746,6 +2746,106 @@
       padding: .8rem 1rem;
     }
 
+
+
+    /* Popup spacing tune-up: keeps the compact layout but gives each item breathing room. */
+    .mini-calc-modal {
+      width: min(1000px, calc(100vw - 2rem));
+      padding: 1.25rem;
+    }
+
+    .mini-calc-modal .modal-grid {
+      gap: 1.25rem;
+    }
+
+    .mini-calc-modal .modal-copy,
+    .mini-calc-modal .modal-panel {
+      padding: 1.25rem;
+      gap: .85rem;
+    }
+
+    .mini-calc-modal .modal-copy h2 {
+      line-height: 1;
+      margin-bottom: .1rem;
+    }
+
+    .mini-calc-modal .modal-copy p,
+    .mini-calc-modal .modal-panel p {
+      line-height: 1.5;
+    }
+
+    .popup-compact-benefits {
+      gap: .6rem;
+      margin-top: .25rem;
+    }
+
+    .popup-compact-benefits div {
+      padding: .7rem .75rem;
+      line-height: 1.3;
+    }
+
+    .compact-note {
+      padding: .75rem;
+      line-height: 1.4;
+    }
+
+    .quick-input-grid {
+      gap: .85rem;
+      margin: .35rem 0 .85rem;
+    }
+
+    .quick-input-grid .field {
+      gap: .45rem;
+    }
+
+    .quick-input-grid input {
+      padding: .92rem .95rem;
+    }
+
+    .field-note {
+      margin: .05rem 0 .15rem;
+      line-height: 1.42;
+    }
+
+    .frequency-grid {
+      gap: .6rem;
+      margin-top: .4rem;
+    }
+
+    .frequency-button {
+      padding: .78rem .65rem;
+      line-height: 1.12;
+    }
+
+    .frequency-button small {
+      margin-top: .32rem;
+      line-height: 1.24;
+    }
+
+    .popup-preview,
+    .popup-result {
+      padding: 1rem;
+      margin: .85rem 0;
+    }
+
+    #miniLeakForm,
+    #exitForm {
+      gap: .8rem;
+    }
+
+    #miniLeakForm .btn,
+    #exitForm .btn {
+      min-height: 52px;
+    }
+
+    #declineModal,
+    #editMiniCalc {
+      min-height: auto !important;
+      padding: .55rem .8rem !important;
+      font-size: .9rem;
+      box-shadow: none;
+    }
+
     @media (max-width: 860px) {
       .mini-calc-modal .modal-grid {
         grid-template-columns: 1fr;

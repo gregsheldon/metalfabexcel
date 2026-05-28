@@ -3132,14 +3132,15 @@
 <input id="quickJob" inputmode="decimal" min="1" name="quickJob" placeholder="Example: 25000" required="" type="number" />
 </div>
 <div class="field">
-<label for="quickProblem">Problem jobs %</label>
-<input id="quickProblem" inputmode="decimal" max="100" min="1" name="quickProblem" placeholder="Example: 15" required="" type="number" value="15" />
+<label for="quickProblem">Missed-scope / extra-work jobs %</label>
+<p class="field-note">Out of every 100 quoted jobs, how many end up needing extra labour, material, rework, pricing cleanup, or install surprises that were not priced upfront?</p>
+<input id="quickProblem" inputmode="decimal" max="100" min="1" name="quickProblem" placeholder="Example: 15 = 15 out of 100 jobs" required="" type="number" value="15" />
 </div>
 </div>
 <div class="popup-preview" id="quickLeakPreview">
 <span>Quick estimate</span>
 <strong>Enter your numbers</strong>
-<small>Uses a rough 5% margin drag on quotes with missed scope, rework, pricing cleanup, or install surprises.</small>
+<small>Uses a rough 5% margin drag on jobs where the original quote missed labour, material, scope, access, finishing, freight, or other real costs.</small>
 </div>
 <button class="btn btn-primary" type="submit">Show My Quoting Leak</button>
 <button class="btn btn-light" id="declineModal" type="button">No thanks, I will keep guessing.</button>
@@ -3518,7 +3519,7 @@
         preview.innerHTML = `
           <span>Quick estimate</span>
           <strong>${annualLeak > 0 ? money(annualLeak) : "Enter your numbers"}</strong>
-          <small>Uses a rough 5% margin drag on quotes with missed scope, rework, pricing cleanup, or install surprises.</small>
+          <small>Uses a rough 5% margin drag on jobs where the original quote missed labour, material, scope, access, finishing, freight, or other real costs.</small>
         `;
       }
       return state.quickPopup;
@@ -3548,7 +3549,7 @@
       calculate();
 
       $("#quickLeakResult").textContent = money(quick.annualLeak);
-      $("#quickLeakAssumption").textContent = `${quick.quotesPerMonth} quotes/month × ${money(quick.averageJob)} average job × ${quick.problemRate}% problem rate × 5% rough margin drag.`;
+      $("#quickLeakAssumption").textContent = `${quick.quotesPerMonth} quotes/month × ${money(quick.averageJob)} average job × ${quick.problemRate}% missed-scope / extra-work rate × 5% rough margin drag.`;
       showPopupStep(2);
     });
 

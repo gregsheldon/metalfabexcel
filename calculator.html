@@ -2520,6 +2520,47 @@
       color: var(--slate-600);
     }
 
+    .frequency-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .55rem;
+      margin-top: .25rem;
+    }
+
+    .frequency-button {
+      border: 2px solid var(--slate-200);
+      background: #fff;
+      color: var(--slate-800);
+      border-radius: 0;
+      padding: .8rem .85rem;
+      cursor: pointer;
+      text-align: left;
+      font-weight: 950;
+      line-height: 1.05;
+      transition: border .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
+    }
+
+    .frequency-button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(234, 88, 12, .55);
+    }
+
+    .frequency-button.active {
+      border-color: var(--orange-600);
+      background: var(--orange-50);
+      box-shadow: 0 10px 24px rgba(234, 88, 12, .12);
+      color: var(--slate-950);
+    }
+
+    .frequency-button small {
+      display: block;
+      margin-top: .32rem;
+      color: var(--slate-600);
+      font-size: .76rem;
+      line-height: 1.3;
+      font-weight: 750;
+    }
+
     .popup-preview,
     .popup-result {
       background: var(--slate-950);
@@ -3132,15 +3173,22 @@
 <input id="quickJob" inputmode="decimal" min="1" name="quickJob" placeholder="Example: 25000" required="" type="number" />
 </div>
 <div class="field">
-<label for="quickProblem">Missed-scope / extra-work jobs %</label>
-<p class="field-note">Out of every 100 quoted jobs, how many end up needing extra labour, material, rework, pricing cleanup, or install surprises that were not priced upfront?</p>
-<input id="quickProblem" inputmode="decimal" max="100" min="1" name="quickProblem" placeholder="Example: 15 = 15 out of 100 jobs" required="" type="number" value="15" />
+<label for="quickProblem">How often do jobs go over what was quoted?</label>
+<p class="field-note">Think missed labour, material, rework, cleanup, delivery, install time, or site surprises.</p>
+<input id="quickProblem" name="quickProblem" type="hidden" value="12" />
+<input id="quickProblemLabel" name="quickProblemLabel" type="hidden" value="Sometimes" />
+<div class="frequency-grid" aria-label="How often jobs go over what was quoted">
+<button class="frequency-button" data-label="Rarely" data-rate="5" type="button">Rarely<small>Once in a while</small></button>
+<button class="frequency-button active" data-label="Sometimes" data-rate="12" type="button">Sometimes<small>Enough to notice</small></button>
+<button class="frequency-button" data-label="Often" data-rate="20" type="button">Often<small>It happens a lot</small></button>
+<button class="frequency-button" data-label="Too often" data-rate="30" type="button">Too often<small>It is a real problem</small></button>
+</div>
 </div>
 </div>
 <div class="popup-preview" id="quickLeakPreview">
 <span>Quick estimate</span>
 <strong>Enter your numbers</strong>
-<small>Uses a rough 5% margin drag on jobs where the original quote missed labour, material, scope, access, finishing, freight, or other real costs.</small>
+<small>Uses your quote volume, average job value, and how often jobs go over what was quoted.</small>
 </div>
 <button class="btn btn-primary" type="submit">Show My Quoting Leak</button>
 <button class="btn btn-light" id="declineModal" type="button">No thanks, I will keep guessing.</button>
@@ -3191,7 +3239,8 @@
       quickPopup: {
         quotesPerMonth: 0,
         averageJob: 0,
-        problemRate: 0,
+        problemRate: 12,
+        problemFrequency: "Sometimes",
         annualLeak: 0
       }
     };
@@ -3505,12 +3554,14 @@
       const quotesPerMonth = numberOnly($("#quickQuotes").value);
       const averageJob = numberOnly($("#quickJob").value);
       const problemRate = Math.min(100, Math.max(0, numberOnly($("#quickProblem").value)));
+      const problemFrequency = $("#quickProblemLabel") ? $("#quickProblemLabel").value : "Sometimes";
       const annualLeak = Math.round(quotesPerMonth * 12 * averageJob * (problemRate / 100) * 0.05);
 
       state.quickPopup = {
         quotesPerMonth,
         averageJob,
         problemRate,
+        problemFrequency,
         annualLeak
       };
 
@@ -3519,7 +3570,7 @@
         preview.innerHTML = `
           <span>Quick estimate</span>
           <strong>${annualLeak > 0 ? money(annualLeak) : "Enter your numbers"}</strong>
-          <small>Uses a rough 5% margin drag on jobs where the original quote missed labour, material, scope, access, finishing, freight, or other real costs.</small>
+          <small>Uses your quote volume, average job value, and how often jobs go over what was quoted.</small>
         `;
       }
       return state.quickPopup;
@@ -3533,9 +3584,19 @@
       two.classList.toggle("hidden", stepNumber !== 2);
     }
 
-    ["#quickQuotes", "#quickJob", "#quickProblem"].forEach(selector => {
+    ["#quickQuotes", "#quickJob"].forEach(selector => {
       const el = $(selector);
       if (el) el.addEventListener("input", calculateMiniPopupLeak);
+    });
+
+    $$(".frequency-button").forEach(button => {
+      button.addEventListener("click", () => {
+        $$(".frequency-button").forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        if ($("#quickProblem")) $("#quickProblem").value = button.dataset.rate || "12";
+        if ($("#quickProblemLabel")) $("#quickProblemLabel").value = button.dataset.label || button.textContent.trim();
+        calculateMiniPopupLeak();
+      });
     });
 
     $("#miniLeakForm").addEventListener("submit", (event) => {
@@ -3549,7 +3610,7 @@
       calculate();
 
       $("#quickLeakResult").textContent = money(quick.annualLeak);
-      $("#quickLeakAssumption").textContent = `${quick.quotesPerMonth} quotes/month × ${money(quick.averageJob)} average job × ${quick.problemRate}% missed-scope / extra-work rate × 5% rough margin drag.`;
+      $("#quickLeakAssumption").textContent = `Based on ${quick.quotesPerMonth} quotes/month, ${money(quick.averageJob)} average job value, and your "${quick.problemFrequency}" over-quote-risk answer.`;
       showPopupStep(2);
     });
 
@@ -3573,6 +3634,7 @@
         quick_quotes_per_month: state.quickPopup.quotesPerMonth,
         quick_average_job: state.quickPopup.averageJob,
         quick_problem_rate: state.quickPopup.problemRate,
+        quick_problem_frequency: state.quickPopup.problemFrequency,
         quick_annual_leak_estimate: state.quickPopup.annualLeak,
         selected_tier: state.selectedTier,
         selected_price: state.selectedPrice,

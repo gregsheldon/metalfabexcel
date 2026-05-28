@@ -3404,19 +3404,19 @@
 <div class="modal-grid">
 <div class="modal-copy">
 <div class="eyebrow">10-second leak check</div>
-<h2>Before you leave, check your quoting leak.</h2>
-<p>Answer three quick shop numbers and see a rough annual leak before you unlock the full calculator.</p>
+<h2>Before you leave, run the quick check.</h2>
+<p>Answer three quick shop numbers. I’ll fill them into the full calculator and take you right back to it.</p>
 <div class="popup-compact-benefits">
 <div><strong>1</strong><span>Quotes per week</span></div>
 <div><strong>2</strong><span>Average job value</span></div>
 <div><strong>3</strong><span>How often jobs go over</span></div>
 </div>
-<div class="modal-note compact-note">Quick estimate only. The full calculator gives the better baseline.</div>
+<div class="modal-note compact-note">No email needed here. This popup just gets you back to the main calculator with better numbers.</div>
 </div>
 <div class="modal-panel">
 <div class="popup-step" id="popupStepOne">
-<h3>Get your rough leak number first</h3>
-<p>No email yet. Just answer three quick shop numbers.</p>
+<h3>Use better numbers in the calculator</h3>
+<p>Quick estimate only. The full calculator below gives the better baseline.</p>
 <form id="miniLeakForm">
 <div class="quick-input-grid">
 <div class="field">
@@ -3445,26 +3445,8 @@
 <strong>Enter your numbers</strong>
 <small>Uses quotes per week, average job value, and how often jobs go over what was quoted.</small>
 </div>
-<button class="btn btn-primary" type="submit">Show My Quoting Leak</button>
-<button class="btn btn-light" id="declineModal" type="button">No thanks, I will keep guessing.</button>
-</form>
-</div>
-<div class="popup-step hidden" id="popupStepTwo">
-<h3>Your quick leak estimate</h3>
-<div class="popup-result">
-<span>Potential annual quoting leak</span>
-<strong id="quickLeakResult">$0</strong>
-<small id="quickLeakAssumption">Rough estimate based on your three popup inputs.</small>
-</div>
-<p>Enter your name and email to open the full Baseline Efficiency Calculator and get the report.</p>
-<form id="exitForm">
-<div class="email-grid">
-<input id="exitName" name="exitName" placeholder="First name" required="" />
-<input id="exitEmail" name="exitEmail" placeholder="Work email" required="" type="email" />
-</div>
-<button class="btn btn-primary" type="submit">Send Me The Full Calculator + Report</button>
-<button class="btn btn-light" id="editMiniCalc" type="button">Change my numbers</button>
-<p aria-live="polite" class="privacy" id="exitStatus"></p>
+<button class="btn btn-primary" type="submit">Take Me Back To The Full Calculator</button>
+<button class="btn btn-light" id="declineModal" type="button">No thanks, close this.</button>
 </form>
 </div>
 </div>
@@ -3831,12 +3813,35 @@
       return state.quickPopup;
     }
 
-    function showPopupStep(stepNumber) {
-      const one = $("#popupStepOne");
-      const two = $("#popupStepTwo");
-      if (!one || !two) return;
-      one.classList.toggle("hidden", stepNumber !== 1);
-      two.classList.toggle("hidden", stepNumber !== 2);
+    function sendPopupToCalculator() {
+      const quick = calculateMiniPopupLeak();
+      if (!quick.quotesPerWeek || !quick.averageJob || !quick.problemRate) return;
+
+      // Pre-fill the main calculator with the visitor's quick popup numbers.
+      if ($("#jobSize")) $("#jobSize").value = quick.averageJob;
+      if ($("#quotes")) $("#quotes").value = Math.max(1, Math.round(quick.quotesPerWeek * 10) / 10);
+      calculate();
+
+      try {
+        localStorage.setItem("antierp_popup_quick_calc", JSON.stringify({
+          source: "exit_popup_no_optin",
+          quick_quotes_per_week: quick.quotesPerWeek,
+          quick_quotes_per_month_estimate: Math.round(quick.quotesPerWeek * 4.33 * 10) / 10,
+          quick_average_job: quick.averageJob,
+          quick_problem_rate: quick.problemRate,
+          quick_problem_frequency: quick.problemFrequency,
+          quick_annual_leak_estimate: quick.annualLeak,
+          selected_tier: state.selectedTier,
+          selected_price: state.selectedPrice,
+          submitted_at: new Date().toISOString()
+        }));
+      } catch (error) {}
+
+      closeModal();
+      setTimeout(() => {
+        const target = document.querySelector(POPUP_REDIRECT_TARGET || "#calculator");
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 120);
     }
 
     ["#quickQuotes", "#quickJob"].forEach(selector => {
@@ -3856,66 +3861,7 @@
 
     $("#miniLeakForm").addEventListener("submit", (event) => {
       event.preventDefault();
-      const quick = calculateMiniPopupLeak();
-      if (!quick.quotesPerWeek || !quick.averageJob || !quick.problemRate) return;
-
-      // Pre-fill the main calculator with the visitor's quick numbers so the next step feels connected.
-      if ($("#jobSize")) $("#jobSize").value = quick.averageJob;
-      if ($("#quotes")) $("#quotes").value = Math.max(1, Math.round(quick.quotesPerWeek * 10) / 10);
-      calculate();
-
-      $("#quickLeakResult").textContent = money(quick.annualLeak);
-      $("#quickLeakAssumption").textContent = `Based on ${quick.quotesPerWeek} quotes/week, ${money(quick.averageJob)} average job value, and your "${quick.problemFrequency}" over-quote-risk answer.`;
-      showPopupStep(2);
-    });
-
-    $("#editMiniCalc").addEventListener("click", () => {
-      showPopupStep(1);
-    });
-
-    $("#exitForm").addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const firstName = $("#exitName").value.trim();
-      const email = $("#exitEmail").value.trim();
-      if (!firstName || !email) return;
-
-      calculateMiniPopupLeak();
-      $("#exitStatus").textContent = "Sending your calculator link...";
-
-      const quickPayload = {
-        source: "exit_intent_mini_calculator",
-        first_name: firstName,
-        email,
-        quick_quotes_per_week: state.quickPopup.quotesPerWeek,
-        quick_quotes_per_month_estimate: Math.round(state.quickPopup.quotesPerWeek * 4.33 * 10) / 10,
-        quick_average_job: state.quickPopup.averageJob,
-        quick_problem_rate: state.quickPopup.problemRate,
-        quick_problem_frequency: state.quickPopup.problemFrequency,
-        quick_annual_leak_estimate: state.quickPopup.annualLeak,
-        selected_tier: state.selectedTier,
-        selected_price: state.selectedPrice,
-        total_leak: state.results.totalLeak,
-        submitted_at: new Date().toISOString()
-      };
-
-      try {
-        localStorage.setItem("antierp_exit_optin", JSON.stringify(quickPayload));
-      } catch (error) {}
-
-      await sendOptinToWebhook(firstName, email, POPUP_WEBHOOK_URL, quickPayload);
-
-      $("#exitStatus").textContent = "Taking you to the full calculator...";
-      setTimeout(() => {
-        if (POPUP_REDIRECT_TARGET && POPUP_REDIRECT_TARGET.startsWith("#")) {
-          closeModal();
-          const target = document.querySelector(POPUP_REDIRECT_TARGET);
-          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-        } else if (POPUP_REDIRECT_TARGET) {
-          window.location.href = POPUP_REDIRECT_TARGET;
-        } else {
-          closeModal();
-        }
-      }, 700);
+      sendPopupToCalculator();
     });
 
     $("#closeModal").addEventListener("click", closeModal);

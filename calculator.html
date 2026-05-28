@@ -2496,6 +2496,88 @@
       }
     }
 
+
+    /* Exit popup mini calculator */
+    .mini-calc-modal {
+      width: min(1060px, calc(100vw - 2rem));
+    }
+
+    .popup-step.hidden {
+      display: none !important;
+    }
+
+    .quick-input-grid {
+      display: grid;
+      gap: .75rem;
+      margin: .2rem 0 .85rem;
+    }
+
+    .quick-input-grid .field {
+      gap: .35rem;
+    }
+
+    .quick-input-grid label {
+      color: var(--slate-600);
+    }
+
+    .popup-preview,
+    .popup-result {
+      background: var(--slate-950);
+      color: #fff;
+      border: 1px solid rgba(249, 115, 22, .38);
+      padding: 1rem;
+      margin: .85rem 0;
+    }
+
+    .popup-preview span,
+    .popup-result span {
+      display: block;
+      color: #fed7aa;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .74rem;
+      font-weight: 950;
+      margin-bottom: .35rem;
+    }
+
+    .popup-preview strong,
+    .popup-result strong {
+      display: block;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: .95;
+      letter-spacing: -.065em;
+      color: #fff;
+    }
+
+    .popup-preview small,
+    .popup-result small {
+      display: block;
+      color: var(--slate-300);
+      line-height: 1.45;
+      font-weight: 700;
+      margin-top: .65rem;
+    }
+
+    .popup-result {
+      background: linear-gradient(135deg, var(--red-950), #7f1d1d);
+      border-color: rgba(248, 113, 113, .38);
+    }
+
+    #miniLeakForm,
+    #exitForm {
+      display: grid;
+      gap: .75rem;
+    }
+
+    #miniLeakForm .btn,
+    #exitForm .btn {
+      width: 100%;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.25;
+      min-height: 54px;
+    }
+
   </style>
 </head>
 <body>
@@ -3020,36 +3102,67 @@
 </div>
 </section>
 </main>
-<div aria-hidden="true" aria-label="Free calculator report popup" class="modal" id="exitModal" role="dialog">
-<div class="modal-card">
+<div aria-hidden="true" aria-label="Quick quoting leak calculator popup" class="modal" id="exitModal" role="dialog">
+<div class="modal-card mini-calc-modal">
 <button aria-label="Close popup" class="close-modal" id="closeModal" type="button">×</button>
 <div class="modal-grid">
 <div class="modal-copy">
-<div class="eyebrow">Free calculator report</div>
-<h2>Do not leave without your quoting leak number.</h2>
-<p>Enter your email, then run the calculator and get your private Baseline Efficiency Report.</p>
+<div class="eyebrow">10-second leak check</div>
+<h2>Before you leave, check your quoting leak.</h2>
+<p>Most fabrication shops do not lose margin because the crew is lazy. They lose it because the estimate missed labour, scope, material, install access, freight, or finishing before the job ever hit the floor.</p>
 <div class="modal-list">
-<div><span>📊</span><span><strong>Your number:</strong> possible annual estimating leak based on your inputs.</span></div>
-<div><span>✅</span><span><strong>Your checklist:</strong> missed scope items to review before the quote goes out.</span></div>
-<div><span>🛠</span><span><strong>Your next step:</strong> the workbook blueprint that points to what should be fixed first.</span></div>
+<div><span>⚡</span><span><strong>Fast:</strong> answer 3 quick questions and see a rough annual leak number.</span></div>
+<div><span>📊</span><span><strong>Useful:</strong> use the result to decide if your estimating system needs tightening.</span></div>
+<div><span>🛠</span><span><strong>Next step:</strong> unlock the full calculator and Baseline Efficiency Report.</span></div>
 </div>
+<div class="modal-note">This is a quick estimate only. The full calculator gives you the better baseline.</div>
 </div>
 <div class="modal-panel">
-<h3>Get the free report</h3>
-<p>Same goal as the page: run the calculator and unlock the report.</p>
-<div class="video-proof">
-<div><strong>Fast:</strong> enter five shop numbers and get a clear baseline.</div>
-<div><strong>Useful:</strong> the report gives you saved-hour scenarios, payback range, and a missed-scope checklist.</div>
+<div class="popup-step" id="popupStepOne">
+<h3>Get your rough leak number first</h3>
+<p>No email yet. Just put in three shop numbers.</p>
+<form id="miniLeakForm">
+<div class="quick-input-grid">
+<div class="field">
+<label for="quickQuotes">Quotes per month</label>
+<input id="quickQuotes" inputmode="numeric" min="1" name="quickQuotes" placeholder="Example: 20" required="" type="number" />
 </div>
+<div class="field">
+<label for="quickJob">Average job value</label>
+<input id="quickJob" inputmode="decimal" min="1" name="quickJob" placeholder="Example: 25000" required="" type="number" />
+</div>
+<div class="field">
+<label for="quickProblem">Problem jobs %</label>
+<input id="quickProblem" inputmode="decimal" max="100" min="1" name="quickProblem" placeholder="Example: 15" required="" type="number" value="15" />
+</div>
+</div>
+<div class="popup-preview" id="quickLeakPreview">
+<span>Quick estimate</span>
+<strong>Enter your numbers</strong>
+<small>Uses a rough 5% margin drag on quotes with missed scope, rework, pricing cleanup, or install surprises.</small>
+</div>
+<button class="btn btn-primary" type="submit">Show My Quoting Leak</button>
+<button class="btn btn-light" id="declineModal" type="button">No thanks, I will keep guessing.</button>
+</form>
+</div>
+<div class="popup-step hidden" id="popupStepTwo">
+<h3>Your quick leak estimate</h3>
+<div class="popup-result">
+<span>Potential annual quoting leak</span>
+<strong id="quickLeakResult">$0</strong>
+<small id="quickLeakAssumption">Rough estimate based on your three popup inputs.</small>
+</div>
+<p>Enter your name and email to open the full Baseline Efficiency Calculator and get the report.</p>
 <form id="exitForm">
 <div class="email-grid">
-<input id="exitName" name="exitName" placeholder="First name" required=""/>
-<input id="exitEmail" name="exitEmail" placeholder="Work email" required="" type="email"/>
+<input id="exitName" name="exitName" placeholder="First name" required="" />
+<input id="exitEmail" name="exitEmail" placeholder="Work email" required="" type="email" />
 </div>
-<button class="btn btn-primary" type="submit">Take Me To The Calculator</button>
-<button class="btn btn-light" id="declineModal" type="button">No thanks, I will keep guessing.</button>
+<button class="btn btn-primary" type="submit">Send Me The Full Calculator + Report</button>
+<button class="btn btn-light" id="editMiniCalc" type="button">Change my numbers</button>
 <p aria-live="polite" class="privacy" id="exitStatus"></p>
 </form>
+</div>
 </div>
 </div>
 </div>
@@ -3066,14 +3179,20 @@
     const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxFc736jrGAwQXPzVHmWUTvWX71YVCfUf920_gQlXFhmvXLHrbocAAJSNjt2cKk24vs/exec";
     const POPUP_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxoqPfIpnOaznbqYnJeogCCOuPs5wotvlaOip-z-jImiIS6ElChEpKwxMXKSIUvPU7juA/exec";
     const REPORT_PAGE_URL = "https://gregsheldon.github.io/metalfabexcel/antierp-estimating-report.html";
-    const VIDEO_PAGE_URL = "#calculator";
+    const POPUP_REDIRECT_TARGET = "#calculator";
 
     const state = {
       selectedTier: "Pro System",
       selectedPrice: 7500,
       exitShown: false,
       unlocked: false,
-      results: {}
+      results: {},
+      quickPopup: {
+        quotesPerMonth: 0,
+        averageJob: 0,
+        problemRate: 0,
+        annualLeak: 0
+      }
     };
 
     const $ = (selector) => document.querySelector(selector);
@@ -3214,13 +3333,17 @@
       }
     }
 
-    async function sendOptinToWebhook(firstName, email, webhookUrl = WEBHOOK_URL) {
-      // Only first name and email are sent to the Google Apps Script webhook.
-      // Google Apps Script then imports/updates the contact in Systeme.io and applies the connected tag/campaign.
+    async function sendOptinToWebhook(firstName, email, webhookUrl = WEBHOOK_URL, extraFields = {}) {
+      // First name and email are always sent to the Google Apps Script webhook.
+      // Extra popup/calculator fields are included when available. Existing scripts that only read name/email will still work.
       // Form-encoded + no-cors avoids browser CORS issues on static hosting.
       const signupPayload = new URLSearchParams();
       signupPayload.append("first_name", firstName);
       signupPayload.append("email", email);
+
+      Object.entries(extraFields || {}).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) signupPayload.append(key, value);
+      });
 
       try {
         await fetch(webhookUrl, {
@@ -3377,35 +3500,99 @@
       openFullReport(payload);
     });
 
+    function calculateMiniPopupLeak() {
+      const quotesPerMonth = numberOnly($("#quickQuotes").value);
+      const averageJob = numberOnly($("#quickJob").value);
+      const problemRate = Math.min(100, Math.max(0, numberOnly($("#quickProblem").value)));
+      const annualLeak = Math.round(quotesPerMonth * 12 * averageJob * (problemRate / 100) * 0.05);
+
+      state.quickPopup = {
+        quotesPerMonth,
+        averageJob,
+        problemRate,
+        annualLeak
+      };
+
+      const preview = $("#quickLeakPreview");
+      if (preview) {
+        preview.innerHTML = `
+          <span>Quick estimate</span>
+          <strong>${annualLeak > 0 ? money(annualLeak) : "Enter your numbers"}</strong>
+          <small>Uses a rough 5% margin drag on quotes with missed scope, rework, pricing cleanup, or install surprises.</small>
+        `;
+      }
+      return state.quickPopup;
+    }
+
+    function showPopupStep(stepNumber) {
+      const one = $("#popupStepOne");
+      const two = $("#popupStepTwo");
+      if (!one || !two) return;
+      one.classList.toggle("hidden", stepNumber !== 1);
+      two.classList.toggle("hidden", stepNumber !== 2);
+    }
+
+    ["#quickQuotes", "#quickJob", "#quickProblem"].forEach(selector => {
+      const el = $(selector);
+      if (el) el.addEventListener("input", calculateMiniPopupLeak);
+    });
+
+    $("#miniLeakForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const quick = calculateMiniPopupLeak();
+      if (!quick.quotesPerMonth || !quick.averageJob || !quick.problemRate) return;
+
+      // Pre-fill the main calculator with the visitor's quick numbers so the next step feels connected.
+      if ($("#jobSize")) $("#jobSize").value = quick.averageJob;
+      if ($("#quotes")) $("#quotes").value = Math.max(1, Math.round((quick.quotesPerMonth / 4.33) * 10) / 10);
+      calculate();
+
+      $("#quickLeakResult").textContent = money(quick.annualLeak);
+      $("#quickLeakAssumption").textContent = `${quick.quotesPerMonth} quotes/month × ${money(quick.averageJob)} average job × ${quick.problemRate}% problem rate × 5% rough margin drag.`;
+      showPopupStep(2);
+    });
+
+    $("#editMiniCalc").addEventListener("click", () => {
+      showPopupStep(1);
+    });
+
     $("#exitForm").addEventListener("submit", async (event) => {
       event.preventDefault();
       const firstName = $("#exitName").value.trim();
       const email = $("#exitEmail").value.trim();
       if (!firstName || !email) return;
 
-      $("#exitStatus").textContent = "Sending...";
+      calculateMiniPopupLeak();
+      $("#exitStatus").textContent = "Sending your calculator link...";
+
+      const quickPayload = {
+        source: "exit_intent_mini_calculator",
+        first_name: firstName,
+        email,
+        quick_quotes_per_month: state.quickPopup.quotesPerMonth,
+        quick_average_job: state.quickPopup.averageJob,
+        quick_problem_rate: state.quickPopup.problemRate,
+        quick_annual_leak_estimate: state.quickPopup.annualLeak,
+        selected_tier: state.selectedTier,
+        selected_price: state.selectedPrice,
+        total_leak: state.results.totalLeak,
+        submitted_at: new Date().toISOString()
+      };
+
       try {
-        localStorage.setItem("antierp_exit_optin", JSON.stringify({
-          source: "exit_intent_popup",
-          first_name: firstName,
-          email,
-          selected_tier: state.selectedTier,
-          selected_price: state.selectedPrice,
-          total_leak: state.results.totalLeak,
-          submitted_at: new Date().toISOString()
-        }));
+        localStorage.setItem("antierp_exit_optin", JSON.stringify(quickPayload));
       } catch (error) {}
 
-      await sendOptinToWebhook(firstName, email, POPUP_WEBHOOK_URL);
+      await sendOptinToWebhook(firstName, email, POPUP_WEBHOOK_URL, quickPayload);
 
-      $("#exitStatus").textContent = "Taking you to the calculator...";
+      $("#exitStatus").textContent = "Taking you to the full calculator...";
       setTimeout(() => {
-        if (VIDEO_PAGE_URL && VIDEO_PAGE_URL.startsWith("#")) {
+        if (POPUP_REDIRECT_TARGET && POPUP_REDIRECT_TARGET.startsWith("#")) {
           closeModal();
-          const target = document.querySelector(VIDEO_PAGE_URL);
+          const target = document.querySelector(POPUP_REDIRECT_TARGET);
           if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-        } else if (VIDEO_PAGE_URL) {
-          window.location.href = VIDEO_PAGE_URL;
+        } else if (POPUP_REDIRECT_TARGET) {
+          window.location.href = POPUP_REDIRECT_TARGET;
         } else {
           closeModal();
         }
@@ -3423,6 +3610,23 @@
     document.addEventListener("mouseleave", (event) => {
       if (event.clientY <= 8) openModal();
     });
+
+    // Mobile does not have true exit intent, so this gives mobile visitors one gentle chance after engagement.
+    let scrollPopupTriggered = false;
+    window.addEventListener("scroll", () => {
+      if (scrollPopupTriggered || state.exitShown || state.unlocked) return;
+      const doc = document.documentElement;
+      const scrollable = Math.max(1, doc.scrollHeight - window.innerHeight);
+      const scrollPercent = window.scrollY / scrollable;
+      if (scrollPercent > 0.68) {
+        scrollPopupTriggered = true;
+        openModal();
+      }
+    }, { passive: true });
+
+    window.setTimeout(() => {
+      if (!state.exitShown && !state.unlocked) openModal();
+    }, 55000);
 
     let mobilePopupArmed = true;
     window.addEventListener("scroll", () => {

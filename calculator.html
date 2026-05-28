@@ -2619,6 +2619,161 @@
       min-height: 54px;
     }
 
+
+    /* Compact quotes-per-week popup overrides */
+    .mini-calc-modal {
+      width: min(960px, calc(100vw - 2rem));
+      padding: 1rem;
+    }
+
+    .mini-calc-modal .modal-grid {
+      grid-template-columns: .82fr 1.18fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .mini-calc-modal .modal-copy,
+    .mini-calc-modal .modal-panel {
+      padding: 1rem;
+      gap: .65rem;
+      justify-content: flex-start;
+    }
+
+    .mini-calc-modal .modal-copy h2 {
+      font-size: clamp(1.85rem, 3vw, 2.45rem);
+      max-width: 12ch;
+      line-height: .95;
+    }
+
+    .mini-calc-modal .modal-copy p,
+    .mini-calc-modal .modal-panel p {
+      font-size: .93rem;
+      line-height: 1.42;
+    }
+
+    .popup-compact-benefits {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .45rem;
+      margin-top: .1rem;
+    }
+
+    .popup-compact-benefits div {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      padding: .55rem .65rem;
+      color: var(--slate-700);
+      font-weight: 850;
+      line-height: 1.25;
+    }
+
+    .popup-compact-benefits strong {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      display: grid;
+      place-items: center;
+      background: var(--orange-600);
+      color: #fff;
+      font-size: .8rem;
+      line-height: 1;
+    }
+
+    .compact-note {
+      padding: .65rem;
+      font-size: .82rem;
+    }
+
+    .quick-input-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .65rem;
+      margin: .15rem 0 .65rem;
+    }
+
+    .quick-input-grid .field:nth-child(3) {
+      grid-column: 1 / -1;
+    }
+
+    .quick-input-grid input {
+      padding: .8rem .85rem;
+    }
+
+    .frequency-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .45rem;
+    }
+
+    .frequency-button {
+      padding: .62rem .55rem;
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    .frequency-button small {
+      font-size: .68rem;
+      line-height: 1.18;
+      margin-top: .24rem;
+    }
+
+    .field-note {
+      margin: -.2rem 0 .1rem;
+      font-size: .78rem;
+      line-height: 1.35;
+    }
+
+    .popup-preview,
+    .popup-result {
+      padding: .85rem;
+      margin: .65rem 0;
+    }
+
+    .popup-preview strong,
+    .popup-result strong {
+      font-size: clamp(1.75rem, 3vw, 2.6rem);
+    }
+
+    #miniLeakForm,
+    #exitForm {
+      gap: .6rem;
+    }
+
+    #miniLeakForm .btn,
+    #exitForm .btn {
+      min-height: 48px;
+      padding: .8rem 1rem;
+    }
+
+    @media (max-width: 860px) {
+      .mini-calc-modal .modal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-calc-modal .modal-copy h2 {
+        max-width: 100%;
+        padding-right: 2.5rem;
+      }
+
+      .popup-compact-benefits {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .mini-calc-modal {
+        width: calc(100vw - 1rem);
+        padding: .75rem;
+      }
+
+      .popup-compact-benefits,
+      .quick-input-grid,
+      .frequency-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -3150,23 +3305,23 @@
 <div class="modal-copy">
 <div class="eyebrow">10-second leak check</div>
 <h2>Before you leave, check your quoting leak.</h2>
-<p>Most fabrication shops do not lose margin because the crew is lazy. They lose it because the estimate missed labour, scope, material, install access, freight, or finishing before the job ever hit the floor.</p>
-<div class="modal-list">
-<div><span>⚡</span><span><strong>Fast:</strong> answer 3 quick questions and see a rough annual leak number.</span></div>
-<div><span>📊</span><span><strong>Useful:</strong> use the result to decide if your estimating system needs tightening.</span></div>
-<div><span>🛠</span><span><strong>Next step:</strong> unlock the full calculator and Baseline Efficiency Report.</span></div>
+<p>Answer three quick shop numbers and see a rough annual leak before you unlock the full calculator.</p>
+<div class="popup-compact-benefits">
+<div><strong>1</strong><span>Quotes per week</span></div>
+<div><strong>2</strong><span>Average job value</span></div>
+<div><strong>3</strong><span>How often jobs go over</span></div>
 </div>
-<div class="modal-note">This is a quick estimate only. The full calculator gives you the better baseline.</div>
+<div class="modal-note compact-note">Quick estimate only. The full calculator gives the better baseline.</div>
 </div>
 <div class="modal-panel">
 <div class="popup-step" id="popupStepOne">
 <h3>Get your rough leak number first</h3>
-<p>No email yet. Just put in three shop numbers.</p>
+<p>No email yet. Just answer three quick shop numbers.</p>
 <form id="miniLeakForm">
 <div class="quick-input-grid">
 <div class="field">
-<label for="quickQuotes">Quotes per month</label>
-<input id="quickQuotes" inputmode="numeric" min="1" name="quickQuotes" placeholder="Example: 20" required="" type="number" />
+<label for="quickQuotes">Quotes per week</label>
+<input id="quickQuotes" inputmode="numeric" min="1" name="quickQuotes" placeholder="Example: 5" required="" type="number" />
 </div>
 <div class="field">
 <label for="quickJob">Average job value</label>
@@ -3188,7 +3343,7 @@
 <div class="popup-preview" id="quickLeakPreview">
 <span>Quick estimate</span>
 <strong>Enter your numbers</strong>
-<small>Uses your quote volume, average job value, and how often jobs go over what was quoted.</small>
+<small>Uses quotes per week, average job value, and how often jobs go over what was quoted.</small>
 </div>
 <button class="btn btn-primary" type="submit">Show My Quoting Leak</button>
 <button class="btn btn-light" id="declineModal" type="button">No thanks, I will keep guessing.</button>
@@ -3237,7 +3392,7 @@
       unlocked: false,
       results: {},
       quickPopup: {
-        quotesPerMonth: 0,
+        quotesPerWeek: 0,
         averageJob: 0,
         problemRate: 12,
         problemFrequency: "Sometimes",
@@ -3551,14 +3706,14 @@
     });
 
     function calculateMiniPopupLeak() {
-      const quotesPerMonth = numberOnly($("#quickQuotes").value);
+      const quotesPerWeek = numberOnly($("#quickQuotes").value);
       const averageJob = numberOnly($("#quickJob").value);
       const problemRate = Math.min(100, Math.max(0, numberOnly($("#quickProblem").value)));
       const problemFrequency = $("#quickProblemLabel") ? $("#quickProblemLabel").value : "Sometimes";
-      const annualLeak = Math.round(quotesPerMonth * 12 * averageJob * (problemRate / 100) * 0.05);
+      const annualLeak = Math.round(quotesPerWeek * 52 * averageJob * (problemRate / 100) * 0.05);
 
       state.quickPopup = {
-        quotesPerMonth,
+        quotesPerWeek,
         averageJob,
         problemRate,
         problemFrequency,
@@ -3570,7 +3725,7 @@
         preview.innerHTML = `
           <span>Quick estimate</span>
           <strong>${annualLeak > 0 ? money(annualLeak) : "Enter your numbers"}</strong>
-          <small>Uses your quote volume, average job value, and how often jobs go over what was quoted.</small>
+          <small>Uses quotes per week, average job value, and how often jobs go over what was quoted.</small>
         `;
       }
       return state.quickPopup;
@@ -3602,15 +3757,15 @@
     $("#miniLeakForm").addEventListener("submit", (event) => {
       event.preventDefault();
       const quick = calculateMiniPopupLeak();
-      if (!quick.quotesPerMonth || !quick.averageJob || !quick.problemRate) return;
+      if (!quick.quotesPerWeek || !quick.averageJob || !quick.problemRate) return;
 
       // Pre-fill the main calculator with the visitor's quick numbers so the next step feels connected.
       if ($("#jobSize")) $("#jobSize").value = quick.averageJob;
-      if ($("#quotes")) $("#quotes").value = Math.max(1, Math.round((quick.quotesPerMonth / 4.33) * 10) / 10);
+      if ($("#quotes")) $("#quotes").value = Math.max(1, Math.round(quick.quotesPerWeek * 10) / 10);
       calculate();
 
       $("#quickLeakResult").textContent = money(quick.annualLeak);
-      $("#quickLeakAssumption").textContent = `Based on ${quick.quotesPerMonth} quotes/month, ${money(quick.averageJob)} average job value, and your "${quick.problemFrequency}" over-quote-risk answer.`;
+      $("#quickLeakAssumption").textContent = `Based on ${quick.quotesPerWeek} quotes/week, ${money(quick.averageJob)} average job value, and your "${quick.problemFrequency}" over-quote-risk answer.`;
       showPopupStep(2);
     });
 
@@ -3631,7 +3786,8 @@
         source: "exit_intent_mini_calculator",
         first_name: firstName,
         email,
-        quick_quotes_per_month: state.quickPopup.quotesPerMonth,
+        quick_quotes_per_week: state.quickPopup.quotesPerWeek,
+        quick_quotes_per_month_estimate: Math.round(state.quickPopup.quotesPerWeek * 4.33 * 10) / 10,
         quick_average_job: state.quickPopup.averageJob,
         quick_problem_rate: state.quickPopup.problemRate,
         quick_problem_frequency: state.quickPopup.problemFrequency,

@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Privacy Policy | Metal Fabrication Power Tools</title>
+  <meta name="description" content="Privacy Policy for Metal Fabrication Power Tools by Greg Sheldon." />
+
+  <style>
+    :root {
+      --bg: #070707;
+      --bg-soft: #101010;
+      --panel: #161616;
+      --panel-2: #202020;
+      --text: #f5f5f5;
+      --muted: #b8b8b8;
+      --line: rgba(255, 255, 255, 0.14);
+      --orange: #ff7a1a;
+      --orange-2: #ff9a3d;
+      --danger: #ff4d4d;
+      --max: 1120px;
+      --radius: 0px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 122, 26, 0.13), transparent 34rem),
+        radial-gradient(circle at top right, rgba(255, 122, 26, 0.07), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--orange-2);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7, 7, 7, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 14px;
+    }
+
+    .navlinks a {
+      color: var(--text);
+      opacity: 0.85;
+    }
+
+    .navlinks a:hover {
+      color: var(--orange-2);
+      opacity: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 18px;
+      border-radius: 0;
+      background: linear-gradient(135deg, var(--orange), var(--orange-2));
+      color: #111 !important;
+      font-weight: 900;
+      box-shadow: 0 10px 28px rgba(255, 122, 26, 0.22);
+      text-decoration: none !important;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 76px 0 34px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 122, 26, 0.45);
+      background: rgba(255, 122, 26, 0.08);
+      color: var(--orange-2);
+      border-radius: 0;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      max-width: 900px;
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      max-width: 880px;
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 0 18px;
+    }
+
+    .notice {
+      margin-top: 28px;
+      padding: 20px;
+      border-radius: 0;
+      border: 1px solid rgba(255, 122, 26, 0.45);
+      background: linear-gradient(135deg, rgba(255, 122, 26, 0.12), rgba(255, 122, 26, 0.03));
+      box-shadow: var(--shadow);
+    }
+
+    .notice strong {
+      color: var(--orange-2);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 28px;
+      align-items: start;
+      padding: 34px 0 74px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 96px;
+      border: 1px solid var(--line);
+      background: rgba(22, 22, 22, 0.88);
+      border-radius: 0;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      max-height: calc(100vh - 120px);
+      overflow: auto;
+    }
+
+    .toc h2 {
+      font-size: 15px;
+      margin: 0 0 12px;
+      color: var(--orange-2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .toc a:hover {
+      color: var(--orange-2);
+    }
+
+    .policy {
+      border: 1px solid var(--line);
+      background: rgba(16, 16, 16, 0.92);
+      border-radius: 0;
+      padding: clamp(22px, 4vw, 46px);
+      box-shadow: var(--shadow);
+    }
+
+    .policy section {
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+      scroll-margin-top: 100px;
+    }
+
+    .policy section:first-child {
+      padding-top: 0;
+    }
+
+    .policy section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    h3 {
+      margin: 22px 0 10px;
+      color: var(--orange-2);
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    p {
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 12px 0 0;
+      padding-left: 22px;
+      color: var(--muted);
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    .strong-box {
+      margin: 18px 0;
+      padding: 18px;
+      border-radius: 0;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid var(--line);
+    }
+
+    .warning-box {
+      margin: 18px 0;
+      padding: 18px;
+      border-radius: 0;
+      background: rgba(255, 122, 26, 0.08);
+      border: 1px solid rgba(255, 122, 26, 0.38);
+    }
+
+    .warning-box strong {
+      color: var(--orange-2);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .meta-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 0;
+      padding: 16px;
+    }
+
+    .meta-card small {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+      font-weight: 900;
+    }
+
+    .meta-card strong {
+      color: var(--text);
+      font-size: 17px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      background: #050505;
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-inner a {
+      color: var(--muted);
+    }
+
+    .footer-inner a:hover {
+      color: var(--orange-2);
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        align-items: flex-start;
+        padding: 14px 0;
+        flex-direction: column;
+      }
+
+      .navlinks {
+        justify-content: flex-start;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: relative;
+        top: 0;
+        max-height: none;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #111111;
+      }
+
+      .topbar,
+      .toc,
+      footer,
+      .btn {
+        display: none !important;
+      }
+
+      .wrap,
+      .layout {
+        width: 100%;
+        display: block;
+      }
+
+      .hero {
+        padding: 20px 0;
+      }
+
+      .policy {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        background: #ffffff;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      li,
+      strong {
+        color: #111111;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="brand">
+        <strong>Metal Fabrication Power Tools</strong>
+        <span>Greg Sheldon | Estimating & Fabrication Systems</span>
+      </div>
+
+      <div class="navlinks">
+        <a href="/metalfabexcel/">Home</a>
+        <a href="/metalfabexcel/#calculator">Calculator</a>
+        <a href="/metalfabexcel/#pricing">Pricing</a>
+        <a href="/metalfabexcel/#contact">Contact</a>
+        <a class="btn" href="mailto:gregwsheldon@gmail.com">Contact Greg</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero">
+        <span class="eyebrow">Privacy Policy</span>
+        <h1>Privacy Policy</h1>
+        <p>
+          This Privacy Policy explains how Greg Sheldon and Metal Fabrication Power Tools collect, use, store,
+          protect, and handle customer information connected to websites, products, downloads, courses, tools,
+          spreadsheets, services, emails, and customer support.
+        </p>
+        <p><strong>Last updated:</strong> [INSERT DATE]</p>
+
+        <div class="notice">
+          <p>
+            <strong>Important:</strong> By using this website, submitting information, purchasing a product,
+            downloading a resource, joining a course, contacting support, or using any service from Greg Sheldon
+            or Metal Fabrication Power Tools, you agree to this Privacy Policy.
+          </p>
+        </div>
+      </section>
+
+      <div class="layout">
+        <aside class="toc">
+          <h2>On This Page</h2>
+          <a href="#overview">1. Overview</a>
+          <a href="#seller">2. Who We Are</a>
+          <a href="#information">3. Information We Collect</a>
+          <a href="#sources">4. How We Collect Information</a>
+          <a href="#use">5. How We Use Information</a>
+          <a href="#payments">6. Payment Information</a>
+          <a href="#downloads">7. Downloads, Courses, and Access Activity</a>
+          <a href="#email">8. Email Communication and Marketing</a>
+          <a href="#cookies">9. Cookies and Analytics</a>
+          <a href="#third-party">10. Third-Party Services</a>
+          <a href="#sharing">11. When We Share Information</a>
+          <a href="#no-sale">12. No Sale of Personal Information</a>
+          <a href="#security">13. Security and Anti-Theft Measures</a>
+          <a href="#retention">14. Data Retention</a>
+          <a href="#rights">15. Your Privacy Rights</a>
+          <a href="#canada">16. Canadian Privacy Rights</a>
+          <a href="#us">17. United States Privacy Rights</a>
+          <a href="#california">18. California Privacy Notice</a>
+          <a href="#children">19. Children and Minors</a>
+          <a href="#international">20. International Transfers</a>
+          <a href="#user-content">21. Customer Content and Submitted Files</a>
+          <a href="#legal">22. Legal, Safety, and Enforcement Uses</a>
+          <a href="#changes">23. Changes to This Policy</a>
+          <a href="#contact">24. Contact</a>
+        </aside>
+
+        <article class="policy">
+          <section id="overview">
+            <h2>1. Overview</h2>
+            <p>
+              This Privacy Policy applies to all websites, checkout pages, payment links, forms, course platforms,
+              digital downloads, emails, products, services, support messages, communities, and materials operated,
+              sold, licensed, distributed, or provided by <strong>Greg Sheldon</strong> under the brand name
+              <strong>Metal Fabrication Power Tools</strong>.
+            </p>
+
+            <p>
+              This policy explains what information may be collected, how it may be used, how it may be protected,
+              when it may be shared, and how customers may contact us about privacy questions.
+            </p>
+
+            <p>
+              Where applicable, certain intellectual property, digital products, course materials, business assets,
+              and related rights are owned by, assigned to, held for the benefit of, or protected under
+              <strong>Legacy Seven Trust</strong>. This Privacy Policy does not transfer ownership of any intellectual
+              property or customer data.
+            </p>
+          </section>
+
+          <section id="seller">
+            <h2>2. Who We Are</h2>
+
+            <div class="meta-grid">
+              <div class="meta-card">
+                <small>Seller</small>
+                <strong>Greg Sheldon</strong>
+              </div>
+
+              <div class="meta-card">
+                <small>Brand Name</small>
+                <strong>Metal Fabrication Power Tools</strong>
+              </div>
+
+              <div class="meta-card">
+                <small>Email</small>
+                <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
+              </div>
+
+              <div class="meta-card">
+                <small>Trust</small>
+                <strong>Legacy Seven Trust, where applicable</strong>
+              </div>
+            </div>
+
+            <p style="margin-top: 18px;">
+              For privacy questions, access requests, correction requests, deletion requests, unsubscribe requests,
+              or data-related concerns, contact:
+              <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
+            </p>
+          </section>
+
+          <section id="information">
+            <h2>3. Information We Collect</h2>
+            <p>
+              We collect only information reasonably necessary to operate the website, process purchases,
+              deliver products, provide support, protect intellectual property, improve services, communicate with customers,
+              and comply with legal obligations.
+            </p>
+
+            <p>Information we may collect includes:</p>
+
+            <ul>
+              <li>Name</li>
+              <li>Email address</li>
+              <li>Business name, if provided</li>
+              <li>Billing details needed to process a purchase</li>
+              <li>Payment confirmation details</li>
+              <li>Order history</li>
+              <li>Product access records</li>
+              <li>Download activity</li>
+              <li>Course access activity</li>
+              <li>Login activity, where applicable</li>
+              <li>Customer support messages</li>
+              <li>Form submissions</li>
+              <li>Newsletter subscription information</li>
+              <li>Technical data such as browser type, device type, referral page, approximate location, IP address, and usage data</li>
+              <li>Files, drawings, job information, estimating details, or business information voluntarily submitted for services or support</li>
+            </ul>
+
+            <p>
+              We do not intentionally collect unnecessary sensitive personal information. Do not send sensitive information
+              unless it is required for the specific service you are requesting.
+            </p>
+          </section>
+
+          <section id="sources">
+            <h2>4. How We Collect Information</h2>
+            <p>We may collect information when you:</p>
+
+            <ul>
+              <li>Visit the website</li>
+              <li>Submit a contact form</li>
+              <li>Join an email list</li>
+              <li>Purchase a product</li>
+              <li>Download a resource</li>
+              <li>Create an account</li>
+              <li>Access a course or member area</li>
+              <li>Use a spreadsheet, calculator, template, or tool</li>
+              <li>Send an email or support request</li>
+              <li>Book or receive a service</li>
+              <li>Participate in a community, call, training, or workshop</li>
+              <li>Interact with emails, links, checkout pages, or product pages</li>
+            </ul>
+
+            <p>
+              Some information is provided directly by you. Some information may be collected automatically through
+              website hosting, analytics, checkout tools, email tools, course platforms, access logs, security systems,
+              or other third-party service providers.
+            </p>
+          </section>
+
+          <section id="use">
+            <h2>5. How We Use Information</h2>
+            <p>We may use customer information to:</p>
+
+            <ul>
+              <li>Process orders and payments</li>
+              <li>Deliver digital products, courses, downloads, and services</li>
+              <li>Create or manage customer access</li>
+              <li>Provide customer support</li>
+              <li>Respond to emails, questions, and requests</li>
+              <li>Send order confirmations, receipts, access links, and account messages</li>
+              <li>Send updates about purchased products or services</li>
+              <li>Send marketing emails where permitted by law</li>
+              <li>Improve website performance, products, tools, and customer experience</li>
+              <li>Track product access and download activity</li>
+              <li>Protect against theft, copying, resale, unauthorized sharing, fraud, chargebacks, and abuse</li>
+              <li>Enforce Terms and Conditions</li>
+              <li>Comply with legal, tax, accounting, platform, and business obligations</li>
+              <li>Maintain records for business, accounting, security, and legal purposes</li>
+            </ul>
+          </section>
+
+          <section id="payments">
+            <h2>6. Payment Information</h2>
+            <p>
+              Payments may be processed through third-party payment processors such as Stripe or another approved
+              payment platform.
+            </p>
+
+            <p>
+              We do not store full credit card numbers on our own systems. Payment information is handled by the payment
+              processor according to that provider’s own terms, security practices, and privacy policy.
+            </p>
+
+            <p>
+              We may receive limited payment-related information, such as name, email address, billing information,
+              product purchased, payment status, transaction ID, receipt details, and fraud or dispute information.
+            </p>
+
+            <p>
+              Payment records may be kept for tax, accounting, refund, chargeback, legal, security, and business purposes.
+            </p>
+          </section>
+
+          <section id="downloads">
+            <h2>7. Downloads, Courses, and Access Activity</h2>
+            <p>
+              To deliver and protect digital products, we may collect information related to product access, downloads,
+              login activity, course progress, file access, member area activity, or similar technical information.
+            </p>
+
+            <p>This information may be used to:</p>
+
+            <ul>
+              <li>Confirm that a customer received access</li>
+              <li>Help with support issues</li>
+              <li>Improve product delivery</li>
+              <li>Detect broken links or technical problems</li>
+              <li>Detect excessive downloads, account sharing, unauthorized access, theft, resale, or abuse</li>
+              <li>Protect Greg Sheldon, Metal Fabrication Power Tools, Legacy Seven Trust, and customers</li>
+            </ul>
+          </section>
+
+          <section id="email">
+            <h2>8. Email Communication and Marketing</h2>
+            <p>
+              By purchasing a product, downloading a resource, creating an account, joining a course, submitting a form,
+              subscribing to a newsletter, or contacting support, you may receive transactional emails related to your
+              order, access, account, product, download, service, support request, or legal notices.
+            </p>
+
+            <p>
+              You may also receive educational or promotional emails where permitted by law. These emails may include
+              information about products, services, updates, course materials, tools, spreadsheets, templates, tips,
+              offers, and related resources.
+            </p>
+
+            <p>
+              You may unsubscribe from marketing emails at any time by clicking the unsubscribe link in the email or by
+              contacting:
+              <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
+            </p>
+
+            <p>
+              Unsubscribing from marketing emails does not stop important transactional, legal, security, purchase,
+              account, support, or product-access messages.
+            </p>
+
+            <p>
+              Where required by law, commercial emails will include required identification information, an unsubscribe
+              method, and any other required information. If a mailing address or other business identification is legally
+              required in an email footer, it may be provided in the email footer or by another legally accepted method.
+            </p>
+          </section>
+
+          <section id="cookies">
+            <h2>9. Cookies and Analytics</h2>
+            <p>
+              The website or third-party platforms may use cookies, pixels, scripts, log files, analytics tools,
+              or similar technologies to operate the site, improve performance, remember preferences, understand traffic,
+              measure email or page engagement, protect against abuse, and improve products or services.
+            </p>
+
+            <p>These tools may collect information such as:</p>
+
+            <ul>
+              <li>IP address</li>
+              <li>Browser type</li>
+              <li>Device type</li>
+              <li>Pages visited</li>
+              <li>Links clicked</li>
+              <li>Referral source</li>
+              <li>Approximate location</li>
+              <li>Date and time of visit</li>
+              <li>Email open or click activity, where applicable</li>
+            </ul>
+
+            <p>
+              You may be able to disable cookies through your browser settings. Some website features, checkout functions,
+              course platforms, downloads, or account features may not work correctly if cookies are disabled.
+            </p>
+          </section>
+
+          <section id="third-party">
+            <h2>10. Third-Party Services</h2>
+            <p>
+              We may use third-party service providers to operate the business, website, checkout, products, services,
+              downloads, email systems, analytics, course access, support, file storage, and customer communications.
+            </p>
+
+            <p>Third-party services may include, but are not limited to:</p>
+
+            <ul>
+              <li>Payment processors</li>
+              <li>Checkout platforms</li>
+              <li>Course hosting platforms</li>
+              <li>Email marketing platforms</li>
+              <li>Website hosting providers</li>
+              <li>Analytics tools</li>
+              <li>File delivery or storage systems</li>
+              <li>Customer support tools</li>
+              <li>Security, anti-fraud, or anti-theft tools</li>
+              <li>Cloud-based business tools</li>
+            </ul>
+
+            <p>
+              These providers may process information according to their own privacy policies, terms, security practices,
+              and legal obligations.
+            </p>
+
+            <p>
+              We are not responsible for the privacy practices of third-party websites, platforms, processors, or service providers.
+            </p>
+          </section>
+
+          <section id="sharing">
+            <h2>11. When We Share Information</h2>
+            <p>
+              We do not share customer information casually. We may share information only when reasonably necessary for
+              business, legal, product delivery, payment, support, security, or enforcement purposes.
+            </p>
+
+            <p>We may share information with:</p>
+
+            <ul>
+              <li>Payment processors to complete transactions</li>
+              <li>Checkout platforms to process purchases</li>
+              <li>Course platforms to provide access</li>
+              <li>Email providers to send transactional or marketing emails</li>
+              <li>Hosting providers to operate the website</li>
+              <li>Analytics providers to understand website and product performance</li>
+              <li>Service providers who help operate the business</li>
+              <li>Legal, accounting, tax, or professional advisors where needed</li>
+              <li>Platforms, marketplaces, hosts, or service providers for copyright, takedown, fraud, abuse, or intellectual property enforcement</li>
+              <li>Authorities, courts, or regulators where required by law or legal process</li>
+            </ul>
+
+            <p>
+              We may also share information if necessary to protect the rights, property, safety, products, customers,
+              business, intellectual property, or legal interests of Greg Sheldon, Metal Fabrication Power Tools,
+              Legacy Seven Trust, customers, or others.
+            </p>
+          </section>
+
+          <section id="no-sale">
+            <h2>12. No Sale of Personal Information</h2>
+            <div class="strong-box">
+              <p>
+                <strong>We do not sell customer personal information.</strong>
+              </p>
+            </div>
+
+            <p>
+              We do not sell your name, email address, billing details, purchase history, course access activity,
+              download activity, or customer support information to third parties.
+            </p>
+
+            <p>
+              Some third-party platforms may process limited information to provide services such as payments, checkout,
+              email delivery, website hosting, analytics, or product access. This is used to operate the business and deliver
+              products or services, not to sell your personal information.
+            </p>
+          </section>
+
+          <section id="security">
+            <h2>13. Security and Anti-Theft Measures</h2>
+            <p>
+              We use reasonable administrative, technical, and business safeguards to protect customer information and
+              intellectual property from unauthorized access, misuse, loss, disclosure, copying, theft, and abuse.
+            </p>
+
+            <p>
+              To protect products and customers, we may use security methods such as:
+            </p>
+
+            <ul>
+              <li>Access controls</li>
+              <li>Password-protected platforms</li>
+              <li>Download limits</li>
+              <li>License tracking</li>
+              <li>Customer-specific identifiers</li>
+              <li>File watermarking</li>
+              <li>Order tracking</li>
+              <li>Email tracking</li>
+              <li>Platform analytics</li>
+              <li>Anti-fraud tools</li>
+              <li>Anti-theft monitoring</li>
+            </ul>
+
+            <p>
+              These measures may be used to detect unauthorized sharing, copying, resale, excessive downloads,
+              suspicious access, account sharing, chargeback abuse, or misuse of protected materials.
+            </p>
+
+            <p>
+              No online system is 100% secure. We cannot guarantee absolute security, but we take privacy and product
+              protection seriously.
+            </p>
+          </section>
+
+          <section id="retention">
+            <h2>14. Data Retention</h2>
+            <p>
+              We keep customer information only as long as reasonably necessary for the purpose it was collected,
+              or as needed for business, accounting, tax, product access, support, refund, legal, security, fraud prevention,
+              intellectual property protection, or enforcement purposes.
+            </p>
+
+            <p>
+              Different types of information may be kept for different periods. For example, payment and order records
+              may be kept longer than general inquiry emails because they may be needed for tax, accounting, disputes,
+              refunds, or legal obligations.
+            </p>
+
+            <p>
+              Customers may request deletion of personal information where required by applicable law. Some information
+              may need to be retained if required for legal, tax, accounting, security, dispute, refund, chargeback,
+              or intellectual property enforcement reasons.
+            </p>
+          </section>
+
+          <section id="rights">
+            <h2>15. Your Privacy Rights</h2>
+            <p>
+              Depending on where you live and which laws apply, you may have rights related to your personal information.
+            </p>
+
+            <p>These rights may include the right to:</p>
+
+            <ul>
+              <li>Ask what personal information we have about you</li>
+              <li>Request access to your personal information</li>
+              <li>Request correction of inaccurate information</li>
+              <li>Request deletion of certain information</li>
+              <li>Withdraw consent for certain uses, where applicable</li>
+              <li>Unsubscribe from marketing emails</li>
+              <li>Ask questions about how your information is used</li>
+              <li>Request a copy of certain information, where required by law</li>
+              <li>Object to or limit certain processing, where required by law</li>
+            </ul>
+
+            <p>
+              To make a privacy request, contact:
+              <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
+            </p>
+
+            <p>
+              We may need to verify your identity before responding to certain requests. We may decline or limit a request
+              where permitted or required by law.
+            </p>
+          </section>
+
+          <section id="canada">
+            <h2>16. Canadian Privacy Rights</h2>
+            <p>
+              For customers in Canada, we aim to handle personal information in a way that is consistent with applicable
+              Canadian privacy principles, including limiting collection, using information for reasonable purposes,
+              protecting information, and providing access or correction where required by law.
+            </p>
+
+            <p>
+              Customers in Canada may contact us to ask about access, correction, deletion, consent withdrawal,
+              or privacy questions.
+            </p>
+
+            <p>
+              Contact:
+              <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
+            </p>
+          </section>
+
+          <section id="us">
+            <h2>17. United States Privacy Rights</h2>
+            <p>
+              Customers in the United States may have privacy rights depending on their state, the type of information
+              collected, the size of the business, and the laws that apply.
+            </p>
+
+            <p>
+              Where applicable, customers may request access, correction, deletion, or information about how personal
+              information is used or shared.
+            </p>
+
+            <p>
+              Contact:
+              <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
+            </p>
+          </section>
+
+          <section id="california">
+            <h2>18. California Privacy Notice</h2>
+            <p>
+              If you are a California resident and California privacy laws apply to this business, you may have specific
+              rights regarding personal information.
+            </p>
+
+            <p>Depending on applicable law, California residents may have the right to request:</p>
+
+            <ul>
+              <li>The categories of personal information collected</li>
+              <li>The categories of sources of personal information</li>
+              <li>The business purposes for collecting or using personal information</li>
+              <li>The categories of third parties to whom information may be disclosed</li>
+              <li>Access to certain personal information</li>
+              <li>Deletion of certain personal information</li>
+              <li>Correction of inaccurate personal information</li>
+              <li>Information about whether personal information is sold or shared</li>
+            </ul>
+
+            <p>
+              We do not sell customer personal information.
+            </p>
+
+            <p>
+              To make a California privacy request, contact:
+              <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
+            </p>
+
+            <p>
+              We may need to verify your identity before responding to certain requests. Some requests may be denied,
+              limited, or delayed where permitted by law, including for security, legal, tax, accounting, dispute,
+              product access, fraud prevention, or intellectual property enforcement reasons.
+            </p>
+          </section>
+
+          <section id="children">
+            <h2>19. Children and Minors</h2>
+            <p>
+              The website, products, courses, downloads, services, and tools are intended for mature users interested in
+              estimating, quoting, business, metal fabrication, pricing, sales, spreadsheets, and professional workflows.
+            </p>
+
+            <p>
+              Digital products are intended for users who are at least <strong>16 years old</strong>. Services such as
+              coaching, consulting, workshops, training, or professional support are intended for users who are at least
+              <strong>18 years old</strong>.
+            </p>
+
+            <p>
+              We do not knowingly collect personal information from children under the age required by applicable law.
+              If we become aware that information has been collected from someone who does not meet the applicable age
+              requirement, we may delete the information, cancel access, refuse service, or issue a refund where appropriate.
+            </p>
+
+            <p>
+              If you believe a minor has provided information without proper permission, contact:
+              <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
+            </p>
+          </section>
+
+          <section id="international">
+            <h2>20. International Transfers</h2>
+            <p>
+              Because customers may be located in the United States, Canada, or other regions, information may be processed,
+              stored, or accessed in more than one country depending on the third-party platforms, payment processors,
+              hosting providers, email providers, course platforms, and business tools used.
+            </p>
+
+            <p>
+              Privacy laws may differ between countries. By using the website, submitting information, purchasing products,
+              or accessing services, you understand that information may be processed or stored outside your province,
+              state, or country where permitted by law.
+            </p>
+          </section>
+
+          <section id="user-content">
+            <h2>21. Customer Content and Submitted Files</h2>
+            <p>
+              Customers may voluntarily send files, drawings, estimates, job details, project information, business information,
+              screenshots, spreadsheet files, or other materials for support, consulting, custom work, estimating help,
+              or product troubleshooting.
+            </p>
+
+            <p>
+              We use submitted materials only as reasonably necessary to provide the requested service, support, review,
+              or communication, unless otherwise agreed.
+            </p>
+
+            <p>
+              Customers are responsible for removing confidential, sensitive, private, or unnecessary information before
+              sending files or messages.
+            </p>
+
+            <p>
+              Do not send information you are not authorized to share.
+            </p>
+          </section>
+
+          <section id="legal">
+            <h2>22. Legal, Safety, and Enforcement Uses</h2>
+            <p>
+              We may use or disclose information where reasonably necessary to:
+            </p>
+
+            <ul>
+              <li>Comply with law, legal process, tax obligations, accounting obligations, or government requests</li>
+              <li>Respond to fraud, theft, abuse, unauthorized sharing, copying, resale, or intellectual property misuse</li>
+              <li>Enforce Terms and Conditions, Refund Policy, or other agreements</li>
+              <li>Handle chargebacks, refunds, disputes, or payment issues</li>
+              <li>Protect customers, products, intellectual property, business assets, or legal rights</li>
+              <li>Submit copyright complaints, takedown requests, marketplace reports, or platform enforcement requests</li>
+              <li>Prevent harm, fraud, security threats, or illegal activity</li>
+            </ul>
+          </section>
+
+          <section id="changes">
+            <h2>23. Changes to This Privacy Policy</h2>
+            <p>
+              This Privacy Policy may be updated from time to time.
+            </p>
+
+            <p>
+              The updated version will be posted on this page with an updated “Last updated” date.
+            </p>
+
+            <p>
+              Continued use of the website, products, services, downloads, emails, course platforms, or customer access
+              after updates may be treated as acceptance of the updated Privacy Policy where permitted by law.
+            </p>
+          </section>
+
+          <section id="contact">
+            <h2>24. Contact</h2>
+            <p>
+              For privacy questions, access requests, correction requests, deletion requests, unsubscribe requests,
+              customer support, or data-related concerns, contact:
+            </p>
+
+            <div class="strong-box">
+              <p>
+                <strong>Greg Sheldon</strong><br />
+                Metal Fabrication Power Tools<br />
+                Legacy Seven Trust, where applicable<br />
+                <a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a>
+              </p>
+            </div>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        Greg Sheldon | Metal Fabrication Power Tools
+      </div>
+
+      <div>
+        <a href="/metalfabexcel/">Home</a> |
+        <a href="/metalfabexcel/terms.html">Terms and Conditions</a> |
+        <a href="/metalfabexcel/privacy.html">Privacy Policy</a> |
+        <a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

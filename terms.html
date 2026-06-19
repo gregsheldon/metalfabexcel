@@ -4,24 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Terms and Conditions | Metal Fabrication Power Tools</title>
   <meta name="description" content="Terms and Conditions for Metal Fabrication Power Tools by Greg Sheldon." />
 
   <style>
     :root {
-      --bg: #080808;
-      --bg-soft: #111111;
-      --panel: #171717;
+      --bg: #070707;
+      --bg-soft: #101010;
+      --panel: #161616;
       --panel-2: #202020;
       --text: #f5f5f5;
       --muted: #b8b8b8;
-      --line: rgba(255,255,255,0.12);
+      --line: rgba(255, 255, 255, 0.14);
       --orange: #ff7a1a;
       --orange-2: #ff9a3d;
       --danger: #ff4d4d;
-      --max: 1080px;
-      --radius: 18px;
-      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --max: 1120px;
+      --radius: 0px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     }
 
     * {
@@ -36,8 +37,8 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(255,122,26,0.14), transparent 34rem),
-        radial-gradient(circle at top right, rgba(255,122,26,0.08), transparent 26rem),
+        radial-gradient(circle at top left, rgba(255, 122, 26, 0.13), transparent 34rem),
+        radial-gradient(circle at top right, rgba(255, 122, 26, 0.07), transparent 28rem),
         var(--bg);
       color: var(--text);
       line-height: 1.65;
@@ -56,7 +57,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(8,8,8,0.88);
+      background: rgba(7, 7, 7, 0.92);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
     }
@@ -64,7 +65,7 @@
     .nav {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
-      min-height: 72px;
+      min-height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -114,12 +115,14 @@
       justify-content: center;
       min-height: 44px;
       padding: 12px 18px;
-      border-radius: 999px;
+      border-radius: 0;
       background: linear-gradient(135deg, var(--orange), var(--orange-2));
-      color: #151515 !important;
-      font-weight: 800;
-      box-shadow: 0 10px 28px rgba(255,122,26,0.22);
+      color: #111 !important;
+      font-weight: 900;
+      box-shadow: 0 10px 28px rgba(255, 122, 26, 0.22);
       text-decoration: none !important;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .wrap {
@@ -136,26 +139,27 @@
       align-items: center;
       gap: 10px;
       padding: 8px 12px;
-      border: 1px solid rgba(255,122,26,0.35);
-      background: rgba(255,122,26,0.08);
+      border: 1px solid rgba(255, 122, 26, 0.45);
+      background: rgba(255, 122, 26, 0.08);
       color: var(--orange-2);
-      border-radius: 999px;
+      border-radius: 0;
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     h1 {
       margin: 18px 0 16px;
-      max-width: 880px;
-      font-size: clamp(36px, 6vw, 68px);
+      max-width: 900px;
+      font-size: clamp(38px, 6vw, 72px);
       line-height: 0.98;
-      letter-spacing: -0.05em;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
     }
 
     .hero p {
-      max-width: 850px;
+      max-width: 880px;
       color: var(--muted);
       font-size: 18px;
       margin: 0 0 18px;
@@ -163,10 +167,10 @@
 
     .notice {
       margin-top: 28px;
-      padding: 18px 20px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,122,26,0.35);
-      background: linear-gradient(135deg, rgba(255,122,26,0.10), rgba(255,122,26,0.03));
+      padding: 20px;
+      border-radius: 0;
+      border: 1px solid rgba(255, 122, 26, 0.45);
+      background: linear-gradient(135deg, rgba(255, 122, 26, 0.12), rgba(255, 122, 26, 0.03));
       box-shadow: var(--shadow);
     }
 
@@ -176,18 +180,18 @@
 
     .layout {
       display: grid;
-      grid-template-columns: 290px 1fr;
+      grid-template-columns: 300px 1fr;
       gap: 28px;
       align-items: start;
-      padding: 34px 0 72px;
+      padding: 34px 0 74px;
     }
 
     .toc {
       position: sticky;
       top: 96px;
       border: 1px solid var(--line);
-      background: rgba(23,23,23,0.82);
-      border-radius: var(--radius);
+      background: rgba(22, 22, 22, 0.88);
+      border-radius: 0;
       padding: 18px;
       box-shadow: var(--shadow);
       max-height: calc(100vh - 120px);
@@ -205,7 +209,7 @@
     .toc a {
       display: block;
       padding: 8px 0;
-      border-top: 1px solid rgba(255,255,255,0.07);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       color: var(--muted);
       font-size: 14px;
     }
@@ -216,15 +220,16 @@
 
     .terms {
       border: 1px solid var(--line);
-      background: rgba(17,17,17,0.88);
-      border-radius: 26px;
+      background: rgba(16, 16, 16, 0.92);
+      border-radius: 0;
       padding: clamp(22px, 4vw, 46px);
       box-shadow: var(--shadow);
     }
 
     .terms section {
-      padding: 26px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+      scroll-margin-top: 100px;
     }
 
     .terms section:first-child {
@@ -247,6 +252,8 @@
       margin: 22px 0 10px;
       color: var(--orange-2);
       font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     p {
@@ -264,24 +271,28 @@
       margin: 7px 0;
     }
 
+    strong {
+      color: var(--text);
+    }
+
     .strong-box {
       margin: 18px 0;
       padding: 18px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,0.045);
+      border-radius: 0;
+      background: rgba(255, 255, 255, 0.045);
       border: 1px solid var(--line);
     }
 
     .warning-box {
       margin: 18px 0;
       padding: 18px;
-      border-radius: var(--radius);
-      background: rgba(255,77,77,0.08);
-      border: 1px solid rgba(255,77,77,0.32);
+      border-radius: 0;
+      background: rgba(255, 77, 77, 0.08);
+      border: 1px solid rgba(255, 77, 77, 0.38);
     }
 
     .warning-box strong {
-      color: #ff8f8f;
+      color: #ff9a9a;
     }
 
     .money {
@@ -298,8 +309,8 @@
 
     .meta-card {
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 0;
       padding: 16px;
     }
 
@@ -309,7 +320,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 4px;
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .meta-card strong {
@@ -402,7 +413,8 @@
       h2,
       h3,
       p,
-      li {
+      li,
+      strong {
         color: #111111;
       }
     }
@@ -434,15 +446,16 @@
         <h1>Terms and Conditions</h1>
         <p>
           These Terms and Conditions protect the customer, Greg Sheldon, Metal Fabrication Power Tools,
-          and the intellectual property connected to the products, tools, spreadsheets, courses, and services.
+          Legacy Seven Trust where applicable, and the intellectual property connected to the products,
+          tools, spreadsheets, courses, downloads, and services.
         </p>
         <p><strong>Last updated:</strong> [INSERT DATE]</p>
 
         <div class="notice">
           <p>
             <strong>Important:</strong> By purchasing, downloading, accessing, using, viewing, or receiving any product,
-            service, course, spreadsheet, calculator, template, guide, worksheet, transcript, workbook, or material from
-            Greg Sheldon or Metal Fabrication Power Tools, you agree to these Terms and Conditions.
+            service, course, spreadsheet, calculator, template, guide, worksheet, transcript, workbook, community,
+            communication, or material from Greg Sheldon or Metal Fabrication Power Tools, you agree to these Terms and Conditions.
           </p>
         </div>
       </section>
@@ -455,32 +468,44 @@
           <a href="#purpose">3. Purpose of Products and Services</a>
           <a href="#age">4. Age Requirements</a>
           <a href="#orders">5. Orders and Acceptance</a>
-          <a href="#payment">6. Payment Terms</a>
-          <a href="#delivery">7. Delivery and Access</a>
-          <a href="#license">8. License to Use Digital Products</a>
-          <a href="#no-theft">9. No Theft, No Resale, No Sharing</a>
-          <a href="#damages">10. $10,000 USD Liquidated Damages</a>
-          <a href="#ip">11. Intellectual Property Ownership</a>
-          <a href="#customer-protection">12. Customer Protection and Fair Use</a>
-          <a href="#security">13. Account Security</a>
-          <a href="#responsibilities">14. Customer Responsibilities</a>
-          <a href="#results">15. No Guaranteed Results</a>
-          <a href="#accuracy">16. Accuracy of Materials</a>
-          <a href="#refunds">17. Refunds</a>
-          <a href="#chargebacks">18. Chargebacks and Payment Disputes</a>
-          <a href="#services">19. Services, Consulting, and Custom Work</a>
-          <a href="#privacy">20. Privacy and Personal Data</a>
-          <a href="#email">21. Email Communication</a>
-          <a href="#technical">22. Technical Requirements</a>
-          <a href="#liability">23. Limitation of Liability</a>
-          <a href="#indemnification">24. Indemnification</a>
-          <a href="#termination">25. Termination of Access</a>
-          <a href="#force-majeure">26. Force Majeure</a>
-          <a href="#changes">27. Changes to These Terms</a>
-          <a href="#severability">28. Severability</a>
-          <a href="#waiver">29. No Waiver</a>
-          <a href="#law">30. Applicable Law</a>
-          <a href="#contact">31. Contact</a>
+          <a href="#checkout">6. Checkout Agreement</a>
+          <a href="#payment">7. Payment Terms</a>
+          <a href="#taxes">8. Taxes</a>
+          <a href="#delivery">9. Delivery and Access</a>
+          <a href="#license">10. License to Use Digital Products</a>
+          <a href="#no-theft">11. No Theft, No Resale, No Sharing</a>
+          <a href="#damages">12. $10,000 USD Liquidated Damages</a>
+          <a href="#takedown">13. Copyright Takedown</a>
+          <a href="#ip">14. Intellectual Property Ownership</a>
+          <a href="#customer-protection">15. Customer Protection</a>
+          <a href="#security">16. Account Security</a>
+          <a href="#responsibilities">17. Customer Responsibilities</a>
+          <a href="#results">18. No Guaranteed Results</a>
+          <a href="#testimonials">19. Testimonials and Earnings Disclaimer</a>
+          <a href="#accuracy">20. Accuracy of Materials</a>
+          <a href="#ai">21. AI, Automation, Spreadsheet Disclaimer</a>
+          <a href="#updates">22. Updates and New Versions</a>
+          <a href="#lifetime">23. Lifetime Access</a>
+          <a href="#refunds">24. Refund Policy</a>
+          <a href="#chargebacks">25. Chargebacks</a>
+          <a href="#services">26. Services and Custom Work</a>
+          <a href="#community">27. Community and Student Conduct</a>
+          <a href="#privacy">28. Privacy and Personal Data</a>
+          <a href="#third-party">29. Third-Party Platforms</a>
+          <a href="#email">30. Email Communication</a>
+          <a href="#technical">31. Technical Requirements</a>
+          <a href="#tracking">32. Security and Usage Tracking</a>
+          <a href="#liability">33. Limitation of Liability</a>
+          <a href="#indemnification">34. Indemnification</a>
+          <a href="#termination">35. Termination of Access</a>
+          <a href="#force-majeure">36. Force Majeure</a>
+          <a href="#changes">37. Changes to These Terms</a>
+          <a href="#separate-policies">38. Separate Policies</a>
+          <a href="#severability">39. Severability</a>
+          <a href="#waiver">40. No Waiver</a>
+          <a href="#assignment">41. Assignment</a>
+          <a href="#law">42. Applicable Law</a>
+          <a href="#contact">43. Contact</a>
         </aside>
 
         <article class="terms">
@@ -488,8 +513,8 @@
             <h2>Terms and Conditions</h2>
             <p>
               These Terms and Conditions apply to all websites, checkout pages, course platforms, digital downloads,
-              payment links, invoices, products, services, and materials operated, sold, licensed, distributed,
-              or provided by <strong>Greg Sheldon</strong> under the brand name
+              payment links, invoices, products, services, communities, materials, and communications operated, sold,
+              licensed, distributed, or provided by <strong>Greg Sheldon</strong> under the brand name
               <strong>Metal Fabrication Power Tools</strong>.
             </p>
 
@@ -519,14 +544,17 @@
                 <small>Seller</small>
                 <strong>Greg Sheldon</strong>
               </div>
+
               <div class="meta-card">
                 <small>Brand Name</small>
                 <strong>Metal Fabrication Power Tools</strong>
               </div>
+
               <div class="meta-card">
                 <small>Email</small>
                 <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
               </div>
+
               <div class="meta-card">
                 <small>Trust</small>
                 <strong>Legacy Seven Trust, where applicable</strong>
@@ -549,29 +577,40 @@
             </p>
 
             <h3>Definitions</h3>
+
             <p>
               <strong>“Seller,” “I,” “me,” “my,” “we,” “us,” or “our”</strong> means Greg Sheldon,
               Metal Fabrication Power Tools, and, where applicable, Legacy Seven Trust.
             </p>
+
             <p>
               <strong>“Legacy Seven Trust”</strong> means the trust that owns, holds, controls, protects,
               benefits from, or has been assigned certain intellectual property, digital products, course materials,
               spreadsheets, calculators, templates, business assets, and related rights connected to Metal Fabrication
               Power Tools.
             </p>
+
             <p>
               <strong>“Customer,” “client,” “student,” “user,” “you,” or “your”</strong> means any person,
               business, or organization that purchases, accesses, downloads, views, receives, or uses any product,
               service, or material.
             </p>
+
             <p>
               <strong>“Products”</strong> means courses, videos, spreadsheets, calculators, templates, PDFs, guides,
               cheat sheets, worksheets, workbooks, transcripts, downloads, documents, examples, formulas,
               training content, and any other digital or physical material provided.
             </p>
+
             <p>
               <strong>“Services”</strong> means coaching, consulting, estimating support, spreadsheet builds,
               training, workshops, audits, reviews, custom work, and professional support.
+            </p>
+
+            <p>
+              <strong>“Community”</strong> means any student group, comment area, discussion area, online group,
+              live call, private group, coaching channel, member platform, chat area, or customer communication space
+              operated or connected to Metal Fabrication Power Tools.
             </p>
           </section>
 
@@ -582,14 +621,17 @@
               templates, systems, and practical support for estimating, quoting, pricing, sales, metal fabrication,
               business workflows, and related professional topics.
             </p>
+
             <p>
               The products and services are meant to help customers think more clearly, price more carefully,
               quote more professionally, and better understand estimating, quoting, and business systems.
             </p>
+
             <p>
               They are not a guarantee of profit, sales, job wins, business success, perfect estimates,
               legal compliance, tax compliance, or error-free work.
             </p>
+
             <p>
               The customer is responsible for reviewing, checking, adjusting, and approving all numbers, quotes,
               estimates, contracts, prices, markups, margins, labour rates, material costs, subcontractor costs,
@@ -603,11 +645,13 @@
               By purchasing, accessing, downloading, or using any product or service, you confirm that you meet the
               applicable age requirements.
             </p>
+
             <ul>
               <li>You must be at least <strong>16 years old</strong> to access or purchase digital products, spreadsheets, calculators, guides, PDFs, templates, worksheets, transcripts, workbooks, or electronic resources.</li>
               <li>You must be at least <strong>18 years old</strong> to purchase or participate in coaching, consulting, estimating support, workshops, seminars, training sessions, or professional services.</li>
               <li>If you are under the age of majority where you live, you confirm that you have permission from a parent or legal guardian where required by law.</li>
             </ul>
+
             <p>
               We reserve the right to cancel access, refuse service, remove a subscriber, or refund a customer if we
               become aware that the customer does not meet the required age criteria.
@@ -618,9 +662,12 @@
             <h2>5. Orders and Acceptance</h2>
             <p>
               By placing an order, completing a checkout, paying an invoice, using a payment link, downloading a product,
-              accessing a course, receiving a service, or using any materials, you agree to these Terms and Conditions.
+              accessing a course, receiving a service, joining a community, or using any materials, you agree to these
+              Terms and Conditions.
             </p>
+
             <p>Before purchasing, you are responsible for reviewing:</p>
+
             <ul>
               <li>The product or service description</li>
               <li>The price</li>
@@ -630,67 +677,121 @@
               <li>The access limits</li>
               <li>The technical requirements</li>
               <li>These Terms and Conditions</li>
+              <li>Any Privacy Policy, Refund Policy, or other policy linked at checkout or on the website</li>
             </ul>
+
             <p>
               We reserve the right to refuse, cancel, suspend, or refund any order for suspected fraud, abuse,
               unauthorized sharing, payment issues, violation of these terms, or any other reasonable concern.
             </p>
           </section>
 
+          <section id="checkout">
+            <h2>6. Checkout Agreement</h2>
+            <p>
+              Where checkout functionality allows, the customer may be required to confirm agreement with these Terms
+              and Conditions before purchase.
+            </p>
+
+            <p>
+              By checking a box, clicking a purchase button, submitting payment, downloading a product, accessing a course,
+              or receiving a service, the customer confirms that they agree to these Terms and Conditions, the Refund Policy,
+              the Privacy Policy, and any product-specific terms shown at checkout.
+            </p>
+
+            <div class="strong-box">
+              <p>
+                <strong>Recommended checkout wording:</strong><br />
+                “I agree to the Terms and Conditions, Refund Policy, Privacy Policy, and understand that digital products
+                are protected intellectual property and may not be copied, shared, resold, redistributed, uploaded, or used
+                to create a competing product.”
+              </p>
+            </div>
+
+            <p>
+              Failure to use or display a checkout checkbox does not remove the customer’s obligation to follow these Terms
+              and Conditions if the customer purchases, downloads, accesses, or uses the products or services.
+            </p>
+          </section>
+
           <section id="payment">
-            <h2>6. Payment Terms</h2>
+            <h2>7. Payment Terms</h2>
             <p>Payment is due immediately at the time of purchase unless otherwise agreed in writing.</p>
+
             <p>
               Payments may be accepted by credit card, debit card, Stripe, electronic transfer, invoice, cheque, cash,
               or another approved method.
             </p>
+
             <p>
               Online payments are processed through third-party payment processors. We do not store full credit card
               numbers on our own systems.
             </p>
+
             <p>
               If a payment is declined, reversed, disputed, charged back, cancelled, or not completed, access to the
               product or service may be suspended or terminated.
             </p>
+
             <p>
               For payment plans, the customer agrees to complete all scheduled payments. Failed, missed, disputed,
-              or cancelled payments may result in suspended access, cancelled access, collection activity,
-              or loss of bonuses, discounts, or payment plan privileges.
+              or cancelled payments may result in suspended access, cancelled access, collection activity, or loss of bonuses,
+              discounts, or payment plan privileges.
+            </p>
+          </section>
+
+          <section id="taxes">
+            <h2>8. Taxes</h2>
+            <p>
+              Prices may be listed in Canadian dollars, United States dollars, or another currency clearly shown at checkout.
+            </p>
+
+            <p>
+              Applicable taxes, duties, sales taxes, HST, GST, state tax, provincial tax, or similar charges may be added
+              where required by law or by the payment platform.
+            </p>
+
+            <p>
+              The customer is responsible for any taxes, duties, currency conversion fees, bank fees, or payment processing
+              charges that apply to their purchase unless otherwise stated in writing.
             </p>
           </section>
 
           <section id="delivery">
-            <h2>7. Delivery and Access</h2>
+            <h2>9. Delivery and Access</h2>
             <p>
-              Digital products are delivered electronically through email, download links, course platforms,
-              member areas, checkout pages, or other digital access methods.
+              Digital products are delivered electronically through email, download links, course platforms, member areas,
+              checkout pages, or other digital access methods.
             </p>
+
             <p>
-              Access details are sent to the email address provided at purchase. You are responsible for entering
-              a correct email address and keeping your login information secure.
+              Access details are sent to the email address provided at purchase. You are responsible for entering a correct
+              email address and keeping your login information secure.
             </p>
+
             <p>
               If you do not receive access, contact:
               <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
             </p>
+
             <p>
-              We are not responsible for delays caused by incorrect email addresses, spam filters, customer-side
-              technical issues, payment delays, internet outages, third-party platform issues, or failure to follow
-              access instructions.
+              We are not responsible for delays caused by incorrect email addresses, spam filters, customer-side technical
+              issues, payment delays, internet outages, third-party platform issues, or failure to follow access instructions.
             </p>
           </section>
 
           <section id="license">
-            <h2>8. License to Use Digital Products</h2>
-            <p>
-              When you purchase a digital product, you are buying a limited license to use that product.
-            </p>
+            <h2>10. License to Use Digital Products</h2>
+            <p>When you purchase a digital product, you are buying a limited license to use that product.</p>
+
             <p>
               You are not buying ownership of the product, formulas, designs, layouts, methods, content, course,
               spreadsheet, calculator, guide, workbook, worksheet, transcript, video, document, intellectual property,
               or source material.
             </p>
+
             <p>Unless otherwise stated in writing, your license is:</p>
+
             <ul>
               <li>Personal to you or internal to your business</li>
               <li>Non-exclusive</li>
@@ -700,10 +801,12 @@
               <li>Limited to lawful use</li>
               <li>Subject to these Terms and Conditions</li>
             </ul>
+
             <p>
               You may use the purchased materials for your own learning, estimating, quoting, training,
               or internal business use.
             </p>
+
             <p>
               You may not sell, share, copy, publish, upload, redistribute, give away, repackage, duplicate, clone,
               reverse engineer, or commercially exploit the materials.
@@ -711,7 +814,7 @@
           </section>
 
           <section id="no-theft">
-            <h2>9. Strict No Theft, No Resale, No Sharing Policy</h2>
+            <h2>11. Strict No Theft, No Resale, No Sharing Policy</h2>
 
             <div class="warning-box">
               <p>
@@ -721,6 +824,7 @@
             </div>
 
             <p>You are strictly prohibited from doing any of the following:</p>
+
             <ul>
               <li>Sharing login details with another person</li>
               <li>Giving someone else access to your account</li>
@@ -741,6 +845,7 @@
               <li>Circumventing download limits, login protections, access controls, or security features</li>
               <li>Using the materials in a way that harms Greg Sheldon, Metal Fabrication Power Tools, Legacy Seven Trust, other customers, or the integrity of the products</li>
             </ul>
+
             <p>
               Any unauthorized copying, resale, sharing, distribution, duplication, or commercial misuse is a serious
               violation of these Terms and Conditions.
@@ -748,12 +853,14 @@
           </section>
 
           <section id="damages">
-            <h2>10. Liquidated Damages for Theft, Resale, Sharing, or Misuse</h2>
+            <h2>12. Liquidated Damages for Theft, Resale, Sharing, or Misuse</h2>
+
             <p>
               The customer agrees that unauthorized copying, resale, redistribution, sharing, uploading, duplication,
               rebranding, public posting, or commercial misuse of the products would cause serious harm to Greg Sheldon,
               Metal Fabrication Power Tools, and Legacy Seven Trust.
             </p>
+
             <p>
               The customer also agrees that the exact amount of damage may be difficult to calculate because unauthorized
               sharing can result in lost sales, market confusion, loss of control over intellectual property, brand damage,
@@ -775,6 +882,7 @@
               Greg Sheldon, Metal Fabrication Power Tools, Legacy Seven Trust, and any authorized representative reserve
               the right to seek:
             </p>
+
             <ul>
               <li>Actual damages</li>
               <li>Lost profits</li>
@@ -787,15 +895,55 @@
               <li>Account termination</li>
               <li>Any other remedy available by law</li>
             </ul>
+
             <p>
               Each unauthorized sale, share, upload, copy, transfer, download, reproduction, redistribution,
               public posting, or distribution may be treated as a separate violation.
             </p>
+
             <p>Access may be terminated immediately without refund if a customer violates this section.</p>
           </section>
 
+          <section id="takedown">
+            <h2>13. Copyright Takedown and Platform Enforcement</h2>
+
+            <p>
+              If any product, course, spreadsheet, calculator, template, PDF, workbook, worksheet, transcript, video,
+              formula, screenshot, protected content, or other material is copied, uploaded, shared, listed for resale,
+              distributed, or posted on any third-party website, marketplace, social media platform, file-sharing platform,
+              forum, group, cloud storage account, or public location, we reserve the right to take enforcement action.
+            </p>
+
+            <p>This may include:</p>
+
+            <ul>
+              <li>Copyright complaints</li>
+              <li>Intellectual property complaints</li>
+              <li>Platform takedown requests</li>
+              <li>Marketplace removal requests</li>
+              <li>Payment processor complaints</li>
+              <li>Hosting provider complaints</li>
+              <li>Search engine removal requests</li>
+              <li>Account suspension requests</li>
+              <li>Legal notices</li>
+              <li>Legal action</li>
+              <li>Any other enforcement method available by law or platform policy</li>
+            </ul>
+
+            <p>
+              We may take action directly through Greg Sheldon, Metal Fabrication Power Tools, Legacy Seven Trust,
+              or any authorized representative.
+            </p>
+
+            <p>
+              The customer agrees that unauthorized posting, resale, sharing, uploading, or distribution may cause serious
+              harm and may result in immediate termination of access without refund.
+            </p>
+          </section>
+
           <section id="ip">
-            <h2>11. Intellectual Property Ownership</h2>
+            <h2>14. Intellectual Property Ownership</h2>
+
             <p>
               All products, services, materials, systems, documents, videos, spreadsheets, calculators, templates,
               PDFs, guides, cheat sheets, workbooks, worksheets, transcripts, examples, formulas, graphics, layouts,
@@ -803,21 +951,26 @@
               Greg Sheldon, Legacy Seven Trust, or are otherwise controlled, licensed, assigned, or protected for the benefit
               of Legacy Seven Trust, unless otherwise stated in writing.
             </p>
+
             <p>All rights are reserved.</p>
+
             <p>
               Purchasing, downloading, accessing, viewing, receiving, or using a product or service does not give you
               ownership of the intellectual property.
             </p>
+
             <p>
               The customer receives only a limited license to use the purchased materials for personal learning or
               internal business use, subject to these Terms and Conditions.
             </p>
+
             <p>
               The customer does not receive the right to copy, reproduce, publish, distribute, resell, sublicense,
               rebrand, upload, transfer, share, reverse engineer, duplicate, modify for resale, create derivative
               commercial products from, or commercially exploit any materials without written permission from
               Greg Sheldon and, where applicable, Legacy Seven Trust.
             </p>
+
             <p>
               Unauthorized use, theft, copying, resale, sharing, distribution, duplication, or commercial misuse is
               strictly prohibited and may result in immediate termination of access, legal action, damages, takedown
@@ -827,23 +980,27 @@
           </section>
 
           <section id="customer-protection">
-            <h2>12. Customer Protection and Fair Use</h2>
-            <p>
-              These Terms and Conditions are intended to protect both the customer and the seller.
-            </p>
+            <h2>15. Customer Protection and Fair Use</h2>
+
+            <p>These Terms and Conditions are intended to protect both the customer and the seller.</p>
+
             <p>
               Customers are entitled to receive access to the products or services they purchased, subject to payment,
               technical availability, platform access, and compliance with these Terms and Conditions.
             </p>
+
             <p>
               Customers may use purchased materials for their own personal education, internal business learning,
               internal quoting, internal estimating, and internal workflow improvement.
             </p>
+
             <p>Customers may contact support if they have trouble accessing a purchased product.</p>
+
             <p>
               Customers may not be denied access unfairly, but access may be limited, suspended, or terminated if the
               customer violates these Terms and Conditions.
             </p>
+
             <p>
               Nothing in these Terms and Conditions is intended to remove customer rights that cannot legally be removed
               under applicable consumer protection laws.
@@ -851,14 +1008,18 @@
           </section>
 
           <section id="security">
-            <h2>13. Account Security</h2>
+            <h2>16. Account Security</h2>
+
             <p>You are responsible for keeping your account, password, download links, and access details secure.</p>
+
             <p>You may not share your login details with anyone.</p>
+
             <p>
               If unauthorized access occurs because you shared your account, forwarded access links, exposed your password,
               failed to protect your login information, or allowed another person to use your access, you may be responsible
               for any resulting misuse.
             </p>
+
             <p>
               We reserve the right to suspend or terminate access if unusual login activity, file sharing, excessive downloads,
               account sharing, or suspected abuse is detected.
@@ -866,9 +1027,12 @@
           </section>
 
           <section id="responsibilities">
-            <h2>14. Customer Responsibilities</h2>
+            <h2>17. Customer Responsibilities</h2>
+
             <p>The customer agrees to use all products and services responsibly, honestly, and lawfully.</p>
+
             <p>The customer is responsible for:</p>
+
             <ul>
               <li>Checking all calculations before use</li>
               <li>Verifying formulas</li>
@@ -884,106 +1048,233 @@
               <li>Keeping login details secure</li>
               <li>Following these Terms and Conditions</li>
             </ul>
+
             <p>The products are tools and training resources. They do not replace professional judgment.</p>
           </section>
 
           <section id="results">
-            <h2>15. No Guaranteed Results</h2>
+            <h2>18. No Guaranteed Results</h2>
+
             <p>
               We do not guarantee that you will win jobs, close quotes, increase profit, make money, avoid losses,
               avoid estimating mistakes, get customers, grow a business, or achieve any specific result.
             </p>
+
             <p>
               Results depend on many factors outside our control, including your skill, market, pricing, execution,
               labour, overhead, competition, suppliers, subcontractors, customer communication, and business decisions.
             </p>
+
             <p>
               Any examples, prices, estimates, formulas, rules of thumb, case studies, or sample numbers are for
               educational purposes only.
             </p>
+
             <p>You are responsible for adjusting all information to your own business, market, job, and customer situation.</p>
           </section>
 
+          <section id="testimonials">
+            <h2>19. Testimonials, Examples, and Earnings Disclaimer</h2>
+
+            <p>
+              Testimonials, screenshots, reviews, quotes, income examples, sales results, business outcomes, case studies,
+              customer stories, before-and-after examples, or student results are examples only.
+            </p>
+
+            <p>They do not guarantee that you will achieve the same or similar result.</p>
+
+            <p>
+              Any results shown depend on many factors, including skill, effort, market conditions, timing, business decisions,
+              customer communication, pricing, experience, and execution.
+            </p>
+
+            <p>
+              No statement on any website, sales page, video, email, course, download, or communication should be understood
+              as a promise or guarantee of earnings, profit, job wins, quote wins, business growth, or financial outcome.
+            </p>
+          </section>
+
           <section id="accuracy">
-            <h2>16. Accuracy of Materials</h2>
+            <h2>20. Accuracy of Materials</h2>
+
             <p>
               We work to provide useful, practical, and accurate materials, but errors, outdated information, broken formulas,
               typos, technical issues, or misunderstandings may occur.
             </p>
+
             <p>The customer is responsible for checking all information before relying on it.</p>
+
             <p>
               The customer should not rely blindly on any spreadsheet, calculator, formula, template, guide, course lesson,
               example, or training material without reviewing it for their own situation.
             </p>
+
             <p>
               If you find an error or technical issue, contact:
               <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
             </p>
+
             <p>
               We may choose to correct, update, replace, or improve materials at our discretion, but we are not obligated
               to provide lifetime updates unless specifically stated in writing.
             </p>
           </section>
 
+          <section id="ai">
+            <h2>21. AI, Automation, Spreadsheet, and Calculator Disclaimer</h2>
+
+            <p>
+              Any formulas, calculators, spreadsheets, templates, examples, automated outputs, generated estimates,
+              AI-assisted content, or tool-generated information are provided for assistance and education only.
+            </p>
+
+            <p>
+              The customer must review and verify all outputs before using them in a quote, bid, proposal, invoice,
+              contract, estimate, customer submission, purchase order, project plan, or business decision.
+            </p>
+
+            <p>
+              We do not guarantee that any spreadsheet, calculator, formula, automation, or AI-assisted output will be
+              complete, accurate, current, profitable, compliant, or suitable for every customer, project, market, or business.
+            </p>
+
+            <p>
+              The customer remains fully responsible for final review, final pricing, final estimates, final submissions,
+              and all business decisions.
+            </p>
+          </section>
+
+          <section id="updates">
+            <h2>22. Updates, Improvements, and New Versions</h2>
+
+            <p>
+              Updates, improvements, corrections, replacements, or new versions may be provided at our discretion.
+            </p>
+
+            <p>
+              Purchase of a product does not guarantee free lifetime updates, upgrades, new versions, future tools,
+              added modules, added spreadsheets, additional consulting, or additional services unless clearly stated in writing.
+            </p>
+
+            <p>
+              We may change, improve, remove, update, or discontinue products, services, bonuses, templates, tools,
+              downloads, or course materials at any time.
+            </p>
+
+            <p>
+              If an error is found in a product, we may choose to correct it, replace it, update it, or provide guidance,
+              but we are not responsible for business losses caused by the customer’s failure to review and verify the
+              materials before use.
+            </p>
+          </section>
+
+          <section id="lifetime">
+            <h2>23. Lifetime Access</h2>
+
+            <p>
+              If lifetime access is offered, “lifetime” means the lifetime of the product while it remains commercially
+              available, technically supported, and reasonably capable of being hosted or delivered.
+            </p>
+
+            <p>Lifetime access does not mean the lifetime of the customer.</p>
+
+            <p>
+              Lifetime access does not guarantee that the product, platform, hosting provider, course system, file format,
+              software, or technology will remain available forever.
+            </p>
+
+            <p>
+              Access may be affected by platform shutdowns, discontinued products, technical changes, security concerns,
+              legal requirements, business changes, customer violations, or circumstances outside reasonable control.
+            </p>
+
+            <p>We reserve the right to replace, migrate, modify, or discontinue access methods where reasonably necessary.</p>
+
+            <p>Customers who violate these Terms and Conditions may lose access even if lifetime access was offered.</p>
+          </section>
+
           <section id="refunds">
-            <h2>17. Refunds</h2>
+            <h2>24. Refund Policy</h2>
+
             <p>
               Because many products are digital and can be accessed, downloaded, copied, or used immediately, all sales
               are final unless a specific refund policy or guarantee is clearly stated on the sales page, checkout page,
               invoice, or written agreement.
             </p>
+
             <p>If a refund guarantee applies, the customer must follow the instructions and time limits of that guarantee.</p>
+
             <p>
               Refund requests must be sent to:
               <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
             </p>
+
             <p>Refunds may be denied if:</p>
+
             <ul>
               <li>The refund period has expired</li>
               <li>No refund guarantee applies</li>
               <li>The customer accessed or downloaded the product</li>
               <li>The customer violated these Terms and Conditions</li>
-              <li>The customer copied, shared, resold, or misused the product</li>
+              <li>The customer copied, shared, resold, uploaded, or misused the product</li>
               <li>The customer abused the refund policy</li>
               <li>The purchase was for custom work or services already started</li>
               <li>The customer failed to provide required information</li>
               <li>The product was clearly sold as non-refundable</li>
+              <li>The customer started a chargeback without first contacting support</li>
+              <li>The customer used the product and then requested a refund to avoid payment</li>
             </ul>
+
             <p>If a refund is approved, access may be cancelled immediately.</p>
+
+            <p>If a separate Refund Policy page is published, that Refund Policy is incorporated into these Terms and Conditions by reference.</p>
           </section>
 
           <section id="chargebacks">
-            <h2>18. Chargebacks and Payment Disputes</h2>
+            <h2>25. Chargebacks and Payment Disputes</h2>
+
             <p>
               Before starting a chargeback or payment dispute, the customer agrees to contact:
               <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
               so the issue can be reviewed.
             </p>
+
             <p>
               False, abusive, or dishonest chargebacks may result in immediate account termination, cancelled access,
               refusal of future purchases, and recovery of any fees, losses, or costs allowed by law.
             </p>
+
             <p>A chargeback does not cancel the customer’s obligations under these Terms and Conditions.</p>
+
+            <p>
+              If the customer receives a refund, chargeback, payment reversal, or payment cancellation, the customer must
+              stop using the product and delete or return all materials where required.
+            </p>
           </section>
 
           <section id="services">
-            <h2>19. Services, Consulting, and Custom Work</h2>
+            <h2>26. Services, Consulting, and Custom Work</h2>
+
             <p>
               Services may include consulting, coaching, estimating support, spreadsheet builds, reviews, audits,
               training, workshops, or custom work.
             </p>
+
             <p>
               The scope, price, timeline, and deliverables will be based on the written agreement, invoice, proposal,
               sales page, or email confirmation.
             </p>
+
             <p>
               Unless otherwise stated in writing, service payments are non-refundable once time has been reserved,
               work has started, or deliverables have been prepared.
             </p>
+
             <p>
               Customer delays, missing information, inaccurate drawings, unclear scope, late responses, or incomplete
               files may affect timelines and results.
             </p>
+
             <p>
               We reserve the right to refuse, pause, or terminate services if the customer is abusive, dishonest,
               non-responsive, fails to pay, provides misleading information, requests work outside the agreed scope,
@@ -991,14 +1282,49 @@
             </p>
           </section>
 
+          <section id="community">
+            <h2>27. Community, Coaching Call, and Student Conduct</h2>
+
+            <p>
+              If the customer receives access to a community, student group, comment area, coaching call, workshop,
+              live training, private group, chat, or discussion space, the customer agrees to behave respectfully,
+              honestly, and professionally.
+            </p>
+
+            <p>We may remove, suspend, or ban any customer from a course, community, call, group, or platform for:</p>
+
+            <ul>
+              <li>Harassment</li>
+              <li>Threats</li>
+              <li>Abuse</li>
+              <li>Spam</li>
+              <li>Hate</li>
+              <li>Fraud</li>
+              <li>Theft</li>
+              <li>Resale</li>
+              <li>Unauthorized sharing</li>
+              <li>Dishonesty</li>
+              <li>Disruptive behaviour</li>
+              <li>Inappropriate conduct</li>
+              <li>Sharing private customer information</li>
+              <li>Posting confidential or protected materials</li>
+              <li>Conduct that harms other customers, Greg Sheldon, Metal Fabrication Power Tools, Legacy Seven Trust, or the brand</li>
+            </ul>
+
+            <p>Removal from a community, group, call, or platform does not automatically create a right to a refund.</p>
+          </section>
+
           <section id="privacy">
-            <h2>20. Privacy and Personal Data</h2>
+            <h2>28. Privacy and Personal Data</h2>
+
             <p>
               We collect and use customer information only as reasonably necessary to operate the business, process payments,
               deliver products, provide services, communicate with customers, improve offers, protect the business,
               and meet legal obligations.
             </p>
+
             <p>Personal information may include:</p>
+
             <ul>
               <li>Name</li>
               <li>Email address</li>
@@ -1009,59 +1335,130 @@
               <li>Download activity</li>
               <li>Customer support messages</li>
               <li>Information voluntarily submitted by the customer</li>
+              <li>Technical data related to product access, downloads, login activity, or platform use</li>
             </ul>
+
             <p>
               We may use trusted third-party services for payment processing, email delivery, course hosting, website hosting,
-              downloads, analytics, customer support, and business operations.
+              downloads, analytics, customer support, checkout, and business operations.
             </p>
+
             <p>We do not sell customer personal information.</p>
+
             <p>
-              For privacy questions, contact:
+              For privacy questions, access requests, correction requests, or deletion requests where required by applicable law,
+              contact:
               <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
             </p>
+
+            <p>If a separate Privacy Policy page is published, that Privacy Policy is incorporated into these Terms and Conditions by reference.</p>
+          </section>
+
+          <section id="third-party">
+            <h2>29. Third-Party Platforms and Services</h2>
+
+            <p>
+              We may use third-party platforms, tools, and service providers to operate the business, including payment processors,
+              website hosts, course platforms, email providers, checkout providers, analytics tools, file delivery systems,
+              and customer support tools.
+            </p>
+
+            <p>
+              These third-party platforms may have their own terms, privacy policies, refund rules, uptime limitations,
+              technical issues, and account requirements.
+            </p>
+
+            <p>
+              We are not responsible for third-party platform outages, payment processor issues, account restrictions,
+              email deliverability problems, hosting failures, software changes, or technical failures outside reasonable control.
+            </p>
+
+            <p>The customer agrees to follow any applicable third-party platform rules required to access or use the products or services.</p>
           </section>
 
           <section id="email">
-            <h2>21. Email Communication</h2>
+            <h2>30. Email Communication and Marketing</h2>
+
             <p>
-              By purchasing a product, creating an account, downloading a resource, registering for a course,
-              subscribing to a newsletter, or entering your email address, you may receive transactional emails related
+              By purchasing a product, creating an account, downloading a resource, registering for a course, subscribing to
+              a newsletter, submitting a form, or entering your email address, you may receive transactional emails related
               to your order, access, account, downloads, updates, support, and product delivery.
             </p>
+
             <p>You may also receive educational or promotional emails where permitted by law.</p>
+
+            <p>
+              Marketing emails may include information about products, services, updates, educational content, offers,
+              course materials, tools, spreadsheets, or related resources.
+            </p>
+
             <p>
               You may unsubscribe from marketing emails at any time by clicking the unsubscribe link in the email or contacting:
               <strong><a href="mailto:gregwsheldon@gmail.com">gregwsheldon@gmail.com</a></strong>
             </p>
+
             <p>
-              Unsubscribing from marketing emails does not stop important order, account, legal, security, or access-related messages.
+              Unsubscribing from marketing emails does not stop important order, account, legal, security, support,
+              or access-related messages.
+            </p>
+
+            <p>
+              Where required by law, commercial emails will include required identification information, an unsubscribe method,
+              and any other required information. If a mailing address or other business identification is legally required
+              in an email footer, it may be provided in the email footer or by another legally accepted method.
             </p>
           </section>
 
           <section id="technical">
-            <h2>22. Technical Requirements</h2>
+            <h2>31. Technical Requirements</h2>
+
             <p>
               The customer is responsible for having the equipment, software, browser, internet access, email access,
               and technical ability required to use the products.
             </p>
+
             <p>Some spreadsheets, calculators, or templates may require Microsoft Excel, Google Sheets, or compatible software.</p>
-            <p>
-              Certain features, formulas, formatting, protections, or calculations may not work correctly in all software versions.
-            </p>
+
+            <p>Certain features, formulas, formatting, protections, macros, links, or calculations may not work correctly in all software versions.</p>
+
             <p>
               We are not responsible for issues caused by outdated software, incompatible programs, unsupported devices,
-              customer-side technical problems, lack of internet access, or unauthorized modification of files.
+              customer-side technical problems, lack of internet access, blocked emails, spam filters, browser issues,
+              company firewall restrictions, or unauthorized modification of files.
+            </p>
+          </section>
+
+          <section id="tracking">
+            <h2>32. Security, Watermarking, and Usage Tracking</h2>
+
+            <p>
+              To protect customers, products, and intellectual property, we may use reasonable security methods, including
+              access controls, download limits, account monitoring, license tracking, file watermarking, customer-specific
+              identifiers, email tracking, platform analytics, or other anti-theft measures.
+            </p>
+
+            <p>
+              These measures may be used to detect unauthorized sharing, resale, copying, account abuse, suspicious access,
+              excessive downloads, or misuse of materials.
+            </p>
+
+            <p>
+              By purchasing, accessing, downloading, or using the products, the customer agrees that reasonable anti-theft
+              and access-protection methods may be used.
             </p>
           </section>
 
           <section id="liability">
-            <h2>23. Limitation of Liability</h2>
+            <h2>33. Limitation of Liability</h2>
+
             <p>
               To the maximum extent permitted by law, Greg Sheldon, Metal Fabrication Power Tools, Legacy Seven Trust,
               and any authorized representative will not be liable for indirect, incidental, special, consequential,
               punitive, or business-related losses.
             </p>
+
             <p>This includes, but is not limited to:</p>
+
             <ul>
               <li>Lost profits</li>
               <li>Lost revenue</li>
@@ -1075,22 +1472,31 @@
               <li>Software issues</li>
               <li>Incorrect use of spreadsheets or calculators</li>
               <li>Failure to review or verify information before use</li>
+              <li>Errors in formulas, templates, examples, calculations, or automated outputs</li>
+              <li>Third-party platform failures</li>
+              <li>Email delivery issues</li>
+              <li>Payment processor issues</li>
             </ul>
+
             <p>The customer is responsible for reviewing and approving all final business decisions.</p>
+
             <p>
               To the maximum extent permitted by law, total liability for any claim related to a product or service will
               not exceed the amount the customer paid for that specific product or service.
             </p>
+
             <p>Nothing in these Terms and Conditions limits liability that cannot legally be limited.</p>
           </section>
 
           <section id="indemnification">
-            <h2>24. Indemnification</h2>
+            <h2>34. Indemnification</h2>
+
             <p>
               The customer agrees to defend, indemnify, and hold harmless Greg Sheldon, Metal Fabrication Power Tools,
               Legacy Seven Trust, and any authorized representative from claims, losses, damages, costs, expenses,
               or liabilities arising from:
             </p>
+
             <ul>
               <li>The customer’s misuse of the products</li>
               <li>The customer’s violation of these Terms and Conditions</li>
@@ -1100,12 +1506,15 @@
               <li>The customer’s failure to verify calculations, pricing, or assumptions</li>
               <li>The customer’s violation of another person’s rights or applicable law</li>
               <li>The customer’s use of the products in a way that causes harm, loss, or dispute</li>
+              <li>The customer’s use of materials to create a competing product or service</li>
             </ul>
           </section>
 
           <section id="termination">
-            <h2>25. Termination of Access</h2>
+            <h2>35. Termination of Access</h2>
+
             <p>We may suspend or terminate access at any time if a customer:</p>
+
             <ul>
               <li>Violates these Terms and Conditions</li>
               <li>Shares login details</li>
@@ -1119,36 +1528,83 @@
               <li>Uses the products to create a competing product</li>
               <li>Acts in a way that harms Greg Sheldon, Metal Fabrication Power Tools, Legacy Seven Trust, other customers, or the products</li>
             </ul>
+
             <p>Termination may happen without refund.</p>
+
+            <p>
+              If access is terminated because of violation, the customer must stop using the materials and delete or return
+              protected materials where required.
+            </p>
           </section>
 
           <section id="force-majeure">
-            <h2>26. Force Majeure</h2>
+            <h2>36. Force Majeure</h2>
+
             <p>
-              We are not responsible for delays, interruptions, failures, or non-performance caused by events outside reasonable control.
+              We are not responsible for delays, interruptions, failures, or non-performance caused by events outside
+              reasonable control.
             </p>
+
             <p>
               This may include internet outages, platform failures, payment processor issues, power outages, natural disasters,
-              illness, cyberattacks, government restrictions, supplier issues, technical failures, or other events beyond reasonable control.
+              illness, cyberattacks, government restrictions, supplier issues, technical failures, hosting failures,
+              software provider changes, or other events beyond reasonable control.
             </p>
           </section>
 
           <section id="changes">
-            <h2>27. Changes to These Terms</h2>
+            <h2>37. Changes to These Terms</h2>
+
             <p>These Terms and Conditions may be updated at any time.</p>
+
             <p>
               The version that applies to a purchase is the version available or referenced at the time the order is placed,
-              unless a change is required by law or relates to ongoing access, security, platform rules, or service delivery.
+              unless a change is required by law or relates to ongoing access, security, platform rules, product access,
+              intellectual property protection, or service delivery.
             </p>
+
             <p>Customers are encouraged to review these Terms and Conditions periodically.</p>
+
+            <p>
+              Continued access or use of products, services, communities, or materials after updates may be treated as
+              acceptance of the updated Terms and Conditions where permitted by law.
+            </p>
+          </section>
+
+          <section id="separate-policies">
+            <h2>38. Separate Policies</h2>
+
+            <p>We may publish separate policies, including but not limited to:</p>
+
+            <ul>
+              <li>Privacy Policy</li>
+              <li>Refund Policy</li>
+              <li>Cookie Policy</li>
+              <li>Earnings Disclaimer</li>
+              <li>Community Guidelines</li>
+              <li>Acceptable Use Policy</li>
+              <li>Copyright or Takedown Policy</li>
+            </ul>
+
+            <p>
+              Any separate policy linked on the website, checkout page, course platform, download page, or sales page may
+              be incorporated into these Terms and Conditions by reference.
+            </p>
+
+            <p>
+              If there is a conflict between these Terms and Conditions and a product-specific written agreement, the
+              product-specific written agreement controls for that product only, unless otherwise stated.
+            </p>
           </section>
 
           <section id="severability">
-            <h2>28. Severability</h2>
+            <h2>39. Severability</h2>
+
             <p>
               If any part of these Terms and Conditions is found to be invalid, illegal, or unenforceable, the remaining
               parts will continue in full force and effect.
             </p>
+
             <p>
               If the $10,000 USD liquidated damages amount is reduced, limited, or not fully enforceable by a court or
               authority, the remaining protections, remedies, and rights will still apply to the maximum extent allowed by law.
@@ -1156,22 +1612,41 @@
           </section>
 
           <section id="waiver">
-            <h2>29. No Waiver</h2>
+            <h2>40. No Waiver</h2>
+
             <p>
               If Greg Sheldon, Metal Fabrication Power Tools, Legacy Seven Trust, or any authorized representative does not
               immediately enforce any part of these Terms and Conditions, that does not mean the right to enforce it later
               has been waived.
             </p>
+
             <p>Any failure to enforce a right, rule, or remedy does not prevent future enforcement.</p>
           </section>
 
-          <section id="law">
-            <h2>30. Applicable Law</h2>
+          <section id="assignment">
+            <h2>41. Assignment</h2>
+
             <p>
-              These Terms and Conditions and all transactions between the customer and Greg Sheldon are governed by applicable
-              laws in the United States and Canada, depending on the customer’s location, the nature of the transaction,
-              and any mandatory consumer protection laws that may apply.
+              The customer may not assign, transfer, sublicense, or delegate their rights or obligations under these
+              Terms and Conditions without written permission.
             </p>
+
+            <p>
+              Greg Sheldon, Metal Fabrication Power Tools, or Legacy Seven Trust may assign, transfer, license, protect,
+              or enforce rights related to products, services, intellectual property, or business assets where permitted
+              by law or business structure.
+            </p>
+          </section>
+
+          <section id="law">
+            <h2>42. Applicable Law</h2>
+
+            <p>
+              These Terms and Conditions and all transactions between the customer and Greg Sheldon are governed by
+              applicable laws in the United States and Canada, depending on the customer’s location, the nature of the
+              transaction, and any mandatory consumer protection laws that may apply.
+            </p>
+
             <p>
               Nothing in these Terms and Conditions is intended to remove rights that cannot legally be removed under
               applicable consumer protection laws.
@@ -1179,10 +1654,11 @@
           </section>
 
           <section id="contact">
-            <h2>31. Contact</h2>
+            <h2>43. Contact</h2>
+
             <p>
               For questions about these Terms and Conditions, orders, access, refunds, product support, privacy,
-              permissions, or intellectual property rights, contact:
+              permissions, copyright takedowns, or intellectual property rights, contact:
             </p>
 
             <div class="strong-box">
@@ -1204,6 +1680,7 @@
       <div>
         Greg Sheldon | Metal Fabrication Power Tools
       </div>
+
       <div>
         <a href="/metalfabexcel/">Home</a> |
         <a href="/metalfabexcel/terms.html">Terms and Conditions</a> |
